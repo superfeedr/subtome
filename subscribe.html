@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>Pick your subscription service</title>
+</head>
+<body>
+
+<script>
+var services = {};
+var servicesString = localStorage.getItem('services');
+if(servicesString) {
+  try {
+    services = JSON.parse(servicesString);
+  }
+  catch(error) {
+    console.error('Could not parse ' + servicesString);
+  }
+}
+
+for(var s in services) {
+  var button = document.createElement('input');
+  button.setAttribute('type', 'button');
+  button.setAttribute('value', s);
+  button.onclick = function() {
+    window.open(services[s].url + window.location.search);
+  };
+  document.getElementsByTagName('body')[0].appendChild(button);
+}
+function redirect() {
+}
+
+</script>
+
+</body>
+</html>
