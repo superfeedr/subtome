@@ -1,34 +1,28 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Pick your subscription service</title>
+  <meta charset="utf-8">
+  <title>Subtome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="src/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <script src="src/jquery/jquery.js"></script>
+  <script src="src/bootstrap/js/bootstrap.js"></script>
+  <script src="/build/subscribe.subtome.js"></script>
 </head>
-<body>
 
-<script>
-var services = {};
-var servicesString = localStorage.getItem('services');
-if(servicesString) {
-  try {
-    services = JSON.parse(servicesString);
-  }
-  catch(error) {
-    console.error('Could not parse ' + servicesString);
-  }
-}
-
-for(var s in services) {
-  var button = document.createElement('input');
-  button.setAttribute('type', 'button');
-  button.setAttribute('value', s);
-  button.onclick = function() {
-    window.open(services[s].url + window.location.search);
-  };
-  document.getElementsByTagName('body')[0].appendChild(button);
-}
-function redirect() {
-}
-
-</script>
+<body style='background: transparent'>
+  <div id="subtomeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="subtomeModal" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="subtomeModalLabel">Subscribe with:</h3>
+    </div>
+    <div id="subtomeModalBody" class="modal-body">
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    </div>
+  </div>
 
 </body>
 </html>

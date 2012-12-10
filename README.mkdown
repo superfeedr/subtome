@@ -22,5 +22,7 @@ This is intented at running as a bookmarklet and/or an emebedded button.
 
 5- Once the user picks a service, he's sent to that service to complete the subscription.
 
-
-
+Build
+=====
+$ browserify src/register.js -o build/register.subtome.js
+$ browserify src/subscribe.js -o build/subscribe.subtome.js
