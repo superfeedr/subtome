@@ -344,6 +344,132 @@ exports.extname = function(path) {
 
 });
 
+require.define("/src/services.js", function (require, module, exports, __dirname, __filename) {
+var Services = function Services() {
+  this.services = {};
+  this.load();
+}
+
+Services.prototype.load = function loadServices() {
+  var servicesString = localStorage.getItem('services');
+  if(servicesString) {
+    try {
+      this.services = JSON.parse(servicesString);
+    }
+    catch(error) {
+      console.error('Could not parse ' + servicesString);
+    }
+  }
+}
+
+Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
+  iterator('Google Reader', {
+    url: 'http://www.google.com/ig/add?feedurl={url}'
+  });
+  iterator('Newsblur', {
+    url: 'http://www.newsblur.com/?{url}'
+  });
+  iterator('Bloglovin\'', {
+    url: 'http://www.bloglovin.com/en/subscriptions?{url}'
+  });
+}
+
+Services.prototype.forEach = function forEachServices(iterator) {
+  for(var name in this.services) {
+    iterator(name, this.services[name]);
+  }
+}
+
+Services.prototype.setAsDefault = function setAsDefault(name, def) {
+  for(var n in this.services) {
+    delete this.services[n].default;
+  }
+  if(name) {
+    this.services[name].default = def;
+  }
+  this.save();
+}
+
+Services.prototype.save = function saveServices() {
+  localStorage.setItem('services', JSON.stringify(this.services));
+}
+
+Services.prototype.removeService = function removeService(name) {
+  delete this.services[name];
+  this.save();
+}
+
+Services.prototype.register = function registerService(name, handler) {
+  if(!this.services[name]) {
+    this.services[name] = {
+      url: handler,
+      addedOn: Date.now()
+    }
+    this.save();
+  }
+}
+
+module.exports = new Services();
+
+});
+
+require.define("/node_modules/relative-date/package.json", function (require, module, exports, __dirname, __filename) {
+module.exports = {"main":"./lib/relative-date"}
+});
+
+require.define("/node_modules/relative-date/lib/relative-date.js", function (require, module, exports, __dirname, __filename) {
+var relativeDate = (function(undefined){
+
+  var SECOND = 1000,
+      MINUTE = 60 * SECOND,
+      HOUR = 60 * MINUTE,
+      DAY = 24 * HOUR,
+      WEEK = 7 * DAY,
+      YEAR = DAY * 365,
+      MONTH = YEAR / 12;
+
+  var formats = [
+    [ 0.7 * MINUTE, 'just now' ],
+    [ 1.5 * MINUTE, 'a minute ago' ],
+    [ 60 * MINUTE, 'minutes ago', MINUTE ],
+    [ 1.5 * HOUR, 'an hour ago' ],
+    [ DAY, 'hours ago', HOUR ],
+    [ 2 * DAY, 'yesterday' ],
+    [ 7 * DAY, 'days ago', DAY ],
+    [ 1.5 * WEEK, 'a week ago'],
+    [ MONTH, 'weeks ago', WEEK ],
+    [ 1.5 * MONTH, 'a month ago' ],
+    [ YEAR, 'months ago', MONTH ],
+    [ 1.5 * YEAR, 'a year ago' ],
+    [ Number.MAX_VALUE, 'years ago', YEAR ]
+  ];
+
+  function relativeDate(input,reference){
+    !reference && ( reference = (new Date).getTime() );
+    reference instanceof Date && ( reference = reference.getTime() );
+    input instanceof Date && ( input = input.getTime() );
+    
+    var delta = reference - input,
+        format, i, len;
+
+    for(i = -1, len=formats.length; ++i < len; ){
+      format = formats[i];
+      if(delta < format[0]){
+        return format[2] == undefined ? format[1] : Math.round(delta/format[2]) + ' ' + format[1];
+      }
+    };
+  }
+
+  return relativeDate;
+
+})();
+
+if(typeof module != 'undefined' && module.exports){
+  module.exports = relativeDate;
+}
+
+});
+
 require.define("url", function (require, module, exports, __dirname, __filename) {
 var punycode = { encode : function (s) { return s } };
 
@@ -1206,84 +1332,46 @@ function lastBraceInKey(str) {
 
 });
 
-require.define("/services.js", function (require, module, exports, __dirname, __filename) {
-var Services = function Services() {
-  this.services = {};
-  this.load();
-}
+require.define("/src/settings.js", function (require, module, exports, __dirname, __filename) {
+    var services = require('./services');
+var relativeDate = require('relative-date');
+var urlParser = require('url');
 
-Services.prototype.load = function loadServices() {
-  var servicesString = localStorage.getItem('services');
-  if(servicesString) {
-    try {
-      this.services = JSON.parse(servicesString);
-    }
-    catch(error) {
-      console.error('Could not parse ' + servicesString);
-    }
-  }
-}
+function addService(name, handler) {
+  var s = '<tr>';
+  s += '<td><a href="' +  urlParser.resolve(handler.url,'/').toString() + '">' + name + '</a></td>';
+  s += '<td>' + relativeDate(new Date(handler.addedOn)) + '</td>';
+  if(handler.default)
+    s += '<td>' + '<input type="radio" name="defaultRadios" checked>' + '</td>';
+  else
+    s += '<td>' + '<input type="radio" name="defaultRadios">' + '</td>';
 
-Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
-  iterator('Google Reader', {
-    url: 'http://www.google.com/ig/add?feedurl={url}'
+  s += '<td>' + '<button type="button" class="btn btn-mini test">Test</button>' + '</td>';
+  s += '<td>' + '<button type="button" class="btn btn-mini btn-danger remove">Remove</button>' + '</td>';
+  s += '</tr>';
+  var line = $(s);
+  line.find('button.remove').click(function() {
+    services.removeService(name);
+    line.remove();
   });
-  iterator('Newsblur', {
-    url: 'http://www.newsblur.com/?{url}'
+  line.find('input').click(function(evt) {
+    services.setAsDefault(name, line.find('input').is(':checked'));
   });
-  iterator('Bloglovin\'', {
-    url: 'http://www.bloglovin.com/en/subscriptions?{url}'
-  });
+  line.find('button.test').click(function() {
+    var redirect = handler.url.replace('{url}', 'http://blog.superfeedr.com/atom.xml');
+    services.register(name, handler.url);
+    window.open(redirect);
+  })
+  $('#services').append(line);
 }
 
-Services.prototype.forEach = function forEachServices(iterator) {
-  for(var name in this.services) {
-    iterator(name, this.services[name]);
-  }
-}
-
-Services.prototype.setAsDefault = function setAsDefault(name, def) {
-  for(var n in this.services) {
-    delete this.services[n].default;
-  }
-  if(name) {
-    this.services[name].default = def;
-  }
-  this.save();
-}
-
-Services.prototype.save = function saveServices() {
-  localStorage.setItem('services', JSON.stringify(this.services));
-}
-
-Services.prototype.removeService = function removeService(name) {
-  delete this.services[name];
-  this.save();
-}
-
-Services.prototype.register = function registerService(name, handler) {
-  if(!this.services[name]) {
-    this.services[name] = {
-      url: handler,
-      addedOn: Date.now()
-    }
-    this.save();
-  }
-}
-
-module.exports = new Services();
-
+$(document).ready(function() {
+  services.forEach(addService);
+  $('#noDefault').click(function() {
+    services.setAsDefault();
+  })
 });
 
-require.define("/register.js", function (require, module, exports, __dirname, __filename) {
-    var urlParser = require('url');
-var qsParser = require('querystring');
-var services = require('./services');
-
-var url = urlParser.parse(window.location.href);
-var qs = qsParser.parse(url.query);
-
-services.register(qs.name, qs.url);
 
 });
-require("/register.js");
+require("/src/settings.js");

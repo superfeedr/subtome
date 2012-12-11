@@ -1,0 +1,22 @@
+{
+  "name": "subtome.com",
+  "version": "0.0.0",
+  "description": "Subscribe Button",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "relative-date": "~1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/superfeedr/subtome.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}

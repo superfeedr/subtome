@@ -24,5 +24,17 @@ This is intented at running as a bookmarklet and/or an emebedded button.
 
 Build
 =====
+
+Install dependencies (you need to have node.js installed):
+
+<code>
+$ npm install
+</code>
+
+Compiling the code:
+
+<code>
+$ browserify src/settings.js -o build/settings.subtome.js
 $ browserify src/register.js -o build/register.subtome.js
 $ browserify src/subscribe.js -o build/subscribe.subtome.js
+</code>

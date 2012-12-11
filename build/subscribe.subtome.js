@@ -1242,15 +1242,33 @@ Services.prototype.forEach = function forEachServices(iterator) {
   }
 }
 
+Services.prototype.setAsDefault = function setAsDefault(name, def) {
+  for(var n in this.services) {
+    delete this.services[n].default;
+  }
+  if(name) {
+    this.services[name].default = def;
+  }
+  this.save();
+}
+
 Services.prototype.save = function saveServices() {
   localStorage.setItem('services', JSON.stringify(this.services));
 }
 
-Services.prototype.register = function registerService(name, handler, def) {
-  this.services[name] = {
-    url: handler
-  }
+Services.prototype.removeService = function removeService(name) {
+  delete this.services[name];
   this.save();
+}
+
+Services.prototype.register = function registerService(name, handler) {
+  if(!this.services[name]) {
+    this.services[name] = {
+      url: handler,
+      addedOn: Date.now()
+    }
+    this.save();
+  }
 }
 
 module.exports = new Services();
@@ -1270,6 +1288,7 @@ function addService(name, handler) {
     button.setAttribute('class', 'btn');
     button.setAttribute('style', 'display: block; margin: 10px');
     button.onclick = function() {
+      services.register(name, handler.url);
       var redirect = handler.url.replace('{url}', qs.resource);
       window.open(redirect);
       window.location = '/done.html';

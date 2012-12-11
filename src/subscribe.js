@@ -10,6 +10,7 @@ function addService(name, handler) {
     button.setAttribute('class', 'btn');
     button.setAttribute('style', 'display: block; margin: 10px');
     button.onclick = function() {
+      services.register(name, handler.url);
       var redirect = handler.url.replace('{url}', qs.resource);
       window.open(redirect);
       window.location = '/done.html';
