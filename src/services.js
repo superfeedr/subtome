@@ -33,6 +33,10 @@ Services.prototype.forEach = function forEachServices(iterator) {
   }
 }
 
+Services.prototype.uses = function usesService(name) {
+  return this.services[name] || false;
+}
+
 Services.prototype.setAsDefault = function setAsDefault(name, def) {
   for(var n in this.services) {
     delete this.services[n].default;
