@@ -1302,8 +1302,15 @@ $(document).ready(function() {
   var servicesUsed = 0;
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
   services.forEach(function(service, handler) {
-    servicesUsed += 1;
-    addService(service, handler);
+    if(handler.default) {
+      var redirect = handler.url.replace('{url}', qs.resource);
+      window.open(redirect);
+      window.location = '/done.html';
+    }
+    else {
+      servicesUsed += 1;
+      addService(service, handler);
+    }
   });
   if(servicesUsed < 3) {
     $('#subtomeModalBody').append($('<h4>Suggested Services</h4>'));
