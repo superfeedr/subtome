@@ -51,7 +51,8 @@
       </div>
 
       <hr>
-      <h1>Tools you're using</h1>
+      <h1>Settings</h1>
+      <h2>Tools you're using</h2>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -65,10 +66,36 @@
         <tbody id="services">
         </tbody>
       </table>
+      <p id="defaultMsg" style="text-align: center;font-style: italic; margin: 30px auto;">You currently do not use any reader. Start with the <a id="pickSuggestions">suggested apps</a>.</p>
 
       <p>
-        New services are added automatically when they register with Subtome. Of course, you can also pick one of the suggestions, when clicking on a subscribe button.
+        New services are added automatically when they register with Subtome.
       </p>
+      <h2>Subscribing</h2>
+
+
+      <p>Drag and drop this <button href="javascript:(function(){
+  var proto='https';
+  if(window.location.protocol!='https:') {
+    proto='http';
+  }
+  var s=document.createElement('iframe');
+  var url=window.location.toString();
+  s.setAttribute('style','position:absolute;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent;');
+  s.setAttribute('src', proto+'://www.subtome.com/subscribe.html?resource='+window.location.toString());
+  var loaded=false;
+  s.onload=function(){
+    if(loaded) {
+      document.getElementsByTagName('body')[0].removeChild(s);
+    }
+    loaded=true;
+  };
+  document.getElementsByTagName('body')[0].appendChild(s);
+})()" onclick="" id="bookmarklet_button" class="btn btn-mini" title="Drag this to your Bookmarks Bar to install">Subscribe</button> bookmarklet into your bookmark bar to subscribe to pages without a subscribe button.</p>
+
+  <p>You should also <button class='btn btn-mini' id="registerProtocolHandler">Register</button> Subtome as your default subscription tool for all <code>web+subscribe</code> links.
+  </p>
+
       <hr>
 
       <div class="footer">
@@ -76,6 +103,18 @@
       </div>
 
     </div> <!-- /container -->
+
+    <div id="suggestionsModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="suggestionsModal" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="suggesyionsModalLabel">Suggestions</h3>
+    </div>
+    <div id="suggestionsModalBody" class="modal-body">
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+  </div>
 
     <script src="src/jquery/jquery.js"></script>
     <script src="src/bootstrap/js/bootstrap.js"></script>

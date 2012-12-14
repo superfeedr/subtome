@@ -344,75 +344,6 @@ exports.extname = function(path) {
 
 });
 
-require.define("/src/services.js", function (require, module, exports, __dirname, __filename) {
-var Services = function Services() {
-  this.services = {};
-  this.load();
-}
-
-Services.prototype.load = function loadServices() {
-  var servicesString = localStorage.getItem('services');
-  if(servicesString) {
-    try {
-      this.services = JSON.parse(servicesString);
-    }
-    catch(error) {
-      console.error('Could not parse ' + servicesString);
-    }
-  }
-}
-
-Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
-  iterator('Google Reader', {
-    url: 'http://www.google.com/ig/add?feedurl={url}'
-  });
-  iterator('Newsblur', {
-    url: 'http://www.newsblur.com/?{url}'
-  });
-  iterator('Bloglovin\'', {
-    url: 'http://www.bloglovin.com/en/subscriptions?{url}'
-  });
-}
-
-Services.prototype.forEach = function forEachServices(iterator) {
-  for(var name in this.services) {
-    iterator(name, this.services[name]);
-  }
-}
-
-Services.prototype.setAsDefault = function setAsDefault(name, def) {
-  for(var n in this.services) {
-    delete this.services[n].default;
-  }
-  if(name) {
-    this.services[name].default = def;
-  }
-  this.save();
-}
-
-Services.prototype.save = function saveServices() {
-  localStorage.setItem('services', JSON.stringify(this.services));
-}
-
-Services.prototype.removeService = function removeService(name) {
-  delete this.services[name];
-  this.save();
-}
-
-Services.prototype.register = function registerService(name, handler) {
-  if(!this.services[name]) {
-    this.services[name] = {
-      url: handler,
-      addedOn: Date.now()
-    }
-    this.save();
-  }
-}
-
-module.exports = new Services();
-
-});
-
 require.define("/node_modules/relative-date/package.json", function (require, module, exports, __dirname, __filename) {
 module.exports = {"main":"./lib/relative-date"}
 });
@@ -1332,12 +1263,82 @@ function lastBraceInKey(str) {
 
 });
 
+require.define("/src/services.js", function (require, module, exports, __dirname, __filename) {
+var Services = function Services() {
+  this.services = {};
+  this.load();
+}
+
+Services.prototype.load = function loadServices() {
+  var servicesString = localStorage.getItem('services');
+  if(servicesString) {
+    try {
+      this.services = JSON.parse(servicesString);
+    }
+    catch(error) {
+      console.error('Could not parse ' + servicesString);
+    }
+  }
+}
+
+Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
+  iterator('Google Reader', {
+    url: 'http://www.google.com/ig/add?feedurl={url}'
+  });
+  iterator('Newsblur', {
+    url: 'hhttp://www.newsblur.com/?url={url}'
+  });
+  iterator('Bloglovin\'', {
+    url: 'http://www.bloglovin.com/en/subscriptions?{url}'
+  });
+}
+
+Services.prototype.forEach = function forEachServices(iterator) {
+  for(var name in this.services) {
+    iterator(name, this.services[name]);
+  }
+}
+
+Services.prototype.setAsDefault = function setAsDefault(name, def) {
+  for(var n in this.services) {
+    delete this.services[n].default;
+  }
+  if(name) {
+    this.services[name].default = def;
+  }
+  this.save();
+}
+
+Services.prototype.save = function saveServices() {
+  localStorage.setItem('services', JSON.stringify(this.services));
+}
+
+Services.prototype.removeService = function removeService(name) {
+  delete this.services[name];
+  this.save();
+}
+
+Services.prototype.register = function registerService(name, handler) {
+  if(!this.services[name]) {
+    this.services[name] = {
+      url: handler,
+      addedOn: Date.now()
+    }
+    this.save();
+  }
+}
+
+module.exports = new Services();
+
+});
+
 require.define("/src/settings.js", function (require, module, exports, __dirname, __filename) {
     var services = require('./services');
 var relativeDate = require('relative-date');
 var urlParser = require('url');
 
 function addService(name, handler) {
+  $('#defaultMsg').hide();
   var s = '<tr>';
   s += '<td><a href="' +  urlParser.resolve(handler.url,'/').toString() + '">' + name + '</a></td>';
   s += '<td>' + relativeDate(new Date(handler.addedOn)) + '</td>';
@@ -1366,10 +1367,33 @@ function addService(name, handler) {
 }
 
 $(document).ready(function() {
-  services.forEach(addService);
+
   $('#noDefault').click(function() {
     services.setAsDefault();
-  })
+  });
+
+  $('#pickSuggestions').click(function() {
+    $('#suggestionsModal').modal({backdrop: true, keyboard: true, show: true});
+    $('#suggestionsModalBody button').remove();
+    services.forEachDefaultService(function(service, handler) {
+      var button = $('<button class="btn" style="display:block; width:200px; margin:10px">Use ' + service + '</button>');
+      button.click(function() {
+        services.register(service, handler.url);
+        button.addClass('disabled');
+      });
+      $('#suggestionsModalBody').append(button);
+    });
+  });
+
+  $('#suggestionsModal').on('hidden', function() {
+    services.forEach(addService);
+  });
+
+  $('#registerProtocolHandler').click(function() {
+    var res = window.navigator.registerProtocolHandler("web+subscribe", 'http://0.0.0.0:8000/settings.html', "Subtome");
+  });
+
+  services.forEach(addService);
 });
 
 

@@ -3,6 +3,7 @@ var relativeDate = require('relative-date');
 var urlParser = require('url');
 
 function addService(name, handler) {
+  $('#defaultMsg').hide();
   var s = '<tr>';
   s += '<td><a href="' +  urlParser.resolve(handler.url,'/').toString() + '">' + name + '</a></td>';
   s += '<td>' + relativeDate(new Date(handler.addedOn)) + '</td>';
@@ -31,9 +32,32 @@ function addService(name, handler) {
 }
 
 $(document).ready(function() {
-  services.forEach(addService);
+
   $('#noDefault').click(function() {
     services.setAsDefault();
-  })
+  });
+
+  $('#pickSuggestions').click(function() {
+    $('#suggestionsModal').modal({backdrop: true, keyboard: true, show: true});
+    $('#suggestionsModalBody button').remove();
+    services.forEachDefaultService(function(service, handler) {
+      var button = $('<button class="btn" style="display:block; width:200px; margin:10px">Use ' + service + '</button>');
+      button.click(function() {
+        services.register(service, handler.url);
+        button.addClass('disabled');
+      });
+      $('#suggestionsModalBody').append(button);
+    });
+  });
+
+  $('#suggestionsModal').on('hidden', function() {
+    services.forEach(addService);
+  });
+
+  $('#registerProtocolHandler').click(function() {
+    var res = window.navigator.registerProtocolHandler("web+subscribe", 'http://0.0.0.0:8000/settings.html', "Subtome");
+  });
+
+  services.forEach(addService);
 });
 
