@@ -344,6 +344,79 @@ exports.extname = function(path) {
 
 });
 
+require.define("/src/services.js", function (require, module, exports, __dirname, __filename) {
+var Services = function Services() {
+  this.services = {};
+  this.load();
+}
+
+Services.prototype.load = function loadServices() {
+  var servicesString = localStorage.getItem('services');
+  if(servicesString) {
+    try {
+      this.services = JSON.parse(servicesString);
+    }
+    catch(error) {
+      console.error('Could not parse ' + servicesString);
+    }
+  }
+}
+
+Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
+  iterator('Google Reader', {
+    url: 'http://www.google.com/ig/add?feedurl={url}'
+  });
+  iterator('NewsBlur', {
+    url: 'http://www.newsblur.com/?url={url}'
+  });
+  iterator('Bloglovin\'', {
+    url: 'http://www.bloglovin.com/en/subscriptions?{url}'
+  });
+}
+
+Services.prototype.forEach = function forEachServices(iterator) {
+  for(var name in this.services) {
+    iterator(name, this.services[name]);
+  }
+}
+
+Services.prototype.uses = function usesService(name) {
+  return this.services[name] || false;
+}
+
+Services.prototype.setAsDefault = function setAsDefault(name, def) {
+  for(var n in this.services) {
+    delete this.services[n].default;
+  }
+  if(name) {
+    this.services[name].default = def;
+  }
+  this.save();
+}
+
+Services.prototype.save = function saveServices() {
+  localStorage.setItem('services', JSON.stringify(this.services));
+}
+
+Services.prototype.removeService = function removeService(name) {
+  delete this.services[name];
+  this.save();
+}
+
+Services.prototype.register = function registerService(name, handler) {
+  if(!this.services[name]) {
+    this.services[name] = {
+      url: handler,
+      addedOn: Date.now()
+    }
+    this.save();
+  }
+}
+
+module.exports = new Services();
+
+});
+
 require.define("/node_modules/relative-date/package.json", function (require, module, exports, __dirname, __filename) {
 module.exports = {"main":"./lib/relative-date"}
 });
@@ -1263,75 +1336,6 @@ function lastBraceInKey(str) {
 
 });
 
-require.define("/src/services.js", function (require, module, exports, __dirname, __filename) {
-var Services = function Services() {
-  this.services = {};
-  this.load();
-}
-
-Services.prototype.load = function loadServices() {
-  var servicesString = localStorage.getItem('services');
-  if(servicesString) {
-    try {
-      this.services = JSON.parse(servicesString);
-    }
-    catch(error) {
-      console.error('Could not parse ' + servicesString);
-    }
-  }
-}
-
-Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
-  iterator('Google Reader', {
-    url: 'http://www.google.com/ig/add?feedurl={url}'
-  });
-  iterator('Newsblur', {
-    url: 'hhttp://www.newsblur.com/?url={url}'
-  });
-  iterator('Bloglovin\'', {
-    url: 'http://www.bloglovin.com/en/subscriptions?{url}'
-  });
-}
-
-Services.prototype.forEach = function forEachServices(iterator) {
-  for(var name in this.services) {
-    iterator(name, this.services[name]);
-  }
-}
-
-Services.prototype.setAsDefault = function setAsDefault(name, def) {
-  for(var n in this.services) {
-    delete this.services[n].default;
-  }
-  if(name) {
-    this.services[name].default = def;
-  }
-  this.save();
-}
-
-Services.prototype.save = function saveServices() {
-  localStorage.setItem('services', JSON.stringify(this.services));
-}
-
-Services.prototype.removeService = function removeService(name) {
-  delete this.services[name];
-  this.save();
-}
-
-Services.prototype.register = function registerService(name, handler) {
-  if(!this.services[name]) {
-    this.services[name] = {
-      url: handler,
-      addedOn: Date.now()
-    }
-    this.save();
-  }
-}
-
-module.exports = new Services();
-
-});
-
 require.define("/src/settings.js", function (require, module, exports, __dirname, __filename) {
     var services = require('./services');
 var relativeDate = require('relative-date');
@@ -1342,10 +1346,10 @@ function addService(name, handler) {
   var s = '<tr>';
   s += '<td><a href="' +  urlParser.resolve(handler.url,'/').toString() + '">' + name + '</a></td>';
   s += '<td>' + relativeDate(new Date(handler.addedOn)) + '</td>';
-  if(handler.default)
-    s += '<td>' + '<input type="radio" name="defaultRadios" checked>' + '</td>';
-  else
-    s += '<td>' + '<input type="radio" name="defaultRadios">' + '</td>';
+  // if(handler.default)
+  //   s += '<td>' + '<input type="radio" name="defaultRadios" checked>' + '</td>';
+  // else
+  //   s += '<td>' + '<input type="radio" name="defaultRadios">' + '</td>';
 
   s += '<td>' + '<button type="button" class="btn btn-mini test">Test</button>' + '</td>';
   s += '<td>' + '<button type="button" class="btn btn-mini btn-danger remove">Remove</button>' + '</td>';
@@ -1355,9 +1359,9 @@ function addService(name, handler) {
     services.removeService(name);
     line.remove();
   });
-  line.find('input').click(function(evt) {
-    services.setAsDefault(name, line.find('input').is(':checked'));
-  });
+  // line.find('input').click(function(evt) {
+  //   services.setAsDefault(name, line.find('input').is(':checked'));
+  // });
   line.find('button.test').click(function() {
     var redirect = handler.url.replace('{url}', 'http://blog.superfeedr.com/atom.xml');
     services.register(name, handler.url);
@@ -1390,8 +1394,12 @@ $(document).ready(function() {
   });
 
   $('#registerProtocolHandler').click(function() {
-    var res = window.navigator.registerProtocolHandler("web+subscribe", 'http://0.0.0.0:8000/settings.html', "Subtome");
+    var res = navigator.registerProtocolHandler("web+subscribe", 'http://www.subtome.com/subscribe.html?resource=%s', "Subtome");
   });
+
+  if(navigator.registerProtocolHandler) {
+    $('#protocolHandlerRegistration').show();
+  }
 
   services.forEach(addService);
 });

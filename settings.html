@@ -45,6 +45,8 @@
         <ul class="nav nav-pills pull-right">
           <li><a href="/">Home</a></li>
           <li class="active" ><a href="/settings.html">Settings</a></li>
+          <li><a href="/publishers.html">Publishers</a></li>
+          <li><a href="/developers.html">Developers</a></li>
           <li><a href="https://github.com/superfeedr/subtome">Source Code</a></li>
         </ul>
         <h3 class="muted">Subtome</h3>
@@ -58,8 +60,8 @@
           <tr>
             <th>Name of Service</th>
             <th>Added On</th>
-            <th>Default (None: <input type="radio" name="defaultRadios" id='noDefault' style='margin: 3px;' checked>)</th>
-            <th>&nbsp;</th>
+<!--             <th>Default (None: <input type="radio" name="defaultRadios" id='noDefault' style='margin: 3px;' checked>)</th>
+ -->            <th>&nbsp;</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -74,14 +76,14 @@
       <h2>Subscribing</h2>
 
 
-      <p>Drag and drop this <button href="javascript:(function(){
+      <p>Drag and drop this <a href="javascript:(function(){
   var proto='https';
   if(window.location.protocol!='https:') {
     proto='http';
   }
   var s=document.createElement('iframe');
   var url=window.location.toString();
-  s.setAttribute('style','position:absolute;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent;');
+  s.setAttribute('style','position:absolute;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent; z-index: 2147483647');
   s.setAttribute('src', proto+'://www.subtome.com/subscribe.html?resource='+window.location.toString());
   var loaded=false;
   s.onload=function(){
@@ -91,9 +93,9 @@
     loaded=true;
   };
   document.getElementsByTagName('body')[0].appendChild(s);
-})()" onclick="" id="bookmarklet_button" class="btn btn-mini" title="Drag this to your Bookmarks Bar to install">Subscribe</button> bookmarklet into your bookmark bar to subscribe to pages without a subscribe button.</p>
+})()" onclick="" id="bookmarklet_button" class="btn btn-mini" title="Drag this to your Bookmarks Bar to install">Subscribe</a> bookmarklet into your bookmark bar to subscribe to pages without a subscribe button.</p>
 
-  <p>You should also <button class='btn btn-mini' id="registerProtocolHandler">Register</button> Subtome as your default subscription tool for all <code>web+subscribe</code> links.
+  <p id='protocolHandlerRegistration' style='display:none'>You should also <button class='btn btn-mini' id="registerProtocolHandler">Register</button> Subtome as your default subscription tool for all <code>web+subscribe</code> links.
   </p>
 
       <hr>

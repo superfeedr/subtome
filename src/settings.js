@@ -7,10 +7,10 @@ function addService(name, handler) {
   var s = '<tr>';
   s += '<td><a href="' +  urlParser.resolve(handler.url,'/').toString() + '">' + name + '</a></td>';
   s += '<td>' + relativeDate(new Date(handler.addedOn)) + '</td>';
-  if(handler.default)
-    s += '<td>' + '<input type="radio" name="defaultRadios" checked>' + '</td>';
-  else
-    s += '<td>' + '<input type="radio" name="defaultRadios">' + '</td>';
+  // if(handler.default)
+  //   s += '<td>' + '<input type="radio" name="defaultRadios" checked>' + '</td>';
+  // else
+  //   s += '<td>' + '<input type="radio" name="defaultRadios">' + '</td>';
 
   s += '<td>' + '<button type="button" class="btn btn-mini test">Test</button>' + '</td>';
   s += '<td>' + '<button type="button" class="btn btn-mini btn-danger remove">Remove</button>' + '</td>';
@@ -20,9 +20,9 @@ function addService(name, handler) {
     services.removeService(name);
     line.remove();
   });
-  line.find('input').click(function(evt) {
-    services.setAsDefault(name, line.find('input').is(':checked'));
-  });
+  // line.find('input').click(function(evt) {
+  //   services.setAsDefault(name, line.find('input').is(':checked'));
+  // });
   line.find('button.test').click(function() {
     var redirect = handler.url.replace('{url}', 'http://blog.superfeedr.com/atom.xml');
     services.register(name, handler.url);
@@ -55,8 +55,12 @@ $(document).ready(function() {
   });
 
   $('#registerProtocolHandler').click(function() {
-    var res = window.navigator.registerProtocolHandler("web+subscribe", 'http://0.0.0.0:8000/settings.html', "Subtome");
+    var res = navigator.registerProtocolHandler("web+subscribe", 'http://www.subtome.com/subscribe.html?resource=%s', "Subtome");
   });
+
+  if(navigator.registerProtocolHandler) {
+    $('#protocolHandlerRegistration').show();
+  }
 
   services.forEach(addService);
 });

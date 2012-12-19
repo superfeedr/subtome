@@ -1228,8 +1228,8 @@ Services.prototype.forEachDefaultService = function forEachDefaultService (itera
   iterator('Google Reader', {
     url: 'http://www.google.com/ig/add?feedurl={url}'
   });
-  iterator('Newsblur', {
-    url: 'http://www.newsblur.com/?{url}'
+  iterator('NewsBlur', {
+    url: 'http://www.newsblur.com/?url={url}'
   });
   iterator('Bloglovin\'', {
     url: 'http://www.bloglovin.com/en/subscriptions?{url}'
@@ -1240,6 +1240,10 @@ Services.prototype.forEach = function forEachServices(iterator) {
   for(var name in this.services) {
     iterator(name, this.services[name]);
   }
+}
+
+Services.prototype.uses = function usesService(name) {
+  return this.services[name] || false;
 }
 
 Services.prototype.setAsDefault = function setAsDefault(name, def) {

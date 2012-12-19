@@ -1228,8 +1228,8 @@ Services.prototype.forEachDefaultService = function forEachDefaultService (itera
   iterator('Google Reader', {
     url: 'http://www.google.com/ig/add?feedurl={url}'
   });
-  iterator('Newsblur', {
-    url: 'hhttp://www.newsblur.com/?url={url}'
+  iterator('NewsBlur', {
+    url: 'http://www.newsblur.com/?url={url}'
   });
   iterator('Bloglovin\'', {
     url: 'http://www.bloglovin.com/en/subscriptions?{url}'

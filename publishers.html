@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Subtome - Publishers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="src/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="src/jquery/jquery.js"></script>
+    <script src="src/bootstrap/js/bootstrap.js"></script>
+    <script src="/build/settings.subtome.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+    </style>
+    <link href="src/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="src/ico/favicon.ico">
+    <link rel="alternate" href="https://github.com/superfeedr/subtome/commits/master.atom" title="Subtome code commits" />
+  </head>
+
+  <body>
+
+    <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="/">Home</a></li>
+          <li><a href="/settings.html">Settings</a></li>
+          <li class="active" ><a href="/publishers.html">Publishers</a></li>
+          <li><a href="/developers.html">Developers</a></li>
+          <li><a href="https://github.com/superfeedr/subtome">Source Code</a></li>
+        </ul>
+        <h3 class="muted">Subtome</h3>
+      </div>
+
+      <hr>
+      <h1>Publishers</h1>
+      <h2>Get your readers to subscribe to your content</h2>
+      <p>
+        You update your content regularly. You want your users to come back when that happens: allow them to <em>subscribe</em> to your content.
+      </p>
+      <script>
+function subtomeSubscribe() {
+  var proto = 'https'
+  if (window.location.protocol != "https:")
+    proto = 'http'
+
+  var s = document.createElement('iframe');
+  var url = window.location.toString();
+  s.setAttribute('style','position:absolute;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent; z-index: 2147483647');
+  s.setAttribute('src', proto + '://www.subtome.com/subscribe.html?resource=' + window.location.toString());
+  var loaded = false;
+  s.onload = function() {
+    if(loaded) {
+      document.getElementsByTagName('body')[0].removeChild(s);
+    }
+    loaded = true;
+  }
+  document.getElementsByTagName('body')[0].appendChild(s);
+}
+</script>
+      <p>
+        It's as easy as adding a button like this one <button onclick="subtomeSubscribe()" class='btn btn-mini'>Subscribe</button> to any page where you want to allow subscriptions. Make sure your page links to a feed corresponding to the data your readers will susbcribe to.
+      </p>
+      <p>
+        Copy and paste the code below into any HTML page.
+      </p>
+      <p>
+        <script src="https://gist.github.com/4332573.js"></script>
+      </p>
+
+      <p>Of course, this is 100% open, which means that you can change that code in any way you want, or use other mechanisms that fit your needs. Feel free to get in touch if you need help.</p>
+
+      <hr>
+
+      <div class="footer">
+        <p>&copy; Superfeedr 2012</p>
+      </div>
+
+    </div> <!-- /container -->
+
+    <script src="src/jquery/jquery.js"></script>
+    <script src="src/bootstrap/js/bootstrap.js"></script>
+
+  </body>
+</html>
