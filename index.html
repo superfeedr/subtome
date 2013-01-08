@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link type="application/atom+xml" rel="self" titme="Superfeedr blog" href="http://blog.superfeedr.com/atom.xml" />
 
     <link href="src/bootstrap/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
@@ -71,14 +72,37 @@
         <h3 class="muted">Subtome</h3>
       </div>
 
+<script>
+function subtomeSubscribe() {
+  var proto = 'https'
+  if (window.location.protocol != "https:")
+    proto = 'http'
+
+  var s = document.createElement('iframe');
+  var url = window.location.toString();
+  s.setAttribute('style','position:absolute;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent; z-index: 2147483647');
+  s.setAttribute('src', proto + '://www.subtome.com/subscribe.html?resource=' + window.location.toString());
+  var loaded = false;
+  s.onload = function() {
+    if(loaded) {
+      document.getElementsByTagName('body')[0].removeChild(s);
+    }
+    loaded = true;
+  }
+  document.getElementsByTagName('body')[0].appendChild(s);
+}
+</script>
+
       <hr>
 
       <div class="jumbotron">
-        <h1>Subtome: Universal 'Follow' Button</h1>
+        <h1>Subtome</h1>
+        <h2>Universal Follow Button</h2>
         <p class="lead">
-          Follow websites that you love reading. <br /> Pick your tools, and let your friends pick theirs.
+          Follow what and who you love reading. <br /> Pick your tools, and let your friends pick theirs.
         </p>
         <a class="btn btn-large btn-success" href="/settings.html">Configure</a>
+        <a class="btn btn-large" onclick="subtomeSubscribe();" >Try it, Subscribe</a>
       </div>
 
       <hr>
