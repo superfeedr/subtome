@@ -42,3 +42,12 @@ Todo
 
 * Wordpress Plugin (button)
 * Integrate into more readers
+* Create a better icon
+
+Going Further
+=============
+
+We intentionaly pushed the complexity down to the subscribing application, which should be smart enough to handle subscriptions if it has registered as such.
+
+The subscribing application is in charge of extracting the data to which the user can subscribe (RSS or Atom feed, Social network handle, ... etc), from the page URL.
+
