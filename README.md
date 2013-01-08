@@ -12,6 +12,7 @@ By design, all state is kept in the user's browser.
 This is intented at running as a bookmarklet and/or an emebedded button.
 
 # Workflow.
+
 1- A user visits a site that is able to povide some kind of subscription mechanism. That site will then embed in its page some JS that will register this application on behalf of the user.
 
 2- The subscription button script will store in the user's session the fact that he can use the previously described app for subscription.
@@ -35,6 +36,13 @@ Compiling the code:
 
 <code>
 $ browserify src/settings.js -o build/settings.subtome.js
+
 $ browserify src/register.js -o build/register.subtome.js
+
 $ browserify src/subscribe.js -o build/subscribe.subtome.js
 </code>
+
+Todo
+====
+# Wordpress Plugin (button)
+# Integrate into more readers
