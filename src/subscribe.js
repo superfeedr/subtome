@@ -9,7 +9,7 @@ function addService(name, handler) {
   var button = $('<button class="btn" style="display: block; margin: 10px; width:200px">' + name.replace(/(<([^>]+)>)/ig,'') + '</button>')
   button.click(function() {
     services.register(name, handler.url);
-    var redirect = handler.url.replace('{url}', qs.resource);
+    var redirect = handler.url.replace('{url}', encodeURIComponent(qs.resource));
     window.open(redirect);
     window.location = '/done.html';
   });
@@ -21,7 +21,7 @@ $(document).ready(function() {
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
   services.forEach(function(service, handler) {
     if(handler.default) {
-      var redirect = handler.url.replace('{url}', qs.resource);
+      var redirect = handler.url.replace('{url}', encodeURIComponent(qs.resource));
       window.open(redirect);
       window.location = '/done.html';
     }

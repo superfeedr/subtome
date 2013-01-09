@@ -1232,7 +1232,7 @@ Services.prototype.forEachDefaultService = function forEachDefaultService (itera
     url: 'http://www.newsblur.com/?url={url}'
   });
   iterator('Bloglovin\'', {
-    url: 'http://www.bloglovin.com/en/subscriptions?{url}'
+    url: 'http://www.bloglovin.com/search/{url}'
   });
 }
 
