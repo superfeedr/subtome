@@ -59,28 +59,8 @@
       <p>
         You update your content regularly. You want your users to come back when that happens: allow them to <em>subscribe</em> to your content.
       </p>
-      <script>
-function subtomeSubscribe() {
-  var proto = 'https'
-  if (window.location.protocol != "https:")
-    proto = 'http'
-
-  var s = document.createElement('iframe');
-  var url = window.location.toString();
-  s.setAttribute('style','position:absolute;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent; z-index: 2147483647');
-  s.setAttribute('src', proto + '://www.subtome.com/subscribe.html?resource=' + window.location.toString());
-  var loaded = false;
-  s.onload = function() {
-    if(loaded) {
-      document.getElementsByTagName('body')[0].removeChild(s);
-    }
-    loaded = true;
-  }
-  document.getElementsByTagName('body')[0].appendChild(s);
-}
-</script>
       <p>
-        It's as easy as adding a button like this one <button onclick="subtomeSubscribe()" class='btn btn-mini'>Subscribe</button> to any page where you want to allow subscriptions. Make sure your page links to a feed corresponding to the data your readers will susbcribe to.
+        It's as easy as adding a button like this one <button onclick="void(var%20z=document.createElement('script'));void(z.src='http://www.subtome.com/load.js');void(document.body.appendChild(z));" class='btn btn-mini'>Subscribe</button> to any page where you want to allow subscriptions. Make sure your page links to a feed corresponding to the data your readers will susbcribe to.
       </p>
       <p>
         Copy and paste the code below into any HTML page.
@@ -88,6 +68,8 @@ function subtomeSubscribe() {
       <p>
         <script src="https://gist.github.com/4332573.js"></script>
       </p>
+
+      <p>What this does is quite simple: when the user clicks the button, it loads a small Javascript snippet located at <code><a href="http://www.subtome.com/load.js">http://www.subtome.com/load.js</a></code>. This snippet will then load the Subtome modal. Feel free to check the code if you want to learn more.</p>
 
       <p>Of course, this is 100% open, which means that you can change that code in any way you want, or use other mechanisms that fit your needs. Feel free to get in touch if you need help.</p>
 
