@@ -10,7 +10,7 @@
     At this point, the subscribing application will be in charge of finding exactly what can be subscribed to.
     It can obviously be an RSS feed, but the subscribing application may be smart enough to discover social web profiles, using the rel=me properties, and then use that information.
   </p>
-  <input type="button" onclick="void(var%20z=document.createElement('script'));void(z.src='http://www.subtome.com/load.js');void(document.body.appendChild(z));" value="Subscribe">
+  <input type="button" onclick="(function(){var z=document.createElement('script');z.src='/load.js';document.body.appendChild(z);})()" value="Subscribe">
   <a href="web+subscribe://blog.superfeedr.com/atom.xml">Handler</a>
 </body>
 </html>

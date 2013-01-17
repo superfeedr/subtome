@@ -60,7 +60,7 @@
         You update your content regularly. You want your users to come back when that happens: allow them to <em>subscribe</em> to your content.
       </p>
       <p>
-        It's as easy as adding a button like this one <button onclick="void(var%20z=document.createElement('script'));void(z.src='http://www.subtome.com/load.js');void(document.body.appendChild(z));" class='btn btn-mini'>Subscribe</button> to any page where you want to allow subscriptions. Make sure your page links to a feed corresponding to the data your readers will susbcribe to.
+        It's as easy as adding a button like this one <button onclick="(function(){var z=document.createElement('script');z.src='/load.js';document.body.appendChild(z);})()" class='btn btn-mini'>Subscribe</button> to any page where you want to allow subscriptions. Make sure your page links to a feed corresponding to the data your readers will susbcribe to.
       </p>
       <p>
         Copy and paste the code below into any HTML page.
