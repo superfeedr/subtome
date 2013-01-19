@@ -17,7 +17,7 @@ Services.prototype.load = function loadServices() {
 
 Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
   iterator('Google Reader', {
-    url: 'http://www.google.com/ig/add?feedurl={url}'
+    url: 'http://www.google.com/reader/view/feed/{feed}?source=subtome'
   });
   iterator('NewsBlur', {
     url: 'http://www.newsblur.com/?url={url}'

@@ -1226,7 +1226,7 @@ Services.prototype.load = function loadServices() {
 
 Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
   iterator('Google Reader', {
-    url: 'http://www.google.com/ig/add?feedurl={url}'
+    url: 'http://www.google.com/reader/view/feed/{feed}?source=subtome'
   });
   iterator('NewsBlur', {
     url: 'http://www.newsblur.com/?url={url}'
@@ -1291,7 +1291,22 @@ function addService(name, handler) {
   var button = $('<button class="btn" style="display: block; margin: 10px; width:200px">' + name.replace(/(<([^>]+)>)/ig,'') + '</button>')
   button.click(function() {
     services.register(name, handler.url);
+    var feeds = [];
+    if(qs.feeds) {
+      feeds = qs.feeds.split(',');
+    }
     var redirect = handler.url.replace('{url}', encodeURIComponent(qs.resource));
+    if(redirect.match(/\{feed\}/)) {
+      if(feeds[0]) {
+        redirect = redirect.replace('{feed}', encodeURIComponent(feeds[0]))
+      }
+      else {
+        redirect = redirect.replace('{feed}', encodeURIComponent(qs.resource))
+      }
+    }
+    if(redirect.match(/\{feeds\}/)) {
+      redirect = redirect.replace('{feeds}', feeds.join(','));
+    }
     window.open(redirect);
     window.location = '/done.html';
   });
