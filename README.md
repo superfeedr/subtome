@@ -44,6 +44,8 @@ Todo
 * Wordpress Plugin (button)
 * Browser extensions (Chrome, Firefox, Safari, IE).
 * Integrate into more readers
+* Find ways to support non web based readers
+* Find a hack to allow of a complete redirect
 
 Going Further
 =============
