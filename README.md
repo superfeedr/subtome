@@ -40,9 +40,10 @@ $ browserify src/subscribe.js -o build/subscribe.subtome.js
 Todo
 ====
 
+* Create a better icon/logo
 * Wordpress Plugin (button)
+* Browser extensions (Chrome, Firefox, Safari, IE).
 * Integrate into more readers
-* Create a better icon
 
 Going Further
 =============
