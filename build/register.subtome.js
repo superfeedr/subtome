@@ -1235,7 +1235,7 @@ Services.prototype.forEachDefaultService = function forEachDefaultService (itera
     url: 'http://www.bloglovin.com/search/{url}'
   });
   iterator('Blogtrottr', {
-    url: 'http://blogtrottr.com/?subscribe={url}'
+    url: 'http://blogtrottr.com/?subscribe={feed}'
   });
 }
 
