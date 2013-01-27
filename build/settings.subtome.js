@@ -1380,6 +1380,7 @@ $(document).ready(function() {
   });
 
   $('#suggestionsModal').on('hidden', function() {
+    $("#services tr").remove();
     services.forEach(addService);
   });
 
