@@ -70,11 +70,20 @@
         Please note that this is completely transparent for the user!
 </p>
       <p>The <code>name</code> query string is the name of your application and the <code>url</code> is the url of the hander which will
-        be called in your application to perform a susbcription. This url should include a <code>{url}</code> placeholder where the url of the document on which the subscribe button was clicked will be placed.
+        be called in your application to perform a susbcription (thru a user redirect). </p>
+        <p>
+The subscription handler is obviously completely up to you, but it should include at least one of the following:
+        </p>
+        <ul>
+          <li><code>{url}</code> will be populated with the <code>location.href</code> of the page on which the user clicked the subscribe button.</li>
+          <li><code>{feeds}</code> will be populated with the <code>href</code> element of each <code><link></code> elements corresponding to a feed in the page on which the user clicked.</li>
+          <li><code>{feed}</code> will be populated with the first (if any) of the <code>{feeds}</code> above.
+          </li>
+        </ul>
       <h3>Subscription handling</h3>
 
       <p>When a user clicks on a Subtome button, he can pick his favorite subscription application. If it's yours, then, a new browser tab will be created and will point to your application's handler <code>url</code> (see previous section). Based on the <code>url</code> you've provided,
-      you will be able to extract the location of the page on which the button was clicked.</p>
+      you will be able to extract the location of the page on which the button was clicked and its feeds.</p>
       <p>
         Your application should then, perform the subscription, by extracting the content it needs. We recomand using the RSS/Atom feeds, but you could also very well extract the links to a Twitter profile for example allow the user to follow that profile. Possibilities are endless.
       </p>
