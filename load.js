@@ -15,11 +15,12 @@
     }
   }
 
+
   var s = document.createElement('iframe');
   var url = window.location.toString();
   var resource = window.location.toString();
   s.setAttribute('style','position:absolute;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent; z-index: 2147483647');
-  s.setAttribute('src', proto + '://www.subtome.com/subscribe.html?resource=' + encodeURIComponent(resource) + '&feeds=' + feeds.join(','));
+  s.setAttribute('src', proto + '://s3.amazonaws.com/www.subtome.com/subscribe.html?resource=' + encodeURIComponent(resource) + '&feeds=' + feeds.join(','));
   var loaded = false;
   s.onload = function() {
     if(loaded) {
