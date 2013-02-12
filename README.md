@@ -47,7 +47,7 @@ Todo
 
 * Create a better icon/logo
 * Wordpress Plugin (button)
-* Browser extensions (~~Chrome~~ [install](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc), Firefox, Safari, IE).
+* Browser extensions ( <del>Chrome</del> [install](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc), Firefox, Safari, IE).
 * Integrate into more readers (RSS to email, RSS to xx... etc)
 * Find ways to support non web based readers
 * Implement all the ideas from this [Ask HN](http://news.ycombinator.com/item?id=5197995) thread.
