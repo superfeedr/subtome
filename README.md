@@ -45,6 +45,7 @@ Todo
 * Browser extensions (Chrome, Firefox, Safari, IE).
 * Integrate into more readers (RSS to email, RSS to xx... etc)
 * Find ways to support non web based readers
+* Implement all the ideas from this [Ask HN](http://news.ycombinator.com/item?id=5197995) thread.
 * Find a hack to allow of a complete redirect with default settings. At this point, it seems extremely complex, as we would need a direct user action to do such. Most browsers tested at this point will opening of new windows as popups at this point :/
 
 Going Further
