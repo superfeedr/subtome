@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="src/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="src/subtome.css" rel="stylesheet">
     <script src="src/jquery/jquery.js"></script>
     <script src="src/bootstrap/js/bootstrap.js"></script>
     <script src="/build/settings.subtome.js"></script>
@@ -54,7 +55,7 @@
 
       <hr>
 
-      <p class="lead" style="background-color: #f9f9f9; border:1px solid #dddddd; padding: 3px 10px; border-radius: 4px;">Drag and drop this <a href="javascript:(function(){var%20z=document.createElement('script');z.src='https://s3.amazonaws.com/www.subtome.com/load.js';document.body.appendChild(z);})()" onclick="" id="bookmarklet_button" class="btn btn-mini" title="Drag this to your Bookmarks Bar to install">Subscribe</a> bookmarklet into your bookmark bar to subscribe to pages without a subscribe button.</p>
+      <p class="lead" style="background-color: #f9f9f9; border:1px solid #dddddd; padding: 3px 10px; border-radius: 4px;">Drag and drop this <a href="javascript:(function(){var%20z=document.createElement('script');z.src='https://s3.amazonaws.com/www.subtome.com/load.js';document.body.appendChild(z);})()" onclick="" id="bookmarklet_button" class="btn btn-mini" title="Drag this to your Bookmarks Bar to install">Subscribe</a> bookmarklet into your bookmark bar <span class='browser-specific chrome'>or install this <a href="https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc">Chrome Extension</a>, </span>to subscribe to pages without a subscribe button.</p>
       <h1>Subscribing applications</h1>
       <table class="table table-striped">
         <thead>
@@ -96,6 +97,14 @@
 
     <script src="src/jquery/jquery.js"></script>
     <script src="src/bootstrap/js/bootstrap.js"></script>
+
+    <script>
+    $('.browser-specific').attr('class').split(/\s+/).forEach(function(c) {
+      if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
+        $('.browser-specific').show();
+      };
+    });
+    </script>
 
   </body>
 </html>
