@@ -37,12 +37,17 @@ $ browserify src/register.js -o build/register.subtome.js
 $ browserify src/subscribe.js -o build/subscribe.subtome.js
 </code></pre>
 
+Check Also
+==========
+
+[Ant0ine](http://blog.ant0ine.com/) very kindly contributed a [SubToMe Chrome Extension](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc) to add a little button next to your address bar. Quite convenient when you don't want to show your bookmark bar. [Source code](https://github.com/ant0ine/subtome-chrome-extension).
+
 Todo
 ====
 
 * Create a better icon/logo
 * Wordpress Plugin (button)
-* Browser extensions (Chrome, Firefox, Safari, IE).
+* Browser extensions (~~Chrome~~ [install](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc), Firefox, Safari, IE).
 * Integrate into more readers (RSS to email, RSS to xx... etc)
 * Find ways to support non web based readers
 * Implement all the ideas from this [Ask HN](http://news.ycombinator.com/item?id=5197995) thread.
@@ -54,4 +59,8 @@ Going Further
 We intentionaly pushed the complexity down to the subscribing application, which should be smart enough to handle subscriptions if it has registered as such.
 
 The subscribing application is in charge of extracting the data to which the user can subscribe (RSS or Atom feed, Social network handle, ... etc), from the page URL.
+
+Thanks
+======
+[Ant0ine](http://blog.ant0ine.com/)
 
