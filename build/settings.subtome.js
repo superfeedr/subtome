@@ -1365,7 +1365,6 @@ function addService(name, handler) {
 }
 
 $(document).ready(function() {
-
   $('#pickSuggestions').click(function() {
     $('#suggestionsModal').modal({backdrop: true, keyboard: true, show: true});
     $('#suggestionsModalBody button').remove();
@@ -1384,15 +1383,14 @@ $(document).ready(function() {
     services.forEach(addService);
   });
 
-  $('#registerProtocolHandler').click(function() {
-    var res = navigator.registerProtocolHandler("web+subscribe", 'http://www.subtome.com/subscribe.html?resource=%s', "Subtome");
+  services.forEach(addService);
+
+  $('.browser-specific').attr('class').split(/\s+/).forEach(function(c) {
+    if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
+      $('.browser-specific').show();
+    };
   });
 
-  if(navigator.registerProtocolHandler) {
-    $('#protocolHandlerRegistration').show();
-  }
-
-  services.forEach(addService);
 });
 
 
