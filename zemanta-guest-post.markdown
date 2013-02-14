@@ -32,7 +32,10 @@ The code below includes what you need to add to your page:
 </script>
 As you see it's quite 'small' and won't affect the performance of your page in any way (as it does not load anything until after a user clicked the button).
 
-Now, if you use Wordpress, you can quickly and easily integrate SubToMe with this widget.
+Now, if you use Wordpress, you can quickly and easily integrate SubToMe with this [widget](https://github.com/superfeedr/subtome/blob/master/goodies/wordpress/subtome.zip). 
+
+Finally, this is a very early stage project, you want to learn more, please check the [Subtome website](http://www.subtome.com/). [We](http://superfeedr.com/) would love to get your feedback!
+
 
 
 
