@@ -9,7 +9,7 @@ The spec is the code, and the code is open source. Feel free to contribute to it
 
 By design, all state is kept in the user's browser.
 
-This is intented at running as a bookmarklet and/or an embedded button.
+This is intented at running as a bookmarklet or an embedded button.
 
 # Workflow.
 
@@ -42,11 +42,13 @@ Check Also
 
 [Ant0ine](http://blog.ant0ine.com/) very kindly contributed a [SubToMe Chrome Extension](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc) to add a little button next to your address bar. Quite convenient when you don't want to show your bookmark bar. [Source code](https://github.com/ant0ine/subtome-chrome-extension).
 
+[Wordpress plugin](https://raw.github.com/superfeedr/subtome/master/goodies/wordpress/subtome.zip). Install it by following [these instructions](https://github.com/superfeedr/subtome/tree/master/goodies/wordpress/subtome). 
+
 Todo
 ====
 
 * Create a better icon/logo
-* Wordpress Plugin (button)
+* <del>Wordpress Plugin (button)</del>
 * Browser extensions ( <del>Chrome</del> [install](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc), Firefox, Safari, IE).
 * Integrate into more readers (RSS to email, RSS to xx... etc)
 * Find ways to support non web based readers
@@ -59,6 +61,24 @@ Going Further
 We intentionaly pushed the complexity down to the subscribing application, which should be smart enough to handle subscriptions if it has registered as such.
 
 The subscribing application is in charge of extracting the data to which the user can subscribe (RSS or Atom feed, Social network handle, ... etc), from the page URL.
+
+Known Supported Readers
+=======================
+* [The Old Reader](http://theoldreader.com/): a very nice new reader (despite its name).
+* [Google Reader](http://www.google.com/reader): who doesn't know it?
+* [NewsBlur](http://www.newsblur.com/): an advanced feed reader
+* [Bloglovin](http://www.bloglovin.com/): a free feed reader
+* [Blogtrottr](http://blogtrottr.com/): an RSS to email tool
+
+Feel free to add yours (fork this page) if you implemented registration.
+
+
+
+
+Discussions
+===========
+
+[The Mozilla Hacks](https://hacks.mozilla.org/2013/02/subtome-a-better-subscribe-button/)
 
 Thanks
 ======
