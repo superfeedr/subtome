@@ -1,4 +1,4 @@
-# Subtome: a better subscribe button
+# SubToMe: a better subscribe button
 
 Blogging is a lot like media publishing: your content is more valuable if it is consumed by more people. This means that you need
 to make sure you **control its distribution** as much as you can.
@@ -34,7 +34,7 @@ As you see it's quite 'small' and won't affect the performance of your page in a
 
 Now, if you use Wordpress, you can quickly and easily integrate SubToMe with this [widget](https://github.com/superfeedr/subtome/blob/master/goodies/wordpress/subtome.zip). 
 
-Finally, this is a very early stage project, you want to learn more, please check the [Subtome website](http://www.subtome.com/). [We](http://superfeedr.com/) would love to get your feedback!
+Finally, this is a very early stage project, you want to learn more, please check the [SubToMe website](http://www.subtome.com/). [We](http://superfeedr.com/) would love to get your feedback!
 
 
 

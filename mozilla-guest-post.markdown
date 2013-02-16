@@ -1,4 +1,4 @@
-# Subtome: a better subscribe button
+# SubToMe: a better subscribe button
 
 
 One of the most common features of web apps is the ability to subscribe:
@@ -28,7 +28,7 @@ The approach we took *decoupled* the subscribing web applications from the publi
 
 ![The tool picker](./subtome-screenshot.png)
 
-When you click on the button above, your browser will load an iframe from [Subtome](http://www.subtome.com/), this iframe will extract your data from a localStorage instance with the list of your favorite subscribing applications. The iframe also keeps track of the page on which it was loaded.
+When you click on the button above, your browser will load an iframe from [SubToMe](http://www.subtome.com/), this iframe will extract your data from a localStorage instance with the list of your favorite subscribing applications. The iframe also keeps track of the page on which it was loaded.
 
 Eventually, when you select one of the apps, the browser opens a new window to it with the right information, and *voilà*!
 
@@ -45,7 +45,7 @@ The "reader" registration for a given user works using the same pattern: a hidde
 
 ## Web Activities?
 
-Of course, some of you may be worried that this uses an app running at  [Subtome](http://www.subtome.com/). This is perfectly right, except that this application is actually just a static HTML page running on amazon S3: there is no web application. Also, the full code is open source and public on [github](https://github.com/superfeedr/subtome).
+Of course, some of you may be worried that this uses an app running at  [SubToMe](http://www.subtome.com/). This is perfectly right, except that this application is actually just a static HTML page running on amazon S3: there is no web application. Also, the full code is open source and public on [github](https://github.com/superfeedr/subtome).
 
 Now, very recently, Firefox adopted [Web Activities](https://hacks.mozilla.org/2013/01/introducing-web-activities/). Why couldn't we use that? The first reason is that this spec was only implemented by Firefox, which cuts the rest of the web. The second reason is that we do not expect most readers to implement that yet. This means that there is a need for some kind of "shim" which can do that on their behalf for now!
 
@@ -56,9 +56,9 @@ Interested by this? If you're a publisher, the easiest thing you could do is sta
 <script src="https://gist.github.com/julien51/4332573.js">
 </script>
 
-If you've created a reader, you could maybe [register with Subtome](http://www.subtome.com/developers.html) so that your users subscribe to content online more easily. It's easy to do so!
+If you've created a reader, you could maybe [register with SubToMe](http://www.subtome.com/developers.html) so that your users subscribe to content online more easily. It's easy to do so!
 
-Finally, this is a very early stage project, you want to learn more, please check the [Subtome website](http://www.subtome.com/). [We](http://superfeedr.com/) would love to get your feedback!.
+Finally, this is a very early stage project, you want to learn more, please check the [SubToMe website](http://www.subtome.com/). [We](http://superfeedr.com/) would love to get your feedback!.
 
 
 

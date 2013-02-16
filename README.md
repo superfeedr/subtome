@@ -1,7 +1,7 @@
 Subscribe Button
 ================
 
-[Subtome](http://www.subtome.com/) is a **universal subscribe button**.
+[SubToMe](http://www.subtome.com/) is a **universal subscribe button**.
 It decouples the content to which a user can susbcribe from the application this user may want to use to perform the subscription.
 It's losely inspired by [WebIntents](http://webintents.org/).
 
