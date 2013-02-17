@@ -28,6 +28,9 @@ Services.prototype.forEachDefaultService = function forEachDefaultService (itera
   iterator('Blogtrottr', {
     url: 'http://blogtrottr.com/?subscribe={feed}'
   });
+  iterator('BazQux Reader', {
+    url: 'http://bazqux.com/add?url={url}'
+  });
 }
 
 Services.prototype.forEach = function forEachServices(iterator) {
