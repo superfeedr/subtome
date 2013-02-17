@@ -37,5 +37,8 @@ No data is ever "leaked". The whole [SubToMe code](https://github.com/superfeedr
 
 == Changelog ==
 
+= 1.1 =
+* Minor README changes
+
 = 1.0 =
 * First version
