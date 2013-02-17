@@ -42,7 +42,7 @@ Check Also
 
 [Ant0ine](http://blog.ant0ine.com/) very kindly contributed a [SubToMe Chrome Extension](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc) to add a little button next to your address bar. Quite convenient when you don't want to show your bookmark bar. [Source code](https://github.com/ant0ine/subtome-chrome-extension).
 
-[Wordpress plugin](https://raw.github.com/superfeedr/subtome/master/goodies/wordpress/subtome.zip). Install it by following [these instructions](https://github.com/superfeedr/subtome/tree/master/goodies/wordpress/subtome). 
+[Wordpress plugin](http://wordpress.org/extend/plugins/subtome/). Install it by following [these instructions](http://wordpress.org/extend/plugins/subtome/installation/) or look for `SubToMe` in your Wordpress Dashboard's plugin interface.
 
 Todo
 ====
