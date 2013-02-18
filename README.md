@@ -5,21 +5,21 @@ Subscribe Button
 It decouples the content to which a user can susbcribe from the application this user may want to use to perform the subscription.
 It's losely inspired by [WebIntents](http://webintents.org/).
 
-The spec is the code, and the code is open source. Feel free to contribute to it. You could very well run your own instance, but that means users may have to reselect his favorite subscription tool over and over again.
+The spec is the code, and the code is open source. Feel free to contribute to it. You could very well run your own instance, but that means users may have to reselect their favorite subscription tool over and over again.
 
-By design, all state is kept in the user's browser.
+By design, all state is kept in the user's browser, using localStorage.
 
-This is intented at running as a bookmarklet or an embedded button.
+This is intented to be run as a bookmarklet or an embedded button on any web page.
 
 # Workflow.
 
-1. A user visits a site that is able to povide some kind of subscription mechanism. That site will then embed in its page some JS that will register this application on behalf of the user.
+1. A user visits a site that is able to povide some kind of subscription mechanism. That web application will then embed in its page some code that will register this application on behalf of the user.
 
 2. The subscription button script will store in the user's session the fact that he can use the previously described app for subscriptions.
 
-3. Later, when on another site, the user wants to follow a given resource and clicks on the bookmarklet.
+3. Later, when on another site which publishes content, the user wants to follow a given resource and clicks on the bookmarklet.
 
-4. The user is then showed the list of service that may be able to handle his subscription.
+4. The user is then showed the list of services that may be able to handle his subscription.
 
 5. Once the user picks a service, he's sent to that service to complete the subscription.
 
@@ -71,8 +71,6 @@ Known Supported Readers
 * [Blogtrottr](http://blogtrottr.com/): an RSS to email tool
 
 Feel free to add yours (fork this page) if you implemented registration.
-
-
 
 
 Discussions
