@@ -29,7 +29,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-class SubToMe extends WP_Widget {
+class SubToMeWidget extends WP_Widget {
 
 	/*--------------------------------------------------*/
 	/* Constructor
@@ -123,4 +123,31 @@ class SubToMe extends WP_Widget {
 	} // end widget_textdomain
 
 } // end class
-add_action( 'widgets_init', create_function( '', 'register_widget("subtome");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("SubToMeWidget");' ) );
+
+class SubToMePlugin {
+
+  /**
+   * adds a "subtome" shortcode
+   *
+   * @param array $atts
+   * @return string
+   */
+  function shortcode( $atts ) {
+  	extract( shortcode_atts( array(
+  		'caption' => 'Subscribe'
+  	), $atts ) );
+
+  	return "<input type=\"button\" onclick=\"(function(){var z=document.createElement('script');z.src='https://s3.amazonaws.com/www.subtome.com/load.js';document.body.appendChild(z);})()\" value=\"$caption\">";
+  }
+  
+  /**
+   * adds a link to the "meta" widget
+   */
+  function meta_link() {
+  	echo "<li><a href=\"#\" onclick=\"(function(){var z=document.createElement('script');z.src='https://s3.amazonaws.com/www.subtome.com/load.js';document.body.appendChild(z);})(); return false;\">Subscribe</a></li>";
+  }
+}
+
+add_shortcode( 'subtome', array( 'SubToMePlugin', 'shortcode' ) );
+add_action( 'wp_meta', array( 'SubToMePlugin', 'meta_link' ) );

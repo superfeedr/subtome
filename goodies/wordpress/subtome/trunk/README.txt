@@ -39,5 +39,6 @@ No data is ever "leaked". The whole [SubToMe code](https://github.com/superfeedr
 
 = 1.2 =
 * Simplified plugin
+* Added shortcode
 = 1.0 =
 * First version
