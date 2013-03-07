@@ -78,10 +78,10 @@
         <h1>SubToMe</h1>
         <h2>Universal Follow Button</h2>
         <p class="lead">
-          Follow what and who you love reading. <br /> Pick your tools, and let your friends pick theirs.
+          SubToMe makes it easy for people to <em>follow</em> web sites,<br />  because browsers don't.
         </p>
         <a class="btn btn-large btn-success" href="/settings.html">Configure</a>
-        <a class="btn btn-large" onclick="(function(){var z=document.createElement('script');z.src='/load.js';document.body.appendChild(z);})()" >Try it, Subscribe</a>
+        <a class="btn btn-large" id='demo' style="width:150px" onmouseout="(function(a,b){document.getElementById('demo').innerHTML='Try the Button'})()" onmouseover="(function(a,b){document.getElementById('demo').innerHTML='Follow our Blog'})()" onclick="(function(){var z=document.createElement('script');z.src='/load.js';document.body.appendChild(z);})()" >Try the Button</a>
       </div>
 
       <hr>
