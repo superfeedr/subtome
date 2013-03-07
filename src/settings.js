@@ -43,11 +43,14 @@ $(document).ready(function() {
 
   services.forEach(addService);
 
-  $('.browser-specific').attr('class').split(/\s+/).forEach(function(c) {
-    if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
-      $('.browser-specific').show();
-    };
-  });
+  var browserSpecific = $('.browser-specific').attr('class');
+  if(typeof(browserSpecific) == 'string') {
+    browserSpecific.split(/\s+/).forEach(function(c) {
+      if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
+        $('.browser-specific').show();
+      };
+    });
+  }
 
 });
 
