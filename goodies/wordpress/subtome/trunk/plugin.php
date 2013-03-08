@@ -76,7 +76,7 @@ class SubToMeWidget extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
     ?>
-    <input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://s3.amazonaws.com/www.subtome.com/load.js';document.body.appendChild(z);})()" value="<?php echo $caption; ?>">
+    <input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" value="<?php echo $caption; ?>">
 
     <?php
 		echo $after_widget;
@@ -138,14 +138,14 @@ class SubToMePlugin {
   		'caption' => 'Subscribe'
   	), $atts ) );
 
-  	return "<input type=\"button\" onclick=\"(function(){var z=document.createElement('script');z.src='https://s3.amazonaws.com/www.subtome.com/load.js';document.body.appendChild(z);})()\" value=\"$caption\">";
+  	return "<input type=\"button\" onclick=\"(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()\" value=\"$caption\">";
   }
   
   /**
    * adds a link to the "meta" widget
    */
   function meta_link() {
-  	echo "<li><a href=\"#\" onclick=\"(function(){var z=document.createElement('script');z.src='https://s3.amazonaws.com/www.subtome.com/load.js';document.body.appendChild(z);})(); return false;\">Subscribe</a></li>";
+  	echo "<li><a href=\"#\" onclick=\"(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})(); return false;\">Subscribe</a></li>";
   }
 }
 
