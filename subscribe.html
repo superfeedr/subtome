@@ -13,6 +13,12 @@
 </head>
 
 <body style='background: transparent'>
+  <script>
+  if(window.location.host == 'www.subtome.com' && window.location.protocol != 'https:') {
+    window.location.protocol = 'https:';
+  }
+  </script>
+
   <div id="subtomeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="subtomeModal" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

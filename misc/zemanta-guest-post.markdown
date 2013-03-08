@@ -21,7 +21,7 @@ Using this button, you don't have to put a thousand *follow me on XXX* buttons o
 
 Also, the button itself is pure HTML, which means you can customize it in any way you want to make it fit your style.
 
-Try it yourself: <input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://s3.amazonaws.com/www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow Zemanta's Blog">
+Try it yourself: <input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow Zemanta's Blog">
 
 ## Integrate it
 

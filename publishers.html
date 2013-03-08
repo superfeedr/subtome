@@ -40,18 +40,21 @@
   </head>
 
   <body>
+    <script>
+    if(window.location.host == 'www.subtome.com' && window.location.protocol != 'https:') {
+      window.location.protocol = 'https:';
+    }
+    </script>
 
     <div class="container-narrow">
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li><a href="/">Home</a></li>
           <li><a href="/settings.html">Settings</a></li>
-          <li class="active" ><a href="/publishers.html">Publishers</a></li>
-          <li><a href="/developers.html">Developers</a></li>
-          <li><a href="https://github.com/superfeedr/subtome">Source Code</a></li>
+          <li class="active" ><a href="/publishers.html">Add a button to your site</a></li>
+          <li><a href="/developers.html">Apps</a></li>
         </ul>
-        <h3 class="muted">SubToMe</h3>
+        <h3 class="muted"><a href="/">SubToMe</a></h3>
       </div>
 
       <hr>
@@ -70,20 +73,25 @@
         <script src="https://gist.github.com/4332573.js"></script>
       </p>
 
-      <p>What this does is quite simple: when the user clicks the button, it loads a small Javascript snippet located at <code><a href="http://www.subtome.com/load.js">http://www.subtome.com/load.js</a></code>. This snippet will then load the SubToMe modal. Feel free to check the code if you want to learn more.</p>
+      <p>What this does is quite simple: when the user clicks the button, it loads a small Javascript snippet located at <code><a href="https://www.subtome.com/load.js">https://www.subtome.com/load.js</a></code>. This snippet will then load the SubToMe modal. Feel free to check the code if you want to learn more.</p>
 
       <p>Of course, this is 100% open, which means that you can change that code in any way you want, or use other mechanisms that fit your needs. Feel free to get in touch if you need help.</p>
+
+      <h3>Easy way</h3>
+      <p>If you use Wordpress for your blog, just add this <a href="http://wordpress.org/extend/plugins/subtome">SubToMe widget</a> to your layout, or look for <i>SubToMe</i> in your dashboard's 'Install Plugins' interface.</p>
 
       <hr>
 
       <div class="footer">
-        <p>Brought to you by <a href="http://superfeedr.com">Superfeedr</a>.</p>
+        <p>Brought to you by <a href="http://superfeedr.com">Superfeedr</a> <img src="https://www.gravatar.com/avatar/a2f7d4dd6df7dd59e4adab811c00a3a1?s=24" style="vertical-align:middle;">.</p>
       </div>
 
     </div> <!-- /container -->
 
     <script src="src/jquery/jquery.js"></script>
     <script src="src/bootstrap/js/bootstrap.js"></script>
+
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
   </body>
 </html>

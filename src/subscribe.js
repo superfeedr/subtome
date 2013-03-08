@@ -48,7 +48,7 @@ $(document).ready(function() {
   }
 
   $('#settingsButton').click(function() {
-    window.open('http://www.subtome.com/settings.html');
+    window.open('https://www.subtome.com/settings.html');
     window.location = '/done.html';
   });
 

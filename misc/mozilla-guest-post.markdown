@@ -22,7 +22,7 @@ However, this has never been the web's true spirit: you don't need to be a gmail
 
 When we decided to tackle the subscribe problem we had to find a solution that embrassed **both the decentralized web** that we love and the **simplicity of a button** that user could just click on. 
 
-Try it yourself: <input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://s3.amazonaws.com/www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow Mozilla Hacks">
+Try it yourself: <input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow Mozilla Hacks">
 
 The approach we took *decoupled* the subscribing web applications from the publishing web application by using the browser and its [localstorage](https://developer.mozilla.org/en-US/docs/DOM/Storage#localStorage) as a middleman, with a set of redirects and iframes to send the subscriber to its favorite reader.
 

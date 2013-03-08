@@ -59,18 +59,21 @@
   </head>
 
   <body>
+    <script>
+    if(window.location.host == 'www.subtome.com' && window.location.protocol != 'https:') {
+      window.location.protocol = 'https:';
+    }
+    </script>
 
     <div class="container-narrow">
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="/">Home</a></li>
           <li><a href="/settings.html">Settings</a></li>
-          <li><a href="/publishers.html">Publishers</a></li>
-          <li><a href="/developers.html">Developers</a></li>
-          <li><a href="https://github.com/superfeedr/subtome">Source Code</a></li>
+          <li><a href="/publishers.html">Add a button to your site</a></li>
+          <li><a href="/developers.html">Apps</a></li>
         </ul>
-        <h3 class="muted">SubToMe</h3>
+        <h3 class="muted"><a href="/">SubToMe</a></h3>
       </div>
       <hr>
 
@@ -78,10 +81,10 @@
         <h1>SubToMe</h1>
         <h2>Universal Follow Button</h2>
         <p class="lead">
-          Follow what and who you love reading. <br /> Pick your tools, and let your friends pick theirs.
+          SubToMe makes it easy for people to <em>follow</em> web sites,<br />  because browsers don't.
         </p>
         <a class="btn btn-large btn-success" href="/settings.html">Configure</a>
-        <a class="btn btn-large" onclick="(function(){var z=document.createElement('script');z.src='/load.js';document.body.appendChild(z);})()" >Try it, Subscribe</a>
+        <a class="btn btn-large" id='demo' style="width:150px" onmouseout="(function(a,b){document.getElementById('demo').innerHTML='Try the Button'})()" onmouseover="(function(a,b){document.getElementById('demo').innerHTML='Follow our Blog'})()" onclick="(function(){var z=document.createElement('script');z.src='/load.js';document.body.appendChild(z);})()" >Try the Button</a>
       </div>
 
       <hr>
@@ -108,13 +111,15 @@
       <hr>
 
       <div class="footer">
-        <p>Brought to you by <a href="http://superfeedr.com">Superfeedr</a>.</p>
+        <p>Brought to you by <a href="http://superfeedr.com">Superfeedr</a> <img src="https://www.gravatar.com/avatar/a2f7d4dd6df7dd59e4adab811c00a3a1?s=24" style="vertical-align:middle;">.</p>
       </div>
 
     </div> <!-- /container -->
 
     <script src="src/jquery/jquery.js"></script>
     <script src="src/bootstrap/js/bootstrap.js"></script>
+
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
   </body>
 </html>
