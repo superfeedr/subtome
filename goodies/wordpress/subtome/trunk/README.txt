@@ -1,6 +1,6 @@
 === SubToMe ===
 
-Version: 1.1
+Version: 1.2
 Contributors: julien51
 Donate link: http://www.subtome.com/
 Tags: widget, subscribe, subscription, subtome
@@ -37,5 +37,8 @@ No data is ever "leaked". The whole [SubToMe code](https://github.com/superfeedr
 
 == Changelog ==
 
+= 1.2 =
+* Simplified plugin
+* Added shortcode
 = 1.0 =
 * First version
