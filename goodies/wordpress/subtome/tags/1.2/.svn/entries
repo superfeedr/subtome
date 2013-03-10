@@ -1,14 +1,14 @@
 10
 
 dir
-669202
-http://plugins.svn.wordpress.org/subtome/trunk
+677711
+http://plugins.svn.wordpress.org/subtome/tags/1.2
 http://plugins.svn.wordpress.org
 
 
 
-2013-02-17T10:13:29.199857Z
-669200
+2013-03-07T21:55:05.459316Z
+677711
 julien51
 
 
@@ -31,14 +31,14 @@ dir
 
 plugin.php
 file
-677710
 
 
 
-2013-03-07T21:53:11.000000Z
+
+2013-03-07T21:54:20.000000Z
 3d3f8f7f1b2ba5b09eae1d6561a82603
-2013-03-07T21:53:55.738169Z
-677710
+2013-03-07T21:55:05.459316Z
+677711
 julien51
 
 
@@ -65,14 +65,14 @@ julien51
 
 README.txt
 file
-677710
 
 
 
-2013-03-07T21:53:14.000000Z
+
+2013-03-07T21:54:20.000000Z
 9d4aa13bffc0b60ceb9951623c9ed6b4
-2013-03-07T21:53:55.738169Z
-677710
+2013-03-07T21:55:05.459316Z
+677711
 julien51
 
 
