@@ -7,7 +7,7 @@ Version: 1.2
 Author: Julien Genestoux
 Author URI: http://superfeedr.com/
 Author Email: julien@superfeedr.com
-Text Domain: SubToMe
+Text Domain: subtome
 Domain Path: /lang/
 Network: false
 License: GPLv2 or later
@@ -29,7 +29,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-class SubToMe extends WP_Widget {
+class SubToMeWidget extends WP_Widget {
 
 	/*--------------------------------------------------*/
 	/* Constructor
@@ -40,20 +40,16 @@ class SubToMe extends WP_Widget {
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
 	 */
 	public function __construct() {
-
-		// load plugin text domain
-		add_action( 'init', array( $this, 'widget_textdomain' ) );
-
-		// Hooks fired when the Widget is activated and deactivated
-		register_activation_hook( __FILE__, array( $this, 'activate' ) );
-		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
-
+    
+    // load plugin text domain
+    add_action( 'init', array( $this, 'widget_textdomain' ) );
+    
 		parent::__construct(
-			'widget-name-id',
-			__( 'SubToMe', 'SubToMe' ),
+			'subtome',
+			__( 'SubToMe' ),
 			array(
-				'classname'		=>	'SubToMe',
-				'description'	=>	__( 'Universal Subscribe Button.', 'SubToMe' )
+				'classname'		=>	'widget_subtome',
+				'description'	=>	__( 'Universal Subscribe Button.', 'subtome' )
 			)
 		);
 
@@ -72,13 +68,17 @@ class SubToMe extends WP_Widget {
 	public function widget( $args, $instance) {
 
 		extract( $args, EXTR_SKIP );
-
+    
+    $title = empty( $instance['title'] ) ? '' : $instance['title'];
+    $caption = empty( $instance['caption'] ) ? 'Subscribe' : $instance['caption'];
+    
 		echo $before_widget;
+		if ( $title )
+			echo $before_title . $title . $after_title;
+    ?>
+    <input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" value="<?php echo $caption; ?>">
 
-		$options = get_option('subtome');
-
-		include( plugin_dir_path( __FILE__ ) . '/views/widget.php' );
-
+    <?php
 		echo $after_widget;
 
 	} // end widget
@@ -90,14 +90,10 @@ class SubToMe extends WP_Widget {
 	 * @param	array	old_instance	The new instance of values to be generated via the update.
 	 */
 	public function update( $new_instance, $old_instance ) {
-
 		$instance = $old_instance;
 
-		if (isset($_POST['subtome_title'])){
-    	$options['title'] = attribute_escape($_POST['subtome_title']);
-    	$options['caption'] = attribute_escape($_POST['subtome_caption']);
-    	update_option('subtome', $options);
-  	}
+  	$instance['title'] = attribute_escape($new_instance['title']);
+    $instance['caption'] = attribute_escape($new_instance['caption']);
 
 		return $instance;
 
@@ -109,50 +105,49 @@ class SubToMe extends WP_Widget {
 	 * @param	array	instance	The array of keys and values for the widget.
 	 */
 	public function form( $instance ) {
-
-		$options = get_option('subtome');
-		if($options['caption'] == ""){
-			$options['caption'] = "Subscribe";
-		}
-		$instance = wp_parse_args(
-			(array) $instance
-		);
-
-		// Display the admin form
-		include( plugin_dir_path(__FILE__) . '/views/admin.php' );
-
+		$instance = wp_parse_args((array) $instance, array('title' => 'SubToMe', 'caption' => 'Subscribe'));
+    
+    $title = strip_tags($instance['title']);
+    $caption = strip_tags($instance['caption']);
+    ?>    
+    <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'subtome'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+    <p><label for="<?php echo $this->get_field_id('caption'); ?>"><?php _e('Caption:', 'subtome'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('caption'); ?>" name="<?php echo $this->get_field_name('caption'); ?>" type="text" value="<?php echo esc_attr($caption); ?>" /></p>
+    <?php
 	} // end form
-
-	/*--------------------------------------------------*/
-	/* Public Functions
-	/*--------------------------------------------------*/
-
-	/**
-	 * Loads the Widget's text domain for localization and translation.
-	 */
-	public function widget_textdomain() {
-
-		load_plugin_textdomain( 'SubToMe', false, plugin_dir_path( __FILE__ ) . '/lang/' );
-
+  
+  /**
+   * Loads the Widget's text domain for localization and translation.
+   */
+  public function widget_textdomain() {
+  	load_plugin_textdomain( 'subtome', false, plugin_dir_path( __FILE__ ) . '/lang/' );
 	} // end widget_textdomain
 
-	/**
-	 * Fired when the plugin is activated.
-	 *
-	 * @param		boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog.
-	 */
-	public function activate( $network_wide ) {
-	} // end activate
-
-	/**
-	 * Fired when the plugin is deactivated.
-	 *
-	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
-	 */
-	public function deactivate( $network_wide ) {
-	} // end deactivate
-
-
 } // end class
+add_action( 'widgets_init', create_function( '', 'register_widget("SubToMeWidget");' ) );
 
-add_action( 'widgets_init', create_function( '', 'register_widget("subtome");' ) );
+class SubToMePlugin {
+
+  /**
+   * adds a "subtome" shortcode
+   *
+   * @param array $atts
+   * @return string
+   */
+  function shortcode( $atts ) {
+  	extract( shortcode_atts( array(
+  		'caption' => 'Subscribe'
+  	), $atts ) );
+
+  	return "<input type=\"button\" onclick=\"(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()\" value=\"$caption\">";
+  }
+  
+  /**
+   * adds a link to the "meta" widget
+   */
+  function meta_link() {
+  	echo "<li><a href=\"#\" onclick=\"(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})(); return false;\">Subscribe</a></li>";
+  }
+}
+
+add_shortcode( 'subtome', array( 'SubToMePlugin', 'shortcode' ) );
+add_action( 'wp_meta', array( 'SubToMePlugin', 'meta_link' ) );
