@@ -64,15 +64,19 @@ We intentionaly pushed the complexity down to the subscribing application, which
 
 The subscribing application is in charge of extracting the data to which the user can subscribe (RSS or Atom feed, Social network handle, ... etc), from the page URL.
 
-Known Supported Readers
-=======================
-* [The Old Reader](http://theoldreader.com/): a very nice new reader (despite its name).
-* [Google Reader](http://www.google.com/reader): who doesn't know it?
-* [NewsBlur](http://www.newsblur.com/): an advanced feed reader
-* [Bloglovin](http://www.bloglovin.com/): a free feed reader
-* [Blogtrottr](http://blogtrottr.com/): an RSS to email tool
+Registration for popular readers
+================================
+If you use any of the readers below, just click on their name to register them with #SubToMe.
+* [The Old Reader](https://www.subtome.com/register.html?name=The+Old+Reader&url=http://theoldreader.com/feeds/subscribe?url=%7Bfeed%7D)
+* [Google Reader](https://www.subtome.com/register.html?name=Google+Reader&url=http://www.google.com/reader/view/feed/%7Bfeed%7D?source=subtome)
+* [NewsBlur](https://www.subtome.com/register.html?name=NewsBlur&url=http://www.newsblur.com/?url=%7Burl%7D)
+* [Bloglovin](https://www.subtome.com/register.html?name=Bloglovin&url=http://www.bloglovin.com/search/%7Burl%7D)
+* [Blogtrottr](https://www.subtome.com/register.html?name=Blogtrottr&url=http://blogtrottr.com/?subscribe=%7Bfeed%7D)
+* [Feedly](https://www.subtome.com/register.html?name=Feedly&url=http%3A%2F%2Fwww.feedly.com%2Fhome%23subscription%2Ffeed%2F%7Bfeed%7D)
+* [Feedly](https://www.subtome.com/register.html?name=Feedly&url=http%3A%2F%2Fwww.feedly.com%2Fhome%23subscription%2Ffeed%2F%7Bfeed%7D)
+* [BazQux](https://www.subtome.com/register.html?name=BazQux&url=http%3A%2F%2Fbazqux.com%2Fadd%3Furl%3D%7Burl%7D)
 
-Feel free to add yours (fork this page) if you implemented registration.
+Feel free to add yours (fork this page) if you implemented registration. Of course, don't expect your users to come here. Make sure you support [registration](https://www.subtome.com/developers.html).
 
 Discussions
 ===========

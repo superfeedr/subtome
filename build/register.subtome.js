@@ -1304,6 +1304,10 @@ var url = urlParser.parse(window.location.href);
 var qs = qsParser.parse(url.query);
 
 services.register(qs.name, qs.url);
+$(document).ready(function() {
+  $('.serviceName').text(qs.name);
+
+});
 
 });
 require("/register.js");
