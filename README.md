@@ -40,7 +40,9 @@ $ browserify src/subscribe.js -o build/subscribe.subtome.js
 Check Also
 ==========
 
-[Ant0ine](http://blog.ant0ine.com/) very kindly contributed a [SubToMe Chrome Extension](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc) to add a little button next to your address bar. Quite convenient when you don't want to show your bookmark bar. [Source code](https://github.com/ant0ine/subtome-chrome-extension).
+[Ant0ine](http://blog.ant0ine.com/) very kindly contributed a [SubToMe Chrome Extension](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc). [Source code](https://github.com/ant0ine/subtome-chrome-extension).
+
+[Sören](http://www.soeren-hentzschel.at/) contributed a [SubToMe Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/subtome-subscribe-button/)!
 
 [Wordpress plugin](http://wordpress.org/extend/plugins/subtome/). Install it by following [these instructions](http://wordpress.org/extend/plugins/subtome/installation/) or look for `SubToMe` in your Wordpress Dashboard's plugin interface.
 
@@ -48,8 +50,8 @@ Todo
 ====
 
 * Create a better icon/logo
-* <del>Wordpress Plugin (button)</del>
-* Browser extensions ( <del>Chrome</del> [install](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc), Firefox, Safari, IE).
+* <del>Wordpress Plugin (button)</del> ([install](http://wordpress.org/extend/plugins/subtome)).
+* Browser extensions ( <del>Chrome</del> [install](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc), <del>Firefox</del> [install](https://addons.mozilla.org/en-US/firefox/addon/subtome-subscribe-button/), Safari, IE).
 * Integrate into more readers (RSS to email, RSS to xx... etc)
 * Find ways to support non web based readers
 * <del>Implement all the ideas from this [Ask HN](http://news.ycombinator.com/item?id=5197995) thread.</del>
@@ -72,13 +74,14 @@ Known Supported Readers
 
 Feel free to add yours (fork this page) if you implemented registration.
 
-
 Discussions
 ===========
 
 [The Mozilla Hacks](https://hacks.mozilla.org/2013/02/subtome-a-better-subscribe-button/)
 
+[Zemanta Blog](http://www.zemanta.com/blog/get-more-subscribers-simply/)
+
 Thanks
 ======
-[Ant0ine](http://blog.ant0ine.com/)
+[Ant0ine](http://blog.ant0ine.com/) for the Chrome extension, [Sören](http://www.soeren-hentzschel.at/) for the Firefox extension, [Matthias](http://notizblog.org/) for his help with the Wordpress plugin.
 
