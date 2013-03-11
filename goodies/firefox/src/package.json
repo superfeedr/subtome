@@ -1,0 +1,9 @@
+{
+  "name" : "subtome",
+  "license" : "MPL 2.0",
+  "author" : "Sören Hentzschel",
+  "version" : "1.0",
+  "fullName" : "SubToMe - Universal Follow Button",
+  "id" : "subtome@soeren-hentzschel.at",
+  "description" : "SubToMe makes it easy for people to follow web sites, because browsers don't."
+}
