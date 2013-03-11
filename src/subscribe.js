@@ -34,6 +34,11 @@ function addService(name, handler) {
 $(document).ready(function() {
   var servicesUsed = 0;
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
+
+  if(services.error) {
+    $('#subtomeModalBody').append($('<p class="alert alert-error">' + services.error + '</p>'));
+  }
+
   services.forEach(function(service, handler) {
     servicesUsed += 1;
     addService(service, handler);
@@ -46,6 +51,7 @@ $(document).ready(function() {
       }
     });
   }
+
 
   $('#settingsButton').click(function() {
     window.open('https://www.subtome.com/settings.html');

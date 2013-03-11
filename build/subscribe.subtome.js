@@ -1209,17 +1209,30 @@ function lastBraceInKey(str) {
 require.define("/services.js", function (require, module, exports, __dirname, __filename) {
 var Services = function Services() {
   this.services = {};
+  this.error = null;
   this.load();
 }
 
 Services.prototype.load = function loadServices() {
-  var servicesString = localStorage.getItem('services');
+  try {
+    var servicesString = localStorage.getItem('services');
+  }
+  catch(error) {
+    console.error('There was an error, so we could not load the services from the localStorage. Showing the defaults.', error);
+    if(error.name === 'SecurityError' && error.code === 18) {
+      this.error = 'A browser setting is preventing SubToMe from saving your favorite subscription tools. Open up Settings > Privacy. Then, make sure Accept cookies from sites is checked. Also, make sure Accept third-party is checked as well.';
+    }
+    else {
+      this.error = 'We could not load your favorite subscriptions tools. We\'re showing you the default apps.';
+    }
+  }
   if(servicesString) {
     try {
       this.services = JSON.parse(servicesString);
     }
     catch(error) {
       console.error('Could not parse ' + servicesString);
+      this.error = 'Warning: We could not load your favorite subscriptions tools. We\'re showing you the default apps.';
     }
   }
 }
@@ -1319,6 +1332,11 @@ function addService(name, handler) {
 $(document).ready(function() {
   var servicesUsed = 0;
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
+
+  if(services.error) {
+    $('#subtomeModalBody').append($('<p class="alert alert-error">' + services.error + '</p>'));
+  }
+
   services.forEach(function(service, handler) {
     servicesUsed += 1;
     addService(service, handler);
@@ -1331,6 +1349,7 @@ $(document).ready(function() {
       }
     });
   }
+
 
   $('#settingsButton').click(function() {
     window.open('https://www.subtome.com/settings.html');
