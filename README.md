@@ -74,6 +74,9 @@ If you use any of the readers below, just click on their name to register them w
 * [Blogtrottr](https://www.subtome.com/register.html?name=Blogtrottr&url=http://blogtrottr.com/?subscribe=%7Bfeed%7D)
 * [Feedly](https://www.subtome.com/register.html?name=Feedly&url=http%3A%2F%2Fwww.feedly.com%2Fhome%23subscription%2Ffeed%2F%7Bfeed%7D)
 * [BazQux](https://www.subtome.com/register.html?name=BazQux&url=http%3A%2F%2Fbazqux.com%2Fadd%3Furl%3D%7Burl%7D)
+* [Notifixlite](https://www.subtome.com/register.html?name=Notifixlite&url=http%3A%2F%2Fnotifixlite.appspot.com%2Fsubscribe%3Fresource%3D%7Burl%7D)
+* [Msgboy](https://www.subtome.com/register.html?name=Msgboy&url=chrome-extension%3A%2F%2Fligglcbjgpiljeoenbhnnfdipkealakb%2Fdata%2Fhtml%2Fsubscribe.html%3Furl%3D%7Burl%7D)
+
 
 Feel free to add yours (fork this page) if you implemented registration. Of course, don't expect your users to come here. Make sure you support [registration](https://www.subtome.com/developers.html).
 
