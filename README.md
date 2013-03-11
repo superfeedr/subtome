@@ -71,6 +71,7 @@ Known Supported Readers
 * [NewsBlur](http://www.newsblur.com/): an advanced feed reader
 * [Bloglovin](http://www.bloglovin.com/): a free feed reader
 * [Blogtrottr](http://blogtrottr.com/): an RSS to email tool
+* [BazQux Reader](http://bazqux.com/): an advanced feed reader
 
 Feel free to add yours (fork this page) if you implemented registration.
 
