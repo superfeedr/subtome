@@ -1341,7 +1341,7 @@ $(document).ready(function() {
     servicesUsed += 1;
     addService(service, handler);
   });
-  if(servicesUsed < 3) {
+  if(servicesUsed == 0) {
     $('#subtomeModalBody').append($('<h4>Suggested Services</h4>'));
     services.forEachDefaultService(function(service, handler) {
       if(!services.uses(service)) {
