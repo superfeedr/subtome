@@ -1,5 +1,5 @@
 application: subtome-static
-version: 1
+version: 2
 runtime: python27
 api_version: 1
 threadsafe: yes
@@ -44,6 +44,9 @@ handlers:
 
 - url: /src
   static_dir: src
+
+- url: /img
+  static_dir: img
 
 - url: /build
   static_dir: build
