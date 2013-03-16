@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "SubToMe",
+  "description": "The universal subscribe button",
+  "version": "1.1",
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "permissions": [
+      "tabs", "http://*/*", "https://*/*"
+  ],
+  "browser_action": {
+    "default_icon": "subscribe-icon-48.png",
+    "default_title": "Subscribe"
+  },
+  "icons": {
+    "128": "subscribe-icon-128.png",
+    "48": "subscribe-icon-48.png"
+  }
+}
