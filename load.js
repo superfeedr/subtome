@@ -11,6 +11,35 @@
     }
   }
 
+  var getURLPart = function (url, part) {
+    var e = document.createElement('a');
+    getURLPart = function (url, part) {
+      e.href = url;
+      return e[part];
+    };
+    return getURLPart(url, part);
+  };
+
+  var scriptParams = {};
+  var scriptTag = document.querySelectorAll('script[src*="/load.js"]');
+  var scriptHash = scriptTag.length ? getURLPart(scriptTag[scriptTag.length - 1].src, 'hash') : '';
+  scriptHash = scriptHash === '' ? [] : scriptHash.substr(1).split('&');
+
+  for (var j = 0, jLength = scriptHash.length; j < jLength; j++) {
+    scriptHash[j] = scriptHash[j].split('=', 2);
+    if (scriptHash[j][0] !== '') {
+      scriptParams[decodeURIComponent(scriptHash[j][0])] = scriptHash[j][1] ? encodeURIComponent(getURLPart(decodeURIComponent(scriptHash[j][1]), 'href')) : null;
+    }
+  }
+
+  if (scriptParams.feed) {
+    var feedPosition = feeds.indexOf(scriptParams.feed);
+    if (feedPosition !== -1) {
+      feeds.splice(feedPosition, 1);
+    }
+    feeds.unshift(scriptParams.feed);
+  }
+
   var s = document.createElement('iframe');
   var url = window.location.toString();
   var resource = window.location.toString();
