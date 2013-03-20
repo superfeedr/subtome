@@ -1,3 +1,4 @@
+require('./compatibility.js');
 var urlParser = require('url');
 var qsParser = require('querystring');
 var services = require('./services');

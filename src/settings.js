@@ -1,3 +1,4 @@
+require('./compatibility.js');
 var services = require('./services');
 var relativeDate = require('relative-date');
 var urlParser = require('url');
@@ -45,7 +46,7 @@ $(document).ready(function() {
 
   var browserSpecific = $('.browser-specific').attr('class');
   if(typeof(browserSpecific) == 'string') {
-    browserSpecific.split(/\s+/).forEach(function(c) {
+    browserSpecific.split(' ').forEach(function(c) {
       if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
         $('.browser-specific').show();
       };

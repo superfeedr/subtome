@@ -53,16 +53,6 @@ Services.prototype.uses = function usesService(name) {
   return this.services[name] || false;
 }
 
-Services.prototype.setAsDefault = function setAsDefault(name, def) {
-  for(var n in this.services) {
-    delete this.services[n].default;
-  }
-  if(name) {
-    this.services[name].default = def;
-  }
-  this.save();
-}
-
 Services.prototype.save = function saveServices() {
   localStorage.setItem('services', JSON.stringify(this.services));
 }
