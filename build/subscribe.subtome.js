@@ -1395,6 +1395,10 @@ function addService(name, handler) {
     if(redirect.match(/\{feeds\}/)) {
       redirect = redirect.replace('{feeds}', feeds.join(','));
     }
+    if(typeof(_gaq) != 'undefined') {
+      _gaq.push(['_trackEvent', 'Services', 'Subscribe', name, name]);
+    }
+
     window.open(redirect);
     window.location = '/done.html';
   });
@@ -1421,7 +1425,6 @@ $(document).ready(function() {
       }
     });
   }
-
 
   $('#settingsButton').click(function() {
     window.open('https://www.subtome.com/settings.html');
