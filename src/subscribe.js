@@ -5,22 +5,24 @@ var services = require('./services');
 
 var url = urlParser.parse(window.location.href);
 var qs = qsParser.parse(url.query);
+var feeds = [];
+var resource = qs.resource;
+if(qs.feeds) {
+  feeds = qs.feeds.split(',');
+}
 
-function addService(name, handler) {
+function addService(name, handler, resource, feeds) {
   var button = $('<button class="btn" style="display: block; margin: 10px; width:200px">' + name.replace(/(<([^>]+)>)/ig,'') + '</button>')
   button.click(function() {
     services.register(name, handler.url);
     var feeds = [];
-    if(qs.feeds) {
-      feeds = qs.feeds.split(',');
-    }
-    var redirect = handler.url.replace('{url}', encodeURIComponent(qs.resource));
+    var redirect = handler.url.replace('{url}', encodeURIComponent(resource));
     if(redirect.match(/\{feed\}/)) {
       if(feeds[0]) {
         redirect = redirect.replace('{feed}', encodeURIComponent(feeds[0]))
       }
       else {
-        redirect = redirect.replace('{feed}', encodeURIComponent(qs.resource))
+        redirect = redirect.replace('{feed}', encodeURIComponent(resource))
       }
     }
     if(redirect.match(/\{feeds\}/)) {
@@ -46,13 +48,13 @@ $(document).ready(function() {
 
   services.forEach(function(service, handler) {
     servicesUsed += 1;
-    addService(service, handler);
+    addService(service, handler, resource, feeds);
   });
   if(servicesUsed == 0) {
     $('#subtomeModalBody').append($('<h4>Suggested Services</h4>'));
     services.forEachDefaultService(function(service, handler) {
       if(!services.uses(service)) {
-        addService(service, handler);
+        addService(service, handler, resource, feeds);
       }
     });
   }
@@ -65,5 +67,11 @@ $(document).ready(function() {
   $('#subtomeModal').on('hidden', function() {
     window.location = '/done.html';
   });
+
+  if(feeds && feeds[0]) {
+    $('#rssLink').show();
+    $('#rssLink').attr("href", feeds[0]);
+  }
+
 });
 

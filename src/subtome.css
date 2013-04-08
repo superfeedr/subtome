@@ -1,3 +1,19 @@
 .browser-specific {
   display: none;
 }
+
+.rss {
+  display: none;
+  padding: 4px;
+  opacity: 0.3;
+  float: right;
+  filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(1); /* Google Chrome & Safari 6+ */
+}
+
+.rss:hover {
+  opacity: 0.8;
+  filter: none;
+  -webkit-filter: grayscale(0);
+}
