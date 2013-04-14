@@ -1372,19 +1372,11 @@ var urlParser = require('url');
 var qsParser = require('querystring');
 var services = require('./services');
 
-var url = urlParser.parse(window.location.href);
-var qs = qsParser.parse(url.query);
-var feeds = [];
-var resource = qs.resource;
-if(qs.feeds) {
-  feeds = qs.feeds.split(',');
-}
-
 function addService(name, handler, resource, feeds) {
   var button = $('<button class="btn" style="display: block; margin: 10px; width:200px">' + name.replace(/(<([^>]+)>)/ig,'') + '</button>')
   button.click(function() {
+
     services.register(name, handler.url);
-    var feeds = [];
     var redirect = handler.url.replace('{url}', encodeURIComponent(resource));
     if(redirect.match(/\{feed\}/)) {
       if(feeds[0]) {
@@ -1408,6 +1400,13 @@ function addService(name, handler, resource, feeds) {
 }
 
 $(document).ready(function() {
+  var url = urlParser.parse(window.location.href);
+  var qs = qsParser.parse(url.query);
+  var feeds = [];
+  var resource = qs.resource;
+  if(qs.feeds) {
+    feeds = qs.feeds.split(',');
+  }
   var servicesUsed = 0;
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
 
