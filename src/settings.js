@@ -44,14 +44,18 @@ $(document).ready(function() {
 
   services.forEach(addService);
 
-  var browserSpecific = $('.browser-specific').attr('class');
-  if(typeof(browserSpecific) == 'string') {
-    browserSpecific.split(' ').forEach(function(c) {
-      if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
-        $('.browser-specific').show();
-      };
-    });
-  }
-
+  $('.browser-specific').each(function(i, b) {
+    var browserSpecific = $(b).attr('class');
+    if(typeof(browserSpecific) == 'string') {
+      browserSpecific.split(' ').forEach(function(c) {
+        if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
+          $(b).show();
+        }
+        else {
+          $(b).hide();
+        }
+      });
+    }
+  });
 });
 
