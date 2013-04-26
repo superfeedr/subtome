@@ -11,7 +11,6 @@
     <link rel="icon" href="src/ico/favicon.ico">
     <script src="src/jquery/jquery.js"></script>
     <script src="src/bootstrap/js/bootstrap.js"></script>
-    <script src="/build/settings.subtome.js"></script>
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -66,7 +65,7 @@
       <p>
         You can now safely close this window.
       </p>
-<script src="/build/register.subtome.js"></script>
+      <script src="/build/register.subtome.js"></script>
 
       <hr>
 
@@ -76,16 +75,16 @@
 
     </div> <!-- /container -->
 
-    <script src="src/jquery/jquery.js"></script>
-    <script src="src/bootstrap/js/bootstrap.js"></script>
-
     <a href="https://github.com/superfeedr/subtome"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
     <script type="text/javascript">
 
+    $('.serviceName').text(qs.name);
+
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-39876787-1']);
     _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackEvent', 'Services', 'Register', qs.name, qs.name]);
 
     (function() {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;

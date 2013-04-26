@@ -30,6 +30,10 @@ handlers:
   static_files: register.html
   upload: register.html
 
+- url: /register-no-ui.html
+  static_files: register-no-ui.html
+  upload: register-no-ui.html
+
 - url: /settings.html
   static_files: settings.html
   upload: settings.html
