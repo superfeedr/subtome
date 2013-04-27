@@ -485,17 +485,6 @@ var apps = [
   }
 },
 {
-  name: 'Msgboy',
-  tags: ['Chrome'],
-  description: 'Msgboy delivers a custom feed of stories in realtime, all based on websites you\'ve bookmarked and visited most often',
-  url: 'http://www.msgboy.com/',
-  icon: 'https://raw.github.com/superfeedr/msgboy/master/views/img/icon16.png',
-  registration: {
-    name: 'Msgboy',
-    url: 'chrome-extension://ligglcbjgpiljeoenbhnnfdipkealakb/data/html/subscribe.html?url={url}'
-  }
-},
-{
   name: 'BazQux',
   tags: ['Web', 'Comments'],
   description: 'RSS feed reader that shows comments to posts and supports reading of Facebook and Google+ pages.',
@@ -504,6 +493,39 @@ var apps = [
   registration: {
     name: 'BazQux',
     url: 'http://bazqux.com/add?url={url}'
+  }
+},
+{
+  name: 'Feedleap',
+  tags: ['web', 'kippt', 'bookmark'],
+  description: 'FeedLeap lets you subscribe to your favorite RSS feeds and store new entries as Clips in any Kippt List you want.',
+  url: 'https://feedleap.herokuapp.com',
+  icon: 'https://feedleap.herokuapp.com/static/favicon.ico',
+  registration: {
+    name: 'Feedleap',
+    url: 'https://feedleap.herokuapp.com/feeds/new/?feed={feed}&source=subtome'
+  }
+},
+{
+  name: 'FeedHQ',
+  tags: ['web', 'mobile'],
+  description: 'FeedHQ is a feed reader built with readability and mobility in mind',
+  url: 'https://feedhq.org/',
+  icon: 'https://feedhq.org/static/core/img/icon-rss.png',
+  registration: {
+    name: 'FeedHQ',
+    url: 'https://feedhq.org/subscribe/?feeds={feeds}&url={url}'
+  }
+},
+{
+  name: 'Msgboy',
+  tags: ['Chrome'],
+  description: 'Msgboy delivers a custom feed of stories in realtime, all based on websites you\'ve bookmarked and visited most often',
+  url: 'http://www.msgboy.com/',
+  icon: 'https://raw.github.com/superfeedr/msgboy/master/views/img/icon16.png',
+  registration: {
+    name: 'Msgboy',
+    url: 'chrome-extension://ligglcbjgpiljeoenbhnnfdipkealakb/data/html/subscribe.html?url={url}'
   }
 },
 {
@@ -521,7 +543,7 @@ var apps = [
 
 $(document).on('ready', function() {
   apps.forEach(function(a) {
-    var div = $('<div class="span2"></div>');
+    var div = $('<div class="span2 app"></div>');
     div.append($('<h4 style="background: url(' + a.icon + ') no-repeat 2px 2px; background-size: 16px 16px; padding-left: 20px"><a target="_blank" href="' + a.url + '">' + a.name + '</a></h4>'));
     a.tags.forEach(function(t) {
       div.append($('<span class="label">' + t + '</span>'), '&nbsp;');

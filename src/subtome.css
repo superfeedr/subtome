@@ -17,3 +17,10 @@
   filter: none;
   -webkit-filter: grayscale(0);
 }
+
+.app {
+  max-height: 200px;
+  height: 200px;
+  min-height: 200px;
+  padding-bottom: 20px;
+}
