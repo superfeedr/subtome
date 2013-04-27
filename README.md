@@ -35,6 +35,7 @@ Compiling the code:
 <pre><code>$ browserify src/settings.js -o build/settings.subtome.js
 $ browserify src/register.js -o build/register.subtome.js
 $ browserify src/subscribe.js -o build/subscribe.subtome.js
+$ browserify src/store.js -o build/store.subtome.js
 </code></pre>
 
 Check Also

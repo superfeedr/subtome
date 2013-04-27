@@ -24,23 +24,6 @@ function addService(name, handler) {
 }
 
 $(document).ready(function() {
-  $('#pickSuggestions').click(function() {
-    $('#suggestionsModal').modal({backdrop: true, keyboard: true, show: true});
-    $('#suggestionsModalBody button').remove();
-    services.forEachDefaultService(function(service, handler) {
-      var button = $('<button class="btn" style="display:block; width:200px; margin:10px">Use ' + service + '</button>');
-      button.click(function() {
-        services.register(service, handler.url);
-        button.addClass('disabled');
-      });
-      $('#suggestionsModalBody').append(button);
-    });
-  });
-
-  $('#suggestionsModal').on('hidden', function() {
-    $("#services tr").remove();
-    services.forEach(addService);
-  });
 
   services.forEach(addService);
 

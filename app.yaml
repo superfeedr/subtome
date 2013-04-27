@@ -42,6 +42,10 @@ handlers:
   static_files: subscribe.html
   upload: subscribe.html
 
+- url: /store.html
+  static_files: store.html
+  upload: store.html
+
 - url: /load.js
   static_files: load.js
   upload: load.js

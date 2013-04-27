@@ -20,7 +20,7 @@
       /* Custom container */
       .container-narrow {
         margin: 0 auto;
-        max-width: 700px;
+        max-width: 770px;
       }
       .container-narrow > hr {
         margin: 30px 0;
@@ -79,7 +79,18 @@
 
     <script type="text/javascript">
 
-    $('.serviceName').text(qs.name);
+    function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+      var regexS = "[\\?&]" + name + "=([^&#]*)";
+      var regex = new RegExp(regexS);
+      var results = regex.exec(window.location.search);
+      if(results == null)
+        return "";
+      else
+        return decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    $('.serviceName').text(getParameterByName('name'));
 
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-39876787-1']);

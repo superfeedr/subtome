@@ -2,15 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>SubToMe</title>
+    <title>SubToMe - Settings</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link type="application/atom+xml" rel="alternate" titme="Superfeedr blog" href="http://blog.superfeedr.com/atom.xml" />
-
     <link href="src/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/cjkhnlmkkfheepafpgppmpdahbjgkjfc">
     <link href="src/subtome.css" rel="stylesheet">
     <link rel="icon" href="src/ico/favicon.ico">
+    <script src="src/jquery/jquery.js"></script>
+    <script src="src/bootstrap/js/bootstrap.js"></script>
+    <script src="/build/store.subtome.js"></script>
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -24,28 +26,6 @@
       }
       .container-narrow > hr {
         margin: 30px 0;
-      }
-
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
       }
 
     </style>
@@ -77,38 +57,14 @@
         </ul>
         <h3 class="muted"><a href="/" class='subtome'><img src="src/img/subtome-small.png" style="height: 35px;"/></a></h3>
       </div>
-      <hr>
-
-      <div class="jumbotron">
-        <h1><img src="src/img/subtome-large.png" alt="SubToMe"/></h1>
-        <h2>Universal Follow Button</h2>
-        <p class="lead">
-          SubToMe makes it easy for people to <em>follow</em> web sites,<br />  because browsers don't.
-        </p>
-        <a class="btn btn-large btn-success" href="/settings.html">Configure</a>
-        <a class="btn btn-large" id='demo' style="width:150px" onmouseout="(function(a,b){document.getElementById('demo').innerHTML='Try the Button'})()" onmouseover="(function(a,b){document.getElementById('demo').innerHTML='Follow our Blog'})()" onclick="(function(){var z=document.createElement('script');z.src='/load.js';document.body.appendChild(z);})()" >Try the Button</a>
-      </div>
 
       <hr>
 
-      <div class="row-fluid marketing">
-        <div class="span6">
-          <h4>Non intrusive</h4>
-          <p>We hate websites that look like Christmas trees. We just use regular markup and Javascript and are platform agnostic.</p>
+      <div id="apps" class="row">
 
-          <h4>Fully 'local'</h4>
-          <p>Your data is your data. Your data stays in your browser. No account, no tracking, no hassle.</p>
-
-        </div>
-
-        <div class="span6">
-          <h4>100% Open</h4>
-          <p>Open Source, open protocols and open to improvements. Help us make it better.</p>
-
-          <h4>Works with any reader</h4>
-          <p>We provide a simple registration mechanism for [news|social] readers, as well as a bunch of popular defaults.</p>
-        </div>
       </div>
+
+
 
       <hr>
 
@@ -119,7 +75,6 @@
     </div> <!-- /container -->
 
     <a href="https://github.com/superfeedr/subtome"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
-
     <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -135,3 +90,5 @@
     </script>
   </body>
 </html>
+
+
