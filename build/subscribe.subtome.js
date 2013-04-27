@@ -1318,19 +1318,12 @@ Services.prototype.load = function loadServices() {
   }
 }
 
-Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
-  iterator('The Old Reader', {
-    url: 'http://theoldreader.com/feeds/subscribe?url={feed}'
-  });
-  iterator('NewsBlur', {
-    url: 'http://www.newsblur.com/?url={url}'
-  });
-  iterator('Bloglovin\'', {
-    url: 'http://www.bloglovin.com/search/{url}'
-  });
-  iterator('Blogtrottr', {
-    url: 'http://blogtrottr.com/?subscribe={feed}'
-  });
+Services.prototype.count = function countServices() {
+  var count = 0;
+  for(var name in this.services) {
+    count += 1;
+  }
+  return count;
 }
 
 Services.prototype.forEach = function forEachServices(iterator) {
@@ -1414,16 +1407,14 @@ $(document).ready(function() {
     $('#subtomeModalBody').append($('<p class="alert alert-error">' + services.error + '</p>'));
   }
 
-  services.forEach(function(service, handler) {
-    servicesUsed += 1;
-    addService(service, handler, resource, feeds);
-  });
-  if(servicesUsed == 0) {
-    $('#subtomeModalBody').append($('<h4>Suggested Services</h4>'));
-    services.forEachDefaultService(function(service, handler) {
-      if(!services.uses(service)) {
-        addService(service, handler, resource, feeds);
-      }
+  var countServices = services.count();
+  if(countServices == 0) {
+    $('#subtomeModalBody').append($('<p>You do not have selected your prefered services yet. Please, <a target="_blank" href="/store.html">pick one</a>!</p>'));
+  }
+  else {
+    $('#subtomeModalBody').append($('<p>Pick a service to subscribe to this page:</p>'));
+    services.forEach(function(service, handler) {
+      addService(service, handler, resource, feeds);
     });
   }
 

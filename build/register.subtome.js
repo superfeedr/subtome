@@ -1318,19 +1318,12 @@ Services.prototype.load = function loadServices() {
   }
 }
 
-Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
-  iterator('The Old Reader', {
-    url: 'http://theoldreader.com/feeds/subscribe?url={feed}'
-  });
-  iterator('NewsBlur', {
-    url: 'http://www.newsblur.com/?url={url}'
-  });
-  iterator('Bloglovin\'', {
-    url: 'http://www.bloglovin.com/search/{url}'
-  });
-  iterator('Blogtrottr', {
-    url: 'http://blogtrottr.com/?subscribe={feed}'
-  });
+Services.prototype.count = function countServices() {
+  var count = 0;
+  for(var name in this.services) {
+    count += 1;
+  }
+  return count;
 }
 
 Services.prototype.forEach = function forEachServices(iterator) {

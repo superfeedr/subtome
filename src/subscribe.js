@@ -45,16 +45,14 @@ $(document).ready(function() {
     $('#subtomeModalBody').append($('<p class="alert alert-error">' + services.error + '</p>'));
   }
 
-  services.forEach(function(service, handler) {
-    servicesUsed += 1;
-    addService(service, handler, resource, feeds);
-  });
-  if(servicesUsed == 0) {
-    $('#subtomeModalBody').append($('<h4>Suggested Services</h4>'));
-    services.forEachDefaultService(function(service, handler) {
-      if(!services.uses(service)) {
-        addService(service, handler, resource, feeds);
-      }
+  var countServices = services.count();
+  if(countServices == 0) {
+    $('#subtomeModalBody').append($('<p>You do not have selected your prefered services yet. Please, <a target="_blank" href="/store.html">pick one</a>!</p>'));
+  }
+  else {
+    $('#subtomeModalBody').append($('<p>Pick a service to subscribe to this page:</p>'));
+    services.forEach(function(service, handler) {
+      addService(service, handler, resource, feeds);
     });
   }
 

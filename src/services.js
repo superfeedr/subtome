@@ -9,12 +9,12 @@ Services.prototype.load = function loadServices() {
     var servicesString = localStorage.getItem('services');
   }
   catch(error) {
-    console.error('There was an error, so we could not load the services from the localStorage. Showing the defaults.', error);
+    console.error('There was an error, so we could not load the services from the localStorage. ', error);
     if(error.name === 'SecurityError' && error.code === 18) {
       this.error = 'A browser setting is preventing SubToMe from saving your favorite subscription tools. Open up Settings > Privacy. Then, make sure Accept cookies from sites is checked. Also, make sure Accept third-party is checked as well.';
     }
     else {
-      this.error = 'We could not load your favorite subscriptions tools. We\'re showing you the default apps.';
+      this.error = 'We could not load your favorite subscriptions tools. ';
     }
   }
   if(servicesString) {
@@ -23,24 +23,17 @@ Services.prototype.load = function loadServices() {
     }
     catch(error) {
       console.error('Could not parse ' + servicesString);
-      this.error = 'Warning: We could not load your favorite subscriptions tools. We\'re showing you the default apps.';
+      this.error = 'Warning: We could not load your favorite subscriptions tools. ';
     }
   }
 }
 
-Services.prototype.forEachDefaultService = function forEachDefaultService (iterator) {
-  iterator('The Old Reader', {
-    url: 'http://theoldreader.com/feeds/subscribe?url={feed}'
-  });
-  iterator('NewsBlur', {
-    url: 'http://www.newsblur.com/?url={url}'
-  });
-  iterator('Bloglovin\'', {
-    url: 'http://www.bloglovin.com/search/{url}'
-  });
-  iterator('Blogtrottr', {
-    url: 'http://blogtrottr.com/?subscribe={feed}'
-  });
+Services.prototype.count = function countServices() {
+  var count = 0;
+  for(var name in this.services) {
+    count += 1;
+  }
+  return count;
 }
 
 Services.prototype.forEach = function forEachServices(iterator) {
