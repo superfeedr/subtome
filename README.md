@@ -50,10 +50,10 @@ Check Also
 Todo
 ====
 
-* Create a better icon/logo
+* <del>Create a better icon/logo</del>
 * <del>Wordpress Plugin (button)</del> ([install](http://wordpress.org/extend/plugins/subtome)).
 * Browser extensions ( <del>Chrome</del> [install](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc), <del>Firefox</del> [install](https://addons.mozilla.org/en-US/firefox/addon/subtome-subscribe-button/), Safari, IE).
-* Integrate into more readers (RSS to email, RSS to xx... etc)
+* <del>Integrate into more readers (RSS to email, RSS to xx... etc)</del>
 * Find ways to support non web based readers
 * <del>Implement all the ideas from this [Ask HN](http://news.ycombinator.com/item?id=5197995) thread.</del>
 * Find a hack to allow of a complete redirect with default settings. At this point, it seems extremely complex, as we would need a direct user action to do such. Most browsers tested at this point will opening of new windows as popups at this point :/
@@ -67,19 +67,11 @@ The subscribing application is in charge of extracting the data to which the use
 
 Registration for popular readers
 ================================
-If you use any of the readers below, just click on their name to register them with #SubToMe.
-* [The Old Reader](https://www.subtome.com/register.html?name=The+Old+Reader&url=http://theoldreader.com/feeds/subscribe?url=%7Bfeed%7D)
-* [Google Reader](https://www.subtome.com/register.html?name=Google+Reader&url=http://www.google.com/reader/view/feed/%7Bfeed%7D?source=subtome)
-* [NewsBlur](https://www.subtome.com/register.html?name=NewsBlur&url=http://www.newsblur.com/?url=%7Burl%7D)
-* [Bloglovin](https://www.subtome.com/register.html?name=Bloglovin&url=http://www.bloglovin.com/search/%7Burl%7D)
-* [Blogtrottr](https://www.subtome.com/register.html?name=Blogtrottr&url=http://blogtrottr.com/?subscribe=%7Bfeed%7D)
-* [Feedly](https://www.subtome.com/register.html?name=Feedly&url=http%3A%2F%2Fwww.feedly.com%2Fhome%23subscription%2Ffeed%2F%7Bfeed%7D)
-* [BazQux](https://www.subtome.com/register.html?name=BazQux&url=http%3A%2F%2Fbazqux.com%2Fadd%3Furl%3D%7Burl%7D)
-* [Notifixlite](https://www.subtome.com/register.html?name=Notifixlite&url=http%3A%2F%2Fnotifixlite.appspot.com%2Fsubscribe%3Fresource%3D%7Burl%7D)
-* [Msgboy](https://www.subtome.com/register.html?name=Msgboy&url=chrome-extension%3A%2F%2Fligglcbjgpiljeoenbhnnfdipkealakb%2Fdata%2Fhtml%2Fsubscribe.html%3Furl%3D%7Burl%7D)
 
+Feel free to check the [store](http://subtome.com/store.html)
 
-Feel free to add yours (fork this page) if you implemented registration. Of course, don't expect your users to come here. Make sure you support [registration](https://www.subtome.com/developers.html).
+Feel free to add yours if you implemented registration. Make sure you support [registration](https://www.subtome.com/developers.html)
+as well for your existing users.
 
 Discussions
 ===========
