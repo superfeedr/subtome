@@ -1,4 +1,5 @@
 require('./compatibility.js');
+var services = require('./services');
 
 var apps = [
 {
@@ -113,19 +114,41 @@ var apps = [
 }
 ];
 
-$(document).on('ready', function() {
-  apps.forEach(function(a) {
-    var div = $('<div class="span2 app"></div>');
-    div.append($('<h4 style="background: url(' + a.icon + ') no-repeat 2px 2px; background-size: 16px 16px; padding-left: 20px"><a target="_blank" href="' + a.url + '">' + a.name + '</a></h4>'));
-    a.tags.forEach(function(t) {
-      div.append($('<span class="label">' + t + '</span>'), '&nbsp;');
-    });
-    div.append($('<p>' + a.description + '</p>'));
+
+function drawApp(a) {
+  var div = $('#' + a.name.replace(/\s+/g, '-'));
+  if(div.length == 0) {
+    div = $('<div id="' + a.name.replace(/\s+/g, '-') + '" class="span2 app"></div>');
+    div.appendTo('#apps');
+  }
+  div.empty();
+
+  div.append($('<h4 style="background: url(' + a.icon + ') no-repeat 2px 2px; background-size: 16px 16px; padding-left: 20px"><a target="_blank" href="' + a.url + '">' + a.name + '</a></h4>'));
+  a.tags.forEach(function(t) {
+    div.append($('<span class="label">' + t + '</span>'), '&nbsp;');
+  });
+  div.append($('<p>' + a.description + '</p>'));
+
+
+  if(!services.uses(a.name)) {
     var button = $('<button type="button" class="btn btn-mini">Install</button>');
     button.on('click', function() {
-      window.open('/register.html?name=' + encodeURIComponent(a.registration.name)  + '&url=' + encodeURIComponent(a.registration.url));
+      services.register(a.name, a.url);
+      drawApp(a);
     });
-    div.append(button);
-    div.appendTo('#apps');
-  });
+  }
+  else {
+    div.append($('<span class="success"><i class="icon-ok"></i>Installed</span>'), '&nbsp;');
+    var button = $('<button type="button" class="btn btn-mini btn-danger">Remove</button>');
+    button.on('click', function() {
+      services.removeService(a.name);
+      drawApp(a);
+    });
+  }
+
+  div.append(button);
+}
+
+$(document).on('ready', function() {
+  apps.forEach(drawApp);
 });
