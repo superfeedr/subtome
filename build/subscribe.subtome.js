@@ -1299,12 +1299,12 @@ Services.prototype.load = function loadServices() {
     var servicesString = localStorage.getItem('services');
   }
   catch(error) {
-    console.error('There was an error, so we could not load the services from the localStorage. Showing the defaults.', error);
+    console.error('There was an error, so we could not load the services from the localStorage. ', error);
     if(error.name === 'SecurityError' && error.code === 18) {
       this.error = 'A browser setting is preventing SubToMe from saving your favorite subscription tools. Open up Settings > Privacy. Then, make sure Accept cookies from sites is checked. Also, make sure Accept third-party is checked as well.';
     }
     else {
-      this.error = 'We could not load your favorite subscriptions tools. We\'re showing you the default apps.';
+      this.error = 'We could not load your favorite subscriptions tools. ';
     }
   }
   if(servicesString) {
@@ -1313,7 +1313,7 @@ Services.prototype.load = function loadServices() {
     }
     catch(error) {
       console.error('Could not parse ' + servicesString);
-      this.error = 'Warning: We could not load your favorite subscriptions tools. We\'re showing you the default apps.';
+      this.error = 'Warning: We could not load your favorite subscriptions tools. ';
     }
   }
 }
@@ -1392,14 +1392,7 @@ function addService(name, handler, resource, feeds) {
   $('#subtomeModalBody').append(button);
 }
 
-$(document).ready(function() {
-  var url = urlParser.parse(window.location.href);
-  var qs = qsParser.parse(url.query);
-  var feeds = [];
-  var resource = qs.resource;
-  if(qs.feeds) {
-    feeds = qs.feeds.split(',');
-  }
+function showServices(resource, feeds) {
   var servicesUsed = 0;
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
 
@@ -1417,6 +1410,19 @@ $(document).ready(function() {
       addService(service, handler, resource, feeds);
     });
   }
+}
+
+
+$(document).ready(function() {
+  var url = urlParser.parse(window.location.href);
+  var qs = qsParser.parse(url.query);
+  var feeds = [];
+  var resource = qs.resource;
+  if(qs.feeds) {
+    feeds = qs.feeds.split(',');
+  }
+
+  showServices(resource, feeds);
 
   $('#settingsButton').click(function() {
     window.open('https://www.subtome.com/settings.html');
@@ -1431,6 +1437,12 @@ $(document).ready(function() {
     $('#rssLink').show();
     $('#rssLink').attr("href", feeds[0]);
   }
+
+  window.addEventListener("storage", function() {
+    $('#subtomeModalBody').empty();
+    services.load();
+    showServices(resource, feeds);
+  });
 
 });
 

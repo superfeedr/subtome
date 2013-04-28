@@ -30,14 +30,7 @@ function addService(name, handler, resource, feeds) {
   $('#subtomeModalBody').append(button);
 }
 
-$(document).ready(function() {
-  var url = urlParser.parse(window.location.href);
-  var qs = qsParser.parse(url.query);
-  var feeds = [];
-  var resource = qs.resource;
-  if(qs.feeds) {
-    feeds = qs.feeds.split(',');
-  }
+function showServices(resource, feeds) {
   var servicesUsed = 0;
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
 
@@ -55,6 +48,19 @@ $(document).ready(function() {
       addService(service, handler, resource, feeds);
     });
   }
+}
+
+
+$(document).ready(function() {
+  var url = urlParser.parse(window.location.href);
+  var qs = qsParser.parse(url.query);
+  var feeds = [];
+  var resource = qs.resource;
+  if(qs.feeds) {
+    feeds = qs.feeds.split(',');
+  }
+
+  showServices(resource, feeds);
 
   $('#settingsButton').click(function() {
     window.open('https://www.subtome.com/settings.html');
@@ -69,6 +75,12 @@ $(document).ready(function() {
     $('#rssLink').show();
     $('#rssLink').attr("href", feeds[0]);
   }
+
+  window.addEventListener("storage", function() {
+    $('#subtomeModalBody').empty();
+    services.load();
+    showServices(resource, feeds);
+  });
 
 });
 

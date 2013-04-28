@@ -123,7 +123,7 @@ $(document).on('ready', function() {
     div.append($('<p>' + a.description + '</p>'));
     var button = $('<button type="button" class="btn btn-mini">Install</button>');
     button.on('click', function() {
-      window.open('https://www.subtome.com/register.html?name=' + encodeURIComponent(a.registration.name)  + '&url=' + encodeURIComponent(a.registration.url));
+      window.open('/register.html?name=' + encodeURIComponent(a.registration.name)  + '&url=' + encodeURIComponent(a.registration.url));
     });
     div.append(button);
     div.appendTo('#apps');
