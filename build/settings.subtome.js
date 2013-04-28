@@ -1442,9 +1442,19 @@ function addService(name, handler) {
   $('#services').append(line);
 }
 
+function showAllServices() {
+  $('#services').empty();
+  services.forEach(addService);
+}
+
 $(document).ready(function() {
 
-  services.forEach(addService);
+  showAllServices();
+
+  $(window).on('storage', function() {
+    services.load();
+    showAllServices();
+  });
 
   $('.browser-specific').each(function(i, b) {
     var browserSpecific = $(b).attr('class');

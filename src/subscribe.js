@@ -76,7 +76,7 @@ $(document).ready(function() {
     $('#rssLink').attr("href", feeds[0]);
   }
 
-  window.addEventListener("storage", function() {
+  $(window).on('storage', function() {
     $('#subtomeModalBody').empty();
     services.load();
     showServices(resource, feeds);
