@@ -47,25 +47,14 @@ var apps = [
   }
 },
 {
-  name: 'Feedly',
-  tags: ['Chrome', 'Firefox', 'Mobile'],
-  description: 'Feedly is a news aggregator application for various Web browsers and mobile devices running iOS and Android.',
-  url: 'http://feedly.com/',
-  icon: 'http://feedly.com/favicon.ico',
-  registration: {
-    name: 'Feedly',
-    url: 'http://www.feedly.com/home#subscription/feed/{feed}'
-  }
-},
-{
-  name: 'BazQux',
-  tags: ['Web', 'Comments'],
+  name: 'BazQux Reader',
+  tags: ['web', 'comments'],
   description: 'RSS feed reader that shows comments to posts and supports reading of Facebook and Google+ pages.',
-  url: 'http://bazqux.com/',
-  icon: 'http://bazqux.com/favicon.ico',
+  url: 'https://bazqux.com/',
+  icon: 'https://bazqux.com/favicon.ico',
   registration: {
     name: 'BazQux',
-    url: 'http://bazqux.com/add?url={url}'
+    url: 'https://bazqux.com/add?url={url}'
   }
 },
 {
@@ -91,8 +80,30 @@ var apps = [
   }
 },
 {
+  name: 'Feedbin',
+  tags: ['web'],
+  description: 'A fast, simple RSS feed reader that delivers a great reading experience.',
+  url: 'https://feedbin.me/',
+  icon: 'https://feedbin.me/favicon.ico',
+  registration: {
+    name: 'Feedbin',
+    url: 'https://feedbin.me/?subscribe={feed}'
+  }
+},
+{
+  name: 'Feedly',
+  tags: ['chrome', 'firefox', 'mobile'],
+  description: 'Feedly is a news aggregator application for various Web browsers and mobile devices running iOS and Android.',
+  url: 'http://feedly.com/',
+  icon: 'http://feedly.com/favicon.ico',
+  registration: {
+    name: 'Feedly',
+    url: 'http://www.feedly.com/home#subscription/feed/{feed}'
+  }
+},
+{
   name: 'Msgboy',
-  tags: ['Chrome'],
+  tags: ['chrome'],
   description: 'Msgboy delivers a custom feed of stories in realtime, all based on websites you\'ve bookmarked and visited most often',
   url: 'http://www.msgboy.com/',
   icon: 'https://raw.github.com/superfeedr/msgboy/master/views/img/icon16.png',
@@ -106,7 +117,7 @@ var apps = [
   tags: ['web', 'deprecated', 'advanced'],
   description: 'Google Reader will be shut down on July 1st 2013. We suggest you look at some other option.',
   url: 'http://www.google.com/reader',
-  icon: '',
+  icon: 'https://www.google.com/reader/ui/favicon.ico',
   registration: {
     name: 'Google Reader',
     url: 'http://www.google.com/reader/view/feed/{feed}'
@@ -133,7 +144,7 @@ function drawApp(a) {
   if(!services.uses(a.name)) {
     var button = $('<button type="button" class="btn btn-mini">Install</button>');
     button.on('click', function() {
-      services.register(a.name, a.url);
+      services.register(a.name, a.registration.url);
       drawApp(a);
     });
   }
