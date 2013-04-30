@@ -515,13 +515,24 @@ var apps = [
 },
 {
   name: 'NewsBlur',
-  tags: ['web', 'mobile', 'advanced'],
+  tags: ['web', 'mobile', 'advanced', 'open source'],
   description: 'NewsBlur is a personal news reader bringing people together to talk about the world.',
   url: 'http://www.newsblur.com/',
   icon: 'http://newsblur.com/favicon.ico',
   registration: {
     name: 'NewsBlur',
     url: 'http://www.newsblur.com/?url={url}'
+  }
+},
+{
+  name: 'Rivered',
+  tags: ['web'],
+  description: 'An uncluttered River of News; no unread item count, no complexity. Just the content you subscribe to.',
+  url: 'http://www.rivered.io/',
+  icon: 'http://www.rivered.io/favicon.ico',
+  registration: {
+    name: 'Rivered',
+    url: 'http://www.rivered.io/add?url={url}'
   }
 },
 {
@@ -559,7 +570,7 @@ var apps = [
 },
 {
   name: 'Feedleap',
-  tags: ['web', 'kippt', 'bookmark'],
+  tags: ['web', 'kippt', 'bookmark', 'open source'],
   description: 'FeedLeap lets you subscribe to your favorite RSS feeds and store new entries as Clips in any Kippt List you want.',
   url: 'https://feedleap.herokuapp.com',
   icon: 'https://feedleap.herokuapp.com/static/favicon.ico',
@@ -570,7 +581,7 @@ var apps = [
 },
 {
   name: 'FeedHQ',
-  tags: ['web', 'mobile'],
+  tags: ['web', 'mobile', 'open source'],
   description: 'FeedHQ is a feed reader built with readability and mobility in mind',
   url: 'https://feedhq.org/',
   icon: 'https://feedhq.org/static/core/img/icon-rss.png',
@@ -603,7 +614,7 @@ var apps = [
 },
 {
   name: 'Msgboy',
-  tags: ['chrome'],
+  tags: ['chrome', 'open source'],
   description: 'Msgboy delivers a custom feed of stories in realtime, all based on websites you\'ve bookmarked and visited most often',
   url: 'http://www.msgboy.com/',
   icon: 'https://raw.github.com/superfeedr/msgboy/master/views/img/icon16.png',
