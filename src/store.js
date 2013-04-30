@@ -3,6 +3,17 @@ var services = require('./services');
 
 var apps = [
 {
+  name: 'Rivered',
+  tags: ['web'],
+  description: 'An uncluttered River of News; no unread item count, no complexity. Just the content you subscribe to.',
+  url: 'http://www.rivered.io/',
+  icon: 'http://www.rivered.io/favicon.ico',
+  registration: {
+    name: 'Rivered',
+    url: 'http://www.rivered.io/add?url={url}'
+  }
+},
+{
   name: 'The Old Reader',
   tags: ['web', 'popular', 'advanced'],
   description: 'The Old Reader was built to be a Google Reader replacement, and it does it well!',
