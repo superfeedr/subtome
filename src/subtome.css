@@ -22,5 +22,6 @@
   max-height: 200px;
   height: 200px;
   min-height: 200px;
+  min-width: 170px;
   padding-bottom: 20px;
 }
