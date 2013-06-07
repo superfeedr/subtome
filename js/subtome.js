@@ -11,21 +11,21 @@ angular.module('subtome', []).
 
 
 function IndexCtrl($scope, $routeParams) {
-
+// Don't load anything :)
 }
 
 function SettingsCtrl($scope, $routeParams) {
-
+// Load the settings :)
 }
 
 function PublishersCtrl($scope, $routeParams) {
-
+// Load the gists!
 }
 
 function DevelopersCtrl($scope, $routeParams) {
-
+  // Load the gists!
 }
 
 function StoreCtrl($scope, $routeParams) {
-
+  console.log("NOW WHAT?")
 }
