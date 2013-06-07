@@ -1,55 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="subtome">
   <head>
     <meta charset="utf-8">
     <title>SubToMe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="A Uniersal follow app for the open web">
+    <meta name="author" content="Julien Genestoux">
     <link type="application/atom+xml" rel="alternate" titme="Superfeedr blog" href="http://blog.superfeedr.com/atom.xml" />
 
-    <link href="src/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="src/subtome.css" rel="stylesheet">
-    <link rel="icon" href="src/ico/favicon.ico">
-    <style type="text/css">
-      body {
-        padding-top: 20px;
-        padding-bottom: 40px;
-      }
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/subtome.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
-      /* Custom container */
-      .container-narrow {
-        margin: 0 auto;
-        max-width: 770px;
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/subtome.js"></script>
 
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-
-    </style>
-    <link href="src/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -57,7 +24,8 @@
     <![endif]-->
 
     <!-- Fav and touch icons -->
-    <link rel="shortcut icon" href="src/ico/favicon.ico">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" href="img/favicon.ico">
   </head>
 
   <body>
@@ -71,44 +39,15 @@
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li><a href="/settings.html">Settings</a></li>
+          <li><a id="link-1" href ng-click="value = 1">Settings</a></li>
           <li><a href="/publishers.html">Add a button to your site</a></li>
           <li><a href="/developers.html">Apps</a></li>
         </ul>
-        <h3 class="muted"><a href="/" class='subtome'><img src="src/img/subtome-small.png" style="height: 35px;"/></a></h3>
+        <h3 class="muted"><a href="/" class='subtome'><img src="img/subtome-small.png" style="height: 35px;"/></a></h3>
       </div>
       <hr>
 
-      <div class="jumbotron">
-        <h1><img src="src/img/subtome-large.png" alt="SubToMe"/></h1>
-        <h2>Universal Follow Button</h2>
-        <p class="lead">
-          SubToMe makes it easy for people to <em>follow</em> web sites,<br />  because browsers don't.
-        </p>
-        <a class="btn btn-large btn-success" href="/settings.html">Configure</a>
-        <a class="btn btn-large" id='demo' style="width:150px" onmouseout="(function(a,b){document.getElementById('demo').innerHTML='Try the Button'})()" onmouseover="(function(a,b){document.getElementById('demo').innerHTML='Follow our Blog'})()" onclick="(function(){var z=document.createElement('script');z.src='/load.js';document.body.appendChild(z);})()" >Try the Button</a>
-      </div>
-
-      <hr>
-
-      <div class="row-fluid marketing">
-        <div class="span6">
-          <h4>Non intrusive</h4>
-          <p>We hate websites that look like Christmas trees. We just use regular markup and Javascript and are platform agnostic.</p>
-
-          <h4>Fully 'local'</h4>
-          <p>Your data is your data. Your data stays in your browser. No account, no tracking, no hassle.</p>
-
-        </div>
-
-        <div class="span6">
-          <h4>100% Open</h4>
-          <p>Open Source, open protocols and open to improvements. Help us make it better.</p>
-
-          <h4>Works with any reader</h4>
-          <p>We provide a simple registration mechanism for [news|social] readers, as well as a <a href="/store.html">store for popular apps</a>.</p>
-        </div>
-      </div>
+      <div ng-view></div>
 
       <hr>
 
