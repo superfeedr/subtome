@@ -1,10 +1,10 @@
 angular.module('subtome', []).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-    when('/', {templateUrl: 'partials/index.html',   controller: IndexCtrl}).
-    when('/settings', {templateUrl: 'partials/settings.html', controller: SettingsCtrl}).
-    when('/publishers', {templateUrl: 'partials/publishers.html', controller: PublishersCtrl}).
-    when('/developers', {templateUrl: 'partials/developers.html', controller: DevelopersCtrl}).
+    when('/', {templateUrl: 'partials/index.html',   controller: IndexController}).
+    when('/settings', {templateUrl: 'partials/settings.html', controller: SettingsController}).
+    when('/publishers', {templateUrl: 'partials/publishers.html', controller: PublishersController}).
+    when('/developers', {templateUrl: 'partials/developers.html', controller: DevelopersController}).
     when('/store', {templateUrl: 'partials/store.html', controller: StoreCtrl}).
     otherwise({redirectTo: '/'});
   }
@@ -23,23 +23,44 @@ function loadGists() {
     });
   });
 }
+var services = new Services();
 
-function IndexCtrl($scope, $routeParams) {
+
+function loadApps() {
+  var apps = appStore;
+  apps.forEach(function(a) {
+    a.installed = services.uses(a.name);
+  });
+  return apps;
+}
+
+function IndexController($scope, $routeParams) {
 // Don't load anything :)
 }
 
-function SettingsCtrl($scope, $routeParams) {
+function SettingsController($scope, $routeParams) {
 // Load the settings :)
 }
 
-function PublishersCtrl($scope, $routeParams) {
+function PublishersController($scope, $routeParams) {
   loadGists();
 }
 
-function DevelopersCtrl($scope, $routeParams) {
+function DevelopersController($scope, $routeParams) {
   loadGists();
 }
 
 function StoreCtrl($scope, $routeParams) {
-  console.log("NOW WHAT?")
+  $scope.apps = loadApps();
+
+  $scope.install = function installApp(app) {
+    app.installed = true;
+    services.register(app.registration.name, app.registration.url)
+  };
+
+  $scope.remove = function removeApp(app) {
+    app.installed = false;
+    services.removeService(app.registration.name);
+  };
+
 }

@@ -1,4 +1,16 @@
 <div id="apps" class="row">
+  <div ng-repeat="app in apps" class="span2 app">
+    <h4 style="background-image: url({{app.icon}})">
+      <a target="_blank" href="{{app.url}}">{{app.name}}</a>
+    </h4>
+    <span class="label" ng-repeat="tag in app.tags">{{tag}}</span>
+    <p>{{app.description}}</p>
 
+    <span ng-show="app.installed" class="success">
+      <i class="icon-ok"></i>Installed&nbsp;
+    <button ng-click="remove(app)"  type="button" class="btn btn-mini btn-danger">Remove</button>
+    </span>
+    <button ng-hide="app.installed" type="button" ng-click="install(app)" class="btn btn-mini">Install</button>
+  </div>
 </div>
 

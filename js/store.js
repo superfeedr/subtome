@@ -1,4 +1,4 @@
-var apps = [
+var appStore = [
 {
   name: 'The Old Reader',
   tags: ['web', 'popular', 'advanced'],
@@ -8,7 +8,8 @@ var apps = [
   registration: {
     name: 'The Old Reader',
     url: 'http://theoldreader.com/feeds/subscribe?url={feed}'
-  }
+  },
+  installed: false
 },
 {
   name: 'NewsBlur',
@@ -19,7 +20,8 @@ var apps = [
   registration: {
     name: 'NewsBlur',
     url: 'http://www.newsblur.com/?url={url}'
-  }
+  },
+    installed: true
 },
 {
   name: 'Rivered',
