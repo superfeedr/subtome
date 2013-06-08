@@ -5,8 +5,8 @@
   <p class="lead">
     SubToMe makes it easy for people to <em>follow</em> web sites,<br />  because browsers don't.
   </p>
-  <a class="btn btn-large btn-success" href="/settings.html">Configure</a>
-  <a class="btn btn-large" id='demo' style="width:150px" onmouseout="(function(a,b){document.getElementById('demo').innerHTML='Try the Button'})()" onmouseover="(function(a,b){document.getElementById('demo').innerHTML='Follow our Blog'})()" onclick="(function(){var z=document.createElement('script');z.src='/load.js';document.body.appendChild(z);})()" >Try the Button</a>
+  <a class="btn btn-large btn-success" href="/#/settings">Configure</a>
+  <a class="btn btn-large" ng-click='open()' ng-mouseover='over()' ng-mouseleave='left()' id='demo' style="width:150px">Try the Button</a>
 </div>
 
 <hr>
@@ -26,6 +26,6 @@
     <p>Open Source, open protocols and open to improvements. Help us make it better.</p>
 
     <h4>Works with any reader</h4>
-    <p>We provide a simple registration mechanism for [news|social] readers, as well as a <a href="/store.html">store for popular apps</a>.</p>
+    <p>We provide a simple registration mechanism for [news|social] readers, as well as a <a href="/#/store">store for popular apps</a>.</p>
   </div>
 </div>

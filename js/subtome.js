@@ -57,6 +57,17 @@ function loadApps() {
 }
 
 subtome.controller("IndexController", function IndexController($scope, $routeParams) {
+  $scope.over = function over() {
+    document.getElementById('demo').innerHTML='Follow our Blog'
+  }
+  $scope.left = function left() {
+    document.getElementById('demo').innerHTML='Try the Button';
+  }
+  $scope.open = function open() {
+    var z=document.createElement('script');
+    z.src='/load.js';
+    document.body.appendChild(z);
+  }
 });
 
 subtome.controller("SettingsController", function SettingsController($scope, $routeParams) {
@@ -70,6 +81,28 @@ subtome.controller("SettingsController", function SettingsController($scope, $ro
 
 subtome.controller("PublishersController", function PublishersController($scope, $routeParams) {
   loadGists();
+  $scope.open = function open(url) {
+    if(!url) {
+      var z=document.createElement('script');
+      z.src='/load.js';
+      document.body.appendChild(z);
+    }
+    else {
+      var s = document.createElement('iframe');
+      var feeds = [url];
+      var resource = url;
+      s.setAttribute('style','position:fixed;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent; z-index: 2147483647');
+      s.setAttribute('src', 'https://www.subtome.com/subscribe.html?resource=' + encodeURIComponent(resource) + '&feeds=' + feeds.join(','));
+      var loaded = false;
+      s.onload = function() {
+        if(loaded) {
+          document.getElementsByTagName('body')[0].removeChild(s);
+        }
+        loaded = true;
+      }
+      document.getElementsByTagName('body')[0].appendChild(s);
+    }
+  }
 });
 
 subtome.controller("DevelopersController", function DevelopersController($scope, $routeParams) {
