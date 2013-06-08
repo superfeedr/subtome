@@ -42,6 +42,15 @@ Services.prototype.forEach = function forEachServices(iterator) {
   }
 }
 
+Services.prototype.used = function usedServices() {
+  var used = [];
+  this.forEach(function(name, s) {
+    s.name = name;
+    used.push(s);
+  });
+  return used;
+}
+
 Services.prototype.uses = function usesService(name) {
   return this.services[name] || false;
 }

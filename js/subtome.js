@@ -1,15 +1,21 @@
-angular.module('subtome', []).
-config(['$routeProvider', function($routeProvider) {
+var subtome = angular.module('subtome', []);
+
+subtome.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-    when('/', {templateUrl: 'partials/index.html',   controller: IndexController}).
-    when('/settings', {templateUrl: 'partials/settings.html', controller: SettingsController}).
-    when('/publishers', {templateUrl: 'partials/publishers.html', controller: PublishersController}).
-    when('/developers', {templateUrl: 'partials/developers.html', controller: DevelopersController}).
-    when('/store', {templateUrl: 'partials/store.html', controller: StoreCtrl}).
+    when('/', {templateUrl: 'partials/index.html',   controller: "IndexController"}).
+    when('/settings', {templateUrl: 'partials/settings.html', controller: "SettingsController"}).
+    when('/publishers', {templateUrl: 'partials/publishers.html', controller: "PublishersController"}).
+    when('/developers', {templateUrl: 'partials/developers.html', controller: "DevelopersController"}).
+    when('/store', {templateUrl: 'partials/store.html', controller: "StoreController"}).
     otherwise({redirectTo: '/'});
   }
 ]);
 
+subtome.filter('fromNow', function() {
+  return function(dateString) {
+    return moment(new Date(dateString)).fromNow()
+  };
+});
 
 function loadGists() {
   $('.script').each(function(i,div) {
@@ -23,8 +29,24 @@ function loadGists() {
     });
   });
 }
-var services = new Services();
 
+function showBrowserSpecifics() {
+ $('.browser-specific').each(function(i, b) {
+  var browserSpecific = $(b).attr('class');
+  if(typeof(browserSpecific) == 'string') {
+    browserSpecific.split(' ').forEach(function(c) {
+      if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
+        $(b).show();
+      }
+      else {
+        $(b).hide();
+      }
+    });
+  }
+});
+}
+
+var services = new Services();
 
 function loadApps() {
   var apps = appStore;
@@ -34,23 +56,27 @@ function loadApps() {
   return apps;
 }
 
-function IndexController($scope, $routeParams) {
-// Don't load anything :)
-}
+subtome.controller("IndexController", function IndexController($scope, $routeParams) {
+});
 
-function SettingsController($scope, $routeParams) {
-// Load the settings :)
-}
+subtome.controller("SettingsController", function SettingsController($scope, $routeParams) {
+  showBrowserSpecifics();
+  $scope.services = services.used();
+  $scope.remove = function removeService(service) {
+    services.removeService(service.name);
+    $scope.services = services.used();
+  }
+});
 
-function PublishersController($scope, $routeParams) {
+subtome.controller("PublishersController", function PublishersController($scope, $routeParams) {
   loadGists();
-}
+});
 
-function DevelopersController($scope, $routeParams) {
+subtome.controller("DevelopersController", function DevelopersController($scope, $routeParams) {
   loadGists();
-}
+});
 
-function StoreCtrl($scope, $routeParams) {
+subtome.controller("StoreController", function StoreController($scope, $routeParams) {
   $scope.apps = loadApps();
 
   $scope.install = function installApp(app) {
@@ -62,5 +88,4 @@ function StoreCtrl($scope, $routeParams) {
     app.installed = false;
     services.removeService(app.registration.name);
   };
-
-}
+});
