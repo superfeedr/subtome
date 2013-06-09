@@ -3,7 +3,6 @@
 }
 
 .rss {
-  display: none;
   padding: 4px;
   opacity: 0.3;
   float: right;
@@ -69,3 +68,7 @@ padding-left: 20px
         margin-top: 28px;
       }
 
+
+.btn.service {
+  display: block; margin: 10px; width:200px
+}

@@ -8,6 +8,7 @@ subtome.config(['$routeProvider', function($routeProvider) {
     when('/developers', {templateUrl: 'partials/developers.html', controller: "DevelopersController"}).
     when('/store', {templateUrl: 'partials/store.html', controller: "StoreController"}).
     when('/register', {templateUrl: 'partials/register.html', controller: "RegisterController"}).
+    when('/subscribe', {templateUrl: 'partials/subscribe.html', controller: "SubscribeController"}).
     otherwise({redirectTo: '/'});
   }
 ]);
@@ -127,5 +128,43 @@ subtome.controller("StoreController", function StoreController($scope) {
 subtome.controller("RegisterController", function DevelopersController($scope, $routeParams) {
   services.register($routeParams.name, $routeParams.url);
   $scope.service = {name: $routeParams.name};
+});
+
+subtome.controller("SubscribeController", function SubscribeController($scope, $routeParams) {
+  $("body").css("background", "transparent")
+  $("hr").hide();
+  $(".masthead").hide();
+  $(".footer").hide();
+  $(".github").hide();
+
+  $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
+  $('#subtomeModal').on('hidden', function() {
+    window.location = '/done.html';
+  });
+
+  $scope.services = new Services();
+  $scope.resource = $routeParams.resource;
+  $scope.feeds = $routeParams.feeds.split(",");
+
+  $scope.openSettings = function openSettings() {
+    window.open('https://www.subtome.com/settings.html');
+  }
+
+  $scope.openService = function openService(service) {
+    $scope.services.register(service.name, service.url);
+    var redirect = service.url.replace('{url}', encodeURIComponent($scope.resource));
+    if(redirect.match(/\{feed\}/)) {
+      if($scope.feeds[0]) {
+        redirect = redirect.replace('{feed}', encodeURIComponent($scope.feeds[0]));
+      }
+      else {
+        redirect = redirect.replace('{feed}', encodeURIComponent($scope.resource));
+      }
+    }
+    if(redirect.match(/\{feeds\}/)) {
+      redirect = redirect.replace('{feeds}', $scope.feeds.join(','));
+    }
+    window.open(redirect);
+  }
 });
 
