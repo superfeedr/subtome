@@ -23,21 +23,6 @@ This is intented to be run as a bookmarklet or an embedded button on any web pag
 
 5. Once the user picks a service, he's sent to that service to complete the subscription.
 
-Build
-=====
-
-Install dependencies (you need to have node.js installed):
-
-<code>$ npm install</code>
-
-Compiling the code:
-
-<pre><code>$ browserify src/settings.js -o build/settings.subtome.js
-$ browserify src/register.js -o build/register.subtome.js
-$ browserify src/subscribe.js -o build/subscribe.subtome.js
-$ browserify src/store.js -o build/store.subtome.js
-</code></pre>
-
 Check Also
 ==========
 
@@ -50,13 +35,11 @@ Check Also
 Todo
 ====
 
-* <del>Create a better icon/logo</del>
-* <del>Wordpress Plugin (button)</del> ([install](http://wordpress.org/extend/plugins/subtome)).
-* Browser extensions ( <del>Chrome</del> [install](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc), <del>Firefox</del> [install](https://addons.mozilla.org/en-US/firefox/addon/subtome-subscribe-button/), Safari, IE).
-* <del>Integrate into more readers (RSS to email, RSS to xx... etc)</del>
+* Internationalize
 * Find ways to support non web based readers
-* <del>Implement all the ideas from this [Ask HN](http://news.ycombinator.com/item?id=5197995) thread.</del>
 * Find a hack to allow of a complete redirect with default settings. At this point, it seems extremely complex, as we would need a direct user action to do such. Most browsers tested at this point will opening of new windows as popups at this point :/
+
+Check [Github Issues](https://github.com/superfeedr/subtome/issues) for more TODOs
 
 Going Further
 =============
@@ -68,7 +51,7 @@ The subscribing application is in charge of extracting the data to which the use
 Registration for popular readers
 ================================
 
-Feel free to check the [store](http://subtome.com/store.html)
+Check the [store](http://subtome.com/store.html)
 
 Feel free to add yours if you implemented registration. Make sure you support [registration](https://www.subtome.com/developers.html)
 as well for your existing users.
