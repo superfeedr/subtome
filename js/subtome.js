@@ -50,14 +50,6 @@ function showBrowserSpecifics() {
 
 var services = new Services();
 
-function loadApps() {
-  var apps = appStore;
-  apps.forEach(function(a) {
-    a.installed = services.uses(a.name);
-  });
-  return apps;
-}
-
 subtome.controller("IndexController", function IndexController($scope) {
   $scope.over = function over() {
     document.getElementById('demo').innerHTML='Follow our Blog'
@@ -112,7 +104,11 @@ subtome.controller("DevelopersController", function DevelopersController($scope)
 });
 
 subtome.controller("StoreController", function StoreController($scope) {
-  $scope.apps = loadApps();
+  var apps = appStore;
+  apps.forEach(function(a) {
+    a.installed = services.uses(a.name);
+  });
+  $scope.apps = apps;
 
   $scope.install = function installApp(app) {
     app.installed = true;
@@ -142,7 +138,7 @@ subtome.controller("SubscribeController", function SubscribeController($scope, $
     window.location = '/done.html';
   });
 
-  $scope.services = new Services();
+  $scope.services = services;
   $scope.resource = $routeParams.resource;
   $scope.feeds = $routeParams.feeds.split(",");
 
