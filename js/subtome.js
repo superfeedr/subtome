@@ -140,7 +140,10 @@ subtome.controller("SubscribeController", function SubscribeController($scope, $
 
   $scope.services = services;
   $scope.resource = $routeParams.resource;
-  $scope.feeds = $routeParams.feeds.split(",");
+  $scope.feeds = [];
+  if($routeParams.feeds && $routeParams.feeds.length > 0) {
+    $scope.feeds = $routeParams.feeds.split(",");
+  }
 
   $scope.openSettings = function openSettings() {
     window.open('https://www.subtome.com/settings.html');
