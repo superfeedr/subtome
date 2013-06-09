@@ -7,6 +7,7 @@ subtome.config(['$routeProvider', function($routeProvider) {
     when('/publishers', {templateUrl: 'partials/publishers.html', controller: "PublishersController"}).
     when('/developers', {templateUrl: 'partials/developers.html', controller: "DevelopersController"}).
     when('/store', {templateUrl: 'partials/store.html', controller: "StoreController"}).
+    when('/register', {templateUrl: 'partials/register.html', controller: "RegisterController"}).
     otherwise({redirectTo: '/'});
   }
 ]);
@@ -56,7 +57,7 @@ function loadApps() {
   return apps;
 }
 
-subtome.controller("IndexController", function IndexController($scope, $routeParams) {
+subtome.controller("IndexController", function IndexController($scope) {
   $scope.over = function over() {
     document.getElementById('demo').innerHTML='Follow our Blog'
   }
@@ -70,7 +71,7 @@ subtome.controller("IndexController", function IndexController($scope, $routePar
   }
 });
 
-subtome.controller("SettingsController", function SettingsController($scope, $routeParams) {
+subtome.controller("SettingsController", function SettingsController($scope) {
   showBrowserSpecifics();
   $scope.services = services.used();
   $scope.remove = function removeService(service) {
@@ -79,7 +80,7 @@ subtome.controller("SettingsController", function SettingsController($scope, $ro
   }
 });
 
-subtome.controller("PublishersController", function PublishersController($scope, $routeParams) {
+subtome.controller("PublishersController", function PublishersController($scope) {
   loadGists();
   $scope.open = function open(url) {
     if(!url) {
@@ -105,11 +106,11 @@ subtome.controller("PublishersController", function PublishersController($scope,
   }
 });
 
-subtome.controller("DevelopersController", function DevelopersController($scope, $routeParams) {
+subtome.controller("DevelopersController", function DevelopersController($scope) {
   loadGists();
 });
 
-subtome.controller("StoreController", function StoreController($scope, $routeParams) {
+subtome.controller("StoreController", function StoreController($scope) {
   $scope.apps = loadApps();
 
   $scope.install = function installApp(app) {
@@ -122,3 +123,9 @@ subtome.controller("StoreController", function StoreController($scope, $routePar
     services.removeService(app.registration.name);
   };
 });
+
+subtome.controller("RegisterController", function DevelopersController($scope, $routeParams) {
+  services.register($routeParams.name, $routeParams.url);
+  $scope.service = {name: $routeParams.name};
+});
+
