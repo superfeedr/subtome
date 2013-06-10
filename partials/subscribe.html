@@ -5,7 +5,7 @@
   </div>
   <div class="modal-body">
     <p ng-show="services.error" class="alert alert-error">{{services.error}}</p>
-    <p ng-show="services.count() == 0">You do not have selected your prefered services yet. Please, <a target="_blank" href="/#/store">pick one</a>!</p></p>
+    <p ng-show="services.count() == 0">You do not have selected your prefered services yet. Please, <a target="_blank" href="#/store">pick one</a>!</p></p>
 
     <p ng-show="services.count() > 0">Pick a service to subscribe to this page:</p>
     <button ng-repeat="service in services.used()" ng-click='openService(service)' class="btn service" data-dismiss="modal">{{service.name}}</button>
