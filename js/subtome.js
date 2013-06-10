@@ -161,7 +161,6 @@ subtome.controller("SubscribeController", function SubscribeController($scope, $
   }
 
   $scope.openService = function openService(service) {
-    $scope.services.register(service.name, service.url);
     var redirect = service.url.replace('{url}', encodeURIComponent($scope.resource));
     if(redirect.match(/\{feed\}/)) {
       if($scope.feeds[0]) {
