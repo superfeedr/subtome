@@ -55,7 +55,7 @@ subtome.controller("IndexController", function IndexController($scope) {
     document.getElementById('demo').innerHTML='Follow our Blog'
   }
   $scope.left = function left() {
-    document.getElementById('demo').innerHTML='Try the Button';
+    document.getElementById('demo').innerHTML='See it in Action';
   }
   $scope.open = function open() {
     var z=document.createElement('script');
