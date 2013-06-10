@@ -56,6 +56,14 @@ subtome.filter('fromNow', function() {
   };
 });
 
+subtome.filter('linkToHome', function() {
+  return function(url) {
+    var a = document.createElement('a');
+    a.href = url;
+    return a.protocol + '//' + a.host + '/';
+  };
+});
+
 subtome.controller("IndexController", function IndexController($scope) {
   $scope.over = function over() {
     document.getElementById('demo').innerHTML='Follow our Blog'
