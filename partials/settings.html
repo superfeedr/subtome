@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody id="services">
-    <tr ng-repeat="service in services">
+    <tr ng-repeat="service in services.used()">
       <td><a href="{{service.url}}">{{service.name}}</a></td>
       <td>{{service.addedOn | fromNow}}</td>
       <td><button ng-click="remove(service)" type="button" style="float: right;" class="btn btn-mini btn-danger remove">Remove</button></td>

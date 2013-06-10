@@ -2,6 +2,17 @@ var Services = function Services() {
   this.services = {};
   this.error = null;
   this.load();
+
+  this.listeners = [];
+  if (window.addEventListener) {
+    var that = this;
+    window.addEventListener("storage", function() {
+      that.load();
+      that.listeners.forEach(function(listener) {
+        listener();
+      });
+    }, false);
+  };
 }
 
 Services.prototype.load = function loadServices() {
@@ -72,4 +83,8 @@ Services.prototype.register = function registerService(name, handler) {
     }
     this.save();
   }
+}
+
+Services.prototype.listen = function listen(cb) {
+  this.listeners.push(cb);
 }

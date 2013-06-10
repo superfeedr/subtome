@@ -13,42 +13,48 @@ subtome.config(['$routeProvider', function($routeProvider) {
   }
 ]);
 
+subtome.run(['$rootScope', function($rootScope) {
+  $rootScope.loadGists = function loadGists() {
+    $('.script').each(function(i,div) {
+      $.ajax({
+        url: $(div).data('src') + 'on',
+        dataType: 'jsonp',
+        success: function(gist) {
+          $('head').append('<link rel="stylesheet" href="' + gist.stylesheet + '" type="text/css" />');
+          $(div).append($(gist.div))
+        }
+      });
+    });
+  }
+
+  $rootScope.showBrowserSpecifics = function showBrowserSpecifics() {
+    $('.browser-specific').each(function(i, b) {
+      var browserSpecific = $(b).attr('class');
+      if(typeof(browserSpecific) == 'string') {
+        browserSpecific.split(' ').forEach(function(c) {
+          if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
+            $(b).show();
+          }
+          else {
+            $(b).hide();
+          }
+        });
+      }
+    });
+  }
+
+  $rootScope.services = new Services();
+  $rootScope.services.listen(function() {
+    $rootScope.$apply();
+  });
+
+}]);
+
 subtome.filter('fromNow', function() {
   return function(dateString) {
     return moment(new Date(dateString)).fromNow()
   };
 });
-
-function loadGists() {
-  $('.script').each(function(i,div) {
-    $.ajax({
-      url: $(div).data('src') + 'on',
-      dataType: 'jsonp',
-      success: function(gist) {
-        $('head').append('<link rel="stylesheet" href="' + gist.stylesheet + '" type="text/css" />');
-        $(div).append($(gist.div))
-      }
-    });
-  });
-}
-
-function showBrowserSpecifics() {
- $('.browser-specific').each(function(i, b) {
-  var browserSpecific = $(b).attr('class');
-  if(typeof(browserSpecific) == 'string') {
-    browserSpecific.split(' ').forEach(function(c) {
-      if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
-        $(b).show();
-      }
-      else {
-        $(b).hide();
-      }
-    });
-  }
-});
-}
-
-var services = new Services();
 
 subtome.controller("IndexController", function IndexController($scope) {
   $scope.over = function over() {
@@ -65,16 +71,14 @@ subtome.controller("IndexController", function IndexController($scope) {
 });
 
 subtome.controller("SettingsController", function SettingsController($scope) {
-  showBrowserSpecifics();
-  $scope.services = services.used();
+  $scope.showBrowserSpecifics();
   $scope.remove = function removeService(service) {
-    services.removeService(service.name);
-    $scope.services = services.used();
+    $scope.services.removeService(service.name);
   }
 });
 
 subtome.controller("PublishersController", function PublishersController($scope) {
-  loadGists();
+  $scope.loadGists();
   $scope.open = function open(url) {
     if(!url) {
       var z=document.createElement('script');
@@ -100,29 +104,29 @@ subtome.controller("PublishersController", function PublishersController($scope)
 });
 
 subtome.controller("DevelopersController", function DevelopersController($scope) {
-  loadGists();
+  $scope.loadGists();
 });
 
 subtome.controller("StoreController", function StoreController($scope) {
   var apps = appStore;
   apps.forEach(function(a) {
-    a.installed = services.uses(a.name);
+    a.installed = $scope.services.uses(a.name);
   });
   $scope.apps = apps;
 
   $scope.install = function installApp(app) {
     app.installed = true;
-    services.register(app.registration.name, app.registration.url)
+    $scope.services.register(app.registration.name, app.registration.url)
   };
 
   $scope.remove = function removeApp(app) {
     app.installed = false;
-    services.removeService(app.registration.name);
+    $scope.services.removeService(app.registration.name);
   };
 });
 
 subtome.controller("RegisterController", function DevelopersController($scope, $routeParams) {
-  services.register($routeParams.name, $routeParams.url);
+  $scope.services.register($routeParams.name, $routeParams.url);
   $scope.service = {name: $routeParams.name};
 });
 
@@ -138,7 +142,6 @@ subtome.controller("SubscribeController", function SubscribeController($scope, $
     window.location = '/done.html';
   });
 
-  $scope.services = services;
   $scope.resource = $routeParams.resource;
   $scope.feeds = [];
   if($routeParams.feeds && $routeParams.feeds.length > 0) {
