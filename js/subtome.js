@@ -64,6 +64,61 @@ subtome.filter('linkToHome', function() {
   };
 });
 
+
+subtome.directive("ngI18next", function ($rootScope) {
+  var t = null, options = {}, callbacks = [], translated = [];
+
+  function setText(element, translateString, retranslate) {
+    if(!retranslate) {
+      translated[translated.length] = function () {
+        setText(element, translateString, true);
+      };
+    }
+    if(t !== null) {
+      element.html(t(translateString));
+    } else {
+      callbacks[callbacks.length] = function () {
+        setText(element, translateString);
+      };
+    }
+  }
+
+  function init(reinitialization) {
+    window.i18n.init(options, function (tFunction) {
+      $rootScope.$broadcast("i18nextInit");
+      $rootScope.i18nextLoaded = true;
+      var i;
+      t = tFunction;
+      if(!reinitialization) {
+        for(i = 0; i < callbacks.length; i++) {
+          callbacks[i]();
+        }
+        callbacks = [];
+      } else {
+        for(i = 0; i < translated.length; i++) {
+          translated[i]();
+        }
+      }
+    });
+  }
+  $rootScope.$watch("i18nextOptions", function () {
+    options = $rootScope.i18nextOptions || options;
+    init( !! $rootScope.i18nextOptions);
+  });
+  return {
+    restrict: "A",
+    link: function postLink(scope, element, attrs) {
+      attrs.$observe("ngI18next", function (value) {
+        if(!value) {
+          return;
+        }
+        setText(element, value);
+      });
+    }
+  };
+});
+
+
 subtome.controller("IndexController", function IndexController($scope) {
   $scope.over = function over() {
     document.getElementById('demo').innerHTML='Follow our Blog'
@@ -135,7 +190,7 @@ subtome.controller("StoreController", function StoreController($scope) {
 
 subtome.controller("RegisterController", function DevelopersController($scope, $routeParams) {
   $scope.services.register($routeParams.name, $routeParams.url);
-  $scope.service = {name: $routeParams.name};
+  $scope.service = {name: $routeParams.name, url: $routeParams.url};
 });
 
 subtome.controller("SubscribeController", function SubscribeController($scope, $routeParams) {

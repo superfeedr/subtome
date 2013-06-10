@@ -1,30 +1,30 @@
 
 <div class="jumbotron">
   <h1><img src="img/subtome-large.png" alt="SubToMe"/></h1>
-  <h2>Universal Follow Button</h2>
-  <p class="lead">
+  <h2 ng-i18next="index.caption">Universal Follow Button</h2>
+  <p class="lead" ng-i18next="index.summary" >
     SubToMe makes it easy for people to <em>follow</em> web sites,<br />  because browsers don't.
   </p>
-  <a class="btn btn-large btn-primary" ng-click='open()' ng-mouseover='over()' ng-mouseleave='left()' id='demo' style="width:150px">See it in Action</a>
+  <a ng-i18next="index.button" class="btn btn-large btn-primary" ng-click='open()' ng-mouseover='over()' ng-mouseleave='left()' id='demo' style="width:150px">See it in Action</a>
 </div>
 
 <hr>
 
 <div class="row-fluid marketing">
   <div class="span6">
-    <h4>Non intrusive</h4>
-    <p>We hate websites that look like Christmas trees. We just use regular markup and Javascript and are platform agnostic.</p>
+    <h4 ng-i18next="index.points.nonIntrusive.title">Non intrusive</h4>
+    <p ng-i18next="index.points.nonIntrusive.summary">We hate websites that look like Christmas trees. We just use regular markup and Javascript and are platform agnostic.</p>
 
-    <h4>Fully 'local'</h4>
-    <p>Your data is your data. Your data stays in your browser. No account, no tracking, no hassle.</p>
+    <h4 ng-i18next="index.points.fullyLocal.title">Fully 'local'</h4>
+    <p ng-i18next="index.points.fullyLocal.summary">Your data is your data. Your data stays in your browser. No account, no tracking, no hassle.</p>
 
   </div>
 
   <div class="span6">
-    <h4>100% Open</h4>
-    <p>Open Source, open protocols and open to improvements. Help us make it better.</p>
+    <h4 ng-i18next="index.points.open.title">100% Open</h4>
+    <p ng-i18next="index.points.open.summary">Open Source, open protocols and open to improvements. Help us make it better.</p>
 
-    <h4>Works with any reader</h4>
-    <p>We provide a simple registration mechanism for [news|social] readers, as well as a <a href="#/store">store for popular apps</a>.</p>
+    <h4 ng-i18next="index.points.anyReader.title">Works with any reader</h4>
+    <p ng-i18next="index.points.anyReader.summary">We provide a simple registration mechanism for [news|social] readers, as well as a<a href="#/store">store for popular apps</a>.</p>
   </div>
 </div>

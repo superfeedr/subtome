@@ -72,3 +72,10 @@ padding-left: 20px
 .btn.service {
   display: block; margin: 10px; width:200px
 }
+
+.lead.addons {
+background-color: #f9f9f9;
+border:1px solid #dddddd;
+padding: 3px 10px;
+border-radius: 4px;
+}

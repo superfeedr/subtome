@@ -6,11 +6,9 @@
     <span class="label" ng-repeat="tag in app.tags">{{tag}}</span>
     <p>{{app.description}}</p>
 
-    <span ng-show="app.installed" class="success">
-      <i class="icon-ok">&nbsp;</i>&nbsp;Installed
-    <button ng-click="remove(app)"  type="button" class="btn btn-mini btn-danger">Remove</button>
-    </span>
-    <button ng-hide="app.installed" type="button" ng-click="install(app)" class="btn btn-mini">Install</button>
+    <span ng-show="app.installed" class="success" ng-i18next="store.installed"><i class="icon-ok">&nbsp;</i>&nbsp;Installed</span>
+    <button ng-show="app.installed" ng-click="remove(app)"  type="button" class="btn btn-mini btn-danger" ng-i18next="store.remove">Remove</button>
+    <button ng-hide="app.installed" type="button" ng-click="install(app)" class="btn btn-mini" ng-i18next="store.install">Install</button>
   </div>
 </div>
 

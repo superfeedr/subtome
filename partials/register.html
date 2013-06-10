@@ -1,8 +1,8 @@
 <h1>{{service.name}}</h1>
 <p>
-  We successfully registered {{service.name}} as one of your favorite apps.
+  <a href="{{service.url | linkToHome}}">{{service.name}}</a><span ng-i18next="register.success">was successfully registered as one of your favorite apps.</span>
 </p>
-<p>
+<p ng-i18next="register.close">
   You can now safely close this window.
 </p>
 

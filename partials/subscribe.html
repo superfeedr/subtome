@@ -1,17 +1,17 @@
 <div id="subtomeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="subtomeModal" aria-hidden="true">
   <div class="modal-header">
     <a ng-show="feeds.length > 0" href="{{feeds[0]}}" target="_blank" class="rss"><img src='./img/rss-small.png' /></a>
-    <h3>Follow with</h3>
+    <h3 ng-i18next="subscribe.title">Follow with</h3>
   </div>
   <div class="modal-body">
     <p ng-show="services.error" class="alert alert-error">{{services.error}}</p>
-    <p ng-show="services.count() == 0">You do not have selected your prefered services yet. Please, <a target="_blank" href="#/store">pick one</a>!</p></p>
+    <p ng-i18next="subscribe.services.none" ng-show="services.count() == 0">You do not have selected your prefered services yet. Please, <a target="_blank" href="#/store">pick one</a>!</p></p>
 
-    <p ng-show="services.count() > 0">Pick a service to subscribe to this page:</p>
+    <p ng-i18next="subscribe.services.pick" ng-show="services.count() > 0">Pick a service to subscribe to this page:</p>
     <button ng-repeat="service in services.used()" ng-click='openService(service)' class="btn service" data-dismiss="modal">{{service.name}}</button>
   </div>
   <div class="modal-footer">
-    <a ng-click='openSettings()' class="btn" data-dismiss="modal" aria-hidden="true">Settings</a>
-    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <a ng-i18next="subscribe.settings" ng-click='openSettings()' class="btn" data-dismiss="modal" aria-hidden="true">Settings</a>
+    <button ng-i18next="subscribe.cancel" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancel</button>
   </div>
 </div>
