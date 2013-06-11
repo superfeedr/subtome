@@ -142,7 +142,7 @@ subtome.controller("SettingsController", function SettingsController($scope) {
 
 subtome.controller("PublishersController", function PublishersController($scope) {
   $scope.loadGists();
-  $scope.open = function open(url) {
+  $scope.follow = function follow(url) {
     if(!url) {
       var z=document.createElement('script');
       z.src='/load.js';
@@ -212,7 +212,7 @@ subtome.controller("SubscribeController", function SubscribeController($scope, $
   }
 
   $scope.openSettings = function openSettings() {
-    window.open('https://www.subtome.com/settings.html');
+    window.open('#/settings');
   }
 
   $scope.openService = function openService(service) {

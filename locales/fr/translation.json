@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "settings": "Réglages",
+    "publishers": "Ajouter un bouton",
+    "developers": "Developeur de lecteur de flux"
+  },
+  "footer": "Proposé par ",
+  "index": {
+    "caption": "Bouton 'suivre' universel",
+    "summary": "SubToMe vous permets facilement de <em>suivre</em> des sites web,<br /> parce que les navigateurs ne le font pas",
+    "button": "Voyez vous même",
+    "points": {
+      "nonIntrusive": {
+        "title": "Non intrusif",
+        "summary": "Nous aussi, nous detestons les sites webs qui ressemblent à des sapins de Noël! Le bouton n'est fait que de HTML et de Javascript."
+      },
+      "open": {
+        "title": "100% Ouvert",
+        "summary": "Open Source, protcoles ouverts et ouvert au suggestions! Aidez nous à l'améliorer"
+      },
+      "fullyLocal": {
+        "title": "Totallement 'local'",
+        "summary": "Vos données sont vos données. Elles restent dans votre navigateur et ne sont jamais envoyés vers un serveur. Pas de compte, pas de traçage, pas de soucis!"
+      },
+      "anyReader": {
+        "title": "Marche avec n'importe quel lecteur",
+        "summary": "Nous proposons un service d'enregistrement simple et rapide pour vos lecteurs de flux d'actualité ou de flux sociaux, ainsi qu'une <a href=\"#/store\">boutique pour les applications pupulaires</a>."
+      }
+    }
+  },
+  "developers": {
+    "title": "Applications",
+    "subtitle": "Facilitez l'abonnement par votre application",
+    "summary": "Si votre application est capable de gérer les abonnements à des flux, alors cette section est pour vous.",
+    "registration": {
+      "title": "Enregistrement",
+      "description": "Vos utilisateurs vont cliquer sur des boutons 'Abonnez vous' sur des <a href=\"/publishers.html\">sites qui publient</a> du contenu. Lorsqu'ils font cela, une liste des services d'abonnements qu'<em>ils</em> ont utilisé par le passé est affichées. Cette liste n'est pas été séléctionnée par nous, mais est stockée dans leur navigateur web (par le biais de l'API localStorage) si ces services se sont préalablement enregistrés.",
+      "loading": "Votre application peut elle aussi s'enregistrer pour vos utilisateurs en chargeant une ifram comme celle-ci:<br /><small>Prenez note que cela est complètement transparent pour l'utilisateur.</small>",
+      "details": "Le paramètre d'url <code>name</code> est le nom de votre application et le paramètre d'url <code>url</code> est l'url vers laquelle l'utilisateur sera redirigé lorsqu'il choisira votre service pour s'abonner.",
+      "params": {
+        "info": "La gestion de cette url est bien sûr complètement libre et dépend de votre application, mais elle devrait inclure au moins l'un des paramètres suivants:",
+        "url": "<code>{url}</code> qui sera remplacé par le <code>location.href</code> de la page sur laquelle l'utilisateur à voulu s'abonner.",
+        "feeds": "<code>{feeds}</code> qui sera remplacé par la liste des attributs <code>href</code> de chaque element <code>&ltlink&gt</code> correspondant à un flux sur la page du <code>{url}</code>.",
+        "feed": "<code>{feed}</code> qui sera remplacé par le premier des elements <code>{feeds}</code> définis ci-dessus."
+      }
+    },
+    "handling": {
+      "title": "Gestion de l'abonement",
+      "description": "Lorsque l'utilisateur clique sur un bouton SubToMe, il peut choisir son application favorite. Si c'est la vôtre, alors une nouvelle tab sera ouverte et l'utilisateur sera envoyé vers l'<code>url</code> d'enregistrement (voir section précédente). En fonction des paramètres que vous avez passés, vous pourrez alors choisir quel suppport vous souhaitez utiliser pour les abonnements.",
+      "feeds": "Votre application devrait alors procéder à l'abonnement, en extrayant le contenu et le support dont elle a besoin. Nous recommandons bien sûr l'utilisation des flux RSS/Atom, mais il est possible d'utiliser d'autres supports. Par exemple, si l'application inclut un lien vers un profile twitter, vous pourriez utiliser Twitter pour faire suivre ce contact."
+    }
+  },
+  "store": {
+    "installed": "<i class=\"icon-ok\">&nbsp;</i>&nbsp;Installé",
+    "remove": "Supprimer",
+    "install": "Installer"
+  },
+  "register": {
+    "success": " {{service.name}} a été enregistrée avec succès comme l'une de vos applications préférées.",
+    "close": "Vous pouvez maintenant fermer cette fenêtre."
+  },
+  "publishers": {
+    "title": "Editeurs de contenu",
+    "subtitle": "Faites vous suivez par vos lecteurs",
+    "summary": "Vous mettez à jour votre contenu régulièrement et vous voulez que vos lecteurs y reviennent lorsque cela arrive. permettez leur de <em>suivre</em> votre contenu dans leur application favorite. Il vous suffit d'ajouter un bouton comme celui ci <button ng-click='open()' class='btn btn-mini'>Suivre</button> à n'importe quelle page sur laquelle vous souhaitez autoriser les abonnements. Assurez vous que vos pages incluent des liens vers les flux que vos lecteurs suivront.",
+    "code": "Copiez et collez le code ci-dessous dans l'HTML de votre application:",
+    "details": "Ce que cela fait est simple: lorsque votre lecteur clique sur le bouton, un petit script Javascript (<code><a href=\"https://www.subtome.com/load.js\">https://www.subtome.com/load.js</a></code>) est chargé dans le navigateur. Ce script va ensuite lui-même charger la fenêtre SubToMe. N'hésitez pas regarder le code si vous souhiatez en savoir plus.",
+    "open": "Tout ceci est 100% ouver, ce qui implique que vous pouvez changer le code afin qu'il corresponde mieux à vos besoins. Vous pouvez intégrer cela de n'importe quelle façon dans vos pages. N'hésitez pas à nous contacter si vous avez besoin d'aide.",
+    "easy": {
+      "title": "Intégration simple",
+      "wordpress": "Si vous utilisez Wordpress pour votre blog, ajoutez juste ce <a href=\"http://wordpress.org/extend/plugins/subtome\">widget SubToMe</a> à votre mise en page, et intégrez <i>SubToMe</i> dans votre l'interface de votre Tableau de bord."
+    },
+    "custom": {
+      "title": "Personalisation",
+      "summary": "Bien sûr, chaque éditeur a ses propres contraintes et SubToMe est très flexible. Par exemple, vous pourriez avoir plusieurs boutons pour plusieurs flux différents, ou des boutons qui permettent de suivre des flux qui ne sont pas liés sur la page directement, ou même ne montrer le bouton qu'a des nouveaux utilisateurs... etc.",
+      "details": "Tout cela est possible, mais vous aurez sans doute à configurer le code un peu par vous même. Tout d'abord, vous n'utiliseez probablement pas directement le script <code>load.js</code>: insérez seulement une <code>iframe</code> dans vos pages qui afficheront la fenêtre SubToMe en utilisant l'attribut <code>src</code> suivant: <code>https://www.subtome.com/subscribe.html?resource={resource}&feeds={feeds}</code>.",
+      "params": {
+        "resource": "<code>{resource}</code> est l'url encodée qui correspond au contenu suivi par le lecteur.",
+        "feeds": "<code>{feeds}</code>  est une liste d'url encodées des flux suivis, séparés par des virgules. Il peut tout à fait n'y en avoir qu'une."
+      },
+      "example": "Par exemple, ce bouton vous permets de <input class=\"btn btn-mini\" type=\"button\" value=\"suivre le blog de Superfeedr\" ng-click=\"follow('http://blog.superfeedr.com/atom.xml')\" />, tandis que celui-ci vous permets de <input class=\"btn btn-mini\" type=\"button\" value=\"suivre les mises à jour du code de SubToMe's\" ng-click=\"follow('https://github.com/superfeedr/subtome/commits/master.atom')\" />"
+    }
+  },
+  "settings": {
+    "addons": {
+      "bookmarklet": "Faites glisser ce bouton <a href='javascript:(function(){var%20z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()'' onclick=''  class='btn btn-mini' title='Drag this to your Bookmarks Bar to install'>Suivre</a> dans votre barre de signets",
+      "chrome": "ou installez cette <a class='install' href='https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc'>Extension Chrome</a>, ",
+      "firefox": "ou installez cet <a class='install' href='https://addons.mozilla.org/en-us/firefox/addon/subtome-subscribe-button/''>Add-On Firefox",
+      "final": "pour vous suivre les pages qui n'ont pas de bouton."
+    },
+    "title": "Lecteurs de flux",
+    "services": {
+      "name": "Nom du Service",
+      "addedOn": "Ajouté",
+      "remove": "Retirer",
+      "none": "Vous n'utilisez pour l'instant aucun lecteur de flux"
+    },
+    "registration": "D'autres lecteurs de flux peuvent être ajoutés si il s'enregistrent automatiquement. Consultez aussi les <a href=\"#/store\">applications suggérées</a>."
+  },
+  "subscribe": {
+    "title": "Suivre avec",
+    "services": {
+      "none": "Vous n'avez pas encore sélectionné de lecteur. <a target='_blank' href='#/store'>Choisissez-en un</a>!",
+      "pick": "Choisissez un lecteur de flux pour suivre cette page:"
+      },
+
+    "settings": "Réglages",
+    "cancel": "Annuler"
+  }
+}

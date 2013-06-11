@@ -4,7 +4,7 @@
   <span class='browser-specific firefox' ng-i18next="settings.addons.firefox">or install this <a class='install' href="https://addons.mozilla.org/en-us/firefox/addon/subtome-subscribe-button/">Firefox Add-On</a>, </span>
   <span ng-i18next="settings.addons.final">to subscribe to pages without a subscribe button.</span></p>
 <h1 ng-i18next="settings.title">Subscribing applications</h1>
-<table class="table table-striped">
+<table ng-show='services.count() > 0' class="table table-striped">
   <thead>
     <tr>
       <th ng-i18next="settings.services.name">Name of Service</th>
