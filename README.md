@@ -51,9 +51,9 @@ The subscribing application is in charge of extracting the data to which the use
 Registration for popular readers
 ================================
 
-Check the [store](http://subtome.com/store.html)
+Check the [store](https://www.subtome.com/#/store).
 
-Feel free to add yours if you implemented registration. Make sure you support [registration](https://www.subtome.com/developers.html)
+Feel free to add yours if you implemented registration. Make sure you support [registration](https://www.subtome.com/#/developers)
 as well for your existing users.
 
 Discussions

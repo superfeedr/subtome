@@ -1,10 +1,13 @@
 {
+  "lang": "english",
+  "Follow our Blog": "Follow our Blog",
+  "See it in Action": "See it in Action",
   "nav": {
     "settings": "Settings",
     "publishers": "Add a button to your site",
     "developers": "Reader Developers"
   },
-  "footer": "Brought to you by ",
+  "footer": "Brought to you by <a href='http://superfeedr.com'>Superfeedr</a> <img src='https://www.gravatar.com/avatar/a2f7d4dd6df7dd59e4adab811c00a3a1?s=24' style='vertical-align:middle;'>, <a href='https://github.com/superfeedr/subtome'>Source Code</a>.",
   "index": {
     "caption": "Universal Follow Button",
     "summary": "SubToMe makes it easy for people to <em>follow</em> web sites,<br />  because browsers don't do it.",
@@ -34,7 +37,7 @@
     "summary": "If your application is able to handle user subscriptions, this section is for you.",
     "registration": {
       "title": "Registration",
-      "description": "Your users will click on subscribe buttons on some <a href=\"/publishers.html\">publisher</a> pages. When they do so, a list of the subscription services <em>they</em> used in the past is displayed. This list was not curated by us, but stored in their browser (using localStorage) from services that registered their ability to perform susbcriptions for that user.",
+      "description": "Your users will click on subscribe buttons on some <a href=\"/#/publishers\">publisher</a> pages. When they do so, a list of the subscription services <em>they</em> used in the past is displayed. This list was not curated by us, but stored in their browser (using localStorage) from services that registered their ability to perform susbcriptions for that user.",
       "loading": "You too can quickly and easily register your application for your users by loading an iframe like this: <small>Please note that this is completely transparent for the user!</small>",
       "details": "The <code>name</code> query string is the name of your application and the <code>url</code> is the url of the hander which will be called in your application to perform a subscription (thru a user redirect). ",
       "params": {
@@ -73,7 +76,7 @@
     "custom": {
       "title": "Custom way",
       "summary": "Of course, each publisher has their own constraints, and SubToMe is pretty flexible. For example, you may want to make buttons for several feeds, buttons that load a feed which is not linked on the page directly, or you may even not want to show a button at all and show the SubToMe frame when the user comes to your site first... etc",
-      "details": "This is all possible, but you'll have to come up with some code. Don't use the <code>load.js</code> file, just insert an <code>iframe</code> in your page which will show the SubToMe modal. Use the following <code>src</code> attribute: <code>https://www.subtome.com/subscribe.html?resource={resource}&feeds={feeds}</code>.",
+      "details": "This is all possible, but you'll have to come up with some code. Don't use the <code>load.js</code> file, just insert an <code>iframe</code> in your page which will show the SubToMe modal. Use the following <code>src</code> attribute: <code>https://www.subtome.com/#/subscribe?resource={resource}&feeds={feeds}</code>.",
       "params": {
         "resource": "<code>{resource}</code> is the encoded url of the web resource to which the user is subscribing. It does not need to be a feed!",
         "feeds": "<code>{feeds}</code> is a coma separated list of encoded feed urls. There can obviously be just one."
@@ -83,7 +86,7 @@
   },
   "settings": {
     "addons": {
-      "bookmarklet": "Drag and drop this <a href='javascript:(function(){var%20z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()'' onclick=''  class='btn btn-mini' title='Drag this to your Bookmarks Bar to install'>Subscribe</a> bookmarklet into your bookmark bar",
+      "bookmarklet": "Drag and drop this <a href='javascript:(function(){var%20z=document.createElement(\"script\");z.src=\"https://www.subtome.com/load.js\";document.body.appendChild(z);})()' onclick=''  class='btn btn-mini' title='Drag this to your Bookmarks Bar to install'>Subscribe</a> bookmarklet into your bookmark bar",
       "chrome": "or install this <a class='install' href='https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc'>Chrome Extension</a>, ",
       "firefox": "or install this <a class='install' href='https://addons.mozilla.org/en-us/firefox/addon/subtome-subscribe-button/''>Firefox Add-On",
       "final": "to subscribe to pages without a subscribe button."

@@ -64,12 +64,13 @@ subtome.filter('linkToHome', function() {
   };
 });
 
+
 subtome.controller("IndexController", function IndexController($scope) {
   $scope.over = function over() {
-    document.getElementById('demo').innerHTML='Follow our Blog'
+    document.getElementById('demo').innerHTML=i18n.t("Follow our Blog");
   }
   $scope.left = function left() {
-    document.getElementById('demo').innerHTML='See it in Action';
+    document.getElementById('demo').innerHTML=i18n.t("See it in Action");
   }
   $scope.follow = function follow() {
     var z=document.createElement('script');
@@ -143,7 +144,6 @@ subtome.controller("SubscribeController", function SubscribeController($scope, $
   $("hr").hide();
   $(".masthead").hide();
   $(".footer").hide();
-  $(".github").hide();
 
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
   $('#subtomeModal').on('hidden', function() {

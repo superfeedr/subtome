@@ -2,6 +2,10 @@
   display: none;
 }
 
+#demo {
+  width:180px;
+}
+
 .rss {
   padding: 4px;
   opacity: 0.3;
