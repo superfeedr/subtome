@@ -56,13 +56,13 @@
     "install": "Install"
   },
   "register": {
-    "success": " was successfully registered as one of your favorite apps.",
+    "success": "<a href='{{service.url | linkToHome}}'>{{service.name}}</a> was successfully registered as one of your favorite apps.",
     "close": "You can now safely close this window."
   },
   "publishers": {
     "title": "Publishers",
     "subtitle": "Get your readers to subscribe to your content",
-    "summary": "You update your content regularly. You want your users to come back when that happens: allow them to <em>subscribe</em> to your content. It's as easy as adding a button like this one <button ng-click='open()' class='btn btn-mini'>Subscribe</button> to any page where you want to allow subscriptions. Make sure your page links to a feed corresponding to the data your readers will susbcribe to.",
+    "summary": "You update your content regularly. You want your users to come back when that happens: allow them to <em>subscribe</em> to your content. It's as easy as adding a button like this one <button ng-click='follow()' class='btn btn-mini'>Subscribe</button> to any page where you want to allow subscriptions. Make sure your page links to a feed corresponding to the data your readers will susbcribe to.",
     "code": "Copy and paste the code below into any HTML page.",
     "details": "What this does is quite simple: when the user clicks the button, it loads a small Javascript snippet located at <code><a href=\"https://www.subtome.com/load.js\">https://www.subtome.com/load.js</a></code>. This snippet will then load the SubToMe modal. Feel free to check the code if you want to learn more.",
     "open": "Of course, this is 100% open, which means that you can change that code in any way you want, or use other mechanisms that fit your needs. Feel free to get in touch if you need help.",

@@ -1,5 +1,5 @@
 <p class="lead addons">
-  <span ng-i18next="settings.addons.bookmarklet">Drag and drop this <a href="javascript:(function(){var%20z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" onclick="" id="bookmarklet_button" class="btn btn-mini" title="Drag this to your Bookmarks Bar to install">Subscribe</a> bookmarklet into your bookmark bar </span>
+  <span ng-i18next="[html]settings.addons.bookmarklet">Drag and drop this <a href="javascript:(function(){var%20z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" onclick="" id="bookmarklet_button" class="btn btn-mini" title="Drag this to your Bookmarks Bar to install">Subscribe</a> bookmarklet into your bookmark bar </span>
   <span class='browser-specific chrome' ng-i18next="settings.addons.chrome">or install this <a class='install' href="https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc">Chrome Extension</a>, </span>
   <span class='browser-specific firefox' ng-i18next="settings.addons.firefox">or install this <a class='install' href="https://addons.mozilla.org/en-us/firefox/addon/subtome-subscribe-button/">Firefox Add-On</a>, </span>
   <span ng-i18next="settings.addons.final">to subscribe to pages without a subscribe button.</span></p>
@@ -22,6 +22,6 @@
   </tbody>
 </table>
 <p ng-show='services.count() == 0' style="text-align: center;font-style: italic; margin: 30px auto;" ng-i18next="settings.services.none">You currently do not use any reader.</p>
-<p ng-i18next="settings.registration">
+<p ng-i18next="[html]settings.registration">
   New services are added automatically when they register with SubToMe. Check our <a href="#/store">suggested apps</a>.
 </p>

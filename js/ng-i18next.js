@@ -22,7 +22,7 @@
  *           console.log(i18n.t('hello'));
  *       });
  */
-angular.module('i18next', []).directive('ngI18next', function ($rootScope, $interpolate) {
+angular.module('i18next', []).directive('ngI18next', function ($rootScope, $interpolate, $compile) {
 
   'use strict';
 
@@ -78,7 +78,7 @@ angular.module('i18next', []).directive('ngI18next', function ($rootScope, $inte
       }
 
       /*
-       * Bind variables to the scope (doesn't watch for changes)
+       * Bind variables to the scope (doesn't watch for changes, yet)
        */
       var string = $interpolate(t(key))(scope);
 
@@ -95,6 +95,12 @@ angular.module('i18next', []).directive('ngI18next', function ($rootScope, $inte
         element.attr(attr, string);
 
       }
+
+      /*
+       * Now compile the content of the element and bind the variables to
+       * the scope
+       */
+      $compile(element.contents())(scope);
 
     } else {
       /*
