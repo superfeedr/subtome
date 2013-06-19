@@ -78,7 +78,7 @@ Services.prototype.removeService = function removeService(name) {
 Services.prototype.register = function registerService(name, handler) {
   if(!this.services[name]) {
     this.services[name] = {
-      url: handler,
+      url: decodeURIComponent(handler),
       addedOn: Date.now()
     }
     this.save();
