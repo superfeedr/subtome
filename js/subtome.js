@@ -59,7 +59,7 @@ subtome.filter('fromNow', function() {
 subtome.filter('linkToHome', function() {
   return function(url) {
     var a = document.createElement('a');
-    a.href = url;
+    a.href = decodeURIComponent(url);
     return a.protocol + '//' + a.host + '/';
   };
 });
@@ -161,7 +161,7 @@ subtome.controller("SubscribeController", function SubscribeController($scope, $
   }
 
   $scope.openService = function openService(service) {
-    var redirect = service.url.replace('{url}', encodeURIComponent($scope.resource));
+    var redirect = decodeURIComponent(service.url).replace('{url}', encodeURIComponent($scope.resource));
     if(redirect.match(/\{feed\}/)) {
       if($scope.feeds[0]) {
         redirect = redirect.replace('{feed}', encodeURIComponent($scope.feeds[0]));
