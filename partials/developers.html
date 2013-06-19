@@ -22,7 +22,10 @@
   <li ng-i18next="[html]developers.registration.params.feed"><code>{feed}</code> will be populated with the first (if any) of the <code>{feeds}</code> above.
   </li>
 </ul>
+
+<blockquote ng-i18next="[html]developers.handling.example">For example, if your application registers the following url: <br /><code>http://my-great-reader.com/feeds/subscribe?feed={feed}&url={url}</code>,<br /> the user will be redirected to <a href="http://my-great-reader.com/feeds/subscribe?feed=http%3A%2F%2Fblog.superfeedr.com%2Fatom.xml&url=http%3A%2F%2Fblog.superfeedr.com%2">this url</a> to subscribe to the <a href="http://blog.superfeedr.com/">Superfeedr Blog</a>.</blockquote>
+
 <h3 ng-i18next="developers.handling.title">Subscription handling</h3>
 
-<p ng-i18next="[html]developers.handling.description">When a user clicks on a SubToMe button, he can pick his favorite subscription application. If it's yours, then, a new browser tab will be created and will point to your application's handler <code>url</code> (see previous section). Based on the <code>url</code> you've provided, you will be able to extract the location of the page on which the button was clicked and its feeds.</p>
+<p ng-i18next="[html]developers.handling.description">When a user clicks on a SubToMe button, he can pick his favorite subscription application. If it's yours, then, a new browser tab will be created and will point to your application's handler <code>url, feed or feeds</code> (see previous section). Based on the <code>url</code> you've provided, you will be able to extract the location of the page on which the button was clicked and its feeds.</p>
 <p ng-i18next="[html]developers.handling.feeds">Your application should then, perform the subscription, by extracting the content it needs. We recommend using the RSS/Atom feeds, but you could also very well extract the links to a Twitter profile for example allow the user to follow that profile. Possibilities are endless.</p>
