@@ -48,8 +48,7 @@
     </script>
 
     <div class="container-narrow">
-
-      <div class="masthead">
+      <div ng-show='fullLayout' class="masthead">
         <ul class="nav nav-pills pull-right">
           <li><a ng-i18next="nav.settings" ng-href="#/settings">Settings</a></li>
           <li><a ng-i18next="nav.publishers" ng-href="#/publishers">Add a button to your site</a></li>
@@ -57,13 +56,13 @@
         </ul>
         <h3 class="muted"><a href="/" class='subtome'><img src="img/subtome-small.png" style="height: 35px;"/></a></h3>
       </div>
-      <hr>
+      <hr ng-show='fullLayout'>
 
       <div ng-view></div>
 
-      <hr>
+      <hr ng-show='fullLayout'>
 
-      <div class="footer">
+      <div ng-show='fullLayout' class="footer">
         <p ng-i18next="[html]footer">Brought to you by<a href="http://superfeedr.com">Superfeedr</a> <img src="https://www.gravatar.com/avatar/a2f7d4dd6df7dd59e4adab811c00a3a1?s=24" style="vertical-align:middle;">. <a class="github" href="https://github.com/superfeedr/subtome">Source Code</a></p>
       </div>
 

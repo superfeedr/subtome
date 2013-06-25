@@ -15,7 +15,9 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', function($routeProvider, 
   }
 ]);
 
-subtome.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
+subtome.run(['$rootScope', '$location', function($rootScope, $location) {
+  $rootScope.fullLayout = ($location.path() !== '/subscribe');
+
   $rootScope.loadGists = function loadGists() {
     $('.script').each(function(i,div) {
       $.ajax({

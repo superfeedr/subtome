@@ -37,6 +37,7 @@ padding-left: 20px
 }
 
       body {
+        background-color: transparent;
         padding-top: 20px;
         padding-bottom: 40px;
       }
