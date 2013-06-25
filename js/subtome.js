@@ -65,7 +65,7 @@ subtome.filter('linkToHome', function() {
 });
 
 
-subtome.controller("IndexController", function IndexController($scope) {
+subtome.controller("IndexController", ['$scope', function IndexController($scope) {
   $scope.over = function over() {
     document.getElementById('demo').innerHTML=i18n.t("Follow our Blog");
   }
@@ -77,16 +77,16 @@ subtome.controller("IndexController", function IndexController($scope) {
     z.src='/load.js';
     document.body.appendChild(z);
   }
-});
+}]);
 
-subtome.controller("SettingsController", function SettingsController($scope) {
+subtome.controller("SettingsController", ['$scope', function SettingsController($scope) {
   $scope.showBrowserSpecifics();
   $scope.remove = function removeService(service) {
     $scope.services.removeService(service.name);
   }
-});
+}]);
 
-subtome.controller("PublishersController", function PublishersController($scope) {
+subtome.controller("PublishersController", ['$scope', function PublishersController($scope) {
   $scope.loadGists();
   $scope.follow = function follow(url) {
     if(!url) {
@@ -110,13 +110,13 @@ subtome.controller("PublishersController", function PublishersController($scope)
       document.getElementsByTagName('body')[0].appendChild(s);
     }
   }
-});
+}]);
 
-subtome.controller("DevelopersController", function DevelopersController($scope) {
+subtome.controller("DevelopersController", ['$scope', function DevelopersController($scope) {
   $scope.loadGists();
-});
+}]);
 
-subtome.controller("StoreController", function StoreController($scope) {
+subtome.controller("StoreController", ['$scope', function StoreController($scope) {
   var apps = appStore;
   apps.forEach(function(a) {
     a.installed = $scope.services.uses(a.name);
@@ -132,14 +132,14 @@ subtome.controller("StoreController", function StoreController($scope) {
     app.installed = false;
     $scope.services.removeService(app.registration.name);
   };
-});
+}]);
 
-subtome.controller("RegisterController", function DevelopersController($scope, $routeParams) {
+subtome.controller("RegisterController", ['$scope', '$routeParams', function DevelopersController($scope, $routeParams) {
   $scope.services.register($routeParams.name, $routeParams.url);
   $scope.service = {name: $routeParams.name, url: $routeParams.url};
-});
+}]);
 
-subtome.controller("SubscribeController", function SubscribeController($scope, $routeParams) {
+subtome.controller("SubscribeController", ['$scope', '$routeParams', function SubscribeController($scope, $routeParams) {
   $("body").css("background", "transparent")
   $("hr").hide();
   $(".masthead").hide();
@@ -175,5 +175,5 @@ subtome.controller("SubscribeController", function SubscribeController($scope, $
     }
     window.open(redirect);
   }
-});
+}]);
 
