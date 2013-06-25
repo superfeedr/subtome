@@ -1,6 +1,8 @@
-var subtome = angular.module('subtome', ['i18next']);
+var subtome = angular.module('subtome', ['i18next', 'angular-google-analytics']);
 
-subtome.config(['$routeProvider', function($routeProvider) {
+subtome.config(['$routeProvider', 'AnalyticsProvider', function($routeProvider, AnalyticsProvider) {
+  AnalyticsProvider.setAccount('UA-39876787-1');
+
   $routeProvider.
     when('/', {templateUrl: 'partials/index.html',   controller: "IndexController"}).
     when('/settings', {templateUrl: 'partials/settings.html', controller: "SettingsController"}).
@@ -137,12 +139,13 @@ subtome.controller("StoreController", ['$scope', function StoreController($scope
   };
 }]);
 
-subtome.controller("RegisterController", ['$scope', '$routeParams', function DevelopersController($scope, $routeParams) {
+subtome.controller("RegisterController", ['$scope', '$routeParams', 'Analytics', function DevelopersController($scope, $routeParams, Analytics) {
+  Analytics.trackEvent('services', 'register', $routeParams.name);
   $scope.services.register($routeParams.name, $routeParams.url);
   $scope.service = {name: $routeParams.name, url: $routeParams.url};
 }]);
 
-subtome.controller("SubscribeController", ['$scope', '$routeParams', function SubscribeController($scope, $routeParams) {
+subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics', function SubscribeController($scope, $routeParams, Analytics) {
   $("body").css("background", "transparent")
   $("hr").hide();
   $(".masthead").hide();
@@ -154,9 +157,11 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', function Su
   });
 
   $scope.resource = $routeParams.resource;
+  Analytics.trackEvent('resources', 'subscribe', $scope.resource);
   $scope.feeds = [];
   if($routeParams.feeds && $routeParams.feeds.length > 0) {
     $scope.feeds = $routeParams.feeds.split(",");
+    Analytics.trackEvent('feeds', 'subscribe', $scope.feeds[0]);
   }
 
   $scope.openSettings = function openSettings() {
@@ -164,6 +169,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', function Su
   }
 
   $scope.openService = function openService(service) {
+    Analytics.trackEvent('services', 'redirect', service.name)
     var redirect = decodeURIComponent(service.url).replace('{url}', encodeURIComponent($scope.resource));
     if(redirect.match(/\{feed\}/)) {
       if($scope.feeds[0]) {
