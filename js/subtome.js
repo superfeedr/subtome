@@ -13,7 +13,10 @@ subtome.config(['$routeProvider', function($routeProvider) {
   }
 ]);
 
-subtome.run(['$rootScope', function($rootScope) {
+subtome.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
+  $rootScope.$on('$routeChangeSuccess', function() {
+    $window._gaq.push(['_trackPageview', $location.path()]);
+  })
   $rootScope.loadGists = function loadGists() {
     $('.script').each(function(i,div) {
       $.ajax({
