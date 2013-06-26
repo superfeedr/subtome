@@ -84,3 +84,8 @@ border:1px solid #dddddd;
 padding: 3px 10px;
 border-radius: 4px;
 }
+
+
+.main-layout {
+  display: none;
+}

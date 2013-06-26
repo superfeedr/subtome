@@ -17,7 +17,10 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', function($routeProvider, 
 ]);
 
 subtome.run(['$rootScope', '$location', function($rootScope, $location) {
-  $rootScope.fullLayout = ($location.path() !== '/subscribe');
+  if ($location.path() !== '/subscribe') {
+    console.log('SHOW!')
+    $('.main-layout').show();
+  }
 
   $rootScope.loadGists = function loadGists() {
     $('.script').each(function(i,div) {
@@ -144,11 +147,6 @@ subtome.controller("RegisterController", ['$scope', '$routeParams', 'Analytics',
 }]);
 
 subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics', function SubscribeController($scope, $routeParams, Analytics) {
-  $("body").css("background", "transparent")
-  $("hr").hide();
-  $(".masthead").hide();
-  $(".footer").hide();
-
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
   $('#subtomeModal').on('hidden', function() {
     if($routeParams.back) {
@@ -168,7 +166,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
   }
 
   $scope.openSettings = function openSettings() {
-    window.open('#/settings');
+    window.open('/#/settings');
   }
 
   $scope.openService = function openService(service) {
