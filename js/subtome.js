@@ -1,3 +1,4 @@
+(function() {
 var subtome = angular.module('subtome', ['i18next', 'angular-google-analytics']);
 
 subtome.config(['$routeProvider', 'AnalyticsProvider', function($routeProvider, AnalyticsProvider) {
@@ -77,9 +78,7 @@ subtome.controller("IndexController", ['$scope', function IndexController($scope
     document.getElementById('demo').innerHTML=i18n.t("See it in Action");
   }
   $scope.follow = function follow() {
-    var z=document.createElement('script');
-    z.src='/load.js';
-    document.body.appendChild(z);
+    window.location = '/#/subscribe?resource=http://subtome.com&feeds=http%3A%2F%2Fblog.superfeedr.com%2Fatom.xml&back=/#/';
   }
 }]);
 
@@ -152,7 +151,12 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
 
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
   $('#subtomeModal').on('hidden', function() {
-    window.location = '/done.html';
+    if($routeParams.back) {
+      window.location = $routeParams.back;
+    }
+    else {
+      window.location = '/done.html';
+    }
   });
 
   $scope.resource = $routeParams.resource;
@@ -184,4 +188,5 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     window.open(redirect);
   }
 }]);
+})();
 
