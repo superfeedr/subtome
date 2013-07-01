@@ -1,0 +1,114 @@
+{
+  "lang": "Deutsch",
+  "Follow our Blog": "Folge unserem Blog",
+  "See it in Action": "Schau es dir an",
+  "nav": {
+    "settings": "Einstellungen"
+    "publishers": "Füge einen Knopf zu deiner Seite hinzu",
+    "developers": "Entwickler"
+  },
+  "footer": "Präsentiert von <a href='http://superfeedr.com'>Superfeedr</a> <img src='https://www.gravatar.com/avatar/a2f7d4dd6df7dd59e4adab811c00a3a1?s=24' style='vertical-align:middle;'>, <a href='https://github.com/superfeedr/subtome'>Source Code</a>.",
+  "index": {
+    "caption": "Universal Follow Button",
+    "summary": "SubToMe ermöglicht ein einfaches <em>Folgen</em> von Webseiten,<br />  weil Browser das nicht tun.",
+    "button": "Schau es dir an",
+    "points": {
+      "nonIntrusive": {
+        "title": "Ohne Veränderungen",
+        "summary": "Wir hassen Webseiten, die aussehen wie Weihnachtsbäume. Wir verwenden nur zulässiges Markup und Javascript und sind Plattform-unabhängig."
+      },
+      "open": {
+        "title": "100% offen",
+        "summary": "Open Source, offene Protokolle und offen für Verbesserungen. Hilf uns, es besser zu machen."
+      },
+      "fullyLocal": {
+        "title": "Total lokal",
+        "summary": "Deine Daten sind deine Daten. Deine Daten bleiben auf deinem Computer. Kein Benutzerkonto, kein Tracking, kein Ärger."
+      },
+      "anyReader": {
+        "title": "Funktioniert mit jedem Reader",
+        "summary": "Wir ermöglichen einen einfachen Registrierungsmechanismus für [News|Social] Reader. Schau in unsere <a href=\"#/store\">Liste beliebter Anwendungen</a>."
+      }
+    }
+  },
+  "developers": {
+    "title": "Dienste",
+    "subtitle": "Ermögliche deinen Benutzern, Inhalten zu folgen",
+    "summary": "Falls dein Dienst mit Benutzer-Abos umgehen kann, ist dieser Abschnitt für dich.",
+    "registration": {
+      "title": "Registrierung",
+      "description": "Deine Benutzer klicken auf einen Abo-Knopf auf einer <a href=\"/#/publishers\">Publisher</a>-Seite. Wenn sie das tun, wird eine Liste von Dienste angezeigt, die <em>sie</em> in der Vergangenheit benutzt haben. Diese Liste wird nicht von uns gepflegt, sondern ist in ihrem Browser (mit LocalStorage) hinterlegt, von Diensten, die sich registriert haben, um Abos für den Benutzer durchzuführen.",
+      "loading": "Du kannst ebenfalls schnell und einfach deine Anwendung für deine Benutzer registrieren, indem du einen iframe in deine Seite einbaust: <small>Bitte beachte, dass das völlig unsichtbar für deine Benutzer geschieht!</small>",
+      "details": "<code>name</code> in der Query steht für den Namen deines Dienstes und <code>url</code> ist die Zieladresse, die in deiner Anwendung aufgerufen wird, um ein Abo durchzuführen (durch die Weiterleitung eines Benutzers). ",
+      "params": {
+        "info": "Das Aussehen der Zieladresse liegt völlig bei dir, sollte aber mind. einen der folgenden Parameter enthalten:",
+        "url": "<code>{url}</code> wird gefüllt mit <code>location.href</code> der Seite auf der der Benutzer den Abo-Knopf geklickt hat.",
+        "feeds": "<code>{feeds}</code> wird gefüllt mit den <code>href</code> Elementen aller <code><link></code> Elemente, die einen Feed referenzieren auf der Seite auf der der Benutzer den Abo-Knopf geklickt hat.",
+        "feed": "<code>{feed}</code> wird gefüllt mit dem 1. (falls vorhanden) der oben genannten <code>{feeds}</code>."
+      }
+    },
+    "handling": {
+      "title": "Abo-Abwicklung",
+      "description": "Wenn der Benutzer einen SubToMe-Knopf drückt, kann er seine bevorzugte Abo-Anwendung auswählen. Falls es deine ist, wird ein neuer Browser-Tab geöffnet, der zu deiner Zieladresse zeigt <code>url, feed or feeds</code> (siehe vorheriger Abschnitt). Abhängig von dem <code>Handler</code> den du angegeben hast, kannst du die Adresse der Seite auf der der Knopf gedrückt wurde und seine Feeds auslesen.",
+      "feeds": "Deine Anwendung sollte dann, um das Abo durchzuführen, die benötigten Daten auslesen. Wir empfehlen RSS/Atom Feeds zu verwenden, aber du kannst genauso gut, z.B. auch Links zu Twitter-Profilen extrahieren, um deinen Benutzer zu ermöglichen diesen zu folgen. Die Möglichkeiten sind unbegrenzt.",
+      "example": "Als Beispiel, falls deine Anwendung folgender URL folgt: <br /><code>http://my-great-reader.com/feeds/subscribe?feed={feed}&url={url}</code>, der Benutzer wird weitergeleitet zu <a href=\"http://my-great-reader.com/feeds/subscribe?feed=http%3A%2F%2Fblog.superfeedr.com%2Fatom.xml&url=http%3A%2F%2Fblog.superfeedr.com%2\">this url</a> um das <a href=\"http://blog.superfeedr.com/\">Superfeedr Blog</a> zu abonnieren."
+    }
+  },
+  "store": {
+    "installed": "<i class=\"icon-ok\">&nbsp;</i>&nbsp;Installiert",
+    "remove": "Entfernen",
+    "install": "Installieren"
+  },
+  "register": {
+    "success": "<a href='{{service.url | linkToHome}}'>{{service.name}}</a> wurde erfolgreich als eine deiner bevorzugten Apps registriert.",
+    "close": "Du kannst jetzt dieses Fenster schließen."
+  },
+  "publishers": {
+    "title": "Publishers",
+    "subtitle": "Bringe deine Leser dazu, deine Inhalte zu abonnieren",
+    "summary": "Du aktualisierst deine Inhalte regelmäßig. Du willst deine Benutzer zurückholen, wenn das passiert: ermögliche ihnen deine Inhalte zu <em>abonnieren</em>. Das geht ganz leicht, indem du einen Knopf wie diesen <button ng-click='follow()' class='btn btn-mini'>Subscribe</button> zu irgendeiner Seite hinzufügst, um Abos zu ermöglichen. Stelle sicher, dass deine Seite einen Link beinhaltet, den deine Leser abonnieren können.",
+    "code": "Kopiere und füge folgenden Code unten in eine beliebige HTML-Seite ein.",
+    "details": "Wenn der Benutzer den Knopf klickt, wird ein kleines JavaScript-Snippet von <code><a href=\"https://www.subtome.com/load.js\">https://www.subtome.com/load.js</a></code> geladen. Dieses Snippet lädt dann den SubToMe Dialog. Schau dir den Code um, um mehr darüber zu lernen.",
+    "open": "Natürlich ist alles 100% offen, was bedeutet, du kannst den Code in jeder Weise verändern, anpassen und andere Mechanismen verwenden, die dir zusagen. Trete mit uns in Kontakt, wenn du Hilfe benötigst.",
+    "easy": {
+      "title": "Schneller Weg"
+      "wordpress": "Falls du WordPress für dein Blog benutzt, füge einfach das <a href=\"http://wordpress.org/extend/plugins/subtome\">SubToMe widget</a> zu deinem Seitenlayout hinzu oder schaue nach <i>SubToMe</i> über die 'Installiere Plugins' Schnittstelle in deinem Dashboard."
+    },
+    "custom": {
+      "title": "Individuelle Anpassungen"
+      "summary": "Natürlich hat jeder Publisher eigene Ideen. SubToMe ist sehr flexibel. Zum Beispiel, wenn du mehrere Knöpfe für verschiedene Feeds anzeigen willst, Knöpfe, die einen Feed laden, der nicht direkt auf der Seite verlinkt ist oder du willst überhaupt keinen Knopf anzeigen und zuerst den SubToMe frame anzeigen, wenn der Benutzer das 1. Mal auf deine Seite kommt... etc",
+      "details": "Das ist alles möglich, aber du musst dafür Code erstellen. Benutze nicht die <code>load.js</code> Datei, sondern füge nur den <code>iframe</code> in deine Seite, der den SubToMe Dialog anzeigt. Benutze das folgende <code>src</code> Attribut: <code>https://www.subtome.com/#/subscribe?resource={resource}&feeds={feeds}</code>.",
+      "params": {
+        "resource": "<code>{resource}</code> ist die kodierte URL der Web-Ressource, die der Benutzer abonniert. Es muss kein Feed sein!",
+        "feeds": "<code>{feeds}</code> ist eine Komma separierte Liste von kodierten Feed URLs. Es kann nur eine geben."
+      },
+      "example": "Dieser Knopf erlaubt dir z.B. dem <input class=\"btn btn-mini\" type=\"button\" value\"Superfeedr's Blog zu folgen\" ng-click=\"follow('http://blog.superfeedr.com/atom.xml')\" />, während dieser Knopf dir ermöglicht, <input class=\"btn btn-mini\" type=\"button\" value=\"SubToMes Code-Änderungen zu folgen\" ng-click=\"follow('https://github.com/superfeedr/subtome/commits/master.atom')\" />"
+    }
+  },
+  "settings": {
+    "addons": {
+      "bookmarklet": "Drücke und ziehe dieses <a href='javascript:(function(){var%20z=document.createElement(\"script\");z.src=\"https://www.subtome.com/load.js\";document.body.appendChild(z);})()' onclick=''  class='btn btn-mini' title='Ziehe dies in deine Bookmarkleiste, um es zu installieren'>Abonnieren</a> Bookmarklet in deine Bookmarkleiste",
+      "chrome": "oder installiere diese <a class='install' href='https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc'>Chrome Extension</a>, ",
+      "firefox": "oder installiere dieses <a class='install' href='https://addons.mozilla.org/en-us/firefox/addon/subtome-subscribe-button/''>Firefox Add-On",
+      "final": "um Seiten zu abonnieren, die über keinen Abonnieren-Knopf verfügen."
+    },
+    "title": "Abo-Dienste",
+    "services": {
+      "name": "Name des Dienstes",
+      "addedOn": "Hinzugefügt",
+      "remove": "Entfernen",
+      "none": "Du benutzt im Moment keinen Reader."
+    },
+    "registration": "Neue Dienste werden automagisch hinzugefügt, wenn sie sich bei SubToMe registrieren. Schau in unsere <a href=\"#/store\">vorgeschlagenen Dienste</a>."
+  },
+  "subscribe": {
+    "title": "Folge mit",
+    "services": {
+      "none": "Du hast biser keine bevorzugten Dienste ausgewählt. Bitte <a target='_blank' href='#/store'>wählen einen</a>!",
+      "pick": "Wähle einen Dienst aus, um diese Seite zu abonnieren:"
+      },
+
+    "settings": "Einstellungen",
+    "cancel": "Abbrechen"
+  }
+}
