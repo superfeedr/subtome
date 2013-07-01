@@ -3,7 +3,7 @@
   "Follow our Blog": "Folge unserem Blog",
   "See it in Action": "Schau es dir an",
   "nav": {
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
     "publishers": "Füge einen Knopf zu deiner Seite hinzu",
     "developers": "Entwickler"
   },
@@ -71,18 +71,18 @@
     "details": "Wenn der Benutzer den Knopf klickt, wird ein kleines JavaScript-Snippet von <code><a href=\"https://www.subtome.com/load.js\">https://www.subtome.com/load.js</a></code> geladen. Dieses Snippet lädt dann den SubToMe Dialog. Schau dir den Code um, um mehr darüber zu lernen.",
     "open": "Natürlich ist alles 100% offen, was bedeutet, du kannst den Code in jeder Weise verändern, anpassen und andere Mechanismen verwenden, die dir zusagen. Trete mit uns in Kontakt, wenn du Hilfe benötigst.",
     "easy": {
-      "title": "Schneller Weg"
+      "title": "Schneller Weg",
       "wordpress": "Falls du WordPress für dein Blog benutzt, füge einfach das <a href=\"http://wordpress.org/extend/plugins/subtome\">SubToMe widget</a> zu deinem Seitenlayout hinzu oder schaue nach <i>SubToMe</i> über die 'Installiere Plugins' Schnittstelle in deinem Dashboard."
     },
     "custom": {
-      "title": "Individuelle Anpassungen"
+      "title": "Individuelle Anpassungen",
       "summary": "Natürlich hat jeder Publisher eigene Ideen. SubToMe ist sehr flexibel. Zum Beispiel, wenn du mehrere Knöpfe für verschiedene Feeds anzeigen willst, Knöpfe, die einen Feed laden, der nicht direkt auf der Seite verlinkt ist oder du willst überhaupt keinen Knopf anzeigen und zuerst den SubToMe frame anzeigen, wenn der Benutzer das 1. Mal auf deine Seite kommt... etc",
       "details": "Das ist alles möglich, aber du musst dafür Code erstellen. Benutze nicht die <code>load.js</code> Datei, sondern füge nur den <code>iframe</code> in deine Seite, der den SubToMe Dialog anzeigt. Benutze das folgende <code>src</code> Attribut: <code>https://www.subtome.com/#/subscribe?resource={resource}&feeds={feeds}</code>.",
       "params": {
         "resource": "<code>{resource}</code> ist die kodierte URL der Web-Ressource, die der Benutzer abonniert. Es muss kein Feed sein!",
         "feeds": "<code>{feeds}</code> ist eine Komma separierte Liste von kodierten Feed URLs. Es kann nur eine geben."
       },
-      "example": "Dieser Knopf erlaubt dir z.B. dem <input class=\"btn btn-mini\" type=\"button\" value\"Superfeedr's Blog zu folgen\" ng-click=\"follow('http://blog.superfeedr.com/atom.xml')\" />, während dieser Knopf dir ermöglicht, <input class=\"btn btn-mini\" type=\"button\" value=\"SubToMes Code-Änderungen zu folgen\" ng-click=\"follow('https://github.com/superfeedr/subtome/commits/master.atom')\" />"
+      "example": "Dieser Knopf erlaubt dir z.B. dem <input class=\"btn btn-mini\" type=\"button\" value=\"Superfeedr's Blog zu folgen\" ng-click=\"follow('http://blog.superfeedr.com/atom.xml')\" />, während dieser Knopf dir ermöglicht, <input class=\"btn btn-mini\" type=\"button\" value=\"SubToMes Code-Änderungen zu folgen\" ng-click=\"follow('https://github.com/superfeedr/subtome/commits/master.atom')\" />"
     }
   },
   "settings": {
