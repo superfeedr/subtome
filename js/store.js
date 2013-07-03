@@ -123,14 +123,14 @@ var appStore = [
   }
 },
 {
-  name: 'Google Reader',
-  tags: ['web', 'deprecated', 'advanced'],
-  description: 'Google Reader will be shut down on July 1st 2013. We suggest you look at some other option.',
-  url: 'http://www.google.com/reader',
-  icon: 'https://www.google.com/reader/ui/favicon.ico',
+  name: 'InoReader',
+  tags: ['web', 'advanced'],
+  description: 'Light and Fast RSS/Atom Reader inspired by Google Reader',
+  url: 'https://inoreader.com/',
+  icon: 'https://inoreader.com/images/icons/72_x_72_pixels.png',
   registration: {
-    name: 'Google Reader',
-    url: 'http://www.google.com/reader/view/feed/{feed}'
+    name: 'InoReader',
+    url: 'https://www.inoreader.com/?add_feed={feed}'
   }
 }
 ];
