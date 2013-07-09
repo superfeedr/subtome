@@ -9,7 +9,7 @@
 .rss {
   padding: 4px;
   opacity: 0.3;
-  float: right;
+  display: inline;
   filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
   filter: gray; /* IE6-9 */
   -webkit-filter: grayscale(1); /* Google Chrome & Safari 6+ */
@@ -96,5 +96,9 @@ body {
 .icon-service {
   background-size: 16px 16px;
   background-position: center center;
+}
+
+.modal-header h3 {
+  display: inline;
 }
 
