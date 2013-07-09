@@ -6,10 +6,22 @@
   </div>
   <div class="modal-body">
     <p ng-show="services.error" class="alert alert-error">{{services.error}}</p>
-    <p ng-i18next="[html]subscribe.services.none" ng-show="services.count() == 0">You do not have selected your prefered services yet. Please, <a target="_blank" href="#/store">pick one</a>!</p></p>
+    <p ng-i18next="[html]subscribe.services.none" ng-show="services.count() == 0 && !suggested">You do not have selected your prefered services yet. Please, <a target="_blank" href="#/store">pick one</a>!</p>
 
     <p ng-i18next="subscribe.services.pick" ng-show="services.count() > 0">Pick a service to subscribe to this page:</p>
-    <button ng-repeat="service in services.used()" ng-click='openService(service)' class="btn service  btn-block" data-dismiss="modal"><i class="icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></i> &nbsp;{{service.name}}</button>
+
+    <p>
+      <button ng-repeat="service in services.used()" ng-click='openService(service)' class="btn service  btn-block" data-dismiss="modal"><i class="icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></i> &nbsp;{{service.name}}</button>
+    </p>
+
+    <div ng-show="suggested">
+      <p ng-i18next="subscribe.services.suggested" ng-show="services.count() > 0">Recomanded:</p>
+      <p ng-i18next="subscribe.services.recommanded" ng-show="services.count() == 0 ">Recomanded tool by the publisher:</p>
+      <p>
+        <button ng-show="suggested" ng-click='openService(suggested)' class="btn service btn-block" data-dismiss="modal"><i class="icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{suggested.url}})"></i> &nbsp;{{suggested.name}}</button>
+      </p>
+    </div>
+
   </div>
   <div class="modal-footer">
     <a ng-i18next="subscribe.settings" ng-click='openSettings()' class="btn" data-dismiss="modal" aria-hidden="true">Settings</a>

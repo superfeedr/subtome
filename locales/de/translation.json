@@ -105,9 +105,10 @@
     "title": "Folge mit",
     "services": {
       "none": "Du hast biser keine bevorzugten Dienste ausgewählt. Bitte <a target='_blank' href='#/store'>wählen einen</a>!",
-      "pick": "Wähle einen Dienst aus, um diese Seite zu abonnieren:"
-      },
-
+      "pick": "Wähle einen Dienst aus, um diese Seite zu abonnieren:",
+      "suggested": "Empfohlene:",
+      "recommanded": "Werkzeug vom Verlag empfohlen:"
+    },
     "settings": "Einstellungen",
     "cancel": "Abbrechen"
   }

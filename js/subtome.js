@@ -158,6 +158,13 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
   });
 
   $scope.resource = $routeParams.resource;
+  if($routeParams.suggestedUrl && $routeParams.suggestedName) {
+    $scope.suggested = {
+      url: $routeParams.suggestedUrl,
+      name: $routeParams.suggestedName
+    };
+  }
+
   Analytics.trackEvent('resources', 'subscribe', $scope.resource);
   $scope.feeds = [];
   if($routeParams.feeds && $routeParams.feeds.length > 0) {

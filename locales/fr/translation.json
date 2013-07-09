@@ -105,8 +105,10 @@
     "title": "Suivre avec",
     "services": {
       "none": "Vous n'avez pas encore sélectionné de lecteur. <a target='_blank' href='#/store'>Choisissez-en un</a>!",
-      "pick": "Choisissez un lecteur de flux pour suivre cette page:"
-      },
+      "pick": "Choisissez un lecteur de flux pour suivre cette page:",
+      "suggested": "Recommandé:",
+      "recommanded": "Outil recommandé par l'éditeur:"
+    },
 
     "settings": "Réglages",
     "cancel": "Annuler"

@@ -47,7 +47,6 @@
     }
 
     var s = document.createElement('iframe');
-    var url = window.location.toString();
     var resource = window.location.toString();
     s.setAttribute('style','position:fixed;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent; z-index: 2147483647');
     s.setAttribute('src', 'https://www.subtome.com/#/subscribe?resource=' + encodeURIComponent(resource) + '&feeds=' + feeds.join(','))
