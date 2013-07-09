@@ -30,62 +30,71 @@
 }
 
 .app h4 {
-background-repeat: no-repeat;
-background-position:  2px 2px;
-background-size: 16px 16px;
-padding-left: 20px
+  background-repeat: no-repeat;
+  background-position:  2px 2px;
+  background-size: 16px 16px;
+  padding-left: 20px
 }
 
-      body {
-        background-color: transparent;
-        padding-top: 20px;
-        padding-bottom: 40px;
-      }
+body {
+  background-color: transparent;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
 
-      /* Custom container */
-      .container-narrow {
-        margin: 0 auto;
-        max-width: 770px;
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
+.container-narrow {
+  margin: 0 auto;
+  max-width: 770px;
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
 
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
+.jumbotron {
+  margin: 60px 0;
+  text-align: center;
+}
+.jumbotron h1 {
+  font-size: 72px;
+  line-height: 1;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
 
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
+.marketing {
+  margin: 60px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
 
 
 .btn.service {
-  display: block; margin: 10px; width:200px
+  display: block;
 }
 
 .lead.addons {
-background-color: #f9f9f9;
-border:1px solid #dddddd;
-padding: 3px 10px;
-border-radius: 4px;
+  background-color: #f9f9f9;
+  border:1px solid #dddddd;
+  padding: 3px 10px;
+  border-radius: 4px;
 }
-
 
 .main-layout {
   display: none;
 }
+
+@media (min-width: 980px) {
+#subtomeModal {
+  left: 60%;
+  max-width: 300px;
+}
+}
+
+.icon-service {
+  background-size: 16px 16px;
+  background-position: center center;
+}
+
