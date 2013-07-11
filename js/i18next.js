@@ -211,7 +211,6 @@
     }
 
     function _ajax(options) {
-
         // v0.5.0 of https://github.com/goloroden/http.js
         var getXhr = function (callback) {
             // Use the native XHR object if the browser supports it.
@@ -330,7 +329,7 @@
             }
 
             // Set default parameter values.
-            options.cache = options.cache || false;
+            options.cache = options.cache || true;
             options.data = options.data || {};
             options.headers = options.headers || {};
             options.jsonp = options.jsonp || false;
@@ -759,7 +758,6 @@
         $.t = $.t || translate;
 
         function parse(ele, key, options) {
-          console.log('ARE YOU CALLED?')
             if (key.length === 0) return;
 
             var attr = 'text';
@@ -820,7 +818,6 @@
         // fn
         $.fn.i18n = function (options) {
             return this.each(function() {
-              console.log('ALORS?')
                 // localize element itself
                 localize($(this), options);
 

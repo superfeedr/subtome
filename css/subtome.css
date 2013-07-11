@@ -102,3 +102,8 @@ body {
   display: inline;
 }
 
+.footer img {
+  vertical-align:middle;
+  height: 24px;
+}
+

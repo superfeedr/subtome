@@ -1,5 +1,6 @@
 var Services = function Services() {
   this.services = {};
+  this.subscriptions = [];
   this.error = null;
   this.load();
 

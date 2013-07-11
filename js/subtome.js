@@ -12,13 +12,20 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', function($routeProvider, 
     when('/store', {templateUrl: 'partials/store.html', controller: "StoreController"}).
     when('/register', {templateUrl: 'partials/register.html', controller: "RegisterController"}).
     when('/subscribe', {templateUrl: 'partials/subscribe.html', controller: "SubscribeController"}).
+    when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: "SubscriptionsController"}).
+    when('/import', {templateUrl: 'partials/import.html', controller: "ImportController"}).
     otherwise({redirectTo: '/'});
   }
+
 ]);
 
 subtome.run(['$rootScope', '$location', function($rootScope, $location) {
+
+  $rootScope.i18nextOptions = {
+    cache: true
+  };
+
   if ($location.path() !== '/subscribe') {
-    console.log('SHOW!')
     $('.main-layout').show();
   }
 
@@ -193,5 +200,22 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     window.open(redirect);
   }
 }]);
+
+subtome.controller("SubscriptionsController", ['$scope', 'Analytics', function SubscriptionsController($scope, Analytics) {
+  $scope.subscriptions = [];
+  var opml = '<?xml version="1.0" encoding="UTF-8"?><opml version="1.0"><head><title>Your Subscriptions</title></head><body>';
+  $scope.subscriptions.forEach(function(subscription) {
+    opml += '<outline xmlUrl="' + subscription.url + '" />';
+  });
+  opml += '</body></opml>';
+  window.location = "data:application/xml;base64," + window.btoa(opml);
+}]);
+
+subtome.controller("ImportController", ['$scope', 'Analytics', function ImportController($scope, Analytics) {
+
+}]);
+
+
+
 })();
 

@@ -7,7 +7,7 @@
     "publishers": "Ajouter un bouton",
     "developers": "Developeur de lecteur de flux"
   },
-  "footer": "Proposé par <a href='http://superfeedr.com'>Superfeedr</a> <img src='https://www.gravatar.com/avatar/a2f7d4dd6df7dd59e4adab811c00a3a1?s=24' style='vertical-align:middle;'>, <a href='https://github.com/superfeedr/subtome'>Code Source</a>.",
+  "footer": "Proposé par <a href='http://superfeedr.com'>Superfeedr</a> <img src='./img/superfeedr.png'>, <a href='https://github.com/superfeedr/subtome'>Code Source</a>.",
   "index": {
     "caption": "Bouton 'suivre' universel",
     "summary": "SubToMe vous permets facilement de <em>suivre</em> des sites web,<br /> parce que les navigateurs ne le font pas",

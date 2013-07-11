@@ -141,7 +141,6 @@ angular.module('i18next', []).directive('ngI18next', function ($rootScope, $inte
    *                                   we have to translate every string again?
    */
   function init(reinitialization) {
-
     window.i18n.init(options, function (tFunction) {
 
       $rootScope.$broadcast('i18nextInit');
