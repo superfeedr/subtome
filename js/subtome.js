@@ -29,19 +29,6 @@ subtome.run(['$rootScope', '$location', function($rootScope, $location) {
     $('.main-layout').show();
   }
 
-  $rootScope.loadGists = function loadGists() {
-    $('.script').each(function(i,div) {
-      $.ajax({
-        url: $(div).data('src') + 'on',
-        dataType: 'jsonp',
-        success: function(gist) {
-          $('head').append('<link rel="stylesheet" href="' + gist.stylesheet + '" type="text/css" />');
-          $(div).append($(gist.div))
-        }
-      });
-    });
-  }
-
   $rootScope.showBrowserSpecifics = function showBrowserSpecifics() {
     $('.browser-specific').each(function(i, b) {
       var browserSpecific = $(b).attr('class');
@@ -100,7 +87,6 @@ subtome.controller("SettingsController", ['$scope', function SettingsController(
 }]);
 
 subtome.controller("PublishersController", ['$scope', function PublishersController($scope) {
-  $scope.loadGists();
   $scope.follow = function follow(url) {
     if(!url) {
       var z=document.createElement('script');
@@ -126,7 +112,6 @@ subtome.controller("PublishersController", ['$scope', function PublishersControl
 }]);
 
 subtome.controller("DevelopersController", ['$scope', function DevelopersController($scope) {
-  $scope.loadGists();
 }]);
 
 subtome.controller("StoreController", ['$scope', function StoreController($scope) {
