@@ -23,11 +23,6 @@
         </table>
       </div>
     </div>
-    <div class="gist-meta">
-      <a href="https://gist.github.com/julien51/4332573/raw/14b25f093a6ac44dcf193debff31f83836642f2b/subscribe-button.html" style="float:right">view raw</a>
-      <a href="https://gist.github.com/julien51/4332573#file-subscribe-button-html" style="float:right; margin-right:10px; color:#666;">subscribe-button.html</a>
-      <a href="https://gist.github.com/julien51/4332573">This Gist</a> brought to you by <a href="https://github.com">GitHub</a>.
-    </div>
   </div>
 </div>
 
@@ -42,10 +37,33 @@
 <h3 ng-i18next="publishers.custom.title">Custom way</h3>
 <p ng-i18next="publishers.custom.summary">Of course, each publisher has their own constraints, and SubToMe is pretty flexible. For example, you may want to make buttons for several feeds, buttons that load a feed which is not linked on the page directly, or you may even not want to show a button at all and show the SubToMe frame when the user comes to your site first... etc</p>
 
-<p  ng-i18next="[html]publishers.custom.details">This is all possible, but you'll have to come up with some code. Don't use the <code>load.js</code> file, just insert an <code>iframe</code> in your page which will show the SubToMe modal. Use the following <code>src</code> attribute: <code>https://www.subtome.com/#/subscribe?resource={resource}&feeds={feeds}</code>.</p>
+<p ng-i18next="[html]publishers.custom.details">This is all possible, but you'll have to come up with some code. Don't use the <code>load.js</code> file, just insert an <code>iframe</code> in your page which will show the SubToMe modal. Use the following <code>src</code> attribute: <code>https://www.subtome.com/#/subscribe?resource={resource}&feeds={feeds}</code>.</p>
 <ul>
   <li ng-i18next="[html]publishers.custom.params.resource"><code>{resource}</code> is the encoded url of the web resource to which the user is subscribing. It does not need to be a feed!</li>
   <li ng-i18next="[html]publishers.custom.params.feeds"><code>{feeds}</code> is a coma separated list of encoded feed urls. There can obviously be just one.</li>
 </ul>
 
 <blockquote ng-i18next="[html]publishers.custom.example">For example, this button will allow you to <input class="btn btn-mini" type="button" value="subscribe to Superfeedr's Blog" ng-click="follow('http://blog.superfeedr.com/atom.xml')" />, while this button will allow you to <input class="btn btn-mini" type="button" value="follow SubToMe's code commits" ng-click="follow('https://github.com/superfeedr/subtome/commits/master.atom')" />.</blockquote>
+
+<p ng-i18next="[html]publishers.custom.suggested">
+  It is also possible for a publisher to recommand a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the developer page to understand how to build the <code>suggestedUrl</code> element):
+</p>
+
+<div id="gist4332573" class="gist">
+  <div class="gist-file">
+    <div class="gist-data gist-syntax">
+      <div class="file-data">
+        <table cellpadding="0" cellspacing="0" class="lines highlight">
+          <tr>
+            <td class="line-numbers">
+              <span class="line-number" id="file-subscribe-button-html-L1" rel="file-subscribe-button-html-L1">1</span>
+            </td>
+            <td class="line-data">
+<pre class="line-pre"><div class="line" id="file-gistfile1-html-LC1"><span class="nt">&lt;script&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">subtome</span> <span class="o">=</span> <span class="p">{</span><span class="nx">suggestedUrl</span><span class="o">:</span> <span class="s1">&#39;http://www.newsblur.com/?url={url}&#39;</span><span class="p">,</span> <span class="nx">suggestedName</span><span class="o">:</span> <span class="s1">&#39;NewsBlur&#39;</span><span class="p">};</span> <span class="nt">&lt;/script&gt;</span></div></pre>
+</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
