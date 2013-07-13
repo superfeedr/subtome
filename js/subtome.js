@@ -1,8 +1,14 @@
 (function() {
-var subtome = angular.module('subtome', ['i18next', 'angular-google-analytics']);
+var subtome = angular.module('subtome', ['jm.i18next', 'angular-google-analytics']);
 
-subtome.config(['$routeProvider', 'AnalyticsProvider', function($routeProvider, AnalyticsProvider) {
+subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', function($routeProvider, AnalyticsProvider, $i18nextProvider) {
   AnalyticsProvider.setAccount('UA-39876787-1');
+
+  $i18nextProvider.options = {
+    lng: navigator.language,
+    fallbackLng: 'en',
+    resGetPath: '../locales/__lng__/__ns__.json'
+  };
 
   $routeProvider.
     when('/', {templateUrl: 'partials/index.html',   controller: "IndexController"}).
@@ -20,10 +26,6 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', function($routeProvider, 
 ]);
 
 subtome.run(['$rootScope', '$location', function($rootScope, $location) {
-
-  $rootScope.i18nextOptions = {
-    cache: true
-  };
 
   if ($location.path() !== '/subscribe') {
     $('.main-layout').show();

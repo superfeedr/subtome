@@ -1,119 +1,174 @@
-/*
- * AngularJS directive for using i18next (http://jamuhl.github.com/i18next)
- * Usage:
- *  - include i18next-1.x.x.js
- *  - include your language files
- *  - add 'i18n' to your dependencies of your module
- *    -> 'angular.module('MyApp', ['i18next']);'
- *  - anywhere in your code change $rootScope.i18nextOptions to your options.
- *    Best practise: in
- *    angular.module('MyApp', ['i18next']).run(function ($rootScope) {
- *        $rootScope.i18nextOptions = {
- *            lng: 'de-DE',
- *            ...
- *        };
- *    });
- *    (Because it will run before the directive is initialized)
- *  - use the 'ng-i18next' attribute on any element you want
- *    -> '<p ng-i18next="myStringToTranslate"></p>'
- *  - You can also listen for the 'i18nextInit' event. Then you can translate
- *    via i18n.t('Your String here');
- *    -> $scope.$on('i18nextInit', function () {
- *           console.log(i18n.t('hello'));
- *       });
- */
-angular.module('i18next', []).directive('ngI18next', function ($rootScope, $interpolate, $compile) {
+angular.module('jm.i18next', ['ng']);
+angular.module('jm.i18next').provider('$i18next', function () {
 
   'use strict';
 
-  var
+  var self = this,
     /**
      * This will be our translation function (see code below)
      */
     t = null,
-    /**
-     * Default options for i18next
-     * @type {Object}
-     */
-    options = {},
-    callbacks = [],
-    translated = [];
+    translations = {},
+    optionsObj;
 
-  /**
-   * Translate the string given by the ng-i18next attribute and put it into the element as
-   * text or as an attribute.
-   * @param {DOMElement} element     Element with the ng-i18next attribute
-   * @param {String}     key         The string we want to translate
-   * @param {Boolean}    retranslate Whether it is the first time we translate the element or not
-   */
-  function parse(scope, element, key, retranslate) {
+  self.options = {};
 
-    /**
-     * Default attribute we'll put the translated string into
-     * (text means that it's the element's content)
-     * @type {String}
-     */
-    var attr = 'text';
+  self.$get = ['$rootScope', function ($rootScope) {
 
-    if (!retranslate) {
-      translated[translated.length] = function () {
-        parse(scope, element, key, true);
-      };
+    function init(options) {
+      window.i18n.init(options, function (localize) {
+        function setTranslation(key) {
+          $rootScope.$apply(function () {
+            translations[options.lng][key] = localize(key);
+          });
+        }
+
+        t = localize;
+
+        for (var key in translations) {
+          setTranslation(key);
+        }
+
+        $rootScope.$broadcast('i18nextLanguageChange');
+
+      });
+
     }
 
-    if (t !== null) {
-      /*
-       * Check if we want to translate an attribute
-       */
-      if (key.indexOf('[') === 0) {
-        var parts = key.split(']');
-        key = parts[1];
-        attr = parts[0].substr(1, parts[0].length - 1);
-      }
-      /*
-       * Cut of the ";" that might be at the end of the string
-       */
-      if (key.indexOf(';') === key.length - 1) {
-        key = key.substr(0, key.length - 2);
+    function translate(key, options) {
+
+      var lng = options.lng;
+
+      if (!translations[lng]) {
+        translations[lng] = {};
       }
 
-      /*
-       * Bind variables to the scope (doesn't watch for changes, yet)
-       */
-      var string = $interpolate(t(key))(scope);
-
-      if (attr === 'html') {
-
-        element.html(string);
-
-      } else if (attr === 'text') {
-
-        element.text(string);
-
+      if (!t) {
+        translations[lng][key] = key;
       } else {
-
-        element.attr(attr, string);
-
+        translations[lng][key] = t(key, options);
       }
 
-      /*
-       * Now compile the content of the element and bind the variables to
-       * the scope
-       */
-      $compile(element.contents())(scope);
+    }
+
+    function $i18nextTanslate(key, options) {
+
+      var mergedOptions = angular.extend({}, optionsObj, options);
+
+      translate(key, mergedOptions);
+
+      return translations[mergedOptions.lng][key];
+
+    }
+
+    $i18nextTanslate.debugMsg = [];
+
+    optionsObj = $i18nextTanslate.options = self.options;
+
+    $rootScope.$watch(function () { return $i18nextTanslate.options; }, function (newOptions, oldOptions) {
+
+      $i18nextTanslate.debugMsg.push('i18next options changed: \n', 'old options', oldOptions, 'new options', newOptions);
+
+      optionsObj = $i18nextTanslate.options;
+
+      if (!optionsObj.lng) {
+        optionsObj.lng = 'dev';
+      }
+
+      init(optionsObj);
+
+    }, true);
+
+    init(optionsObj);
+
+    return $i18nextTanslate;
+
+  }];
+
+});
+
+angular.module('jm.i18next').directive('ngI18next', ['$rootScope', '$i18next', '$compile', '$parse', function ($rootScope, $i18next, $compile, $parse) {
+
+  'use strict';
+
+  function parse(scope, element, key) {
+
+    var attr = 'text',
+      attrs = [attr],
+      string;
+
+    /*
+     * Check if we want to translate an attribute
+     */
+    if (key.indexOf('[') === 0) {
+      var parts = key.split(']');
+      key = parts[1];
+      attr = parts[0].substr(1, parts[0].length - 1);
+    }
+    /*
+     * Cut of the ";" that might be at the end of the string
+     */
+    if (key.indexOf(';') === key.length - 1) {
+      key = key.substr(0, key.length - 2);
+    }
+    /*
+     * If passing options, split attr
+     */
+    if (attr.indexOf(':') >= 0) {
+      attrs = attr.split(':');
+      attr = attrs[0];
+    } else if (attr === 'i18next') {
+      attrs[1] = 'i18next';
+      attr = 'text';
+    }
+
+    if (attr !== 'i18next' && attrs[1] !== 'i18next') {
+
+      string = $i18next(key);
 
     } else {
-      /*
-       * We have to wait for i18next to initialize, so we
-       * add the string (and element) we want to translate
-       * to the callback array. It will get executed when
-       * i18next is ready.
-       */
-      callbacks[callbacks.length] = function () {
-        parse(scope, element, key);
-      };
+
+      var options = {},
+        strippedKey = key;
+
+      if (key.indexOf('(') >= 0 && key.indexOf(')') >= 0) {
+
+        var keys = key.split(')');
+
+        keys[0] = keys[0].substr(1, keys[0].length);
+
+        options = $parse(keys[0])();
+
+        strippedKey = keys[1];
+
+      }
+
+      string = $i18next(strippedKey, options);
+
     }
 
+    if (attr === 'html') {
+
+      element.html(string);
+
+    } else if (attr === 'text') {
+
+      element.text(string);
+
+    } else {
+
+      element.attr(attr, string);
+
+    }
+    /*
+     * Now compile the content of the element and bind the variables to
+     * the scope
+     */
+    $compile(element.contents())(scope);
+
+    window.setTimeout(function () {
+      $rootScope.$digest();
+    },0);
   }
 
 
@@ -135,50 +190,6 @@ angular.module('i18next', []).directive('ngI18next', function ($rootScope, $inte
 
   }
 
-  /**
-   * Initializes i18next
-   * @param {Boolean} reinitialization Have the options (in $rootScope) changed, so
-   *                                   we have to translate every string again?
-   */
-  function init(reinitialization) {
-    window.i18n.init(options, function (tFunction) {
-
-      $rootScope.$broadcast('i18nextInit');
-      $rootScope.i18nextLoaded = true;
-
-      var i;
-
-      t = tFunction;
-
-      if (!reinitialization) {
-
-        for (i = 0; i < callbacks.length; i++) {
-          callbacks[i]();
-        }
-
-        callbacks = [];
-
-      } else {
-
-        for (i = 0; i < translated.length; i++) {
-          translated[i]();
-        }
-
-      }
-
-    });
-
-  }
-
-  $rootScope.$watch('i18nextOptions', function () {
-
-    options = $rootScope.i18nextOptions || options;
-
-    // Note: !! -> make i18nextOptions a boolean (true if it is defined)
-    init(!!$rootScope.i18nextOptions);
-
-  });
-
   return {
 
     // 'A': only as attribute
@@ -188,19 +199,45 @@ angular.module('i18next', []).directive('ngI18next', function ($rootScope, $inte
 
     link: function postLink(scope, element, attrs) {
 
-      attrs.$observe('ngI18next', function (value) {
+      function observe (value) {
 
-        if (!value) {
+        if (value === '') {
+          scope.translationValue = element.text().replace(/^\s+|\s+$/g, ''); // RegEx removes whitespace
+        } else {
+          scope.translationValue = value;
+        }
+
+        if (!scope.translationValue) {
           // Well, seems that we don't have anything to translate...
           return;
         }
 
-        localize(scope, element, value);
+        localize(scope.$parent, element, scope.translationValue);
 
+      }
+
+      attrs.$observe('ngI18next', observe);
+
+      observe(attrs.ngI18next);
+
+      scope.$on('i18nextLanguageChange', function () {
+        localize(scope.$parent, element, scope.translationValue);
       });
 
     }
 
   };
 
-});
+}]);
+
+angular.module('jm.i18next').filter('i18next', ['$i18next', function ($i18next) {
+
+  'use strict';
+
+  return function (string, options) {
+
+    return $i18next(string, options);
+
+  };
+
+}]);
