@@ -45,7 +45,8 @@
         "url": "<code>{url}</code> will be populated with the <code>location.href</code> of the page on which the user clicked the subscribe button.",
         "feeds": "<code>{feeds}</code> will be populated with the <code>href</code> element of each <code><link></code> elements corresponding to a feed in the page on which the user clicked.",
         "feed": "<code>{feed}</code> will be populated with the first (if any) of the <code>{feeds}</code> above."
-      }
+      },
+      "link": " It is also possible to register ther user by opening a url in the browser directly. This is particularly useful for standalone (desktop based) feed readers. Use the url <code>https://www.subtome.com/#/register?</code>, with the same params used by the iframe based registration."
     },
     "handling": {
       "title": "Subscription handling",

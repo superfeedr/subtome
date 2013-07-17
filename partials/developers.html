@@ -13,17 +13,17 @@
 <p ng-i18next="[html]developers.registration.loading">You too can quickly and easily register your application for your users by loading an iframe like this: <small>Please note that this is completely transparent for the user!</small></p>
 
 <!-- Gist -->
-<div id="gist4332573" class="gist">
+<div id="gist4333876" class="gist">
   <div class="gist-file">
     <div class="gist-data gist-syntax">
       <div class="file-data">
         <table cellpadding="0" cellspacing="0" class="lines highlight">
           <tr>
             <td class="line-numbers">
-              <span class="line-number" id="file-subscribe-button-html-L1" rel="file-subscribe-button-html-L1">1</span>
+              <span class="line-number" id="file-iframe-registration-html-L1" rel="file-iframe-registration-html-L1">1</span>
             </td>
             <td class="line-data">
-              <pre class="line-pre"><div class="line" id="file-subscribe-button-html-LC1"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">onclick=</span><span class="s">&quot;(function(){var z=document.createElement(&#39;script&#39;);z.src=&#39;https://www.subtome.com/load.js&#39;;document.body.appendChild(z);})()&quot;</span> <span class="na">value=</span><span class="s">&quot;Subscribe&quot;</span><span class="nt">&gt;</span></div></pre>
+              <pre class="line-pre"><div class="line" id="file-iframe-registration-html-LC1"><span class="nt">&lt;iframe</span> <span class="na">style=</span><span class="s">&quot;display:none;&quot;</span> <span class="na">src=</span><span class="s">&#39;https://www.subtome.com/register.html?name=&lt;Name of your application&gt;&amp;url=&lt;url of the subscription handler&gt;&#39;</span> <span class="nt">/&gt;</span></div></pre>
             </td>
           </tr>
         </table>
@@ -43,7 +43,12 @@
   </li>
 </ul>
 
+<p ng-i18next="[html]developers.registration.link">
+  It is also possible to register ther user by opening a url in the browser directly. This is particularly useful for standalone (desktop based) feed readers. Use the url <code>https://www.subtome.com/#/register?</code>, with the same params used by the iframe based registration.
+</p>
+
 <blockquote ng-i18next="[html]developers.handling.example">For example, if your application registers the following url: <br /><code>http://my-great-reader.com/feeds/subscribe?feed={feed}&url={url}</code>,<br /> the user will be redirected to <a href="http://my-great-reader.com/feeds/subscribe?feed=http%3A%2F%2Fblog.superfeedr.com%2Fatom.xml&url=http%3A%2F%2Fblog.superfeedr.com%2">this url</a> to subscribe to the <a href="http://blog.superfeedr.com/">Superfeedr Blog</a>.</blockquote>
+
 
 <h3 ng-i18next="developers.handling.title">Subscription handling</h3>
 
