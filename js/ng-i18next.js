@@ -1,243 +1,236 @@
 angular.module('jm.i18next', ['ng']);
 angular.module('jm.i18next').provider('$i18next', function () {
 
-  'use strict';
+	'use strict';
 
-  var self = this,
-    /**
-     * This will be our translation function (see code below)
-     */
-    t = null,
-    translations = {},
-    optionsObj;
+	var self = this,
+		/**
+		 * This will be our translation function (see code below)
+		 */
+		t = null,
+		translations = {},
+		optionsObj;
 
-  self.options = {};
+	self.options = {};
 
-  self.$get = ['$rootScope', function ($rootScope) {
+	self.$get = ['$rootScope', function ($rootScope) {
 
-    function init(options) {
-      window.i18n.init(options, function (localize) {
-        function setTranslation(key) {
-          $rootScope.$apply(function () {
-            translations[options.lng][key] = localize(key);
-          });
-        }
+		function init(options) {
 
-        t = localize;
+			window.i18n.init(options, function (localize) {
 
-        for (var key in translations) {
-          setTranslation(key);
-        }
+				if (!$rootScope.$$phase) {
+					$rootScope.$digest();
+				}
 
-        $rootScope.$broadcast('i18nextLanguageChange');
+				t = localize;
 
-      });
+				$rootScope.$broadcast('i18nextLanguageChange');
 
-    }
+			});
 
-    function translate(key, options) {
+		}
 
-      var lng = options.lng;
+		function translate(key, options) {
 
-      if (!translations[lng]) {
-        translations[lng] = {};
-      }
+			var lng = options.lng || 'auto';
 
-      if (!t) {
-        translations[lng][key] = key;
-      } else {
-        translations[lng][key] = t(key, options);
-      }
+			if (!translations[lng]) {
+				translations[lng] = {};
+			}
 
-    }
+			if (!t) {
+				translations[lng][key] = key;
+			} else {
+				translations[lng][key] = t(key, options);
+			}
 
-    function $i18nextTanslate(key, options) {
+		}
 
-      var mergedOptions = angular.extend({}, optionsObj, options);
+		function $i18nextTanslate(key, options) {
 
-      translate(key, mergedOptions);
+			var mergedOptions = angular.extend({}, optionsObj, options);
 
-      return translations[mergedOptions.lng][key];
+			translate(key, mergedOptions);
 
-    }
+			return (options && options.lng) ? translations[options.lng][key] :
+				!!optionsObj.lng ? translations[optionsObj.lng][key] : translations['auto'][key];
 
-    $i18nextTanslate.debugMsg = [];
+		}
 
-    optionsObj = $i18nextTanslate.options = self.options;
+		$i18nextTanslate.debugMsg = [];
 
-    $rootScope.$watch(function () { return $i18nextTanslate.options; }, function (newOptions, oldOptions) {
+		optionsObj = $i18nextTanslate.options = self.options;
 
-      $i18nextTanslate.debugMsg.push('i18next options changed: \n', 'old options', oldOptions, 'new options', newOptions);
+		$rootScope.$watch(function () { return $i18nextTanslate.options; }, function (newOptions, oldOptions) {
 
-      optionsObj = $i18nextTanslate.options;
+			$i18nextTanslate.debugMsg.push('i18next options changed: \n', 'old options', oldOptions, 'new options', newOptions);
 
-      if (!optionsObj.lng) {
-        optionsObj.lng = 'dev';
-      }
+			optionsObj = $i18nextTanslate.options;
 
-      init(optionsObj);
+			init(optionsObj);
 
-    }, true);
+		}, true);
 
-    init(optionsObj);
+		init(optionsObj);
 
-    return $i18nextTanslate;
+		return $i18nextTanslate;
 
-  }];
+	}];
 
 });
 
 angular.module('jm.i18next').directive('ngI18next', ['$rootScope', '$i18next', '$compile', '$parse', function ($rootScope, $i18next, $compile, $parse) {
 
-  'use strict';
+	'use strict';
 
-  function parse(scope, element, key) {
+	function parse(scope, element, key) {
 
-    var attr = 'text',
-      attrs = [attr],
-      string;
+		var attr = 'text',
+			attrs = [attr],
+			string;
 
-    /*
-     * Check if we want to translate an attribute
-     */
-    if (key.indexOf('[') === 0) {
-      var parts = key.split(']');
-      key = parts[1];
-      attr = parts[0].substr(1, parts[0].length - 1);
-    }
-    /*
-     * Cut of the ";" that might be at the end of the string
-     */
-    if (key.indexOf(';') === key.length - 1) {
-      key = key.substr(0, key.length - 2);
-    }
-    /*
-     * If passing options, split attr
-     */
-    if (attr.indexOf(':') >= 0) {
-      attrs = attr.split(':');
-      attr = attrs[0];
-    } else if (attr === 'i18next') {
-      attrs[1] = 'i18next';
-      attr = 'text';
-    }
+		/*
+		 * Check if we want to translate an attribute
+		 */
+		if (key.indexOf('[') === 0) {
+			var parts = key.split(']');
+			key = parts[1];
+			attr = parts[0].substr(1, parts[0].length - 1);
+		}
+		/*
+		 * Cut of the ";" that might be at the end of the string
+		 */
+		if (key.indexOf(';') === key.length - 1) {
+			key = key.substr(0, key.length - 2);
+		}
+		/*
+		 * If passing options, split attr
+		 */
+		if (attr.indexOf(':') >= 0) {
+			attrs = attr.split(':');
+			attr = attrs[0];
+		} else if (attr === 'i18next') {
+			attrs[1] = 'i18next';
+			attr = 'text';
+		}
 
-    if (attr !== 'i18next' && attrs[1] !== 'i18next') {
+		if (attr !== 'i18next' && attrs[1] !== 'i18next') {
 
-      string = $i18next(key);
+			string = $i18next(key);
 
-    } else {
+		} else {
 
-      var options = {},
-        strippedKey = key;
+			var options = {},
+				strippedKey = key;
 
-      if (key.indexOf('(') >= 0 && key.indexOf(')') >= 0) {
+			if (key.indexOf('(') >= 0 && key.indexOf(')') >= 0) {
 
-        var keys = key.split(')');
+				var keys = key.split(')');
 
-        keys[0] = keys[0].substr(1, keys[0].length);
+				keys[0] = keys[0].substr(1, keys[0].length);
 
-        options = $parse(keys[0])();
+				options = $parse(keys[0])();
 
-        strippedKey = keys[1];
+				strippedKey = keys[1];
 
-      }
+			}
 
-      string = $i18next(strippedKey, options);
+			string = $i18next(strippedKey, options);
 
-    }
+		}
 
-    if (attr === 'html') {
+		if (attr === 'html') {
 
-      element.html(string);
+			element.html(string);
 
-    } else if (attr === 'text') {
+		} else if (attr === 'text') {
 
-      element.text(string);
+			element.text(string);
 
-    } else {
+		} else {
 
-      element.attr(attr, string);
+			element.attr(attr, string);
 
-    }
-    /*
-     * Now compile the content of the element and bind the variables to
-     * the scope
-     */
-    $compile(element.contents())(scope);
+		}
+		/*
+		 * Now compile the content of the element and bind the variables to
+		 * the scope
+		 */
+		$compile(element.contents())(scope);
 
-    window.setTimeout(function () {
-      $rootScope.$digest();
-    },0);
-  }
+		if (!$rootScope.$$phase) {
+			$rootScope.$digest();
+		}
+	}
 
 
-  function localize(scope, element, key) {
+	function localize(scope, element, key) {
 
-    if (key.indexOf(';') >= 0) {
+		if (key.indexOf(';') >= 0) {
 
-      var keys = key.split(';');
+			var keys = key.split(';');
 
-      for (var i = 0; i < keys.length; i++) {
-        if (keys[i] !== '') {
-          parse(scope, element, keys[i]);
-        }
-      }
+			for (var i = 0; i < keys.length; i++) {
+				if (keys[i] !== '') {
+					parse(scope, element, keys[i]);
+				}
+			}
 
-    } else {
-      parse(scope, element, key);
-    }
+		} else {
+			parse(scope, element, key);
+		}
 
-  }
+	}
 
-  return {
+	return {
 
-    // 'A': only as attribute
-    restrict: 'A',
+		// 'A': only as attribute
+		restrict: 'A',
 
-    scope: true,
+		scope: true,
 
-    link: function postLink(scope, element, attrs) {
+		link: function postLink(scope, element, attrs) {
 
-      function observe (value) {
+			function observe (value) {
 
-        if (value === '') {
-          scope.translationValue = element.text().replace(/^\s+|\s+$/g, ''); // RegEx removes whitespace
-        } else {
-          scope.translationValue = value;
-        }
+				if (value === '') {
+					scope.translationValue = element.text().replace(/^\s+|\s+$/g, ''); // RegEx removes whitespace
+				} else {
+					scope.translationValue = value;
+				}
 
-        if (!scope.translationValue) {
-          // Well, seems that we don't have anything to translate...
-          return;
-        }
+				if (!scope.translationValue) {
+					// Well, seems that we don't have anything to translate...
+					return;
+				}
 
-        localize(scope.$parent, element, scope.translationValue);
+				localize(scope.$parent, element, scope.translationValue);
 
-      }
+			}
 
-      attrs.$observe('ngI18next', observe);
+			attrs.$observe('ngI18next', observe);
 
-      observe(attrs.ngI18next);
+			observe(attrs.ngI18next);
 
-      scope.$on('i18nextLanguageChange', function () {
-        localize(scope.$parent, element, scope.translationValue);
-      });
+			scope.$on('i18nextLanguageChange', function () {
+				localize(scope.$parent, element, scope.translationValue);
+			});
 
-    }
+		}
 
-  };
+	};
 
 }]);
 
 angular.module('jm.i18next').filter('i18next', ['$i18next', function ($i18next) {
 
-  'use strict';
+	'use strict';
 
-  return function (string, options) {
+	return function (string, options) {
 
-    return $i18next(string, options);
+		return $i18next(string, options);
 
-  };
+	};
 
 }]);
