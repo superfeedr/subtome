@@ -2,7 +2,7 @@
 
 'use strict';
 
-angular.module('angular-google-analytics', [])
+angular.module('angular-ga', [])
     .provider('Analytics', function() {
         var created = false,
             trackRoutes = true,

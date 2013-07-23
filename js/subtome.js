@@ -1,5 +1,5 @@
 (function() {
-var subtome = angular.module('subtome', ['jm.i18next', 'angular-google-analytics']);
+var subtome = angular.module('subtome', ['jm.i18next', 'angular-ga']);
 
 subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', function($routeProvider, AnalyticsProvider, $i18nextProvider) {
   AnalyticsProvider.setAccount('UA-39876787-1');
