@@ -132,5 +132,16 @@ var appStore = [
     name: 'InoReader',
     url: 'https://www.inoreader.com/?add_feed={feed}'
   }
+},
+{
+  name: 'ReadHQ',
+  tags: ['web', 'mobile'],
+  description: "",
+  url:"https://www.readhq.com",
+  icon:"https://www.readhq.com/favicon.ico",
+  registration:{
+    name: "ReadHQ",
+    url: 'https://www.readhq.com/api/v1/subtome?url={url}'
+  }
 }
 ];
