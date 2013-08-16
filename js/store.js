@@ -136,7 +136,7 @@ var appStore = [
 {
   name: 'ReadHQ',
   tags: ['web', 'mobile'],
-  description: "",
+  description: "ReadHQ is a new RSS reader which allows you to import, add, manage, organize and enjoy your feeds.",
   url:"https://www.readhq.com",
   icon:"https://www.readhq.com/favicon.ico",
   registration:{
