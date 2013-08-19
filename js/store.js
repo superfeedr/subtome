@@ -143,5 +143,16 @@ var appStore = [
     name: "ReadHQ",
     url: 'https://www.readhq.com/api/v1/subtome?url={url}'
   }
+},
+{
+  name: "MnmlRdr",
+  tags: ["web", "mobile", "minimal", "lightweight"],
+  description: "A fast and lightweight feed reader without \"feature clutter\" so you can focus on the content.",
+  url:"https://mnmlrdr.com/",
+  icon:"https://mnmlrdr.com/static/images/logo.png",
+  registration:{
+    name: "MnmlRdr",
+    url: "https://mnmlrdr.com/settings/subscriptions/add?feed={url}"
+  }
 }
 ];
