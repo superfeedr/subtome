@@ -20,6 +20,7 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
     when('/register', {templateUrl: 'partials/register.html', controller: "RegisterController"}).
     when('/subscribe', {templateUrl: 'partials/subscribe.html', controller: "SubscribeController"}).
     when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: "SubscriptionsController"}).
+    when('/export', {templateUrl: 'partials/subscriptions.html', controller: "exportController"}).
     when('/import', {templateUrl: 'partials/import.html', controller: "ImportController"}).
     otherwise({redirectTo: '/'});
   }
@@ -142,6 +143,7 @@ subtome.controller("RegisterController", ['$scope', '$routeParams', 'Analytics',
 }]);
 
 subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics', function SubscribeController($scope, $routeParams, Analytics) {
+  $scope.subscriptions = new Subscriptions();
   $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
   $('#subtomeModal').on('hidden', function() {
     if($routeParams.back) {
@@ -185,16 +187,19 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     if(redirect.match(/\{feeds\}/)) {
       redirect = redirect.replace('{feeds}', $scope.feeds.join(','));
     }
+    $scope.subscriptions.add($scope.resource, {feeds: $scope.feeds, service: service.name});
     window.open(redirect);
   }
 }]);
 
-subtome.controller("SubscriptionsController", ['$scope', 'Analytics', function SubscriptionsController($scope, Analytics) {
-  $scope.subscriptions = [];
+subtome.controller("exportController", ['Analytics', function SubscriptionsController(Analytics) {
+  var subscriptions = new Subscriptions().list();
   var opml = '<?xml version="1.0" encoding="UTF-8"?><opml version="1.0"><head><title>Your Subscriptions</title></head><body>';
-  $scope.subscriptions.forEach(function(subscription) {
-    opml += '<outline xmlUrl="' + subscription.url + '" />';
-  });
+  for(var k=0; k < subscriptions.length; k++) {
+    for(var l=0; l < subscriptions[k][1].length; l++) {
+      opml += '<outline xmlUrl="' + subscriptions[k][1][l] + '" htmlUrl="' + subscriptions[k][0] + '" />';
+    }
+  };
   opml += '</body></opml>';
   window.location = "data:application/xml;base64," + window.btoa(opml);
 }]);
