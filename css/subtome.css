@@ -70,7 +70,6 @@ body {
   margin-top: 28px;
 }
 
-
 .btn.service {
   display: block;
 }
@@ -107,3 +106,15 @@ body {
   height: 24px;
 }
 
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+.feed-title {
+  width: 500px;
+}
+
+td.last-col {
+  text-align: right;
+}

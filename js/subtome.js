@@ -54,44 +54,14 @@ subtome.run(['$rootScope', '$location', function($rootScope, $location) {
     $rootScope.$apply();
   });
 
-}]);
-
-subtome.filter('fromNow', function() {
-  return function(dateString) {
-    return moment(new Date(dateString)).fromNow()
-  };
-});
-
-subtome.filter('linkToHome', function() {
-  return function(url) {
-    var a = document.createElement('a');
-    a.href = decodeURIComponent(url);
-    return a.protocol + '//' + a.host + '/';
-  };
-});
-
-
-subtome.controller("IndexController", ['$scope', function IndexController($scope) {
-  $scope.over = function over() {
-    document.getElementById('demo').innerHTML=i18n.t("Follow our Blog");
-  }
-  $scope.left = function left() {
-    document.getElementById('demo').innerHTML=i18n.t("See it in Action");
-  }
-  $scope.follow = function follow() {
-    window.location = '/#/subscribe?resource=http://subtome.com&feeds=http%3A%2F%2Fblog.superfeedr.com%2Fatom.xml&back=/#/';
-  }
-}]);
-
-subtome.controller("SettingsController", ['$scope', function SettingsController($scope) {
-  $scope.showBrowserSpecifics();
-  $scope.remove = function removeService(service) {
-    $scope.services.removeService(service.name);
-  }
-}]);
-
-subtome.controller("PublishersController", ['$scope', function PublishersController($scope) {
-  $scope.follow = function follow(url) {
+  $rootScope.follow = function follow(arg) {
+    var url;
+    if(typeof(arg) === 'string') {
+      url = arg;
+    }
+    else if(typeof(arg) === 'object' ) {
+      url = arg.feed || arg.url;
+    }
     if(!url) {
       var z=document.createElement('script');
       z.src='/load.js';
@@ -113,6 +83,55 @@ subtome.controller("PublishersController", ['$scope', function PublishersControl
       document.getElementsByTagName('body')[0].appendChild(s);
     }
   }
+
+}]);
+
+subtome.filter('fromNow', function() {
+  return function(dateString) {
+    return moment(new Date(dateString)).fromNow()
+  };
+});
+
+subtome.filter('linkToHome', function() {
+  return function(url) {
+    var a = document.createElement('a');
+    a.href = decodeURIComponent(url);
+    return a.protocol + '//' + a.host + '/';
+  };
+});
+
+subtome.directive('filePicker', function(){
+  return {
+    link: function($scope, $linkElement, $linkAttributes){
+      $linkElement.bind('change', function(event) {
+        var files = event.target.files;
+        $scope.file = files[0];
+        $scope.$apply();
+      });
+    }
+  };
+});
+
+subtome.controller("IndexController", ['$scope', function IndexController($scope) {
+  $scope.over = function over() {
+    document.getElementById('demo').innerHTML=i18n.t("Follow our Blog");
+  }
+  $scope.left = function left() {
+    document.getElementById('demo').innerHTML=i18n.t("See it in Action");
+  }
+  $scope.follow = function follow() {
+    window.location = '/#/subscribe?resource=http://subtome.com&feeds=http%3A%2F%2Fblog.superfeedr.com%2Fatom.xml&back=/#/';
+  }
+}]);
+
+subtome.controller("SettingsController", ['$scope', function SettingsController($scope) {
+  $scope.showBrowserSpecifics();
+  $scope.remove = function removeService(service) {
+    $scope.services.removeService(service.name);
+  }
+}]);
+
+subtome.controller("PublishersController", ['$scope', function PublishersController($scope) {
 }]);
 
 subtome.controller("DevelopersController", ['$scope', function DevelopersController($scope) {
@@ -205,7 +224,28 @@ subtome.controller("exportController", ['Analytics', function SubscriptionsContr
 }]);
 
 subtome.controller("ImportController", ['$scope', 'Analytics', function ImportController($scope, Analytics) {
-
+  $scope.$watch('file', function() {
+    if($scope.file) {
+      var reader = new FileReader();
+      reader.readAsText($scope.file, "UTF-8");
+      reader.onload = function (evt) {
+        var parser = new DOMParser();
+        var opml = parser.parseFromString(evt.target.result, "text/xml");
+        var outlines = opml.getElementsByTagName('outline');
+        var subscriptions = [];
+        for(var i=0; i<outlines.length; i++) {
+          subscriptions.push({feed: outlines[i].getAttribute('xmlUrl'), title: outlines[i].getAttribute('title') || outlines[i].getAttribute('text'), html: outlines[i].getAttribute('htmlUrl')});
+        }
+        $scope.subscriptions = subscriptions;
+        $scope.$apply();
+      }
+      reader.onerror = function (evt) {
+        $scope.error = "Error Reading your OPML file. Make sure it's valid.";
+        $scope.$apply();
+      }
+    }
+  });
+  $scope.subscriptions = [];
 }]);
 
 

@@ -17,7 +17,7 @@
     <tr ng-repeat="service in services.used()">
       <td><a href="{{service.url | linkToHome}}">{{service.name}}</a></td>
       <td>{{service.addedOn | fromNow}}</td>
-      <td><button ng-click="remove(service)" type="button" style="float: right;" class="btn btn-mini btn-danger remove" ng-i18next="settings.services.remove">Remove</button></td>
+      <td class="last-col"><button ng-click="remove(service)" type="button"  class="btn btn-mini btn-danger remove" ng-i18next="settings.services.remove">Remove</button></td>
     </tr>
   </tbody>
 </table>

@@ -1,3 +1,15 @@
-<input type="file" />
+<h1>Import</h1>
+<p>
+  Import your OPML file to subscribe to more feeds in your favorite reader.
+</p>
+<table class="table table-striped">
 
-<input class="btn" type="submit">
+  <tr ng-repeat="subscription in subscriptions">
+    <td class='feed-title'>{{subscription.title || subscription.html || subscription.feed}}</td>
+    <td class='last-col'><input class="btn btn-mini" type="button" value="Follow" ng-click="follow(subscription)" /></td>
+  </tr>
+</table>
+
+<input type="file" data-file-picker>
+<p class="help-block">Most RSS readers will allow you to export your subscription list.</p>
+
