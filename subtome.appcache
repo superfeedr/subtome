@@ -1,7 +1,9 @@
 CACHE MANIFEST
-# Sept 3 2013 1
+# Sept 5 2013 1
 
 /css/bootstrap.css
+/css/bootstrap-modal-bs3patch.css
+/css/bootstrap-modal.css
 /css/subtome.css
 /css/gist.github.com.css
 
@@ -17,9 +19,11 @@ CACHE MANIFEST
 /img/subtome-wave.png
 /img/superfeedr.png
 
-/js/angular-google-analytics.js
+/js/angular-ga.js
 /js/angular.min.js
 /js/bootstrap.min.js
+/js/bootstrap-modalmanager.js
+/js/bootstrap-modal.js
 /js/compatibility.js
 /js/i18next.js
 /js/jquery.js
