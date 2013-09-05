@@ -19,6 +19,7 @@ CACHE MANIFEST
 /img/subtome-wave.png
 /img/superfeedr.png
 
+/js/appcache.js
 /js/angular-ga.js
 /js/angular.min.js
 /js/bootstrap.min.js
