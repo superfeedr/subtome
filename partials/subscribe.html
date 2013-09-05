@@ -18,7 +18,7 @@
       <p ng-i18next="subscribe.services.suggested" ng-show="services.count() > 0">Recomanded:</p>
       <p ng-i18next="subscribe.services.recommanded" ng-show="services.count() == 0 ">Recomanded tool by the publisher:</p>
       <p>
-        <button ng-show="suggested" ng-click='openService(suggested)' class="btn service btn-block" data-dismiss="modal"><i class="icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{suggested.url}})"></i> &nbsp;{{suggested.name}}</button>
+        <button ng-show="suggested" ng-click='openService(suggested)' class="btn btn-default btn-block" data-dismiss="modal"> <span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{suggested.url}})"></span>{{suggested.name}}</button>
       </p>
     </div>
 
