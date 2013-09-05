@@ -7,32 +7,30 @@ CACHE MANIFEST
 /css/subtome.css
 /css/gist.github.com.css
 
+/fonts/glyphicons-halflings-regular.eot
+/fonts/glyphicons-halflings-regular.svg
+/fonts/glyphicons-halflings-regular.ttf
+/fonts/glyphicons-halflings-regular.woff
+
 /img/favicon.ico
-/img/glyphicons-halflings-white.png
-/img/glyphicons-halflings.png
-/img/icon-large.png
-/img/icon-small.png
-/img/rss-large.png
 /img/rss-small.png
-/img/subtome-large.png
 /img/subtome-small.png
-/img/subtome-wave.png
 /img/superfeedr.png
 
-/js/appcache.js
 /js/angular-ga.js
 /js/angular.min.js
-/js/bootstrap.min.js
-/js/bootstrap-modalmanager.js
+/js/appcache.js
 /js/bootstrap-modal.js
+/js/bootstrap-modalmanager.js
+/js/bootstrap.min.js
 /js/compatibility.js
 /js/i18next.js
 /js/jquery.js
 /js/moment.min.js
 /js/ng-i18next.js
 /js/services.js
-/js/subscriptions.js
 /js/store.js
+/js/subscriptions.js
 /js/subtome.js
 
 /locales/de/translation.json
