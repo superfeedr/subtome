@@ -56,7 +56,7 @@
     }
   },
   "store": {
-    "installed": "<i class=\"icon-ok\">&nbsp;</i>&nbsp;Installiert",
+    "installed": "<span class=\"glyphicon glyphicon-ok\"></span>&nbsp;Installiert",
     "remove": "Entfernen",
     "install": "Installieren"
   },
@@ -67,7 +67,7 @@
   "publishers": {
     "title": "Publishers",
     "subtitle": "Bringe deine Leser dazu, deine Inhalte zu abonnieren",
-    "summary": "Du aktualisierst deine Inhalte regelmäßig. Du willst deine Benutzer zurückholen, wenn das passiert: ermögliche ihnen deine Inhalte zu <em>abonnieren</em>. Das geht ganz leicht, indem du einen Knopf wie diesen <button ng-click='follow()' class='btn btn-mini'>Subscribe</button> zu irgendeiner Seite hinzufügst, um Abos zu ermöglichen. Stelle sicher, dass deine Seite einen Link beinhaltet, den deine Leser abonnieren können.",
+    "summary": "Du aktualisierst deine Inhalte regelmäßig. Du willst deine Benutzer zurückholen, wenn das passiert: ermögliche ihnen deine Inhalte zu <em>abonnieren</em>. Das geht ganz leicht, indem du einen Knopf wie diesen <button ng-click='follow()' class='btn btn-xs btn-default'>Subscribe</button> zu irgendeiner Seite hinzufügst, um Abos zu ermöglichen. Stelle sicher, dass deine Seite einen Link beinhaltet, den deine Leser abonnieren können.",
     "code": "Kopiere und füge folgenden Code unten in eine beliebige HTML-Seite ein.",
     "details": "Wenn der Benutzer den Knopf klickt, wird ein kleines JavaScript-Snippet von <code><a href=\"https://www.subtome.com/load.js\">https://www.subtome.com/load.js</a></code> geladen. Dieses Snippet lädt dann den SubToMe Dialog. Schau dir den Code um, um mehr darüber zu lernen.",
     "open": "Natürlich ist alles 100% offen, was bedeutet, du kannst den Code in jeder Weise verändern, anpassen und andere Mechanismen verwenden, die dir zusagen. Trete mit uns in Kontakt, wenn du Hilfe benötigst.",
@@ -84,12 +84,12 @@
         "feeds": "<code>{feeds}</code> ist eine Komma separierte Liste von kodierten Feed URLs. Es kann nur eine geben."
       },
       "suggested": "It is also possible for a publisher to recommand a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):",
-      "example": "Dieser Knopf erlaubt dir z.B. dem <input class=\"btn btn-mini\" type=\"button\" value=\"Superfeedr's Blog zu folgen\" ng-click=\"follow('http://blog.superfeedr.com/atom.xml')\" />, während dieser Knopf dir ermöglicht, <input class=\"btn btn-mini\" type=\"button\" value=\"SubToMes Code-Änderungen zu folgen\" ng-click=\"follow('https://github.com/superfeedr/subtome/commits/master.atom')\" />"
+      "example": "Dieser Knopf erlaubt dir z.B. dem <input class=\"btn btn-xs btn-default\" type=\"button\" value=\"Superfeedr's Blog zu folgen\" ng-click=\"follow('http://blog.superfeedr.com/atom.xml')\" />, während dieser Knopf dir ermöglicht, <input class=\"btn btn-xs btn-default\" type=\"button\" value=\"SubToMes Code-Änderungen zu folgen\" ng-click=\"follow('https://github.com/superfeedr/subtome/commits/master.atom')\" />"
     }
   },
   "settings": {
     "addons": {
-      "bookmarklet": "Drücke und ziehe dieses <a href='javascript:(function(){var%20z=document.createElement(\"script\");z.src=\"https://www.subtome.com/load.js\";document.body.appendChild(z);})()' onclick=''  class='btn btn-mini' title='Ziehe dies in deine Bookmarkleiste, um es zu installieren'>Abonnieren</a> Bookmarklet in deine Bookmarkleiste",
+      "bookmarklet": "Drücke und ziehe dieses <a href='javascript:(function(){var%20z=document.createElement(\"script\");z.src=\"https://www.subtome.com/load.js\";document.body.appendChild(z);})()' onclick=''  class='btn btn-xs btn-default' title='Ziehe dies in deine Bookmarkleiste, um es zu installieren'>Abonnieren</a> Bookmarklet in deine Bookmarkleiste",
       "chrome": "oder installiere diese <a class='install' href='https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc'>Chrome Extension</a>, ",
       "firefox": "oder installiere dieses <a class='install' href='https://addons.mozilla.org/en-us/firefox/addon/subtome-subscribe-button/''>Firefox Add-On",
       "final": "um Seiten zu abonnieren, die über keinen Abonnieren-Knopf verfügen."

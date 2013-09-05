@@ -6,7 +6,7 @@
 
   <tr ng-repeat="subscription in subscriptions">
     <td class='feed-title'>{{subscription.title || subscription.html || subscription.feed}}</td>
-    <td class='last-col'><input class="btn btn-mini" type="button" value="Follow" ng-click="follow(subscription)" /></td>
+    <td class='last-col'><input class="btn btn-xs" type="button" value="Follow" ng-click="follow(subscription)" /></td>
   </tr>
 </table>
 

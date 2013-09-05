@@ -1,7 +1,7 @@
 <h1 ng-i18next="publishers.title">Publishers</h1>
 <h2 ng-i18next="publishers.subtitle">Get your readers to subscribe to your content</h2>
 <p ng-i18next="[html]publishers.summary">
-  You update your content regularly. You want your users to come back when that happens: allow them to <em>subscribe</em> to your content. It's as easy as adding a button like this one <button ng-click='follow()' class='btn btn-mini'>Subscribe</button> to any page where you want to allow subscriptions. Make sure your page links to a feed corresponding to the data your readers will susbcribe to.
+  You update your content regularly. You want your users to come back when that happens: allow them to <em>subscribe</em> to your content. It's as easy as adding a button like this one <button ng-click='follow()' class='btn btn-xs'>Subscribe</button> to any page where you want to allow subscriptions. Make sure your page links to a feed corresponding to the data your readers will susbcribe to.
 </p>
 <p  ng-i18next="publishers.code">
   Copy and paste the code below into any HTML page.
@@ -43,7 +43,7 @@
   <li ng-i18next="[html]publishers.custom.params.feeds"><code>{feeds}</code> is a coma separated list of encoded feed urls. There can obviously be just one.</li>
 </ul>
 
-<blockquote ng-i18next="[html]publishers.custom.example">For example, this button will allow you to <input class="btn btn-mini" type="button" value="subscribe to Superfeedr's Blog" ng-click="follow('http://blog.superfeedr.com/atom.xml')" />, while this button will allow you to <input class="btn btn-mini" type="button" value="follow SubToMe's code commits" ng-click="follow('https://github.com/superfeedr/subtome/commits/master.atom')" />.</blockquote>
+<blockquote ng-i18next="[html]publishers.custom.example">For example, this button will allow you to <input class="btn btn-xs" type="button" value="subscribe to Superfeedr's Blog" ng-click="follow('http://blog.superfeedr.com/atom.xml')" />, while this button will allow you to <input class="btn btn-xs" type="button" value="follow SubToMe's code commits" ng-click="follow('https://github.com/superfeedr/subtome/commits/master.atom')" />.</blockquote>
 
 <p ng-i18next="[html]publishers.custom.suggested">
   It is also possible for a publisher to recommand a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the developer page to understand how to build the <code>suggestedUrl</code> element):

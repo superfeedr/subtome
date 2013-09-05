@@ -1,11 +1,9 @@
 CACHE MANIFEST
 # Sept 3 2013 1
 
-/css/bootstrap-modal.css
-/css/bootstrap-responsive.css
 /css/bootstrap.css
 /css/subtome.css
-css/gist.github.com.css
+/css/gist.github.com.css
 
 /img/favicon.ico
 /img/glyphicons-halflings-white.png
@@ -21,8 +19,6 @@ css/gist.github.com.css
 
 /js/angular-google-analytics.js
 /js/angular.min.js
-/js/bootstrap-modal.js
-/js/bootstrap-modalmanager.js
 /js/bootstrap.min.js
 /js/compatibility.js
 /js/i18next.js

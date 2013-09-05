@@ -11,7 +11,7 @@
     <p ng-i18next="subscribe.services.pick" ng-show="services.count() > 0">Pick a service to subscribe to this page:</p>
 
     <p>
-      <button ng-repeat="service in services.used()" ng-click='openService(service)' class="btn service  btn-block" data-dismiss="modal"><i class="icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></i> &nbsp;{{service.name}}</button>
+      <button ng-repeat="service in services.used()" ng-click='openService(service)' class="btn btn-default btn-block" data-dismiss="modal" > <span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
     </p>
 
     <div ng-show="suggested">
@@ -24,7 +24,7 @@
 
   </div>
   <div class="modal-footer">
-    <a ng-i18next="subscribe.settings" ng-click='openSettings()' class="btn" data-dismiss="modal" aria-hidden="true">Settings</a>
+    <a ng-i18next="subscribe.settings" ng-click='openSettings()' class="btn btn-default" data-dismiss="modal" aria-hidden="true">Settings</a>
     <button ng-i18next="subscribe.cancel" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancel</button>
   </div>
 </div>

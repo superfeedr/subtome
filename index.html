@@ -9,20 +9,20 @@
     <link type="application/atom+xml" rel="alternate" titme="Superfeedr blog" href="http://blog.superfeedr.com/atom.xml" />
 
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/subtome.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-modal-bs3patch.css" rel="stylesheet">
     <link href="css/bootstrap-modal.css" rel="stylesheet">
+    <link href="css/subtome.css" rel="stylesheet">
     <link href="css/gist.github.com.css" rel="stylesheet"  type="text/css">
 
-    <script src="js/angular.min.js"></script>
-    <script src="js/i18next.js"></script>
-    <script src="js/ng-i18next.js"></script>
-    <script src="js/angular-ga.js"></script>
     <script src="js/jquery.js"></script>
-    <script src="js/moment.min.js"></script>
+    <script src="js/angular.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-modalmanager.js"></script>
     <script src="js/bootstrap-modal.js"></script>
+    <script src="js/i18next.js"></script>
+    <script src="js/ng-i18next.js"></script>
+    <script src="js/angular-ga.js"></script>
+    <script src="js/moment.min.js"></script>
     <script src="js/compatibility.js"></script>
     <script src="js/services.js"></script>
     <script src="js/subscriptions.js"></script>
@@ -48,24 +48,34 @@
 
     </script>
 
-    <div class="container-narrow">
-      <div class="masthead main-layout">
-        <ul class="nav nav-pills pull-right">
-          <li><a ng-i18next="nav.settings" ng-href="#/settings">Settings</a></li>
-          <li><a ng-i18next="nav.publishers" ng-href="#/publishers">Add a button to your site</a></li>
-          <li><a ng-i18next="nav.developers" ng-href="#/developers">Apps</a></li>
-        </ul>
-        <h3 class="muted"><a href="/" class='subtome'><img src="img/subtome-small.png" style="height: 35px;"/></a></h3>
-      </div>
-      <hr class='main-layout'>
+    <div class="container">
+      <nav class="navbar main-layout" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/" class='navbar-brand'><img src="img/subtome-small.png" style="height: 35px;"/></a>
+        </div>
+
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right nav-pills">
+            <li><a ng-i18next="nav.settings" ng-href="#/settings">Settings</a></li>
+            <li><a ng-i18next="nav.publishers" ng-href="#/publishers">Add a button to your site</a></li>
+            <li><a ng-i18next="nav.developers" ng-href="#/developers">Apps</a></li>
+          </ul>
+        </div>
+      </nav>
 
       <div ng-view></div>
 
-      <hr class='main-layout'>
 
-      <div class='footer main-layout'>
+      <footer class="main-layout">
         <p ng-i18next="[html]footer">Brought to you by<a href="http://superfeedr.com">Superfeedr</a> <img src="./img/superfeedr.png" >. <a class="github" href="https://github.com/superfeedr/subtome">Source Code</a></p>
-      </div>
+      </footer>
 
     </div> <!-- /container -->
 

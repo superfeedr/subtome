@@ -56,7 +56,7 @@
     }
   },
   "store": {
-    "installed": "<i class=\"icon-ok\">&nbsp;</i>&nbsp;Installé",
+    "installed": "<span class=\"glyphicon glyphicon-ok\"></span>&nbsp;Installé",
     "remove": "Supprimer",
     "install": "Installer"
   },
@@ -67,7 +67,7 @@
   "publishers": {
     "title": "Editeurs de contenu",
     "subtitle": "Faites vous suivez par vos lecteurs",
-    "summary": "Vous mettez à jour votre contenu régulièrement et vous voulez que vos lecteurs y reviennent lorsque cela arrive. permettez leur de <em>suivre</em> votre contenu dans leur application favorite. Il vous suffit d'ajouter un bouton comme celui ci <button ng-click='follow()' class='btn btn-mini'>Suivre</button> à n'importe quelle page sur laquelle vous souhaitez autoriser les abonnements. Assurez vous que vos pages incluent des liens vers les flux que vos lecteurs suivront.",
+    "summary": "Vous mettez à jour votre contenu régulièrement et vous voulez que vos lecteurs y reviennent lorsque cela arrive. permettez leur de <em>suivre</em> votre contenu dans leur application favorite. Il vous suffit d'ajouter un bouton comme celui ci <button ng-click='follow()' class='btn btn-xs btn-default'>Suivre</button> à n'importe quelle page sur laquelle vous souhaitez autoriser les abonnements. Assurez vous que vos pages incluent des liens vers les flux que vos lecteurs suivront.",
     "code": "Copiez et collez le code ci-dessous dans l'HTML de votre application:",
     "details": "Ce que cela fait est simple: lorsque votre lecteur clique sur le bouton, un petit script Javascript (<code><a href=\"https://www.subtome.com/load.js\">https://www.subtome.com/load.js</a></code>) est chargé dans le navigateur. Ce script va ensuite lui-même charger la fenêtre SubToMe. N'hésitez pas regarder le code si vous souhiatez en savoir plus.",
     "open": "Tout ceci est 100% ouver, ce qui implique que vous pouvez changer le code afin qu'il corresponde mieux à vos besoins. Vous pouvez intégrer cela de n'importe quelle façon dans vos pages. N'hésitez pas à nous contacter si vous avez besoin d'aide.",
@@ -84,12 +84,12 @@
         "feeds": "<code>{feeds}</code>  est une liste d'url encodées des flux suivis, séparés par des virgules. Il peut tout à fait n'y en avoir qu'une."
       },
       "suggested": "It is also possible for a publisher to recommand a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):",
-      "example": "Par exemple, ce bouton vous permets de <input class=\"btn btn-mini\" type=\"button\" value=\"suivre le blog de Superfeedr\" ng-click=\"follow('http://blog.superfeedr.com/atom.xml')\" />, tandis que celui-ci vous permets de <input class=\"btn btn-mini\" type=\"button\" value=\"suivre les mises à jour du code de SubToMe's\" ng-click=\"follow('https://github.com/superfeedr/subtome/commits/master.atom')\" />"
+      "example": "Par exemple, ce bouton vous permets de <input class=\"btn btn-xs btn-default\" type=\"button\" value=\"suivre le blog de Superfeedr\" ng-click=\"follow('http://blog.superfeedr.com/atom.xml')\" />, tandis que celui-ci vous permets de <input class=\"btn btn-xs btn-default\" type=\"button\" value=\"suivre les mises à jour du code de SubToMe's\" ng-click=\"follow('https://github.com/superfeedr/subtome/commits/master.atom')\" />"
     }
   },
   "settings": {
     "addons": {
-      "bookmarklet": "Faites glisser ce bouton <a href='javascript:(function(){var%20z=document.createElement(\"script\");z.src=\"https://www.subtome.com/load.js\";document.body.appendChild(z);})()' onclick='' class='btn btn-mini' title='Faites glisser ce bouton dans votre bar de signets'>Suivre</a> dans votre barre de signets",
+      "bookmarklet": "Faites glisser ce bouton <a href='javascript:(function(){var%20z=document.createElement(\"script\");z.src=\"https://www.subtome.com/load.js\";document.body.appendChild(z);})()' onclick='' class='btn btn-xs btn-default' title='Faites glisser ce bouton dans votre bar de signets'>Suivre</a> dans votre barre de signets",
       "chrome": "ou installez cette <a class='install' href='https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc'>Extension Chrome</a>, ",
       "firefox": "ou installez cet <a class='install' href='https://addons.mozilla.org/en-us/firefox/addon/subtome-subscribe-button/''>Add-On Firefox",
       "final": "pour vous suivre les pages qui n'ont pas de bouton."
