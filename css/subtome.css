@@ -71,3 +71,26 @@ footer img {
   background-position: center;
 }
 
+
+@media (max-width: 767px) {
+  #logo-scale {
+    -webkit-transform: scale(0.8) translate(0px,130px);
+    transform: scale(0.8) translate(0px,130px);
+  }
+
+  #subtome-logo {
+    height: 80px;
+  }
+}
+@media (min-width: 768px) {
+  #logo-scale {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+  }
+
+  #subtome-logo {
+    height: 180px;
+  }
+}
+
+
