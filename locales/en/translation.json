@@ -5,7 +5,8 @@
   "nav": {
     "settings": "Settings",
     "publishers": "Add a button to your site",
-    "developers": "Reader Developers"
+    "developers": "Reader Developers",
+    "subscriptions": "Subscriptions"
   },
   "footer": "Brought to you by <a href='http://superfeedr.com'>Superfeedr</a> <img src='./img/superfeedr.png'>, <a href='https://github.com/superfeedr/subtome'>Source Code</a>.",
   "index": {

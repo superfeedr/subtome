@@ -1,1 +1,18 @@
-Ok, hello world.
+<h1>Subscriptions</h1>
+<p>
+  Here is the list of sites to which you've subscribed using SubToMe.
+</p>
+<table class="table table-striped">
+  <tr ng-repeat="subscription in subscriptions">
+    <td class='feed-title'>{{subscription[0]}}
+      <span ng-repeat="sub in subscription[1]" class="pull-right label" style="{{pickColor(sub.service)}}">{{sub.service}}</span>&emsp;
+    </td>
+  </tr>
+</table>
+
+<h2>OPML</h2>
+<p>
+  <abbr title="attribute">OPML</abbr> is an <em>open web standard</em> for lists of subscriptions. It is supported by several feed readers to export and import your existing subscriptions between services.
+</p>
+<a ng-href="/#/import" type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-up"></span> Import</a>
+<a ng-href="/#/export" target="_blank" type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span>Export</a>

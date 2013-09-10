@@ -50,6 +50,15 @@ Subscriptions.prototype.list = function subscriptionsList() {
   return list;
 }
 
+Subscriptions.prototype.all = function subscriptionsAll() {
+  var list = [];
+  var that = this;
+  Object.keys(this.data).forEach(function(k) {
+    list.push(new Array(k, that.data[k]));
+  });
+  return list;
+}
+
 Subscriptions.prototype.add = function addSubscriptions(url, obj) {
   if(!this.data[url]) {
     this.data[url] = [];

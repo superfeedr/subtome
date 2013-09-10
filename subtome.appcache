@@ -39,6 +39,7 @@ CACHE MANIFEST
 /locales/fr/translation.json
 
 /partials/developers.html
+/partials/export.html
 /partials/import.html
 /partials/index.html
 /partials/publishers.html

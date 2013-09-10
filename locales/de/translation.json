@@ -5,7 +5,8 @@
   "nav": {
     "settings": "Einstellungen",
     "publishers": "Füge einen Knopf zu deiner Seite hinzu",
-    "developers": "Entwickler"
+    "developers": "Entwickler",
+    "subscriptions": "Subscriptions"
   },
   "footer": "Präsentiert von <a href='http://superfeedr.com'>Superfeedr</a> <img src='./img/superfeedr.png'>, <a href='https://github.com/superfeedr/subtome'>Source Code</a>.",
   "index": {

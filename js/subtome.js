@@ -20,8 +20,8 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
     when('/register', {templateUrl: 'partials/register.html', controller: "RegisterController"}).
     when('/subscribe', {templateUrl: 'partials/subscribe.html', controller: "SubscribeController"}).
     when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: "SubscriptionsController"}).
-    when('/export', {templateUrl: 'partials/export.html', controller: "ExportController"}).
     when('/import', {templateUrl: 'partials/import.html', controller: "ImportController"}).
+    when('/export', {templateUrl: 'partials/export.html', controller: "ExportController"}).
     otherwise({redirectTo: '/'});
   }
 
@@ -72,7 +72,7 @@ subtome.run(['$rootScope', '$location', function($rootScope, $location) {
       var feeds = [url];
       var resource = url;
       s.setAttribute('style','position:fixed;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent; z-index: 2147483647');
-      s.setAttribute('src', 'https://www.subtome.com/subscribe.html?resource=' + encodeURIComponent(resource) + '&feeds=' + feeds.join(','));
+      s.setAttribute('src', '/#/subscribe?resource=' + encodeURIComponent(resource) + '&feeds=' + feeds.join(','));
       var loaded = false;
       s.onload = function() {
         if(loaded) {
@@ -214,14 +214,15 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
 subtome.controller("ExportController", ['Analytics', function ExportController(Analytics) {
   var subscriptions = new Subscriptions().list();
   var opml = '<?xml version="1.0" encoding="UTF-8"?><opml version="1.0"><head><title>Your Subscriptions</title></head><body>';
-  for(var k=0; k < subscriptions.length; k++) {
-    for(var l=0; l < subscriptions[k][1].length; l++) {
+  for (var k = 0; k < subscriptions.length; k++) {
+    for (var l = 0; l < subscriptions[k][1].length; l++) {
       opml += '<outline xmlUrl="' + subscriptions[k][1][l] + '" htmlUrl="' + subscriptions[k][0] + '" />';
     }
   };
   opml += '</body></opml>';
   window.location = "data:application/xml;base64," + window.btoa(opml);
 }]);
+
 
 subtome.controller("ImportController", ['$scope', 'Analytics', function ImportController($scope, Analytics) {
   $scope.$watch('file', function() {
@@ -249,7 +250,21 @@ subtome.controller("ImportController", ['$scope', 'Analytics', function ImportCo
 }]);
 
 subtome.controller("SubscriptionsController", ['$scope', 'Analytics', function ImportController($scope, Analytics) {
-  $scope.subscriptions = [];
+  $scope.subscriptions = new Subscriptions().all();
+  $scope.pickColor = function pickColor(string) {
+    var colors = [
+      "background-color: rgb(66, 139, 202)",
+      "background-color: rgb(91, 192, 222)",
+      "background-color: rgb(240, 173, 78)",
+      "background-color: rgb(217, 83, 79);",
+      "background-color: rgb(92, 184, 92)",
+    ];
+    var s = 0;
+    for(var k = 0; k < string.length; k++) {
+      s += string.charCodeAt(k);
+    }
+    return colors[s % colors.length];
+  }
 }]);
 
 

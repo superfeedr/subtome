@@ -5,7 +5,8 @@
   "nav": {
     "settings": "Réglages",
     "publishers": "Ajouter un bouton",
-    "developers": "Developeur de lecteur de flux"
+    "developers": "Developeur de lecteur de flux",
+    "subscriptions": "Abonnements"
   },
   "footer": "Proposé par <a href='http://superfeedr.com'>Superfeedr</a> <img src='./img/superfeedr.png'>, <a href='https://github.com/superfeedr/subtome'>Code Source</a>.",
   "index": {
