@@ -154,5 +154,16 @@ var appStore = [
     name: "MnmlRdr",
     url: "https://mnmlrdr.com/settings/subscriptions/add?feed={url}"
   }
+},
+{
+  name: "Player FM",
+  tags: ["podcast", "mobile", "web"],
+  description: "Listen to talk shows on hundreds of topics, everything from Politics to Pokemon! ",
+  url:"http://player.fm/",
+  icon:"http://player.fm/favicon.ico",
+  registration:{
+    name: "Player FM",
+    url: "http://player.fm/series?url={feed}&referrer={url}&related_feeds={feeds}"
+  }
 }
 ];
