@@ -1,7 +1,13 @@
 <h1>Subscriptions</h1>
-<p>
+<p ng-show='subscriptions.length' >
   Here is the list of sites to which you've subscribed using SubToMe.
 </p>
+
+<p ng-show='!subscriptions.length' >
+  It appears that you are not following any website yet. Make sure you start following some soon!
+</p>
+
+
 <table class="table table-striped">
   <tr ng-repeat="subscription in subscriptions">
     <td class='feed-title'>{{subscription[0]}}
@@ -15,4 +21,4 @@
   <abbr title="attribute">OPML</abbr> is an <em>open web standard</em> for lists of subscriptions. It is supported by several feed readers to export and import your existing subscriptions between services.
 </p>
 <a ng-href="/#/import" type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-up"></span> Import</a>
-<a ng-href="/#/export" target="_blank" type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span>Export</a>
+<a ng-show='subscriptions.length' ng-href="/#/export" target="_blank" type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span>Export</a>
