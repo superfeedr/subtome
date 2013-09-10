@@ -24,6 +24,17 @@ var appStore = [
     installed: true
 },
 {
+  name: 'Digg',
+  tags: ['web', 'mobile'],
+  description: 'Digg is still one of the most famous news site out there. The Digg reader lets you digg stories up.',
+  url: 'https://digg.com/reader/',
+  icon: 'https://digg.com//static/images/reader/digg_favicon_reader.png',
+  registration: {
+    name: 'Digg Reader',
+    url: 'http://digg.com/reader/search/{url}'
+  }
+},
+{
   name: 'Rivered',
   tags: ['web'],
   description: 'An uncluttered River of News; no unread item count, no complexity. Just the content you subscribe to.',
