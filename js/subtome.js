@@ -20,7 +20,7 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
     when('/register', {templateUrl: 'partials/register.html', controller: "RegisterController"}).
     when('/subscribe', {templateUrl: 'partials/subscribe.html', controller: "SubscribeController"}).
     when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: "SubscriptionsController"}).
-    when('/export', {templateUrl: 'partials/subscriptions.html', controller: "exportController"}).
+    when('/export', {templateUrl: 'partials/export.html', controller: "ExportController"}).
     when('/import', {templateUrl: 'partials/import.html', controller: "ImportController"}).
     otherwise({redirectTo: '/'});
   }
@@ -155,7 +155,7 @@ subtome.controller("StoreController", ['$scope', function StoreController($scope
   };
 }]);
 
-subtome.controller("RegisterController", ['$scope', '$routeParams', 'Analytics', function DevelopersController($scope, $routeParams, Analytics) {
+subtome.controller("RegisterController", ['$scope', '$routeParams', 'Analytics', function RegisterController($scope, $routeParams, Analytics) {
   Analytics.trackEvent('services', 'register', $routeParams.name);
   $scope.services.register($routeParams.name, $routeParams.url);
   $scope.service = {name: $routeParams.name, url: $routeParams.url};
@@ -211,7 +211,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
   }
 }]);
 
-subtome.controller("exportController", ['Analytics', function SubscriptionsController(Analytics) {
+subtome.controller("ExportController", ['Analytics', function ExportController(Analytics) {
   var subscriptions = new Subscriptions().list();
   var opml = '<?xml version="1.0" encoding="UTF-8"?><opml version="1.0"><head><title>Your Subscriptions</title></head><body>';
   for(var k=0; k < subscriptions.length; k++) {
@@ -248,6 +248,9 @@ subtome.controller("ImportController", ['$scope', 'Analytics', function ImportCo
   $scope.subscriptions = [];
 }]);
 
+subtome.controller("SubscriptionsController", ['$scope', 'Analytics', function ImportController($scope, Analytics) {
+  $scope.subscriptions = [];
+}]);
 
 
 })();
