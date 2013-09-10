@@ -19,7 +19,6 @@ CACHE MANIFEST
 
 /js/angular-ga.js
 /js/angular.min.js
-/js/appcache.js
 /js/bootstrap-modal.js
 /js/bootstrap-modalmanager.js
 /js/bootstrap.min.js
