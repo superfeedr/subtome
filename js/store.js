@@ -167,6 +167,17 @@ var appStore = [
   }
 },
 {
+  name: "Netvibes",
+  tags: ["web", "dashboard", "analytics"],
+  description: "Netvibes is the all-in-one dashboard intelligence platform.",
+  url:"http://www.netvibes.com",
+  icon:"http://cdn.netvibes.com/img/favicon-12.png",
+  registration:{
+    name: "Netvibes",
+    url: "http://www.netvibes.com/subscribe.php?url={url}"
+  }
+},
+{
   name: "Player FM",
   tags: ["podcast", "mobile", "web"],
   description: "Listen to talk shows on hundreds of topics, everything from Politics to Pokemon! ",
