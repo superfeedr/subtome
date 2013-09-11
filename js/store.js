@@ -123,6 +123,17 @@ var appStore = [
   }
 },
 {
+  name: 'AOL Reader',
+  tags: ['web', 'mobile', 'tablets'],
+  description: 'All your favorite websites, in one place',
+  url: 'http://reader.aol.com/',
+  icon: 'http://www.aol.com/favicon.ico',
+  registration: {
+    name: 'AOL Reader',
+    url: 'http://reader.aol.com/#quickadd/{url}'
+  }
+},
+{
   name: 'Msgboy',
   tags: ['chrome', 'open source'],
   description: 'Msgboy delivers a custom feed of stories in realtime, all based on websites you\'ve bookmarked and visited most often',
