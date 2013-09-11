@@ -134,17 +134,6 @@ var appStore = [
   }
 },
 {
-  name: 'Msgboy',
-  tags: ['chrome', 'open source'],
-  description: 'Msgboy delivers a custom feed of stories in realtime, all based on websites you\'ve bookmarked and visited most often',
-  url: 'http://www.msgboy.com/',
-  icon: 'https://raw.github.com/superfeedr/msgboy/master/views/img/icon16.png',
-  registration: {
-    name: 'Msgboy',
-    url: 'chrome-extension://ligglcbjgpiljeoenbhnnfdipkealakb/data/html/subscribe.html?url={url}'
-  }
-},
-{
   name: 'InoReader',
   tags: ['web', 'advanced'],
   description: 'Light and Fast RSS/Atom Reader inspired by Google Reader',
