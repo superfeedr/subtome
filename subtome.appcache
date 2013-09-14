@@ -35,6 +35,7 @@ CACHE MANIFEST
 /locales/de/translation.json
 /locales/dev/translation.json
 /locales/en/translation.json
+/locales/en-US/translation.json
 /locales/fr/translation.json
 
 /partials/developers.html

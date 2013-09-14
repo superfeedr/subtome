@@ -7,6 +7,8 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
   $i18nextProvider.options = {
     lng: navigator.language,
     fallbackLng: 'en',
+    useLocalStorage: true,
+    localStorageExpirationTime: 1000 * 60 * 60 * 24,
     resGetPath: '../locales/__lng__/__ns__.json'
   };
 
