@@ -84,8 +84,7 @@
         "resource": "<code>{resource}</code> est l'url encodée qui correspond au contenu suivi par le lecteur.",
         "feeds": "<code>{feeds}</code>  est une liste d'url encodées des flux suivis, séparés par des virgules. Il peut tout à fait n'y en avoir qu'une."
       },
-      "suggested": "It is also possible for a publisher to recommand a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):",
-      "example": "Par exemple, ce bouton vous permets de <input class=\"btn btn-xs btn-default\" type=\"button\" value=\"suivre le blog de Superfeedr\" ng-click=\"follow('http://blog.superfeedr.com/atom.xml')\" />, tandis que celui-ci vous permets de <input class=\"btn btn-xs btn-default\" type=\"button\" value=\"suivre les mises à jour du code de SubToMe's\" ng-click=\"follow('https://github.com/superfeedr/subtome/commits/master.atom')\" />"
+      "suggested": "It is also possible for a publisher to recommand a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
     }
   },
   "settings": {

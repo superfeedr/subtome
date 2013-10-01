@@ -34,6 +34,21 @@
       }
     }
 
+    /* IE Compat */
+    if(!CustomEvent.prototype) {
+      function CustomEvent ( event, params ) {
+        params = params || { bubbles: false, cancelable: false, detail: undefined };
+        var evt = document.createEvent( 'CustomEvent' );
+        evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+        return evt;
+      };
+
+      CustomEvent.prototype = window.CustomEvent.prototype;
+
+      window.CustomEvent = CustomEvent;
+    }
+
+    /* Actual SubToMe Code */
     var feeds = [];
     var links = document.getElementsByTagName('link');
     for(var i = 0; i < links.length; i++) {
@@ -58,6 +73,7 @@
     var loaded = false;
     s.onload = function() {
       if(loaded) {
+        console.log(s.getAttribute('src'));
         document.getElementsByTagName('body')[0].removeChild(s);
       }
       loaded = true;
