@@ -211,6 +211,18 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     }
     $scope.subscriptions.add($scope.resource, {feeds: $scope.feeds, service: service.name});
     window.open(redirect);
+    var d = document.createElement('a');
+    d.href = $scope.resource;
+    var s = document.createElement('a');
+    s.href = service.url;
+    window.parent.postMessage({subscription: {
+      feeds: $scope.feeds,
+      resource: $scope.resource,
+      app: {
+        name: service.name,
+        url: s.protocol + '//' + s.host
+      }
+    }}, d.protocol + '//' + d.host);
   }
 }]);
 
