@@ -185,7 +185,9 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
   Analytics.trackEvent('resources', 'subscribe', $scope.resource);
   $scope.feeds = [];
   if($routeParams.feeds && $routeParams.feeds.length > 0) {
-    $scope.feeds = $routeParams.feeds.split(",");
+    $scope.feeds = $routeParams.feeds.split(",").map(function(url) {
+      return decodeURIComponent(url);
+    });
     Analytics.trackEvent('feeds', 'subscribe', $scope.feeds[0]);
   }
 

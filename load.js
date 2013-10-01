@@ -49,12 +49,12 @@
     var s = document.createElement('iframe');
     var resource = window.location.toString();
     var src = 'https://www.subtome.com';
-    src += '/#/subscribe?resource=' + encodeURIComponent(resource) + '&feeds=' + feeds.join(',');
+    src += '/#/subscribe?resource=' + encodeURIComponent(resource) + '&feeds=' + encodeURIComponent(feeds.join(','));
     if(window.subtome && window.subtome.suggestedUrl && window.subtome.suggestedName) {
       src += '&suggestedUrl=' + encodeURIComponent(window.subtome.suggestedUrl) + '&suggestedName=' + encodeURIComponent(window.subtome.suggestedName)
     }
     s.setAttribute('style','position:fixed;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent; z-index: 2147483647');
-    s.setAttribute('src', src)
+    s.setAttribute('src', src);
     var loaded = false;
     s.onload = function() {
       if(loaded) {
