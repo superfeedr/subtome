@@ -178,6 +178,17 @@ var appStore = [
   }
 },
 {
+  name: "Squirro",
+  tags: ["web", "intelligence", "assistant"],
+  description: "Squirro is the leader in Context Intelligence, combining structured and unstructured data to provide the 'Why' behind the data.",
+  url:"http://squirro.com/",
+  icon:"http://squirro.com/files/2213/3673/7722/favicon.ico",
+  registration:{
+    name: "Squirro",
+    url: "https://squirro.com/app/#add/query/{url}"
+  }
+},
+{
   name: "Player FM",
   tags: ["podcast", "mobile", "web"],
   description: "Listen to talk shows on hundreds of topics, everything from Politics to Pokemon! ",
