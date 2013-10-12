@@ -68,7 +68,7 @@
       if (event.origin !== "https://www.subtome.com")
         return;
 
-      var _gaq = _gaq || [];
+      var _gaq = window._gaq || [];
       _gaq.push(['_trackEvent', 'subtome', 'follow', event.data.subscription.app.name]);
     });
 
