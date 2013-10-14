@@ -42,6 +42,9 @@ subtome.run(['$rootScope', '$location', function($rootScope, $location) {
           if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
             $(b).show();
           }
+          else if(['browser-specific', 'ng-scope'].indexOf(c)) {
+            // Nothing
+          }
           else {
             $(b).hide();
           }
