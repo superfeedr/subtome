@@ -14,7 +14,7 @@
         <p ng-show="services.error" class="alert alert-error">{{services.error}}</p>
 
         <!-- Popular readers -->
-        <div ng-show="services.count() == 0 && !suggested">
+        <div ng-show="services.count() == 0">
           <p>You do not have any prefered service, check our popular options:</p>
           <div ng-repeat="service in apps.slice(0,3)" class="btn-group">
             <button ng-click='openService(service)' class="btn btn-default pick" data-dismiss="modal" ><span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
