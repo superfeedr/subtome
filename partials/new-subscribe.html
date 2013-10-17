@@ -24,7 +24,7 @@
 
         <!-- Prefered -->
         <div ng-show="services.count() > 0">
-          <p ng-i18next="subscribe.services.pick">Pick a service to subscribe to this page:</p>
+          <p ng-i18next="subscribe.services.pick">Pick one of your favorite services to subscribe:</p>
           <div ng-repeat="service in services.used()" class="btn-group">
             <button ng-click='openService(service)' class="btn btn-default pick" data-dismiss="modal" ><span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
             <button ng-click='toggle(service)' class="btn btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(service), "glyphicon-remove": services.uses(service)}'></span></button>
@@ -33,8 +33,11 @@
 
         <!-- Suggested -->
         <div ng-show="suggested">
-          <p ng-i18next="subscribe.services.recommanded" ng-show="services.count() == 0 ">Recomanded by the publisher:</p>
-          <button ng-show="suggested" ng-click='openService(suggested)' class="btn btn-default btn-block" data-dismiss="modal"> <span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{suggested.url}})"></span>{{suggested.name}}</button>
+          <p ng-i18next="subscribe.services.recommanded">Recomanded by the publisher:</p>
+          <div class="btn-group">
+            <button ng-show="suggested" ng-click='openService(suggested)' class="btn btn-default pick" data-dismiss="modal"> <span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{suggested.url}})"></span>{{suggested.name}}</button>
+            <button ng-click='toggle(suggested)' class="btn btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(suggested), "glyphicon-remove": services.uses(suggested)}'></span></button>
+          </div>
         </div>
 
       </div>
@@ -48,12 +51,12 @@
             </h4>
             <span class="label label-default" ng-repeat="tag in app.tags">{{tag}}</span>
             <div class="row">
-              <div class="col-sm-10">
+              <div class="col-sm-8">
                 <p>{{app.description}}</p>
               </div>
-              <div class="col-sm-2">
+              <div class="col-sm-4">
                 <div class="btn-group">
-                  <button ng-click='openService(app)' class="btn btn-sm btn-default pick" data-dismiss="modal" >{{app.name}}</button>
+                  <button ng-click='openService(app)' class="btn btn-sm btn-default pick" data-dismiss="modal" >Follow with {{app.name}}</button>
                   <button ng-click='toggle(app)' class="btn btn-sm btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(app), "glyphicon-remove": services.uses(app)}'></span></button>
                 </div>
               </div>
