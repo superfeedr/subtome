@@ -37,10 +37,37 @@ footer img {
 }
 
 .app {
+}
+
+.store .app {
   max-height: 200px;
   height: 200px;
   min-height: 200px;
   padding-bottom: 20px;
+}
+
+.modal-body .app h4{
+  display:inline;
+}
+
+.modal-body .app {
+  margin-bottom: 10px;
+}
+
+.modal-body .app .btn.pick{
+  width:90px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.modal-body .app .btn.icn{
+  width:10px;
+}
+
+.modal-body .app .btn-group{
+  width:120px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .modal-header h3 {

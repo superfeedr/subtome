@@ -20,6 +20,7 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
     when('/store', {templateUrl: 'partials/store.html', controller: "StoreController"}).
     when('/register', {templateUrl: 'partials/register.html', controller: "RegisterController"}).
     when('/subscribe', {templateUrl: 'partials/subscribe.html', controller: "SubscribeController"}).
+    when('/new-subscribe', {templateUrl: 'partials/new-subscribe.html', controller: "SubscribeController"}).
     when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: "SubscriptionsController"}).
     when('/import', {templateUrl: 'partials/import.html', controller: "ImportController"}).
     when('/export', {templateUrl: 'partials/export.html', controller: "ExportController"}).
@@ -166,8 +167,16 @@ subtome.controller("RegisterController", ['$scope', '$routeParams', 'Analytics',
 }]);
 
 subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics', function SubscribeController($scope, $routeParams, Analytics) {
+  $scope.picker = "default";
+
   $scope.subscriptions = new Subscriptions();
-  $('#subtomeModal').modal({backdrop: true, keyboard: true, show: true});
+  $('#subtomeModal').modal({
+    backdrop: true,
+    keyboard: true,
+    show: true,
+    replace: true,
+    modalOverflow: true
+  });
   $('#subtomeModal').on('hidden', function() {
     if($routeParams.back) {
       window.location = $routeParams.back;
@@ -194,13 +203,14 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     Analytics.trackEvent('feeds', 'subscribe', $scope.feeds[0]);
   }
 
-  $scope.openSettings = function openSettings() {
-    window.open('/#/settings');
+  $scope.toggleStore = function toggleStore() {
+    $scope.picker = $scope.picker == "store" && "default" || "store";
   }
 
   $scope.openService = function openService(service) {
-    Analytics.trackEvent('services', 'redirect', service.name)
-    var redirect = decodeURIComponent(service.url).replace('{url}', encodeURIComponent($scope.resource));
+    Analytics.trackEvent('services', 'redirect', service.name);
+    var url = service.registration ? service.registration.url : service.url;
+    var redirect = decodeURIComponent(url).replace('{url}', encodeURIComponent($scope.resource));
     if(redirect.match(/\{feed\}/)) {
       if($scope.feeds[0]) {
         redirect = redirect.replace('{feed}', encodeURIComponent($scope.feeds[0]));
@@ -217,7 +227,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     var d = document.createElement('a');
     d.href = $scope.resource;
     var s = document.createElement('a');
-    s.href = service.url;
+    s.href = url;
     window.parent.postMessage({subscription: {
       feeds: $scope.feeds,
       resource: $scope.resource,
@@ -227,6 +237,24 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
       }
     }}, d.protocol + '//' + d.host);
   }
+
+
+  var apps = appStore;
+  apps.forEach(function(a) {
+    a.installed = $scope.services.uses(a.name);
+  });
+  $scope.apps = apps;
+
+  $scope.toggle = function toggleApp(app) {
+    if(app.installed) {
+      app.installed = false;
+      $scope.services.removeService(app.registration.name);
+    }
+    else {
+      app.installed = true;
+      $scope.services.register(app.registration.name, app.registration.url)
+    }
+  };
 }]);
 
 subtome.controller("ExportController", ['Analytics', function ExportController(Analytics) {
