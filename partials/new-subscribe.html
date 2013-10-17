@@ -11,7 +11,10 @@
 
       <div ng-switch-when="default">
         <p ng-show="services.error" class="alert alert-error">{{services.error}}</p>
-        <p ng-i18next="[html]subscribe.services.none" ng-show="services.count() == 0 && !suggested">You do not have selected your prefered services yet. Please, <a target="_blank" href="#/store">pick one</a>!</p>
+        <div ng-show="services.count() == 0 && !suggested">
+          <p>You do not have any prefered service, check our popular options:</p>
+          <button ng-repeat="service in apps.slice(0,3)" ng-click='openService(service)' class="btn btn-default btn-block" data-dismiss="modal" > <span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
+        </div>
 
         <p ng-i18next="subscribe.services.pick" ng-show="services.count() > 0">Pick a service to subscribe to this page:</p>
 
@@ -55,7 +58,7 @@
 
   </div>
   <div class="modal-footer">
-    <a ng-click='toggleStore()' class="btn btn-default" aria-hidden="true">Pick another one</a>
+    <a ng-click='toggleStore()' class="btn btn-default" aria-hidden="true">{{toggleButton}}</a>
     <button ng-i18next="subscribe.cancel" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancel</button>
   </div>
 </div>

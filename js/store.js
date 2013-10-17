@@ -1,5 +1,16 @@
 var appStore = [
 {
+  name: 'Feedly',
+  tags: ['chrome', 'firefox', 'mobile'],
+  description: 'Feedly is a news aggregator application for various Web browsers and mobile devices running iOS and Android.',
+  url: 'http://feedly.com/',
+  icon: 'http://feedly.com/favicon.ico',
+  registration: {
+    name: 'Feedly',
+    url: 'http://www.feedly.com/home#subscription/feed/{feed}'
+  }
+},
+{
   name: 'The Old Reader',
   tags: ['web', 'popular', 'advanced'],
   description: 'The Old Reader was built to be a Google Reader replacement, and it does it well!',
@@ -10,6 +21,28 @@ var appStore = [
     url: 'http://theoldreader.com/feeds/subscribe?url={feed}'
   },
   installed: false
+},
+{
+  name: 'Feedbin',
+  tags: ['web'],
+  description: 'A fast, simple RSS feed reader that delivers a great reading experience.',
+  url: 'https://feedbin.me/',
+  icon: 'https://feedbin.me/favicon.ico',
+  registration: {
+    name: 'Feedbin',
+    url: 'https://feedbin.me/?subscribe={feed}'
+  }
+},
+{
+  name: 'BazQux Reader',
+  tags: ['web', 'comments'],
+  description: 'RSS feed reader that shows comments to posts and supports reading of Facebook and Google+ pages.',
+  url: 'https://bazqux.com/',
+  icon: 'https://bazqux.com/favicon.ico',
+  registration: {
+    name: 'BazQux',
+    url: 'https://bazqux.com/add?url={url}'
+  }
 },
 {
   name: 'NewsBlur',
@@ -68,17 +101,6 @@ var appStore = [
   }
 },
 {
-  name: 'BazQux Reader',
-  tags: ['web', 'comments'],
-  description: 'RSS feed reader that shows comments to posts and supports reading of Facebook and Google+ pages.',
-  url: 'https://bazqux.com/',
-  icon: 'https://bazqux.com/favicon.ico',
-  registration: {
-    name: 'BazQux',
-    url: 'https://bazqux.com/add?url={url}'
-  }
-},
-{
   name: 'Feedleap',
   tags: ['web', 'kippt', 'bookmark', 'open source'],
   description: 'FeedLeap lets you subscribe to your favorite RSS feeds and store new entries as Clips in any Kippt List you want.',
@@ -98,28 +120,6 @@ var appStore = [
   registration: {
     name: 'FeedHQ',
     url: 'https://feedhq.org/subscribe/?feeds={feeds}&url={url}'
-  }
-},
-{
-  name: 'Feedbin',
-  tags: ['web'],
-  description: 'A fast, simple RSS feed reader that delivers a great reading experience.',
-  url: 'https://feedbin.me/',
-  icon: 'https://feedbin.me/favicon.ico',
-  registration: {
-    name: 'Feedbin',
-    url: 'https://feedbin.me/?subscribe={feed}'
-  }
-},
-{
-  name: 'Feedly',
-  tags: ['chrome', 'firefox', 'mobile'],
-  description: 'Feedly is a news aggregator application for various Web browsers and mobile devices running iOS and Android.',
-  url: 'http://feedly.com/',
-  icon: 'http://feedly.com/favicon.ico',
-  registration: {
-    name: 'Feedly',
-    url: 'http://www.feedly.com/home#subscription/feed/{feed}'
   }
 },
 {

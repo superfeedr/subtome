@@ -203,8 +203,15 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     Analytics.trackEvent('feeds', 'subscribe', $scope.feeds[0]);
   }
 
+  $scope.toggleButton = "Pick another one";
   $scope.toggleStore = function toggleStore() {
     $scope.picker = $scope.picker == "store" && "default" || "store";
+    if($scope.picker == "store") {
+      $scope.toggleButton = "Prefered services";
+    }
+    else {
+      $scope.toggleButton = "Pick another one";
+    }
   }
 
   $scope.openService = function openService(service) {
