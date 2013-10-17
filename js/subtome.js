@@ -207,7 +207,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
   $scope.toggleStore = function toggleStore() {
     $scope.picker = $scope.picker == "store" && "default" || "store";
     if($scope.picker == "store") {
-      $scope.toggleButton = "Prefered services";
+      $scope.toggleButton = "Prefered Services";
     }
     else {
       $scope.toggleButton = "Pick another one";
@@ -216,7 +216,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
 
   $scope.openService = function openService(service) {
     Analytics.trackEvent('services', 'redirect', service.name);
-    var url = service.registration ? service.registration.url : service.url;
+    var url = service.url;
     var redirect = decodeURIComponent(url).replace('{url}', encodeURIComponent($scope.resource));
     if(redirect.match(/\{feed\}/)) {
       if($scope.feeds[0]) {
@@ -248,18 +248,17 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
 
   var apps = appStore;
   apps.forEach(function(a) {
-    a.installed = $scope.services.uses(a.name);
+    a.name = a.registration.name; // Compatibility
+    a.url = a.registration.url; // Compatibility
   });
   $scope.apps = apps;
 
   $scope.toggle = function toggleApp(app) {
-    if(app.installed) {
-      app.installed = false;
-      $scope.services.removeService(app.registration.name);
+    if($scope.services.uses(app.name)) {
+      $scope.services.removeService(app.name);
     }
     else {
-      app.installed = true;
-      $scope.services.register(app.registration.name, app.registration.url)
+      $scope.services.register(app.name, app.url)
     }
   };
 }]);

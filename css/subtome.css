@@ -54,10 +54,18 @@ footer img {
   margin-bottom: 10px;
 }
 
-.modal-body .app .btn.pick{
-  width:90px;
+.modal-body .btn.pick{
+  width: 250px;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.modal-body .defaults .btn-group {
+  margin-bottom: 10px;
+}
+
+.modal-body .apps .app .btn.pick{
+  width: 90px;
 }
 
 .modal-body .app .btn.icn{
@@ -73,6 +81,7 @@ footer img {
 .modal-header h3 {
   display: inline;
 }
+
 
 .rss {
   padding: 4px;

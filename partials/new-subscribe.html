@@ -9,29 +9,37 @@
 
     <div class="animate-switch-container" ng-switch on="picker">
 
-      <div ng-switch-when="default">
+      <div ng-switch-when="default" class="defaults" >
+
         <p ng-show="services.error" class="alert alert-error">{{services.error}}</p>
+
+        <!-- Popular readers -->
         <div ng-show="services.count() == 0 && !suggested">
           <p>You do not have any prefered service, check our popular options:</p>
-          <button ng-repeat="service in apps.slice(0,3)" ng-click='openService(service)' class="btn btn-default btn-block" data-dismiss="modal" > <span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
+          <div ng-repeat="service in apps.slice(0,3)" class="btn-group">
+            <button ng-click='openService(service)' class="btn btn-default pick" data-dismiss="modal" ><span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
+            <button ng-click='toggle(service)' class="btn btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(service), "glyphicon-remove": services.uses(service)}'></span></button>
+          </div>
         </div>
 
-        <p ng-i18next="subscribe.services.pick" ng-show="services.count() > 0">Pick a service to subscribe to this page:</p>
+        <!-- Prefered -->
+        <div ng-show="services.count() > 0">
+          <p ng-i18next="subscribe.services.pick">Pick a service to subscribe to this page:</p>
+          <div ng-repeat="service in services.used()" class="btn-group">
+            <button ng-click='openService(service)' class="btn btn-default pick" data-dismiss="modal" ><span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
+            <button ng-click='toggle(service)' class="btn btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(service), "glyphicon-remove": services.uses(service)}'></span></button>
+          </div>
+        </div>
 
-        <p>
-          <button ng-repeat="service in services.used()" ng-click='openService(service)' class="btn btn-default btn-block" data-dismiss="modal" > <span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
-        </p>
-
+        <!-- Suggested -->
         <div ng-show="suggested">
-          <p ng-i18next="subscribe.services.suggested" ng-show="services.count() > 0">Recomanded:</p>
-          <p ng-i18next="subscribe.services.recommanded" ng-show="services.count() == 0 ">Recomanded tool by the publisher:</p>
-          <p>
-            <button ng-show="suggested" ng-click='openService(suggested)' class="btn btn-default btn-block" data-dismiss="modal"> <span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{suggested.url}})"></span>{{suggested.name}}</button>
-          </p>
+          <p ng-i18next="subscribe.services.recommanded" ng-show="services.count() == 0 ">Recomanded by the publisher:</p>
+          <button ng-show="suggested" ng-click='openService(suggested)' class="btn btn-default btn-block" data-dismiss="modal"> <span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{suggested.url}})"></span>{{suggested.name}}</button>
         </div>
+
       </div>
 
-      <div ng-switch-when="store" id="apps">
+      <div ng-switch-when="store" class="apps">
 
         <div ng-repeat="app in apps" class="row app">
           <div class="col-md-10">
@@ -44,9 +52,9 @@
                 <p>{{app.description}}</p>
               </div>
               <div class="col-sm-2">
-                <div class="btn-group btn-group-justified">
+                <div class="btn-group">
                   <button ng-click='openService(app)' class="btn btn-sm btn-default pick" data-dismiss="modal" >{{app.name}}</button>
-                  <button ng-click='toggle(app)' class="btn btn-sm btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !app.installed, "glyphicon-remove": app.installed}'></span></button>
+                  <button ng-click='toggle(app)' class="btn btn-sm btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(app), "glyphicon-remove": services.uses(app)}'></span></button>
                 </div>
               </div>
             </div>

@@ -63,7 +63,10 @@ Services.prototype.used = function usedServices() {
 }
 
 Services.prototype.uses = function usesService(name) {
-  return this.services[name] || false;
+  if(typeof(name)== 'string')
+    return (this.services[name] || false) && true;
+  else
+    return (this.services[name.name] || false) && true;
 }
 
 Services.prototype.save = function saveServices() {
