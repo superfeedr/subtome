@@ -106,10 +106,12 @@
   "subscribe": {
     "title": "Suivre avec",
     "services": {
-      "none": "Vous n'avez pas encore sélectionné de lecteur. <a target='_blank' href='#/store'>Choisissez-en un</a>!",
+      "none": "Vous n'avez pas encore sélectionné de lecteur. Choisissez-en un!",
       "pick": "Choisissez un lecteur de flux pour suivre cette page:",
       "suggested": "Recommandé:",
-      "recommanded": "Outil recommandé par l'éditeur:"
+      "recommanded": "Outil recommandé par l'éditeur:",
+      "popular": "Voici quelques options populaires:",
+      "followWith": "Suivre avec"
     },
 
     "settings": "Réglages",

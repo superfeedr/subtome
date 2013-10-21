@@ -13,7 +13,7 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
   };
 
   $routeProvider.
-    when('/', {templateUrl: 'partials/index.html',   controller: "IndexController"}).
+    when('/', {templateUrl: 'partials/index.html', controller: "IndexController"}).
     when('/settings', {templateUrl: 'partials/settings.html', controller: "SettingsController"}).
     when('/publishers', {templateUrl: 'partials/publishers.html', controller: "PublishersController"}).
     when('/developers', {templateUrl: 'partials/developers.html', controller: "DevelopersController"}).
@@ -24,6 +24,7 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
     when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: "SubscriptionsController"}).
     when('/import', {templateUrl: 'partials/import.html', controller: "ImportController"}).
     when('/export', {templateUrl: 'partials/export.html', controller: "ExportController"}).
+    when('/redirect', {templateUrl: 'partials/index.html', controller: "RedirectController"}).
     otherwise({redirectTo: '/'});
   }
 
@@ -168,8 +169,9 @@ subtome.controller("RegisterController", ['$scope', '$routeParams', 'Analytics',
 
 subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics', function SubscribeController($scope, $routeParams, Analytics) {
   $scope.picker = "default";
-
   $scope.subscriptions = new Subscriptions();
+
+  // Init the modal
   $('#subtomeModal').modal({
     backdrop: true,
     keyboard: true,
@@ -177,6 +179,8 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     replace: true,
     modalOverflow: true
   });
+
+  // When the modal is hidden
   $('#subtomeModal').on('hidden', function() {
     if($routeParams.back) {
       window.location = $routeParams.back;
@@ -186,6 +190,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     }
   });
 
+  // Extract the publisher suggested data
   $scope.resource = $routeParams.resource;
   if($routeParams.suggestedUrl && $routeParams.suggestedName) {
     $scope.suggested = {
@@ -194,7 +199,10 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     };
   }
 
+  // Keep track of the click on the button
   Analytics.trackEvent('resources', 'subscribe', $scope.resource);
+
+  // Extract the feeds information
   $scope.feeds = [];
   if($routeParams.feeds && $routeParams.feeds.length > 0) {
     $scope.feeds = $routeParams.feeds.split(",").map(function(url) {
@@ -203,6 +211,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     Analytics.trackEvent('feeds', 'subscribe', $scope.feeds[0]);
   }
 
+  // UI, switch between store and default
   $scope.toggleButton = "Pick another one";
   $scope.toggleStore = function toggleStore() {
     $scope.picker = $scope.picker == "store" && "default" || "store";
@@ -214,6 +223,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     }
   }
 
+  // When a button is clicked.
   $scope.openService = function openService(service) {
     Analytics.trackEvent('services', 'redirect', service.name);
     var url = service.url;
@@ -245,7 +255,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
     }}, d.protocol + '//' + d.host);
   }
 
-
+  // List of apps from the store.
   var apps = appStore;
   apps.forEach(function(a) {
     a.name = a.registration.name; // Compatibility
@@ -253,6 +263,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
   });
   $scope.apps = apps;
 
+  // Toggle button
   $scope.toggle = function toggleApp(app) {
     if($scope.services.uses(app.name)) {
       $scope.services.removeService(app.name);
@@ -261,6 +272,10 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
       $scope.services.register(app.name, app.url)
     }
   };
+
+  // Show the popular options
+  $scope.showPopular = !$scope.services.count();
+
 }]);
 
 subtome.controller("ExportController", ['Analytics', function ExportController(Analytics) {
@@ -319,5 +334,8 @@ subtome.controller("SubscriptionsController", ['$scope', 'Analytics', function I
   }
 }]);
 
+subtome.controller("RedirectController", ['$routeParams', 'Analytics', function RedirectController($routeParams, Analytics) {
+  window.location = decodeURIComponent($routeParams.to);
+}]);
 
 })();

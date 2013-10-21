@@ -198,5 +198,16 @@ var appStore = [
     name: "Player FM",
     url: "http://player.fm/series?url={feed}&referrer={url}&related_feeds={feeds}"
   }
+},
+{
+  name: "RSS feed redirect",
+  tags: ["developer"],
+  description: "Redirects you to the raw RSS feed. This is for advanced users only.",
+  url:"",
+  icon:"https://upload.wikimedia.org/wikipedia/en/4/43/Feed-icon.svg",
+  registration:{
+    name: "RSS feed",
+    url: "/#/redirect?to={feed}"
+  }
 }
 ];

@@ -106,10 +106,12 @@
   "subscribe": {
     "title": "Follow with",
     "services": {
-      "none": "You have not selected your prefered services yet. Please, <a target='_blank' href='#/store'>pick one</a>!",
+      "none": "You have not selected your prefered services yet. Please, pick one!",
       "pick": "Pick a service to subscribe to this page:",
       "suggested": "Suggested:",
-      "recommanded": "Recommanded tool by the publisher:"
+      "recommanded": "Recommanded tool by the publisher:",
+      "popular": "Here are some popular options:",
+      "followWith": "Follow with"
     },
     "settings": "Settings",
     "cancel": "Cancel"
