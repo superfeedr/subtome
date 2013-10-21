@@ -212,14 +212,14 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
   }
 
   // UI, switch between store and default
-  $scope.toggleButton = "View the full list of services";
+  $scope.toggleButton = i18n.t("View the full list of services");
   $scope.toggleStore = function toggleStore() {
     $scope.picker = $scope.picker == "store" && "default" || "store";
     if($scope.picker == "store") {
-      $scope.toggleButton = "Prefered services";
+      $scope.toggleButton = i18n.t("Prefered services");
     }
     else {
-      $scope.toggleButton = "View the full list of services";
+      $scope.toggleButton = i18n.t("View the full list of services");
     }
   }
 
