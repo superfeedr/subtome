@@ -24,7 +24,7 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
     when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: "SubscriptionsController"}).
     when('/import', {templateUrl: 'partials/import.html', controller: "ImportController"}).
     when('/export', {templateUrl: 'partials/export.html', controller: "ExportController"}).
-    when('/redirect', {templateUrl: 'partials/index.html', controller: "RedirectController"}).
+    when('/redirect', {templateUrl: 'partials/redirect.html', controller: "RedirectController"}).
     otherwise({redirectTo: '/'});
   }
 
