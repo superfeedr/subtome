@@ -106,7 +106,7 @@
     "registration": "New services are added automatically when they register with SubToMe. Check our <a href=\"#/store\">suggested apps</a>."
   },
   "subscribe": {
-    "title": "Follow with",
+    "title": "Follow",
     "services": {
       "none": "You have not selected your prefered services yet. Please, pick one!",
       "pick": "Pick a service to subscribe to this page:",

@@ -106,7 +106,7 @@
     "registration": "Neue Dienste werden automagisch hinzugefügt, wenn sie sich bei SubToMe registrieren. Schau in unsere <a href=\"#/store\">vorgeschlagenen Dienste</a>."
   },
   "subscribe": {
-    "title": "Folge mit",
+    "title": "Folge",
     "services": {
       "none": "Du hast biser keine bevorzugten Dienste ausgewählt. Bitte wählen einen!",
       "pick": "Wähle einen Dienst aus, um diese Seite zu abonnieren:",

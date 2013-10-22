@@ -106,7 +106,7 @@
     "registration": "D'autres lecteurs de flux peuvent être ajoutés si il s'enregistrent automatiquement. Consultez aussi les <a href=\"#/store\">applications suggérées</a>."
   },
   "subscribe": {
-    "title": "Suivre avec",
+    "title": "Suivre",
     "services": {
       "none": "Vous n'avez pas encore sélectionné de lecteur. Choisissez-en un!",
       "pick": "Choisissez un lecteur de flux pour suivre cette page:",
