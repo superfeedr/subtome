@@ -275,7 +275,6 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
 
   // Show the popular options
   $scope.showPopular = !$scope.services.count();
-
 }]);
 
 subtome.controller("ExportController", ['Analytics', function ExportController(Analytics) {
