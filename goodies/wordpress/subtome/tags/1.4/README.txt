@@ -1,5 +1,4 @@
 === SubToMe ===
-
 Version: 1.4
 Contributors: julien51, pfefferle
 Donate link: http://www.subtome.com/
@@ -9,12 +8,8 @@ Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: SubToMe, Follow, Follow Button, Subscribe, Subscribe Button, Follow Button for Wordpress.org users, Follow button for non Wordpress.com users, RSS, Follow RSS, RSS Button, widget, subscribe, subscription
-Author URI: http://www.subtome.com/
 
-This widget adds a SubToMe button to your blog and allows people
-to subscribe to your content in one click.
-
-The widget will show a button, that, when clicked will load a litte snippet of code which will know what are your readers favorite subscription application.
+This widget adds a SubToMe button to your blog and allows people to subscribe to your content in one click.
 
 == Description ==
 
