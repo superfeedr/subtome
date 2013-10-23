@@ -1,11 +1,11 @@
 CACHE MANIFEST
 # Oct 21 2013 2
 
-/css/bootstrap.css
 /css/bootstrap-modal-bs3patch.css
 /css/bootstrap-modal.css
-/css/subtome.css
+/css/bootstrap.css
 /css/gist.github.com.css
+/css/subtome.css
 
 /fonts/glyphicons-halflings-regular.eot
 /fonts/glyphicons-halflings-regular.svg
@@ -43,6 +43,7 @@ CACHE MANIFEST
 /partials/import.html
 /partials/index.html
 /partials/publishers.html
+/partials/redirect.html
 /partials/register.html
 /partials/settings.html
 /partials/store.html
