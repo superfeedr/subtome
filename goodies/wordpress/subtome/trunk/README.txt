@@ -7,7 +7,7 @@ Tested up to: 3.7
 Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: SubToMe, Follow, Follow Button, Subscribe, Subscribe Button, Follow Button for Wordpress.org users, Follow button for non Wordpress.com users, RSS, Follow RSS, RSS Button, widget, subscribe, subscription
+Tags: SubToMe, Follow, Follow Button, Subscribe, Subscribe Button, RSS, Follow RSS, RSS Button, widget, subscribe, subscription, sidebar, button, feed, follow feed, subscribe feed, feeds, javascript
 
 This widget adds a SubToMe button to your blog and allows people to subscribe to your content in one click.
 
