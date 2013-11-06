@@ -166,7 +166,6 @@ subtome.controller("StoreController", ['$scope', function StoreController($scope
 }]);
 
 subtome.controller("RegisterController", ['$scope', '$routeParams', 'Analytics', function RegisterController($scope, $routeParams, Analytics) {
-  // This is where we want to check things.
   Analytics.trackEvent('services', 'register', $routeParams.name);
   $scope.services.register($routeParams.name, $routeParams.url);
   $scope.service = {name: $routeParams.name, url: $routeParams.url};
