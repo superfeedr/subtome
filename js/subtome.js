@@ -1,6 +1,10 @@
 (function() {
 var subtome = angular.module('subtome', ['jm.i18next', 'angular-ga']);
 
+function safeUrl(url) {
+  return !url.match(/^javascript:.*/) && !url.match(/^data:.*/);
+}
+
 subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', function($routeProvider, AnalyticsProvider, $i18nextProvider) {
   AnalyticsProvider.setAccount('UA-39876787-1');
 
@@ -162,6 +166,7 @@ subtome.controller("StoreController", ['$scope', function StoreController($scope
 }]);
 
 subtome.controller("RegisterController", ['$scope', '$routeParams', 'Analytics', function RegisterController($scope, $routeParams, Analytics) {
+  // This is where we want to check things.
   Analytics.trackEvent('services', 'register', $routeParams.name);
   $scope.services.register($routeParams.name, $routeParams.url);
   $scope.service = {name: $routeParams.name, url: $routeParams.url};
@@ -182,7 +187,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
 
   // When the modal is hidden
   $('#subtomeModal').on('hidden', function() {
-    if($routeParams.back) {
+    if($routeParams.back && safeUrl($routeParams.back)) {
       window.location = $routeParams.back;
     }
     else {
@@ -227,32 +232,37 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
   $scope.openService = function openService(service) {
     Analytics.trackEvent('services', 'redirect', service.name);
     var url = service.url;
-    var redirect = decodeURIComponent(url).replace('{url}', encodeURIComponent($scope.resource));
-    if(redirect.match(/\{feed\}/)) {
-      if($scope.feeds[0]) {
-        redirect = redirect.replace('{feed}', encodeURIComponent($scope.feeds[0]));
+    if(safeUrl(url)) {
+      var redirect = decodeURIComponent(url).replace('{url}', encodeURIComponent($scope.resource));
+      if(redirect.match(/\{feed\}/)) {
+        if($scope.feeds[0]) {
+          redirect = redirect.replace('{feed}', encodeURIComponent($scope.feeds[0]));
+        }
+        else {
+          redirect = redirect.replace('{feed}', encodeURIComponent($scope.resource));
+        }
       }
-      else {
-        redirect = redirect.replace('{feed}', encodeURIComponent($scope.resource));
+      if(redirect.match(/\{feeds\}/)) {
+        redirect = redirect.replace('{feeds}', $scope.feeds.join(','));
       }
+      $scope.subscriptions.add($scope.resource, {feeds: $scope.feeds, service: service.name});
+      var d = document.createElement('a');
+      d.href = $scope.resource;
+      var s = document.createElement('a');
+      s.href = url;
+      window.parent.postMessage({subscription: {
+        feeds: $scope.feeds,
+        resource: $scope.resource,
+        app: {
+          name: service.name,
+          url: s.protocol + '//' + s.host
+        }
+      }}, d.protocol + '//' + d.host);
+      window.open(redirect);
     }
-    if(redirect.match(/\{feeds\}/)) {
-      redirect = redirect.replace('{feeds}', $scope.feeds.join(','));
+    else {
+      alert("It looks like this redirect is not safe. Please remove that service from your favorites.");
     }
-    $scope.subscriptions.add($scope.resource, {feeds: $scope.feeds, service: service.name});
-    window.open(redirect);
-    var d = document.createElement('a');
-    d.href = $scope.resource;
-    var s = document.createElement('a');
-    s.href = url;
-    window.parent.postMessage({subscription: {
-      feeds: $scope.feeds,
-      resource: $scope.resource,
-      app: {
-        name: service.name,
-        url: s.protocol + '//' + s.host
-      }
-    }}, d.protocol + '//' + d.host);
   }
 
   // List of apps from the store.
@@ -288,7 +298,6 @@ subtome.controller("ExportController", ['Analytics', function ExportController(A
   opml += '</body></opml>';
   window.location = "data:application/xml;base64," + window.btoa(opml);
 }]);
-
 
 subtome.controller("ImportController", ['$scope', 'Analytics', function ImportController($scope, Analytics) {
   $scope.$watch('file', function() {
@@ -333,8 +342,13 @@ subtome.controller("SubscriptionsController", ['$scope', 'Analytics', function I
   }
 }]);
 
-subtome.controller("RedirectController", ['$routeParams', 'Analytics', function RedirectController($routeParams, Analytics) {
-  window.location = decodeURIComponent($routeParams.to);
+subtome.controller("RedirectController", ['$routeParams', '$scope', 'Analytics', function RedirectController($routeParams, $scope, Analytics) {
+  $scope.info = 'Redirecting you to the feed...';
+  var destination = decodeURIComponent($routeParams.to);
+  if(!safeUrl(destination)) {
+    return $scope.info = 'We could not achieve a redirect because this url ' + destination + ' is not safe.';
+  }
+  window.location = destination;
 }]);
 
 })();
