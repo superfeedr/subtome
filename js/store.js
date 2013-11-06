@@ -200,6 +200,17 @@ var appStore = [
   }
 },
 {
+  name: "My Yahoo",
+  tags: ["yahoo", "legacy"],
+  description: "My Yahoo is a customizable web page with news, stock quotes, weather, and many other features.",
+  url:"http://my.yahoo.com/",
+  icon:"http://my.yahoo.com/favicon.ico",
+  registration:{
+    name: "My Yahoo",
+    url: "http://add.my.yahoo.com/rss?url={feed}"
+  }
+},
+{
   name: "RSS feed redirect",
   tags: ["developer"],
   description: "Redirects you to the raw RSS feed. This is for advanced users only.",
