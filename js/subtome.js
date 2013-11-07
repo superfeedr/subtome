@@ -21,13 +21,12 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
     when('/settings', {templateUrl: 'partials/settings.html', controller: "SettingsController"}).
     when('/publishers', {templateUrl: 'partials/publishers.html', controller: "PublishersController"}).
     when('/developers', {templateUrl: 'partials/developers.html', controller: "DevelopersController"}).
-    when('/store', {templateUrl: 'partials/store.html', controller: "StoreController"}).
     when('/register', {templateUrl: 'partials/register.html', controller: "RegisterController"}).
     when('/subscribe', {templateUrl: 'partials/subscribe.html', controller: "SubscribeController"}).
-    when('/new-subscribe', {templateUrl: 'partials/new-subscribe.html', controller: "SubscribeController"}).
     when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: "SubscriptionsController"}).
     when('/import', {templateUrl: 'partials/import.html', controller: "ImportController"}).
     when('/export', {templateUrl: 'partials/export.html', controller: "ExportController"}).
+    when('/store', {templateUrl: 'partials/store.html', controller: "StoreController"}).
     when('/redirect', {templateUrl: 'partials/redirect.html', controller: "RedirectController"}).
     otherwise({redirectTo: '/'});
   }
@@ -142,9 +141,11 @@ subtome.controller("SettingsController", ['$scope', function SettingsController(
 }]);
 
 subtome.controller("PublishersController", ['$scope', function PublishersController($scope) {
+  $window.location = "http://docs.subtome.com/publishers/";
 }]);
 
-subtome.controller("DevelopersController", ['$scope', function DevelopersController($scope) {
+subtome.controller("DevelopersController", [function DevelopersController() {
+  $window.location = "http://docs.subtome.com/developers/";
 }]);
 
 subtome.controller("StoreController", ['$scope', function StoreController($scope) {
