@@ -34,7 +34,7 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
 ]);
 
 subtome.run(['$rootScope', '$location', function($rootScope, $location) {
-
+  // window.navigator.registerContentHandler("application/vnd.mozilla.maybe.feed", "https://subtome.com/#/subscribe?feeds=%s",  "SubToMe");
   if ($location.path() !== '/subscribe') {
     $('.main-layout').show();
   }
