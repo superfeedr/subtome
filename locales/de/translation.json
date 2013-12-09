@@ -3,7 +3,7 @@
   "Follow our Blog": "Folge unserem Blog",
   "See it in Action": "Schau es dir an",
   "View the full list of services": "View the full list of services",
-  "Prefered services": "Prefered services",
+  "Preferred services": "Preferred services",
   "nav": {
     "settings": "Einstellungen",
     "publishers": "Füge einen Knopf zu deiner Seite hinzu",
@@ -18,7 +18,7 @@
     "points": {
       "nonIntrusive": {
         "title": "Ohne Veränderungen",
-        "summary": "Wir hassen Webseiten, die aussehen wie Weihnachtsbäume. Wir verwenden nur zulässiges Markup und Javascript und sind Plattform-unabhängig."
+        "summary": "Wir hassen Webseiten, die aussehen wie Weihnachtsbäume. Wir verwenden nur zulässiges Markup und JavaScript und sind Plattform-unabhängig."
       },
       "open": {
         "title": "100% offen",
@@ -86,7 +86,7 @@
         "resource": "<code>{resource}</code> ist die kodierte URL der Web-Ressource, die der Benutzer abonniert. Es muss kein Feed sein!",
         "feeds": "<code>{feeds}</code> ist eine Komma separierte Liste von kodierten Feed URLs. Es kann nur eine geben."
       },
-      "suggested": "It is also possible for a publisher to recommand a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
+      "suggested": "It is also possible for a publisher to recommend a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
     }
   },
   "settings": {
@@ -108,11 +108,11 @@
   "subscribe": {
     "title": "Folge",
     "services": {
-      "none": "Du hast biser keine bevorzugten Dienste ausgewählt. Bitte wählen einen!",
+      "none": "Du hast bisher keinen bevorzugten Dienste ausgewählt. Bitte wählen einen!",
       "pick": "Wähle einen Dienst aus, um diese Seite zu abonnieren:",
       "suggested": "Empfohlene:",
-      "recommanded": "Werkzeug vom Verlag empfohlen:",
-      "popular": "Hier sind einige beliebte optionen:",
+      "recommended": "Werkzeug vom Verlag empfohlen:",
+      "popular": "Hier sind einige beliebte Optionen:",
       "followWith": "Mit folgen"
     },
     "settings": "Einstellungen",

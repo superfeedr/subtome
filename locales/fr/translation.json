@@ -3,7 +3,7 @@
   "Follow our Blog": "Suivez notre blog",
   "See it in Action": "Voyez vous même",
   "View the full list of services": "Voir la liste de tous les services",
-  "Prefered services": "Vos services préférés",
+  "Preferred services": "Vos services préférés",
   "nav": {
     "settings": "Réglages",
     "publishers": "Ajouter un bouton",
@@ -76,7 +76,7 @@
     "open": "Tout ceci est 100% ouver, ce qui implique que vous pouvez changer le code afin qu'il corresponde mieux à vos besoins. Vous pouvez intégrer cela de n'importe quelle façon dans vos pages. N'hésitez pas à nous contacter si vous avez besoin d'aide.",
     "easy": {
       "title": "Intégration simple",
-      "wordpress": "Si vous utilisez Wordpress pour votre blog, ajoutez juste ce <a href=\"http://wordpress.org/extend/plugins/subtome\">widget SubToMe</a> à votre mise en page, et intégrez <i>SubToMe</i> dans votre l'interface de votre Tableau de bord."
+      "wordpress": "Si vous utilisez WordPress pour votre blog, ajoutez juste ce <a href=\"http://wordpress.org/extend/plugins/subtome\">widget SubToMe</a> à votre mise en page, et intégrez <i>SubToMe</i> dans votre l'interface de votre Tableau de bord."
     },
     "custom": {
       "title": "Personalisation",
@@ -86,7 +86,7 @@
         "resource": "<code>{resource}</code> est l'url encodée qui correspond au contenu suivi par le lecteur.",
         "feeds": "<code>{feeds}</code>  est une liste d'url encodées des flux suivis, séparés par des virgules. Il peut tout à fait n'y en avoir qu'une."
       },
-      "suggested": "It is also possible for a publisher to recommand a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
+      "suggested": "It is also possible for a publisher to recommend a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
     }
   },
   "settings": {
@@ -111,7 +111,7 @@
       "none": "Vous n'avez pas encore sélectionné de lecteur. Choisissez-en un!",
       "pick": "Choisissez un lecteur de flux pour suivre cette page:",
       "suggested": "Recommandé:",
-      "recommanded": "Outil recommandé par l'éditeur:",
+      "recommended": "Outil recommandé par l'éditeur:",
       "popular": "Voici quelques options populaires:",
       "followWith": "Suivre avec"
     },

@@ -3,7 +3,7 @@
   "Follow our Blog": "Follow our Blog",
   "See it in Action": "See it in Action",
   "View the full list of services": "View the full list of services",
-  "Prefered services": "Prefered services",
+  "Preferred services": "Preferred services",
   "nav": {
     "settings": "Settings",
     "publishers": "Add a button to your site",
@@ -76,7 +76,7 @@
     "open": "Of course, this is 100% open, which means that you can change that code in any way you want, or use other mechanisms that fit your needs. Feel free to get in touch if you need help.",
     "easy": {
       "title": "Easy way",
-      "wordpress": "If you use Wordpress for your blog, just add this <a href=\"http://wordpress.org/extend/plugins/subtome\">SubToMe widget</a> to your layout, or look for <i>SubToMe</i> in your dashboard's 'Install Plugins' interface."
+      "wordpress": "If you use WordPress for your blog, just add this <a href=\"http://wordpress.org/extend/plugins/subtome\">SubToMe widget</a> to your layout, or look for <i>SubToMe</i> in your dashboard's 'Install Plugins' interface."
     },
     "custom": {
       "title": "Custom way",
@@ -86,7 +86,7 @@
         "resource": "<code>{resource}</code> is the encoded url of the web resource to which the user is subscribing. It does not need to be a feed!",
         "feeds": "<code>{feeds}</code> is a coma separated list of encoded feed urls. There can obviously be just one."
       },
-      "suggested": "It is also possible for a publisher to recommand a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
+      "suggested": "It is also possible for a publisher to recommend a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
     }
   },
   "settings": {
@@ -108,10 +108,10 @@
   "subscribe": {
     "title": "Follow",
     "services": {
-      "none": "You do not have selected your prefered services yet. Please, pick one!",
+      "none": "You do not have selected your preferred services yet. Please, pick one!",
       "pick": "Pick a service to subscribe to this page:",
       "suggested": "Suggested:",
-      "recommanded": "We recommend subscribing with:",
+      "recommended": "We recommend subscribing with:",
       "popular": "Here are some popular options:",
       "followWith": "Follow with"
     },
