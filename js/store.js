@@ -211,6 +211,17 @@ var appStore = [
   }
 },
 {
+  name: "KOUIO",
+  tags: ["web", "mobile", "tablets"],
+  description: "KOUIO is the RSS reader you've always wanted.",
+  url:"https://kouio.com/",
+  icon:"https://kouio.com/favicon.ico",
+  registration:{
+    name: "KOUIO",
+    url: "https://kouio.com/subscribe?url={url}"
+  }
+},
+{
   name: "RSS feed redirect",
   tags: ["developer"],
   description: "Redirects you to the raw RSS feed. This is for advanced users only.",
