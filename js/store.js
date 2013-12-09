@@ -41,7 +41,7 @@ var appStore = [
   icon: 'https://bazqux.com/favicon.ico',
   registration: {
     name: 'BazQux',
-    url: 'https://bazqux.com/add?url={url}'
+    url: 'https://bazqux.com/add?url={feed}'
   }
 },
 {
@@ -52,7 +52,7 @@ var appStore = [
   icon: 'http://newsblur.com/favicon.ico',
   registration: {
     name: 'NewsBlur',
-    url: 'http://www.newsblur.com/?url={url}'
+    url: 'http://www.newsblur.com/?url={feed}'
   },
     installed: true
 },
@@ -64,7 +64,7 @@ var appStore = [
   icon: 'https://digg.com//static/images/reader/digg_favicon_reader.png',
   registration: {
     name: 'Digg Reader',
-    url: 'http://digg.com/reader/search/{url}'
+    url: 'http://digg.com/reader/search/{feed}'
   }
 },
 {
@@ -75,7 +75,7 @@ var appStore = [
   icon: 'http://www.rivered.io/favicon.ico',
   registration: {
     name: 'Rivered',
-    url: 'http://www.rivered.io/add?url={url}'
+    url: 'http://www.rivered.io/add?url={feed}'
   }
 },
 {
@@ -86,7 +86,7 @@ var appStore = [
   icon: 'http://www.bloglovin.com/images/favicon.ico',
   registration: {
     name: 'Bloglovin',
-    url: 'http://www.bloglovin.com/search/{url}'
+    url: 'http://www.bloglovin.com/search/{feed}'
   }
 },
 {
@@ -130,7 +130,7 @@ var appStore = [
   icon: 'http://www.aol.com/favicon.ico',
   registration: {
     name: 'AOL Reader',
-    url: 'http://reader.aol.com/#quickadd/{url}'
+    url: 'http://reader.aol.com/#quickadd/{feed}'
   }
 },
 {
@@ -152,7 +152,7 @@ var appStore = [
   icon:"https://www.readhq.com/favicon.ico",
   registration:{
     name: "ReadHQ",
-    url: 'https://www.readhq.com/api/v1/subtome?url={url}'
+    url: 'https://www.readhq.com/api/v1/subtome?url={feed}'
   }
 },
 {
@@ -163,7 +163,7 @@ var appStore = [
   icon:"https://mnmlrdr.com/static/images/logo.png",
   registration:{
     name: "MnmlRdr",
-    url: "https://mnmlrdr.com/settings/subscriptions/add?feed={url}"
+    url: "https://mnmlrdr.com/settings/subscriptions/add?feed={feed}"
   }
 },
 {
@@ -174,7 +174,7 @@ var appStore = [
   icon:"http://cdn.netvibes.com/img/favicon-12.png",
   registration:{
     name: "Netvibes",
-    url: "http://www.netvibes.com/subscribe.php?url={url}"
+    url: "http://www.netvibes.com/subscribe.php?url={feed}"
   }
 },
 {
@@ -185,7 +185,7 @@ var appStore = [
   icon:"http://squirro.com/files/2213/3673/7722/favicon.ico",
   registration:{
     name: "Squirro",
-    url: "https://squirro.com/app/#add/query/{url}"
+    url: "https://squirro.com/app/#add/query/{feed}"
   }
 },
 {
@@ -218,7 +218,7 @@ var appStore = [
   icon:"https://kouio.com/favicon.ico",
   registration:{
     name: "KOUIO",
-    url: "https://kouio.com/subscribe?url={url}"
+    url: "https://kouio.com/subscribe?url={feed}"
   }
 },
 {
