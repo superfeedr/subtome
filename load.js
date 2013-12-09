@@ -43,6 +43,9 @@
       feeds = document.subtomeBtn.dataset.subtomeFeeds.split(',').map(function(r) {
         return decodeURIComponent(r);
       });
+      window.subtome = window.subtome || {};
+      window.subtome.suggestedUrl = document.subtomeBtn.dataset.subtomeSuggestedServiceUrl;
+      window.subtome.suggestedName = document.subtomeBtn.dataset.subtomeSuggestedServiceName;
     }
 
     /* From the HTML discovery */
