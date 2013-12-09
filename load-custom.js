@@ -83,6 +83,4 @@ window.subToMe = function(url) {
       var _gaq = window._gaq || [];
       _gaq.push(['_trackEvent', 'subtome', 'follow', event.data.subscription.app.name]);
     });
-
-  })();
-
+}
