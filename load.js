@@ -1,5 +1,4 @@
 (function() {
-
   /* IE 8 Compat. :( */
   if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
@@ -35,23 +34,35 @@
     }
 
     /* Actual SubToMe Code */
-    var feeds = [];
-    var links = document.getElementsByTagName('link');
-    for(var i = 0; i < links.length; i++) {
-      if(links[i].rel) {
-        var rels = links[i].rel.split(' ');
-        if(rels.indexOf('alternate') >= 0 &&
-           rels.indexOf('stylesheet') == -1 &&
-           ['application/wiki', 'application/json', 'application/activitystream+json'].indexOf(links[i].type) == -1 )  {
-          if(links[i].href && links[i].href.length > 0) {
-            feeds.push(encodeURIComponent(links[i].href));
+
+    var feeds = [], resource = window.location.toString();
+
+    /* From Data attributes */
+    if(document.subtomeBtn && document.subtomeBtn.dataset) {
+      resource = document.subtomeBtn.dataset.subtomeResource || resource;
+      feeds = document.subtomeBtn.dataset.subtomeFeeds.split(',').map(function(r) {
+        return decodeURIComponent(r);
+      });
+    }
+
+    /* From the HTML discovery */
+    if(feeds.length == 0) {
+      var links = document.getElementsByTagName('link');
+      for(var i = 0; i < links.length; i++) {
+        if(links[i].rel) {
+          var rels = links[i].rel.split(' ');
+          if(rels.indexOf('alternate') >= 0 &&
+             rels.indexOf('stylesheet') == -1 &&
+             ['application/wiki', 'application/json', 'application/activitystream+json'].indexOf(links[i].type) == -1 )  {
+            if(links[i].href && links[i].href.length > 0) {
+              feeds.push(encodeURIComponent(links[i].href));
+            }
           }
         }
       }
     }
 
     var s = document.createElement('iframe');
-    var resource = window.location.toString();
     var src = 'https://www.subtome.com';
     src += '/#/subscribe?resource=' + encodeURIComponent(resource) + '&feeds=' + encodeURIComponent(feeds.join(','));
     if(window.subtome && window.subtome.suggestedUrl && window.subtome.suggestedName) {
