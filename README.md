@@ -2,18 +2,18 @@ Subscribe Button
 ================
 
 [SubToMe](https://www.subtome.com/) is a **universal subscribe button**.
-It decouples the content to which a user can susbcribe from the application this user may want to use to perform the subscription.
-It's losely inspired by [WebIntents](http://webintents.org/).
+It decouples the content to which a user can subscribe from the application this user may want to use to perform the subscription.
+It's loosely inspired by [WebIntents](http://webintents.org/).
 
 The spec is the code, and the code is open source. Feel free to contribute to it. You could very well run your own instance, but that means users may have to reselect their favorite subscription tool over and over again.
 
 By design, all state is kept in the user's browser, using localStorage.
 
-This is intented to be run as a bookmarklet or an embedded button on any web page.
+This is intended to be run as a bookmarklet or an embedded button on any web page.
 
 # Workflow.
 
-1. A user visits a site that is able to povide some kind of subscription mechanism. That web application will then embed in its page some code that will register this application on behalf of the user.
+1. A user visits a site that is able to provide some kind of subscription mechanism. That web application will then embed in its page some code that will register this application on behalf of the user.
 
 2. The subscription button script will store in the user's session the fact that he can use the previously described app for subscriptions.
 
@@ -44,7 +44,7 @@ Check [Github Issues](https://github.com/superfeedr/subtome/issues) for more TOD
 Going Further
 =============
 
-We intentionaly pushed the complexity down to the subscribing application, which should be smart enough to handle subscriptions if it has registered as such.
+We intentionally pushed the complexity down to the subscribing application, which should be smart enough to handle subscriptions if it has registered as such.
 
 The subscribing application is in charge of extracting the data to which the user can subscribe (RSS or Atom feed, Social network handle, ... etc), from the page URL.
 
