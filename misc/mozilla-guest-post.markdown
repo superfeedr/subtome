@@ -20,7 +20,7 @@ However, this has never been the web's true spirit: you don't need to be a gmail
 
 ## The Browser as the middleman
 
-When we decided to tackle the subscribe problem we had to find a solution that embrassed **both the decentralized web** that we love and the **simplicity of a button** that user could just click on. 
+When we decided to tackle the subscribe problem we had to find a solution that embrassed **both the decentralized web** that we love and the **simplicity of a button** that user could just click on.
 
 Try it yourself: <input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow Mozilla Hacks">
 
@@ -34,7 +34,7 @@ Eventually, when you select one of the apps, the browser opens a new window to i
 
 ### Code
 
-The implementation is actually surprisingly simple. When you click the button, the following code is loaded. It simply extracts the feed(s) and then loads an iframe which will show the user's prefered services. The iframe url includes the feeds as well as the url of the page on which the button was clicked.
+The implementation is actually surprisingly simple. When you click the button, the following code is loaded. It simply extracts the feed(s) and then loads an iframe which will show the user's preferred services. The iframe url includes the feeds as well as the url of the page on which the button was clicked.
 
 <script src="https://gist.github.com/julien51/4946654.js">
 </script>
