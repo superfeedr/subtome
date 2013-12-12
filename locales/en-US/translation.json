@@ -3,7 +3,7 @@
   "Follow our Blog": "Follow our Blog",
   "See it in Action": "See it in Action",
   "View the full list of services": "View the full list of services",
-  "Prefered services": "Prefered services",
+  "Preferred services": "Preferred services",
   "nav": {
     "settings": "Settings",
     "publishers": "Add a button to your site",
@@ -13,12 +13,12 @@
   "footer": "Brought to you by <a href='http://superfeedr.com'>Superfeedr</a> <img src='./img/superfeedr.png'>, <a href='https://github.com/superfeedr/subtome'>Source Code</a>.",
   "index": {
     "caption": "Universal Follow Button",
-    "summary": "SubToMe makes it easy for people to <em>follow</em> web sites,<br />  because browsers don't do it.",
+    "summary": "SubToMe makes it easy for people to <em>follow</em> web sites,<br /> because browsers don't do it.",
     "button": "See it in Action",
     "points": {
       "nonIntrusive": {
         "title": "Non intrusive",
-        "summary": "We hate websites that look like Christmas trees. We just use regular markup and Javascript and are platform agnostic."
+        "summary": "We hate websites that look like Christmas trees. We just use regular markup and JavaScript and are platform agnostic."
       },
       "open": {
         "title": "100% Open",
@@ -40,16 +40,16 @@
     "summary": "If your application is able to handle user subscriptions, this section is for you.",
     "registration": {
       "title": "Registration",
-      "description": "Your users will click on subscribe buttons on some <a href=\"/#/publishers\">publisher</a> pages. When they do so, a list of the subscription services <em>they</em> used in the past is displayed. This list was not curated by us, but stored in their browser (using localStorage) from services that registered their ability to perform susbcriptions for that user.",
+      "description": "Your users will click on subscribe buttons on some <a href=\"/#/publishers\">publisher</a> pages. When they do so, a list of the subscription services <em>they</em> used in the past is displayed. This list was not curated by us, but stored in their browser (using localStorage) from services that registered their ability to perform subscriptions for that user.",
       "loading": "You too can quickly and easily register your application for your users by loading an iframe like this: <small>Please note that this is completely transparent for the user!</small>",
-      "details": "The <code>name</code> query string is the name of your application and the <code>url</code> is the url of the hander which will be called in your application to perform a subscription (thru a user redirect). ",
+      "details": "The <code>name</code> query string is the name of your application and the <code>url</code> is the url of the handler which will be called in your application to perform a subscription (thru a user redirect). ",
       "params": {
         "info": "The subscription handler is obviously completely up to you, but it should include at least one of the following:",
         "url": "<code>{url}</code> will be populated with the <code>location.href</code> of the page on which the user clicked the subscribe button.",
         "feeds": "<code>{feeds}</code> will be populated with the <code>href</code> element of each <code><link></code> elements corresponding to a feed in the page on which the user clicked.",
         "feed": "<code>{feed}</code> will be populated with the first (if any) of the <code>{feeds}</code> above."
       },
-      "link": " It is also possible to register ther user by opening a url in the browser directly. This is particularly useful for standalone (desktop based) feed readers. Use the url <code>https://www.subtome.com/#/register?</code>, with the same params used by the iframe based registration."
+      "link": " It is also possible to register the user by opening a url in the browser directly. This is particularly useful for standalone (desktop based) feed readers. Use the url <code>https://www.subtome.com/#/register?</code>, with the same params used by the iframe based registration."
     },
     "handling": {
       "title": "Subscription handling",
@@ -76,7 +76,7 @@
     "open": "Of course, this is 100% open, which means that you can change that code in any way you want, or use other mechanisms that fit your needs. Feel free to get in touch if you need help.",
     "easy": {
       "title": "Easy way",
-      "wordpress": "If you use Wordpress for your blog, just add this <a href=\"http://wordpress.org/extend/plugins/subtome\">SubToMe widget</a> to your layout, or look for <i>SubToMe</i> in your dashboard's 'Install Plugins' interface."
+      "wordpress": "If you use WordPress for your blog, just add this <a href=\"http://wordpress.org/extend/plugins/subtome\">SubToMe widget</a> to your layout, or look for <i>SubToMe</i> in your dashboard's 'Install Plugins' interface."
     },
     "custom": {
       "title": "Custom way",
@@ -86,7 +86,7 @@
         "resource": "<code>{resource}</code> is the encoded url of the web resource to which the user is subscribing. It does not need to be a feed!",
         "feeds": "<code>{feeds}</code> is a coma separated list of encoded feed urls. There can obviously be just one."
       },
-      "suggested": "It is also possible for a publisher to recommand a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
+      "suggested": "It is also possible for a publisher to recommend a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
     }
   },
   "settings": {
@@ -108,10 +108,10 @@
   "subscribe": {
     "title": "Follow",
     "services": {
-      "none": "You have not selected your prefered services yet. Please, pick one!",
+      "none": "You have not selected your preferred services yet. Please, pick one!",
       "pick": "Pick a service to subscribe to this page:",
       "suggested": "Suggested:",
-      "recommanded": "We recommend subscribing with:",
+      "recommended": "We recommend subscribing with:",
       "popular": "Here are some popular options:",
       "followWith": "Follow with"
     },

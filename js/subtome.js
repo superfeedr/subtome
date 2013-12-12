@@ -221,7 +221,7 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
   $scope.toggleStore = function toggleStore() {
     $scope.picker = $scope.picker == "store" && "default" || "store";
     if($scope.picker == "store") {
-      $scope.toggleButton = i18n.t("Prefered services");
+      $scope.toggleButton = i18n.t("Preferred services");
     }
     else {
       $scope.toggleButton = i18n.t("View the full list of services");
@@ -316,7 +316,7 @@ subtome.controller("ImportController", ['$scope', 'Analytics', function ImportCo
         $scope.$apply();
       }
       reader.onerror = function (evt) {
-        $scope.error = "Error Reading your OPML file. Make sure it's valid.";
+        $scope.error = "Error reading your OPML file. Make sure it's valid.";
         $scope.$apply();
       }
     }
@@ -348,7 +348,7 @@ subtome.controller("RedirectController", ['$routeParams', '$scope', 'Analytics',
     return window.location = '/';
   var destination = decodeURIComponent($routeParams.to);
   if(!safeUrl(destination)) {
-    return $scope.info = 'We could not achieve a redirect because this url ' + destination + ' is not safe.';
+    return $scope.info = 'We could not achieve a redirect because this URL ' + destination + ' is not safe.';
   }
   if(history && history.pushState)
     history.pushState({}, "SubToMe: Subscribe", "/#/subscribe?resource=" + destination + "&feeds=" + destination + "");
