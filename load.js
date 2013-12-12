@@ -56,7 +56,7 @@
           var rels = links[i].rel.split(' ');
           if(rels.indexOf('alternate') >= 0 &&
              rels.indexOf('stylesheet') == -1 &&
-             ['application/wiki', 'application/json', 'application/activitystream+json'].indexOf(links[i].type) == -1 )  {
+             ['application/wiki', 'application/json', 'application/activitystream+json', 'text/html'].indexOf(links[i].type) == -1 )  {
             if(links[i].href && links[i].href.length > 0) {
               feeds.push(encodeURIComponent(links[i].href));
             }
