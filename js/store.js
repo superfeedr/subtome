@@ -145,17 +145,6 @@ var appStore = [
   }
 },
 {
-  name: 'ReadHQ',
-  tags: ['web', 'mobile'],
-  description: "ReadHQ is a new RSS reader which allows you to import, add, manage, organize and enjoy your feeds.",
-  url:"https://www.readhq.com",
-  icon:"https://www.readhq.com/favicon.ico",
-  registration:{
-    name: "ReadHQ",
-    url: 'https://www.readhq.com/api/v1/subtome?url={feed}'
-  }
-},
-{
   name: "MnmlRdr",
   tags: ["web", "mobile", "minimal", "lightweight"],
   description: "A fast and lightweight feed reader without \"feature clutter\" so you can focus on the content.",
