@@ -54,7 +54,7 @@ footer img {
 }
 
 .modal-body .btn.pick{
-  width: 250px;
+  width: 230px;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -129,5 +129,9 @@ footer img {
 
 .label {
   display:inline-block; margin-right:4px;
+}
+
+.modal-footer .btn {
+margin-bottom: 5px;
 }
 
