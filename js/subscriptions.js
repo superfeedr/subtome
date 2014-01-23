@@ -85,7 +85,7 @@ Subscriptions.prototype.opml = function opml() {
       subscription.feeds.forEach(function(f) {
         if(!feeds[f]) {
           feeds[f] = true;
-          opml += '<outline xmlUrl="' + f + '" htmlUrl="' + k + '" />';
+          opml += '<outline xmlUrl="' + encodeURI(f) + '" htmlUrl="' + encodeURI(k) + '" />';
         }
       })
     });
