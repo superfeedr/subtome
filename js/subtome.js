@@ -64,36 +64,14 @@ subtome.run(['$rootScope', '$location', function($rootScope, $location) {
     $rootScope.$apply();
   });
 
-  $rootScope.follow = function follow(arg) {
-    var url;
-    if(typeof(arg) === 'string') {
-      url = arg;
+  $rootScope.follow = function follow(evt) {
+    var z=document.createElement('script');
+    if(evt) {
+      document.subtomeBtn=evt.target;
     }
-    else if(typeof(arg) === 'object' ) {
-      url = arg.feed || arg.url;
-    }
-    if(!url) {
-      var z=document.createElement('script');
-      z.src='/load.js';
-      document.body.appendChild(z);
-    }
-    else {
-      var s = document.createElement('iframe');
-      var feeds = [url];
-      var resource = url;
-      s.setAttribute('style','position:fixed;top:0px; left:0px; width:100%; height:100%; border:0px; background: transparent; z-index: 2147483647');
-      s.setAttribute('src', '/#/subscribe?resource=' + encodeURIComponent(resource) + '&feeds=' + feeds.join(','));
-      var loaded = false;
-      s.onload = function() {
-        if(loaded) {
-          document.getElementsByTagName('body')[0].removeChild(s);
-        }
-        loaded = true;
-      }
-      document.getElementsByTagName('body')[0].appendChild(s);
-    }
+    z.src='/load.js';
+    document.body.appendChild(z);
   }
-
 }]);
 
 subtome.filter('fromNow', function() {
@@ -128,9 +106,6 @@ subtome.controller("IndexController", ['$scope', function IndexController($scope
   }
   $scope.left = function left() {
     document.getElementById('demo').innerHTML=i18n.t("See it in Action");
-  }
-  $scope.follow = function follow() {
-    window.location = '/#/subscribe?resource=http://subtome.com&feeds=http%3A%2F%2Fblog.superfeedr.com%2Fatom.xml&back=/#/';
   }
 }]);
 

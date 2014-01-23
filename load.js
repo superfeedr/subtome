@@ -65,8 +65,12 @@
       }
     }
 
-    var s = document.createElement('iframe');
     var src = 'https://www.subtome.com';
+    var parentUrl = (window.location != window.parent.location) ? document.referrer: document.location;
+    if(parentUrl && parentUrl.hostname === '0.0.0.0') {
+      src = 'http://' + parentUrl.host;
+    }
+    var s = document.createElement('iframe');
     src += '/#/subscribe?resource=' + encodeURIComponent(resource) + '&feeds=' + encodeURIComponent(feeds.join(','));
     if(window.subtome && window.subtome.suggestedUrl && window.subtome.suggestedName) {
       src += '&suggestedUrl=' + encodeURIComponent(window.subtome.suggestedUrl) + '&suggestedName=' + encodeURIComponent(window.subtome.suggestedName)
