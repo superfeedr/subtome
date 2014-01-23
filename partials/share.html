@@ -1,0 +1,11 @@
+<h1>Sharing</h1>
+
+<div ng-show='url'>
+<p>It looks like the service <code><a href='{{urlRoot}}'>{{urlRoot}}</a></code> wants SubToMe to share your subscription list with them. Do you allow that?</p>
+<input class="btn btn-lg btn-success" type="button" value="Accept" ng-click="share()" />
+<input class="btn btn-lg btn-danger" type="button" value="Deny" ng-click="deny()" />
+</div>
+<div ng-hide='url'>
+<p>We can't share your subscriptions if you do not supply the url of the service you want us to share them with! </p>
+  <input class="btn btn-lg btn-info" type="button" value="Go Back" ng-click="window.history.back()"  />
+</div>

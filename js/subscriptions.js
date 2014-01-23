@@ -74,3 +74,22 @@ Subscriptions.prototype.save = function saveSubscriptions() {
 Subscriptions.prototype.listen = function listen(cb) {
   this.listeners.push(cb);
 }
+
+Subscriptions.prototype.opml = function opml() {
+  var feeds = {};
+  var that = this;
+
+  var opml = '<?xml version="1.0" encoding="UTF-8"?><opml version="1.0"><head><title>Your Subscriptions</title></head><body>';
+  Object.keys(this.data).forEach(function(k) {
+    that.data[k].forEach(function(subscription) {
+      subscription.feeds.forEach(function(f) {
+        if(!feeds[f]) {
+          feeds[f] = true;
+          opml += '<outline xmlUrl="' + f + '" htmlUrl="' + k + '" />';
+        }
+      })
+    });
+  });
+  opml += '</body></opml>';
+  return opml;
+}

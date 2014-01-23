@@ -26,6 +26,7 @@ subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', funct
     when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: "SubscriptionsController"}).
     when('/import', {templateUrl: 'partials/import.html', controller: "ImportController"}).
     when('/export', {templateUrl: 'partials/export.html', controller: "ExportController"}).
+    when('/share', {templateUrl: 'partials/share.html', controller: "ShareController"}).
     when('/store', {templateUrl: 'partials/store.html', controller: "StoreController"}).
     when('/redirect', {templateUrl: 'partials/redirect.html', controller: "RedirectController"}).
     otherwise({redirectTo: '/'});
@@ -289,30 +290,47 @@ subtome.controller("SubscribeController", ['$scope', '$routeParams', 'Analytics'
 
 subtome.controller("ExportController", ['Analytics', function ExportController(Analytics) {
   var subscriptions = new Subscriptions().list();
-  var opml = '<?xml version="1.0" encoding="UTF-8"?><opml version="1.0"><head><title>Your Subscriptions</title></head><body>';
-  for (var k = 0; k < subscriptions.length; k++) {
-    for (var l = 0; l < subscriptions[k][1].length; l++) {
-      opml += '<outline xmlUrl="' + subscriptions[k][1][l] + '" htmlUrl="' + subscriptions[k][0] + '" />';
-    }
-  };
-  opml += '</body></opml>';
+  var opml = new Subscriptions().opml();
   window.location = "data:application/xml;base64," + window.btoa(opml);
 }]);
 
-subtome.controller("ImportController", ['$scope', 'Analytics', function ImportController($scope, Analytics) {
+subtome.controller("ShareController", ['$scope', '$routeParams', 'Analytics', function ShareController($scope, $routeParams, Analytics) {
+
+  $scope.url = $routeParams.url;
+  var a = $('<a>', { href:$scope.url } )[0];
+  $scope.urlRoot = a.protocol + '//' + a.hostname ;
+  if(a.port)
+    $scope.urlRoot += ':' + a.port
+  $scope.urlRoot += '/';
+  var opml = new Subscriptions().opml();
+  $scope.share = function() {
+    window.location = $routeParams.url.replace('{subscriptions}', btoa(opml));
+  }
+  $scope.deny = function() {
+    window.location = '/#/subscriptions';
+  }
+}]);
+
+subtome.controller("ImportController", ['$scope', '$routeParams', 'Analytics', function ImportController($scope, $routeParams, Analytics) {
+  $scope.subscriptions = [];
+
+  function parseFile(contents) {
+    var parser = new DOMParser();
+    var opml = parser.parseFromString(contents, "text/xml");
+    var outlines = opml.getElementsByTagName('outline');
+    var subscriptions = [];
+    for(var i=0; i<outlines.length; i++) {
+      subscriptions.push({feed: outlines[i].getAttribute('xmlUrl'), title: outlines[i].getAttribute('title') || outlines[i].getAttribute('text'), html: outlines[i].getAttribute('htmlUrl')});
+    }
+    return subscriptions;
+  }
+
   $scope.$watch('file', function() {
     if($scope.file) {
       var reader = new FileReader();
       reader.readAsText($scope.file, "UTF-8");
       reader.onload = function (evt) {
-        var parser = new DOMParser();
-        var opml = parser.parseFromString(evt.target.result, "text/xml");
-        var outlines = opml.getElementsByTagName('outline');
-        var subscriptions = [];
-        for(var i=0; i<outlines.length; i++) {
-          subscriptions.push({feed: outlines[i].getAttribute('xmlUrl'), title: outlines[i].getAttribute('title') || outlines[i].getAttribute('text'), html: outlines[i].getAttribute('htmlUrl')});
-        }
-        $scope.subscriptions = subscriptions;
+        $scope.subscriptions = parseFile(evt.target.result);
         $scope.$apply();
       }
       reader.onerror = function (evt) {
@@ -321,7 +339,10 @@ subtome.controller("ImportController", ['$scope', 'Analytics', function ImportCo
       }
     }
   });
-  $scope.subscriptions = [];
+
+  if($routeParams.opml) {
+    $scope.subscriptions = parseFile(atob($routeParams.opml));
+  }
 }]);
 
 subtome.controller("SubscriptionsController", ['$scope', 'Analytics', function ImportController($scope, Analytics) {
