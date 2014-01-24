@@ -4,7 +4,6 @@ var subtome = angular.module('subtome', ['jm.i18next', 'angular-ga']);
 function safeUrl(url) {
   return !url.match(/^javascript:.*/) && !url.match(/^data:.*/);
 }
-
 subtome.config(['$routeProvider', 'AnalyticsProvider', '$i18nextProvider', function($routeProvider, AnalyticsProvider, $i18nextProvider) {
   AnalyticsProvider.setAccount('UA-39876787-1');
 

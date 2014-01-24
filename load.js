@@ -67,7 +67,7 @@
       }
     }
 
-    var src = 'https://www.subtome.com';
+    var src = 'https://subtome.com';
     var parentUrl = (window.location != window.parent.location) ? document.referrer: document.location;
     if(parentUrl && parentUrl.hostname === '0.0.0.0') {
       src = 'http://' + parentUrl.host;
