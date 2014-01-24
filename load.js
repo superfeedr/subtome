@@ -40,9 +40,11 @@
     /* From Data attributes */
     if(document.subtomeBtn && document.subtomeBtn.dataset) {
       resource = document.subtomeBtn.dataset.subtomeResource || resource;
-      feeds = document.subtomeBtn.dataset.subtomeFeeds.split(',').map(function(r) {
-        return decodeURIComponent(r);
-      });
+      if(document.subtomeBtn.dataset.subtomeFeeds) {
+        feeds = document.subtomeBtn.dataset.subtomeFeeds.split(',').map(function(r) {
+          return decodeURIComponent(r);
+        });
+      }
       window.subtome = window.subtome || {};
       window.subtome.suggestedUrl = document.subtomeBtn.dataset.subtomeSuggestedServiceUrl;
       window.subtome.suggestedName = document.subtomeBtn.dataset.subtomeSuggestedServiceName;
