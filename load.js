@@ -73,6 +73,7 @@
       src = parentUrl.protocol + '//' + parentUrl.host;
     }
     var s = document.createElement('iframe');
+    src += '/?subs'; // Fix for Firefox with messes things up! Thanks Yvo for the precious tip!
     src += '/#/subscribe?resource=' + encodeURIComponent(resource) + '&feeds=' + encodeURIComponent(feeds.join(','));
     if(window.subtome && window.subtome.suggestedUrl && window.subtome.suggestedName) {
       src += '&suggestedUrl=' + encodeURIComponent(window.subtome.suggestedUrl) + '&suggestedName=' + encodeURIComponent(window.subtome.suggestedName)
