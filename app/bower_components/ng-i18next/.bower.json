@@ -1,0 +1,33 @@
+{
+  "name": "ng-i18next",
+  "main": "./dist/ng-i18next.js",
+  "version": "0.2.9",
+  "devDependencies": {
+    "angular": "~1.2.6",
+    "i18next": "latest",
+    "angular-mocks": "~1.2.6"
+  },
+  "ignore": [
+    "releases",
+    "docs",
+    "examples",
+    "src",
+    "test",
+    "karma.conf.js",
+    "package.json",
+    ".jshintrc",
+    ".editorconfig",
+    ".gitignore"
+  ],
+  "homepage": "https://github.com/archer96/ng-i18next",
+  "_release": "0.2.9",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.9",
+    "commit": "454e1f5e636278b90c9bca1100ac2b1fcde0dc14"
+  },
+  "_source": "git://github.com/archer96/ng-i18next.git",
+  "_target": "~0.2.9",
+  "_originalSource": "ng-i18next",
+  "_direct": true
+}

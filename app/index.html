@@ -2,41 +2,75 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" manifest="subtome.appcache" ng-app="subtome"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
+    <title>SubToMe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="A Universal follow app for the open web">
+    <meta name="author" content="Julien Genestoux">
+    <link type="application/atom+xml" rel="alternate" titme="SubToMe blog" href="http://docs.subtome.com/feed.xml" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-modal/css//bootstrap-modal.css" >
+
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/bootstrap-modal-bs3patch.css" >
+    <link rel="stylesheet" href="styles/subtome.css" >
     <!-- endbuild -->
   </head>
-  <body ng-app="subtomecomApp">
+  <body>
+     <script>
+    if(window.location.host == 'www.subtome.com' && window.location.protocol != 'https:') {
+      window.location.protocol = 'https';
+    }
+    if(window.location.host != 'www.subtome.com' && window.location.hostname != "0.0.0.0" &&  window.location.hostname != "127.0.0.1") {
+      window.location.host = "www.subtome.com";
+    }
+
+    </script>
+
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container">
+      <nav class="navbar main-layout" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/" class='navbar-brand'><img src="images/subtome-small.png" style="height: 35px;"/></a>
+        </div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right nav-pills">
+            <li><a ng-i18next="nav.settings" ng-href="/#/settings">Settings</a></li>
+            <li><a ng-i18next="nav.subscriptions" ng-href="/#/subscriptions">Subscriptions</a></li>
+            <li><a target="_blank" ng-href="http://docs.subtome.com/">Docs</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div ng-view></div>
+
+
+      <footer class="main-layout">
+        <p ng-i18next="[html]footer">Brought to you by<a href="http://superfeedr.com">Superfeedr</a> <img src="images/superfeedr.png" >. <a class="github" href="https://github.com/superfeedr/subtome">Source Code</a></p>
+      </footer>
+
+    </div> <!-- /container -->
+
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -51,12 +85,43 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/i18next/release/i18next-1.7.1.min.js"></script>
+    <script src="bower_components/ng-i18next/dist/ng-i18next.js"></script>
+    <script src="bower_components/angular-ga/ga.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/bootstrap-modal/js/bootstrap-modal.js"></script>
+    <script src="bower_components/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <!-- endbuild -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39876787-1', 'subtome.com');
+
+    </script>
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/compatibility.js"></script>
+    <script src="scripts/services.js"></script>
+    <script src="scripts/subscriptions.js"></script>
+    <script src="scripts/store.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/developers.js"></script>
+    <script src="scripts/controllers/export.js"></script>
+    <script src="scripts/controllers/import.js"></script>
+    <script src="scripts/controllers/index.js"></script>
+    <script src="scripts/controllers/publishers.js"></script>
+    <script src="scripts/controllers/redirect.js"></script>
+    <script src="scripts/controllers/register.js"></script>
+    <script src="scripts/controllers/settings.js"></script>
+    <script src="scripts/controllers/store.js"></script>
+    <script src="scripts/controllers/subscribe.js"></script>
+    <script src="scripts/controllers/subscriptions.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

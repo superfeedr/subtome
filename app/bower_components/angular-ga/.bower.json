@@ -1,0 +1,20 @@
+{
+  "author": "Rafal Lindemann",
+  "name": "angular-ga",
+  "description": "Google Universal Analytics adapter for AngularJS",
+  "version": "0.1.0",
+  "homepage": "https://github.com/panrafal/angular-ga",
+  "main": "./ga.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "88893a1a0066d1a198e3cbbc9bd501a932cf1263"
+  },
+  "_source": "git://github.com/panrafal/angular-ga.git",
+  "_target": "~0.1.0",
+  "_originalSource": "angular-ga",
+  "_direct": true
+}

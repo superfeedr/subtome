@@ -1,0 +1,22 @@
+{
+  "name": "ng-i18next",
+  "main": "./dist/ng-i18next.js",
+  "version": "0.2.9",
+  "devDependencies": {
+    "angular": "~1.2.6",
+    "i18next": "latest",
+    "angular-mocks": "~1.2.6"
+  },
+  "ignore": [
+    "releases",
+    "docs",
+    "examples",
+    "src",
+    "test",
+    "karma.conf.js",
+    "package.json",
+    ".jshintrc",
+    ".editorconfig",
+    ".gitignore"
+  ]
+}

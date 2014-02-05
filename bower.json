@@ -9,7 +9,13 @@
     "bootstrap": "~3.0.3",
     "angular-resource": "1.2.6",
     "angular-sanitize": "1.2.6",
-    "angular-route": "1.2.6"
+    "angular-route": "1.2.6",
+    "angular-bootstrap": "~0.10.0",
+    "i18next": "~1.7.1",
+    "ng-i18next": "~0.2.9",
+    "angular-ga": "~0.1.0",
+    "moment": "~2.5.1",
+    "bootstrap-modal": "~2.1.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",

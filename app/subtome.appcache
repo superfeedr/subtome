@@ -12,10 +12,10 @@ CACHE MANIFEST
 /fonts/glyphicons-halflings-regular.ttf
 /fonts/glyphicons-halflings-regular.woff
 
-/img/favicon.ico
-/img/rss-small.png
-/img/subtome-small.png
-/img/superfeedr.png
+/images/favicon.ico
+/images/rss-small.png
+/images/subtome-small.png
+/images/superfeedr.png
 
 /js/angular-ga.js
 /js/angular.min.js
