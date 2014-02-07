@@ -148,9 +148,6 @@ module.exports = function (grunt) {
     },
 
 
-
-
-
     // Renames files for browser caching purposes
     rev: {
       dist: {
@@ -251,11 +248,11 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>',
           dest: '<%= yeoman.dist %>',
           src: [
-            '*.{ico,png,txt}',
+            '*.{ico,png,txt,js}',
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
-            'bower_components/**/*',
+            // 'bower_components/**/*',
             'images/{,*/}*.{webp}',
             'fonts/*'
           ]
@@ -287,6 +284,19 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+
+    // AppCache
+    appcache: {
+      options: {
+        // Task-specific options go here.
+        basePath: 'dist/',
+      },
+      all: {
+        dest: 'dist/subtome.appcache',
+        cache: 'dist/**/*',
+        network: '*',
+      }
     },
 
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
@@ -367,8 +377,11 @@ module.exports = function (grunt) {
     'uglify',
     'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'appcache'
   ]);
+
+  grunt.loadNpmTasks('grunt-appcache');
 
   grunt.registerTask('default', [
     'newer:jshint',

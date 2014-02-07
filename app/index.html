@@ -15,8 +15,6 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/bootstrap-modal/css//bootstrap-modal.css" >
-
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
@@ -90,8 +88,6 @@
     <script src="bower_components/ng-i18next/dist/ng-i18next.js"></script>
     <script src="bower_components/angular-ga/ga.js"></script>
     <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/bootstrap-modal/js/bootstrap-modal.js"></script>
-    <script src="bower_components/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -107,10 +103,11 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/compatibility.js"></script>
-    <script src="scripts/services.js"></script>
-    <script src="scripts/subscriptions.js"></script>
-    <script src="scripts/store.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/services/safe-url.js"></script>
+    <script src="scripts/services/services.js"></script>
+    <script src="scripts/services/subscriptions.js"></script>
+    <script src="scripts/services/store.js"></script>
     <script src="scripts/controllers/developers.js"></script>
     <script src="scripts/controllers/export.js"></script>
     <script src="scripts/controllers/import.js"></script>

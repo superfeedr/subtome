@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('subtome')
-.controller("SubscribeController", ['$scope', '$routeParams', 'ga', function SubscribeController($scope, $routeParams, ga) {
+.controller("SubscribeController", ['$scope', '$routeParams', 'ga', 'services', 'subscriptions', 'store', 'safeUrl', function SubscribeController($scope, $routeParams, ga, services, subscriptions, store, safeUrl) {
   $scope.picker = "default";
-  $scope.subscriptions = new Subscriptions();
+  $scope.subscriptions = subscriptions;
 
   // Init the modal
   $('#subtomeModal').modal({
@@ -95,7 +95,7 @@ angular.module('subtome')
   }
 
   // List of apps from the store.
-  var apps = appStore;
+  var apps = store;
   apps.forEach(function(a) {
     a.name = a.registration.name; // Compatibility
     a.url = a.registration.url; // Compatibility
@@ -104,14 +104,15 @@ angular.module('subtome')
 
   // Toggle button
   $scope.toggle = function toggleApp(app) {
-    if($scope.services.uses(app.name)) {
-      $scope.services.removeService(app.name);
+    if(services.uses(app.name)) {
+      services.removeService(app.name);
     }
     else {
-      $scope.services.register(app.name, app.url)
+      services.register(app.name, app.url)
     }
   };
 
   // Show the popular options
-  $scope.showPopular = !$scope.services.count();
+  $scope.services = services;
+  $scope.showPopular = !services.count();
 }]);

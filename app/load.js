@@ -82,6 +82,7 @@
     s.setAttribute('src', src);
     var loaded = false;
     s.onload = function() {
+      console.log('LOADED!')
       if(loaded) {
         document.getElementsByTagName('body')[0].removeChild(s);
       }

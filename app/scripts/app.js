@@ -62,11 +62,6 @@ subtome.run(['$rootScope', '$location', function($rootScope, $location) {
     });
   }
 
-  $rootScope.services = new Services();
-  $rootScope.services.listen(function() {
-    $rootScope.$apply();
-  });
-
   $rootScope.follow = function follow(evt) {
     var z=document.createElement('script');
     if(evt) {

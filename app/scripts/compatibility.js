@@ -1,6 +1,6 @@
 /* some IE8 love */
 
-/* Array.reduce */
+/* Array.reduce for IE9 */
 if ('function' !== typeof Array.prototype.reduce) {
   Array.prototype.reduce = function(callback, opt_initialValue){
     'use strict';

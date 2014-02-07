@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('subtome')
-.controller("SubscriptionsController", ['$scope', function ImportController($scope) {
-  $scope.subscriptions = new Subscriptions().all();
+.controller("SubscriptionsController", ['$scope', 'subscriptions', function ImportController($scope, subscriptions) {
+  $scope.subscriptions = subscriptions.all();
   $scope.pickColor = function pickColor(string) {
     var colors = [
       "background-color: rgb(66, 139, 202)",
