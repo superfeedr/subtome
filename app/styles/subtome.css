@@ -46,7 +46,7 @@ footer img {
   padding-bottom: 20px;
 }
 
-.modal-body .app h4{
+.modal-body .app h4 {
 }
 
 .modal-body .app {
@@ -63,11 +63,11 @@ footer img {
   margin-bottom: 10px;
 }
 
-.modal-body .apps .app .btn.pick{
+.modal-body .apps .app .btn.pick {
   width: 160px;
 }
 
-.modal-body .app .btn.icn{
+.modal-body .app .btn.icn {
 }
 
 .modal-body .app .btn-group{
@@ -79,7 +79,6 @@ footer img {
 .modal-header h3 {
   display: inline;
 }
-
 
 .rss {
   padding: 4px;
@@ -132,6 +131,13 @@ footer img {
 }
 
 .modal-footer .btn {
-margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
+.modal {
+  max-height: 100%;
+}
+
+.modal-body {
+  overflow-y: scroll;
+}

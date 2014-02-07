@@ -9,8 +9,7 @@ var subtome = angular.module('subtome', [
                'ga'
                ]);
 
-subtome.config(['$routeProvider','$i18nextProvider', function($routeProvider,  $i18nextProvider) {
-  // ga.setAccount('UA-39876787-1');
+subtome.config(['$routeProvider', '$i18nextProvider', function($routeProvider, $i18nextProvider) {
 
   $i18nextProvider.options = {
     lng: navigator.language,
