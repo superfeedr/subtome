@@ -2,8 +2,7 @@
 
 angular.module('subtome')
 .factory('store', function() {
-  var apps = [
-  {
+  var apps = [{
     name: 'Feedly',
     tags: ['chrome', 'firefox', 'mobile'],
     description: 'Feedly is a news aggregator application for various Web browsers and mobile devices running iOS and Android.',
@@ -149,80 +148,80 @@ angular.module('subtome')
     }
   },
   {
-    name: "MnmlRdr",
-    tags: ["web", "mobile", "minimal", "lightweight"],
-    description: "A fast and lightweight feed reader without \"feature clutter\" so you can focus on the content.",
-    url:"https://mnmlrdr.com/",
-    icon:"https://mnmlrdr.com/static/images/logo.png",
+    name: 'MnmlRdr',
+    tags: ['web', 'mobile', 'minimal', 'lightweight'],
+    description: 'A fast and lightweight feed reader without \'feature clutter\' so you can focus on the content.',
+    url:'https://mnmlrdr.com/',
+    icon:'https://mnmlrdr.com/static/images/logo.png',
     registration:{
-      name: "MnmlRdr",
-      url: "https://mnmlrdr.com/settings/subscriptions/add?feed={feed}"
+      name: 'MnmlRdr',
+      url: 'https://mnmlrdr.com/settings/subscriptions/add?feed={feed}'
     }
   },
   {
-    name: "Netvibes",
-    tags: ["web", "dashboard", "analytics"],
-    description: "Netvibes is the all-in-one dashboard intelligence platform.",
-    url:"http://www.netvibes.com",
-    icon:"http://cdn.netvibes.com/img/favicon-12.png",
+    name: 'Netvibes',
+    tags: ['web', 'dashboard', 'analytics'],
+    description: 'Netvibes is the all-in-one dashboard intelligence platform.',
+    url:'http://www.netvibes.com',
+    icon:'http://cdn.netvibes.com/img/favicon-12.png',
     registration:{
-      name: "Netvibes",
-      url: "http://www.netvibes.com/subscribe.php?url={feed}"
+      name: 'Netvibes',
+      url: 'http://www.netvibes.com/subscribe.php?url={feed}'
     }
   },
   {
-    name: "Squirro",
-    tags: ["web", "intelligence", "assistant"],
-    description: "Squirro is the leader in Context Intelligence, combining structured and unstructured data to provide the 'Why' behind the data.",
-    url:"http://squirro.com/",
-    icon:"http://squirro.com/files/2213/3673/7722/favicon.ico",
+    name: 'Squirro',
+    tags: ['web', 'intelligence', 'assistant'],
+    description: 'Squirro is the leader in Context Intelligence, combining structured and unstructured data to provide the \'Why\' behind the data.',
+    url:'http://squirro.com/',
+    icon:'http://squirro.com/files/2213/3673/7722/favicon.ico',
     registration:{
-      name: "Squirro",
-      url: "https://squirro.com/app/#add/query/{feed}"
+      name: 'Squirro',
+      url: 'https://squirro.com/app/#add/query/{feed}'
     }
   },
   {
-    name: "Player FM",
-    tags: ["podcast", "mobile", "web"],
-    description: "Listen to talk shows on hundreds of topics, everything from Politics to Pokemon! ",
-    url:"http://player.fm/",
-    icon:"http://player.fm/favicon.ico",
+    name: 'Player FM',
+    tags: ['podcast', 'mobile', 'web'],
+    description: 'Listen to talk shows on hundreds of topics, everything from Politics to Pokemon! ',
+    url:'http://player.fm/',
+    icon:'http://player.fm/favicon.ico',
     registration:{
-      name: "Player FM",
-      url: "http://player.fm/series?url={feed}&referrer={url}&related_feeds={feeds}"
+      name: 'Player FM',
+      url: 'http://player.fm/series?url={feed}&referrer={url}&related_feeds={feeds}'
     }
   },
   {
-    name: "My Yahoo",
-    tags: ["yahoo", "legacy"],
-    description: "My Yahoo is a customizable web page with news, stock quotes, weather, and many other features.",
-    url:"http://my.yahoo.com/",
-    icon:"http://my.yahoo.com/favicon.ico",
+    name: 'My Yahoo',
+    tags: ['yahoo', 'legacy'],
+    description: 'My Yahoo is a customizable web page with news, stock quotes, weather, and many other features.',
+    url:'http://my.yahoo.com/',
+    icon:'http://my.yahoo.com/favicon.ico',
     registration:{
-      name: "My Yahoo",
-      url: "http://add.my.yahoo.com/rss?url={feed}"
+      name: 'My Yahoo',
+      url: 'http://add.my.yahoo.com/rss?url={feed}'
     }
   },
   {
-    name: "Kouio",
-    tags: ["web", "mobile", "tablets"],
-    description: "Kouio is the RSS reader you've always wanted.",
-    url:"https://kouio.com/",
-    icon:"https://kouio.com/favicon.ico",
+    name: 'Kouio',
+    tags: ['web', 'mobile', 'tablets'],
+    description: 'Kouio is the RSS reader you\'ve always wanted.',
+    url:'https://kouio.com/',
+    icon:'https://kouio.com/favicon.ico',
     registration:{
-      name: "Kouio",
-      url: "https://kouio.com/subscribe?url={feed}"
+      name: 'Kouio',
+      url: 'https://kouio.com/subscribe?url={feed}'
     }
   },
   {
-    name: "RSS feed redirect",
-    tags: ["developer"],
-    description: "Redirects you to the raw RSS feed. This is for advanced users only.",
-    url:"",
-    icon:"https://upload.wikimedia.org/wikipedia/en/4/43/Feed-icon.svg",
+    name: 'RSS feed redirect',
+    tags: ['developer'],
+    description: 'Redirects you to the raw RSS feed. This is for advanced users only.',
+    url:'',
+    icon:'https://upload.wikimedia.org/wikipedia/en/4/43/Feed-icon.svg',
     registration:{
-      name: "RSS feed",
-      url: "/#/redirect?to={feed}"
+      name: 'RSS feed',
+      url: '/#/redirect?to={feed}'
     }
   }
   ];

@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('subtome')
-.controller("SubscribeController", ['$scope', '$routeParams', 'ga', 'services', 'subscriptions', 'store', 'safeUrl', function SubscribeController($scope, $routeParams, ga, services, subscriptions, store, safeUrl) {
-  $scope.picker = "default";
+.controller('SubscribeController', ['$window', '$scope', '$routeParams', 'ga', '$i18next', 'services', 'subscriptions', 'store', 'safeUrl', function SubscribeController($window, $scope, $routeParams, ga, $i18next, services, subscriptions, store, safeUrl) {
+  $scope.picker = 'default';
   $scope.subscriptions = subscriptions;
 
   // Init the modal
-  $('#subtomeModal').modal({
+  angular.element('#subtomeModal').modal({
     backdrop: true,
     keyboard: true,
     show: true,
@@ -15,12 +15,12 @@ angular.module('subtome')
   });
 
   // When the modal is hidden
-  $('#subtomeModal').on('hidden', function() {
+  angular.element('#subtomeModal').on('hidden', function() {
     if($routeParams.back && safeUrl($routeParams.back)) {
-      window.location = $routeParams.back;
+      $window.location = $routeParams.back;
     }
     else {
-      window.location = '/done.html';
+      $window.location = '/done.html';
     }
   });
 
@@ -34,28 +34,28 @@ angular.module('subtome')
   }
 
   // Keep track of the click on the button
-  ga('send', 'event', 'resources', 'subscribe', $scope.resource)
+  ga('send', 'event', 'resources', 'subscribe', $scope.resource);
 
   // Extract the feeds information
   $scope.feeds = [];
   if($routeParams.feeds && $routeParams.feeds.length > 0) {
-    $scope.feeds = $routeParams.feeds.split(",").map(function(url) {
+    $scope.feeds = $routeParams.feeds.split(',').map(function(url) {
       return decodeURIComponent(url);
     });
-    ga('send', 'event', 'feeds', 'subscribe', $scope.feeds[0])
+    ga('send', 'event', 'feeds', 'subscribe', $scope.feeds[0]);
   }
 
   // UI, switch between store and default
-  $scope.toggleButton = i18n.t("View the full list of services");
+  $scope.toggleButton = $i18next('View the full list of services');
   $scope.toggleStore = function toggleStore() {
-    $scope.picker = $scope.picker == "store" && "default" || "store";
-    if($scope.picker == "store") {
-      $scope.toggleButton = i18n.t("Preferred services");
+    $scope.picker = $scope.picker === 'store' && 'default' || 'store';
+    if($scope.picker === 'store') {
+      $scope.toggleButton = $i18next('Preferred services');
     }
     else {
-      $scope.toggleButton = i18n.t("View the full list of services");
+      $scope.toggleButton = $i18next('View the full list of services');
     }
-  }
+  };
 
   // When a button is clicked.
   $scope.openService = function openService(service) {
@@ -79,7 +79,7 @@ angular.module('subtome')
       d.href = $scope.resource;
       var s = document.createElement('a');
       s.href = url;
-      window.parent.postMessage({subscription: {
+      $window.parent.postMessage({subscription: {
         feeds: $scope.feeds,
         resource: $scope.resource,
         app: {
@@ -87,12 +87,12 @@ angular.module('subtome')
           url: s.protocol + '//' + s.host
         }
       }}, d.protocol + '//' + d.host);
-      window.open(redirect);
+      $window.open(redirect);
     }
     else {
-      alert("It looks like this redirect is not safe. Please remove that service from your favorites.");
+      $window.alert('It looks like this redirect is not safe. Please remove that service from your favorites.');
     }
-  }
+  };
 
   // List of apps from the store.
   var apps = store;
@@ -108,7 +108,7 @@ angular.module('subtome')
       services.removeService(app.name);
     }
     else {
-      services.register(app.name, app.url)
+      services.register(app.name, app.url);
     }
   };
 

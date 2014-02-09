@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('subtome')
-.controller("DevelopersController", [function DevelopersController() {
-  $window.location = "http://docs.subtome.com/developers/";
+.controller('DevelopersController', ['$window', function DevelopersController($window) {
+  $window.location = 'http://docs.subtome.com/developers/';
 }]);

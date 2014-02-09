@@ -7,11 +7,7 @@ angular.module('subtome')
 
 
   function count() {
-    var count = 0;
-    for(var name in services) {
-      count += 1;
-    }
-    return count;
+    return Object.keys(services).length;
   }
 
   function uses(name) {
@@ -19,12 +15,13 @@ angular.module('subtome')
   }
 
   function load() {
+    var servicesString;
     try {
-      var servicesString = localStorage.getItem('services');
+      servicesString = localStorage.getItem('services');
     }
-    catch(error) {
-      console.error('There was an error, so we could not load the services from the localStorage. ', error);
-      if(error.name === 'SecurityError' && error.code === 18) {
+    catch(e) {
+      console.error('There was an error, so we could not load the services from the localStorage. ', e);
+      if(e.name === 'SecurityError' && e.code === 18) {
         error = 'A browser setting is preventing SubToMe from saving your favorite subscription tools. Open up Settings > Privacy. Then, make sure Accept cookies from sites is checked. Also, make sure Accept third-party is checked as well.';
       }
       else {
@@ -35,7 +32,7 @@ angular.module('subtome')
       try {
         services = angular.fromJson(servicesString);
       }
-      catch(error) {
+      catch(e) {
         console.error('Could not parse ' + servicesString);
         error = 'Warning: We could not load your favorite subscriptions tools. ';
       }
@@ -48,7 +45,7 @@ angular.module('subtome')
       services[name] = {
         url: decodeURIComponent(handler),
         addedOn: Date.now()
-      }
+      };
       save();
     }
   }
@@ -64,12 +61,12 @@ angular.module('subtome')
   }
 
   function used() {
-    var used = [];
+    var u = [];
     forEach(function(name, s) {
       s.name = name;
-      used.push(s);
+      u.push(s);
     });
-    return used;
+    return u;
   }
 
   function removeService(name) {
@@ -87,6 +84,6 @@ angular.module('subtome')
     register: register,
     count: count,
     uses: uses
-  }
+  };
 });
 
