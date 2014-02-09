@@ -254,6 +254,7 @@ module.exports = function (grunt) {
             'views/{,*/}*.html',
             // 'bower_components/**/*',
             'images/{,*/}*.{webp}',
+            'locales/{,*/}*.json',
             'fonts/*'
           ]
         }, {
@@ -268,6 +269,12 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      locales: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/locales',
+        dest: '.tmp/locales/',
+        src: '{,*/}*.json'
       }
     },
 
@@ -280,6 +287,7 @@ module.exports = function (grunt) {
         'copy:styles'
       ],
       dist: [
+        'copy:locales',
         'copy:styles',
         'imagemin',
         'svgmin'
