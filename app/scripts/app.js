@@ -31,28 +31,6 @@ subtome.config(['$routeProvider', '$i18nextProvider', function($routeProvider, $
 
 subtome.run(['$rootScope', '$location', function($rootScope, $location) {
   // window.navigator.registerContentHandler('application/vnd.mozilla.maybe.feed', 'https://subtome.com/#/subscribe?feeds=%s',  'SubToMe');
-  if ($location.path() !== '/subscribe') {
-    angular.element('.main-layout').show();
-  }
-
-  $rootScope.showBrowserSpecifics = function showBrowserSpecifics() {
-    angular.element('.browser-specific').each(function(i, b) {
-      var browserSpecific = angular.element(b).attr('class');
-      if(typeof(browserSpecific) === 'string') {
-        browserSpecific.split(' ').forEach(function(c) {
-          if(navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
-            angular.element(b).show();
-          }
-          else if(['browser-specific', 'ng-scope'].indexOf(c)) {
-            // Nothing
-          }
-          else {
-            angular.element(b).hide();
-          }
-        });
-      }
-    });
-  };
 
   $rootScope.follow = function follow(evt) {
     var z=document.createElement('script');
@@ -77,6 +55,45 @@ subtome.filter('linkToHome', function() {
     return a.protocol + '//' + a.host + '/';
   };
 });
+
+
+subtome.directive('hideOnPath', ['$rootScope', '$location' , function($rootScope, $location) {
+  return {
+    restrict: 'A',
+    link: function($scope, $element, $attrs) {
+      function showOrHide() {
+        if ($location.path() !== $attrs.hideOnPath) {
+          $element.show();
+        }
+        else {
+          $element.hide();
+        }
+      }
+
+      $rootScope.$on('$locationChangeSuccess', showOrHide);
+    }
+  };
+}]);
+
+
+subtome.directive('browserSpecific', ['$window', function($window) {
+  return {
+    link: function($scope, $element, $attrs) {
+      var showed = false;
+      if($attrs.browserSpecific) {
+        $attrs.browserSpecific.split(' ').forEach(function(c) {
+          if($window.navigator.userAgent.toLowerCase().indexOf(c) >= 0) {
+            showed = true;
+          }
+        });
+      }
+      if(showed)
+        $element.show();
+      else
+        $element.hide();
+    }
+  };
+}]);
 
 subtome.directive('filePicker', function(){
   return {

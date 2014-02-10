@@ -21,10 +21,6 @@ footer img {
   height: 24px;
 }
 
-.browser-specific {
-  display: none;
-}
-
 .container {
   max-width: 800px;
 }
