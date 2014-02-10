@@ -11,11 +11,18 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'app/bower_components/jquery/jquery.js',
       'app/bower_components/angular/angular.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/bower_components/angular-resource/angular-resource.js',
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-route/angular-route.js',
+      'app/bower_components/angular-ga/ga.js',
+      'app/bower_components/bootstrap-modal/js/bootstrap-modal.js',
+      'app/bower_components/bootstrap-modal/js/bootstrap-modalmanager.js',
+      'app/bower_components/i18next/release/i18next-1.7.1.min.js',
+      'app/bower_components/moment/moment.js',
+      'app/bower_components/ng-i18next/dist/ng-i18next.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
@@ -45,11 +52,11 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Chrome', 'Firefox'],
+    browsers: ['Firefox'],
 
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: true
   });
 };
