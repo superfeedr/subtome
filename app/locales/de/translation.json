@@ -70,7 +70,7 @@
   "publishers": {
     "title": "Publishers",
     "subtitle": "Bringe deine Leser dazu, deine Inhalte zu abonnieren",
-    "summary": "Du aktualisierst deine Inhalte regelmäßig. Du willst deine Benutzer zurückholen, wenn das passiert: ermögliche ihnen deine Inhalte zu <em>abonnieren</em>. Das geht ganz leicht, indem du einen Knopf wie diesen <button ng-click='follow()' class='btn btn-xs btn-default'>Subscribe</button> zu irgendeiner Seite hinzufügst, um Abos zu ermöglichen. Stelle sicher, dass deine Seite einen Link beinhaltet, den deine Leser abonnieren können.",
+    "summary": "Du aktualisierst deine Inhalte regelmäßig. Du willst deine Benutzer zurückholen, wenn das passiert: ermögliche ihnen deine Inhalte zu <em>abonnieren</em>. Das geht ganz leicht, indem du einen Knopf wie diesen <button follow-on='click' class='btn btn-xs btn-default'>Subscribe</button> zu irgendeiner Seite hinzufügst, um Abos zu ermöglichen. Stelle sicher, dass deine Seite einen Link beinhaltet, den deine Leser abonnieren können.",
     "code": "Kopiere und füge folgenden Code unten in eine beliebige HTML-Seite ein.",
     "details": "Wenn der Benutzer den Knopf klickt, wird ein kleines JavaScript-Snippet von <code><a href=\"https://www.subtome.com/load.js\">https://www.subtome.com/load.js</a></code> geladen. Dieses Snippet lädt dann den SubToMe Dialog. Schau dir den Code um, um mehr darüber zu lernen.",
     "open": "Natürlich ist alles 100% offen, was bedeutet, du kannst den Code in jeder Weise verändern, anpassen und andere Mechanismen verwenden, die dir zusagen. Trete mit uns in Kontakt, wenn du Hilfe benötigst.",

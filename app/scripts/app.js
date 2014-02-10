@@ -29,17 +29,8 @@ subtome.config(['$routeProvider', '$i18nextProvider', function($routeProvider, $
 }]);
 
 
-subtome.run(['$rootScope', '$location', function($rootScope, $location) {
+subtome.run([function() {
   // window.navigator.registerContentHandler('application/vnd.mozilla.maybe.feed', 'https://subtome.com/#/subscribe?feeds=%s',  'SubToMe');
-
-  $rootScope.follow = function follow(evt) {
-    var z=document.createElement('script');
-    if(evt) {
-      document.subtomeBtn=evt.target;
-    }
-    z.src='/load.js';
-    document.body.appendChild(z);
-  };
 }]);
 
 subtome.filter('fromNow', ['$window' , function($window) {
@@ -57,6 +48,24 @@ subtome.filter('linkToHome', function() {
 });
 
 
+subtome.directive('followOn', [function() {
+  return {
+    restrict: 'A',
+    link: function($scope, $element, $attrs) {
+      if($attrs.followOn) {
+        $element.bind($attrs.followOn, function(evt) {
+          var z=document.createElement('script');
+          if(evt) {
+            document.subtomeBtn=evt.target;
+          }
+          z.src='/load.js';
+          document.body.appendChild(z);
+        });
+      }
+    }
+  };
+}]);
+
 subtome.directive('hideOnPath', ['$rootScope', '$location' , function($rootScope, $location) {
   return {
     restrict: 'A',
@@ -69,12 +78,10 @@ subtome.directive('hideOnPath', ['$rootScope', '$location' , function($rootScope
           $element.hide();
         }
       }
-
       $rootScope.$on('$locationChangeSuccess', showOrHide);
     }
   };
 }]);
-
 
 subtome.directive('browserSpecific', ['$window', function($window) {
   return {
