@@ -94,10 +94,12 @@ subtome.directive('browserSpecific', ['$window', function($window) {
           }
         });
       }
-      if(showed)
+      if(showed) {
         $element.show();
-      else
+      }
+      else {
         $element.hide();
+      }
     }
   };
 }]);
