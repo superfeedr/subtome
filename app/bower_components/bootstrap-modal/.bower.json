@@ -8,6 +8,11 @@
     "tag": "2.1.0",
     "commit": "02b6c6bfe15c1d49e198dbddd35cd4e74722d689"
   },
+  "main": [
+  "css/bootstrap-modal.css",
+  "js/bootstrap-modal.js",
+  "js/bootstrap-modalmanager.js"
+  ],
   "_source": "git://github.com/jschr/bootstrap-modal.git",
   "_target": "~2.1.0",
   "_originalSource": "bootstrap-modal",

@@ -130,10 +130,3 @@ footer img {
   margin-bottom: 5px;
 }
 
-.modal {
-  max-height: 100%;
-}
-
-.modal-body {
-  overflow-y: scroll;
-}

@@ -1,18 +1,18 @@
 'use strict';
 
 angular.module('subtome')
-.directive('followOn', [function() {
+.directive('followOn', ['$window', function($window) {
   return {
     restrict: 'A',
     link: function($scope, $element, $attrs) {
       if($attrs.followOn) {
         $element.bind($attrs.followOn, function(evt) {
-          var z=document.createElement('script');
+          var z = $window.document.createElement('script');
           if(evt) {
-            document.subtomeBtn=evt.target;
+            $window.document.subtomeBtn = evt.target;
           }
-          z.src='/load.js';
-          document.body.appendChild(z);
+          z.src = '/load.js';
+          $window.document.body.appendChild(z);
         });
       }
     }
