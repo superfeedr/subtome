@@ -3,8 +3,8 @@
 angular.module('subtome')
 .factory('subscriptions', function() {
 
-  var data = {};
-  var error = null;
+  var d = {};
+  var err = null;
 
   function load() {
     var subscriptionsString = '';
@@ -14,27 +14,39 @@ angular.module('subtome')
     catch(e) {
       console.error('There was an error, so we could not load the subscriptions from the localStorage. ', e);
       if(e.name === 'SecurityError' && e.code === 18) {
-        error = 'A browser setting is preventing SubToMe from saving your favorite subscription tools. Open up Settings > Privacy. Then, make sure Accept cookies from sites is checked. Also, make sure Accept third-party is checked as well.';
+        err = 'A browser setting is preventing SubToMe from saving your favorite subscription tools. Open up Settings > Privacy. Then, make sure Accept cookies from sites is checked. Also, make sure Accept third-party is checked as well.';
       }
       else {
-        error = 'We could not load your subscriptions. ';
+        err = 'We could not load your subscriptions. ';
       }
     }
     if(subscriptionsString) {
       try {
-        data = angular.fromJson(subscriptionsString);
+        d = angular.fromJson(subscriptionsString);
       }
       catch(e) {
         console.error('Could not parse ' + subscriptionsString);
-        error = 'We could not load your subscriptions. ';
+        err = 'We could not load your subscriptions. ';
       }
     }
   }
 
+  function add(url, obj) {
+    if(!d[url]) {
+      d[url] = [];
+    }
+    d[url].push(obj);
+    save();
+  }
+
+  function save() {
+    localStorage.setItem('subscriptions', angular.toJson(d));
+  }
+
   function list() {
     var l = [];
-    Object.keys(data).forEach(function(k) {
-      data[k].forEach(function(subscription) {
+    Object.keys(d).forEach(function(k) {
+      d[k].forEach(function(subscription) {
         l.push(new Array(k, subscription.feeds));
       });
     });
@@ -43,31 +55,18 @@ angular.module('subtome')
 
   function all() {
     var list = [];
-    Object.keys(data).forEach(function(k) {
-      list.push(new Array(k, data[k]));
+    Object.keys(d).forEach(function(k) {
+      list.push(new Array(k, d[k]));
     });
     return list;
   }
-
-  function add(url, obj) {
-    if(!data[url]) {
-      data[url] = [];
-    }
-    data[url].push(obj);
-    save();
-  }
-
-  function save() {
-    localStorage.setItem('subscriptions', angular.toJson(data));
-  }
-
 
   function opml() {
     var feeds = {};
 
     var xml = '<?xml version="1.0" encoding="UTF-8"?><opml version="1.0"><head><title>Your Subscriptions</title></head><body>';
-    Object.keys(data).forEach(function(k) {
-      data[k].forEach(function(subscription) {
+    Object.keys(d).forEach(function(k) {
+      d[k].forEach(function(subscription) {
         subscription.feeds.forEach(function(f) {
           if(!feeds[f]) {
             feeds[f] = true;
@@ -80,14 +79,25 @@ angular.module('subtome')
     return xml;
   }
 
+  function error() {
+    return err;
+  }
+
+  function data() {
+    return d;
+  }
+
   load();
 
   return {
+    data: data,
+    error: error,
     opml: opml,
     save: save,
     add: add,
     list: list,
-    all: all
+    all: all,
+    load: load
   };
 });
 
