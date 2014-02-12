@@ -10,7 +10,7 @@
     "developers": "Entwickler",
     "subscriptions": "Subscriptions"
   },
-  "footer": "Präsentiert von <a href='http://superfeedr.com'>Superfeedr</a> <img src='./images/superfeedr.png'>, <a href='https://github.com/superfeedr/subtome'>Source Code</a>.",
+  "footer": "Präsentiert von",
   "index": {
     "caption": "Universal Follow Button",
     "summary": "SubToMe ermöglicht ein einfaches <em>Folgen</em> von Webseiten,<br />  weil Browser das nicht tun.",

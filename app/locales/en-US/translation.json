@@ -10,7 +10,7 @@
     "developers": "Reader Developers",
     "subscriptions": "Subscriptions"
   },
-  "footer": "Brought to you by <a href='http://superfeedr.com'>Superfeedr</a> <img src='./images/superfeedr.png'>, <a href='https://github.com/superfeedr/subtome'>Source Code</a>.",
+  "footer": "Brought to you by",
   "index": {
     "caption": "Universal Follow Button",
     "summary": "SubToMe makes it easy for people to <em>follow</em> web sites,<br /> because browsers don't do it.",
