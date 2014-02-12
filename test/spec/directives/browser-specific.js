@@ -29,7 +29,7 @@ describe('Directive: browserSpecific', function () {
       });
       inject(function($compile, $rootScope) {
         var element = $compile('<span browser-specific="chrome"></span>')($rootScope);
-        expect(element.css('display')).toBe('inline');
+        expect(element.css('display')).not.toBe('none');
       });
     });
   });

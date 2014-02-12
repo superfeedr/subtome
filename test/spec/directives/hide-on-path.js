@@ -23,7 +23,7 @@ describe('Directive: hideOnPath', function () {
         $location.path('/path-which-shows');
         var element = $compile('<span hide-on-path="/path-which-hides"></span>')($rootScope);
         $rootScope.$apply();
-        expect(element.css('display')).toBe('inline');
+        expect(element.css('display')).not.toBe('none');
       });
     });
 
@@ -33,7 +33,7 @@ describe('Directive: hideOnPath', function () {
         $location.path('/path-which-shows');
         var element = $compile('<span hide-on-path="/path-which-hides"></span>')($rootScope);
         $rootScope.$apply();
-        expect(element.css('display')).toBe('inline');
+        expect(element.css('display')).not.toBe('none');
         $location.path('/path-which-hides');
         $rootScope.$apply();
         expect(element.css('display')).toBe('none');
