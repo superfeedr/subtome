@@ -10,7 +10,7 @@
     "developers": "Developeur de lecteur de flux",
     "subscriptions": "Abonnements"
   },
-  "footer": "Proposé par <a href='http://superfeedr.com'>Superfeedr</a> <img src='./images/superfeedr.png'>, <a href='https://github.com/superfeedr/subtome'>Code Source</a>.",
+  "footer": "Proposé par",
   "index": {
     "caption": "Bouton 'suivre' universel",
     "summary": "SubToMe vous permets facilement de <em>suivre</em> des sites web,<br /> parce que les navigateurs ne le font pas",
