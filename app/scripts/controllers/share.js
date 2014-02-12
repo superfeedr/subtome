@@ -6,7 +6,7 @@ angular.module('subtome')
   $scope.url = $routeParams.url;
   var a = angular.element('<a>', { href:$scope.url } )[0];
   $scope.urlRoot = a.protocol + '//' + a.hostname ;
-  if(a.port) {
+  if(a.port && a.port > 0) {
     $scope.urlRoot += ':' + a.port;
   }
   $scope.urlRoot += '/';

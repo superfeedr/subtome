@@ -22,6 +22,19 @@ angular.module('subtome')
   });
 
   if($routeParams.opml) {
-    $scope.subscriptions = opmlParser(atob($routeParams.opml));
+    try {
+      var xml = atob($routeParams.opml);
+      try {
+        $scope.subscriptions = opmlParser(xml);
+      }
+      catch(error) {
+        console.error('We could not parse opml content from argument', xml);
+        $scope.subscriptions = [];
+      }
+    }
+    catch(error) {
+      console.error('We could not convert argument from binary', $routeParams.opml);
+      $scope.subscriptions = [];
+    }
   }
 }]);

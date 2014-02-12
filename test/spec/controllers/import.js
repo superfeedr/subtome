@@ -1,16 +1,16 @@
 'use strict';
 
 describe('Controller: ImportController', function () {
-  var controller, scope, opml, routeParams;
+  var controller, scope, routeParams, _subscriptions;
 
   beforeEach(module('subtome'));
 
   beforeEach(function() {
     inject(function ($rootScope, $controller, subscriptions) {
+      _subscriptions = subscriptions;
+      _subscriptions.add('http://blog.superfeedr.com/', {feeds: ['http://blog.superfeedr.com/atom.xml'], service: 'My Subscription Service'});
       scope = $rootScope.$new();
       controller = $controller;
-      subscriptions.add('http://blog.superfeedr.com/', {feeds: ['http://blog.superfeedr.com/atom.xml'], service: 'My Subscription Service'});
-      opml = subscriptions.opml();
       routeParams = {};
     });
   });
@@ -21,12 +21,13 @@ describe('Controller: ImportController', function () {
     expect(scope.subscriptions.length).toBe(0);
   });
 
-  it('should set the scope\'s subscription to the list of subscriotions if an opml is passed as a route param', function () {
-    routeParams.opml = opml;
+  it('should set the scope\'s subscription to the list of subscriptions if an opml is passed as a route param', function () {
+    routeParams.opml = btoa(_subscriptions.opml());
     controller = controller('ImportController', {$scope: scope, $routeParams: routeParams});
     scope.$apply();
     expect(scope.subscriptions.length).toBe(1);
-    expect(scope.subscriptions[0]).toBe(1);
+    expect(scope.subscriptions[0].feed).toBe('http://blog.superfeedr.com/atom.xml');
+    expect(scope.subscriptions[0].html).toBe('http://blog.superfeedr.com/');
   });
 
   describe('when the file is changed', function() {

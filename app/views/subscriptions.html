@@ -11,7 +11,7 @@
 <table class="table table-striped">
   <tr ng-repeat="subscription in subscriptions">
     <td class='feed-title'>{{subscription[0]}}
-      <span ng-repeat="sub in subscription[1]" class="pull-right label" style="{{pickColor(sub.service)}}">{{sub.service}}</span>&emsp;
+      <span ng-repeat="sub in subscription[1]" class="pull-right label" style="{{sub.service | pickColor}}">{{sub.service}}</span>&emsp;
     </td>
   </tr>
 </table>
