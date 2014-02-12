@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('subtome')
-.controller('PublishersController', ['$scope', '$window', function PublishersController($scope, $window) {
+.controller('PublishersController', ['$window', function PublishersController($window) {
   $window.location = 'http://docs.subtome.com/publishers/';
 }]);
