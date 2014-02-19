@@ -1,36 +1,36 @@
 {
   "lang": "Deutsch",
   "Follow our Blog": "Folge unserem Blog",
-  "See it in Action": "Schau es dir an",
-  "View the full list of services": "View the full list of services",
-  "Preferred services": "Preferred services",
+  "See it in Action": "Jetzt anschauen!",
+  "View the full list of services": "Alle Dienste anzeigen",
+  "Preferred services": "Bevorzugte Dienste anzeigen",
   "nav": {
     "settings": "Einstellungen",
-    "publishers": "Füge einen Knopf zu deiner Seite hinzu",
+    "publishers": "Füge einen Button zu deiner Seite hinzu",
     "developers": "Entwickler",
     "subscriptions": "Subscriptions"
   },
   "footer": "Präsentiert von <a href='http://superfeedr.com'>Superfeedr</a> <img src='./img/superfeedr.png'>, <a href='https://github.com/superfeedr/subtome'>Source Code</a>.",
   "index": {
     "caption": "Universal Follow Button",
-    "summary": "SubToMe ermöglicht ein einfaches <em>Folgen</em> von Webseiten,<br />  weil Browser das nicht tun.",
-    "button": "Schau es dir an",
+    "summary": "Mittels SubToMe schnell und einfach Webseiten <em>folgen</em> und keinen Beitrag verpassen.",
+    "button": "Jetzt ausprobieren!",
     "points": {
       "nonIntrusive": {
-        "title": "Ohne Veränderungen",
-        "summary": "Wir hassen Webseiten, die aussehen wie Weihnachtsbäume. Wir verwenden nur zulässiges Markup und JavaScript und sind Plattform-unabhängig."
+        "title": "Einheitliches Design",
+        "summary": "Wir sind Webseiten leid, die aussehen wie Weihnachtsbäume. Daher verwendet SubToMe ledigliches zulässiges sowie plattformunabhängiges Markup und Java-Script."
       },
       "open": {
         "title": "100% offen",
-        "summary": "Open Source, offene Protokolle und offen für Verbesserungen. Hilf uns, es besser zu machen."
+        "summary": "SubToMe verwendet lediglich offene Protokolle, ist komplett Open-Source und damit auch offen für Verbesserungen jeglicher Art. Hilf uns SubToMe noch besser zu machen."
       },
       "fullyLocal": {
-        "title": "Total lokal",
-        "summary": "Deine Daten sind deine Daten. Deine Daten bleiben auf deinem Computer. Kein Benutzerkonto, kein Tracking, kein Ärger."
+        "title": "Persönliche Daten",
+        "summary": "Deine Daten sind und sollen bleiben deine Daten bleiben. Deshalb arbeitet SubToMe ganz ohne Benutzerkontos und Tracking. Alle Daten bleiben auf deinem Computer."
       },
       "anyReader": {
         "title": "Funktioniert mit jedem Reader",
-        "summary": "Wir ermöglichen einen einfachen Registrierungsmechanismus für [News|Social] Reader. Schau in unsere <a href=\"#/store\">Liste beliebter Anwendungen</a>."
+        "summary": "Wir ermöglichen eine einfache Integration für [News|Social] Reader. Schau am besten einfach in unsere <a href=\"#/store\">Liste der beliebtesten Anwendungen</a>."
       }
     }
   },
@@ -108,12 +108,12 @@
   "subscribe": {
     "title": "Folge",
     "services": {
-      "none": "Du hast bisher keinen bevorzugten Dienste ausgewählt. Bitte wählen einen!",
+      "none": "Du hast bisher keinen bevorzugten Dienste ausgewählt. Bitte wähle einen!",
       "pick": "Wähle einen Dienst aus, um diese Seite zu abonnieren:",
       "suggested": "Empfohlene:",
       "recommended": "Werkzeug vom Verlag empfohlen:",
       "popular": "Hier sind einige beliebte Optionen:",
-      "followWith": "Mit folgen"
+      "followWith": "Folgen mit"
     },
     "settings": "Einstellungen",
     "cancel": "Abbrechen"
