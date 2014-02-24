@@ -109,7 +109,7 @@
     "title": "Follow",
     "services": {
       "none": "You have not selected your preferred services yet. Please, pick one!",
-      "pick": "Pick a service to subscribe to this page:",
+      "pick": "Pick one of your prefered services to subscribe to this page:",
       "suggested": "Suggested:",
       "recommended": "We recommend subscribing with:",
       "popular": "Here are some popular options:",

@@ -39,21 +39,18 @@
 
       <div ng-switch-when="store" class="apps">
 
-        <div ng-repeat="app in apps" class="row app">
+        <div ng-repeat="service in apps" class="row app">
           <div class="col-md-10">
-            <h4 style="background-image: url(https://plus.google.com/_/favicon?domain={{app.url}})">
-              <a target="_blank" href="{{app.url}}">{{app.name}}</a>
+            <h4 style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})">
+              <a target="_blank" href="{{service.url}}">{{service.name}}</a>
             </h4>
-            <span class="label label-default" ng-repeat="tag in app.tags">{{tag}}</span>
+            <span class="label label-default" ng-repeat="tag in service.tags">{{tag}}</span>
             <div class="row">
               <div class="col-sm-8">
-                <p>{{app.description}}</p>
+                <p>{{service.description}}</p>
               </div>
               <div class="col-sm-4">
-                <div class="btn-group">
-                  <button ng-click='openService(app)' class="btn btn-sm btn-default pick"><span ng-i18next="subscribe.services.followWith" >Follow with</span> {{app.name}}</button>
-                  <button ng-click='toggle(app)' class="btn btn-sm btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(app.name), "glyphicon-remove": services.uses(app.name)}'></span></button>
-                </div>
+                <service-button ></service-button>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@
 angular.module('subtome')
 .directive('browserSpecific', ['$window', function($window) {
   return {
+    restrict: 'A',
     link: function($scope, $element, $attrs) {
       var showed = false;
       if($attrs.browserSpecific) {

@@ -57,42 +57,6 @@ angular.module('subtome')
     }
   };
 
-  // When a button is clicked.
-  $scope.openService = function openService(service) {
-    ga('send', 'event', 'services', 'redirect', service.name);
-    var url = service.url;
-    if(!safeUrl(url)) {
-      return $window.alert('It looks like this redirect is not safe. Please remove that service from your favorites.');
-    }
-
-    var redirect = decodeURIComponent(url).replace('{url}', encodeURIComponent($scope.resource));
-    if(redirect.match(/\{feed\}/)) {
-      if($scope.feeds[0]) {
-        redirect = redirect.replace('{feed}', encodeURIComponent($scope.feeds[0]));
-      }
-      else {
-        redirect = redirect.replace('{feed}', encodeURIComponent($scope.resource));
-      }
-    }
-    if(redirect.match(/\{feeds\}/)) {
-      redirect = redirect.replace('{feeds}', $scope.feeds.join(','));
-    }
-    $scope.subscriptions.add($scope.resource, {feeds: $scope.feeds, service: service.name});
-    var d = document.createElement('a');
-    d.href = $scope.resource;
-    var s = document.createElement('a');
-    s.href = url;
-    $window.parent.postMessage({subscription: {
-      feeds: $scope.feeds,
-      resource: $scope.resource,
-      app: {
-        name: service.name,
-        url: s.protocol + '//' + s.host
-      }
-    }}, d.protocol + '//' + d.host);
-    $window.open(redirect);
-  };
-
   // List of apps from the store.
   var apps = store;
   apps.forEach(function(a) {
@@ -100,16 +64,6 @@ angular.module('subtome')
     a.url = a.registration.url; // Compatibility
   });
   $scope.apps = apps;
-
-  // Toggle button
-  $scope.toggle = function toggleApp(app) {
-    if(services.uses(app.name)) {
-      services.removeService(app.name);
-    }
-    else {
-      services.register(app.name, app.url);
-    }
-  };
 
   // Show the popular options
   $scope.services = services;
