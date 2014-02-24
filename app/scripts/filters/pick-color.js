@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('subtome')
-.filter('pickColor', ['$window' , function($window) {
+.filter('pickColor', [function() {
   return function pickColor(string) {
     var colors = [
       'background-color: rgb(66, 139, 202)',

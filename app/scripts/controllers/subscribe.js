@@ -61,8 +61,9 @@ angular.module('subtome')
   $scope.openService = function openService(service) {
     ga('send', 'event', 'services', 'redirect', service.name);
     var url = service.url;
-    if(!safeUrl(url))
+    if(!safeUrl(url)) {
       return $window.alert('It looks like this redirect is not safe. Please remove that service from your favorites.');
+    }
 
     var redirect = decodeURIComponent(url).replace('{url}', encodeURIComponent($scope.resource));
     if(redirect.match(/\{feed\}/)) {
