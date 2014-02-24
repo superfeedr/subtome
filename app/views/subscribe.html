@@ -20,28 +20,19 @@
         <!-- Popular readers -->
         <div ng-show="showPopular">
           <p ng-i18next="[html]subscribe.services.popular">Here are some popular options:</p>
-          <div ng-repeat="service in apps.slice(0,3)" class="btn-group">
-            <button ng-click='openService(service)' class="btn btn-default pick" ><span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
-            <button ng-click='toggle(service)' class="btn btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(service.name), "glyphicon-remove": services.uses(service.name)}'></span></button>
-          </div>
+          <service-button ng-repeat="service in apps.slice(0,3)" ></service-button>
         </div>
 
         <!-- Preferred -->
         <div ng-show="services.count() > 0">
           <p ng-i18next="subscribe.services.pick">Pick one of your favourite services: </p>
-          <div ng-repeat="service in services.used()" class="btn-group">
-            <button ng-click='openService(service)' class="btn btn-default pick" ><span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
-            <button ng-click='toggle(service)' class="btn btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(service.name), "glyphicon-remove": services.uses(service.name)}'></span></button>
-          </div>
+          <service-button ng-repeat="service in services.used()" ></service-button>
         </div>
 
         <!-- Suggested -->
         <div ng-show="suggested">
           <p ng-i18next="subscribe.services.recommended">Recommended by the publisher:</p>
-          <div class="btn-group">
-            <button ng-show="suggested" ng-click='openService(suggested)' class="btn btn-default pick"> <span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{suggested.url}})"></span>{{suggested.name}}</button>
-            <button ng-click='toggle(suggested)' class="btn btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(suggested.name), "glyphicon-remove": services.uses(suggested.name)}'></span></button>
-          </div>
+          <service-button ng-repeat="service in suggested" ></service-button>
         </div>
 
       </div>

@@ -1,0 +1,4 @@
+<div class="btn-group">
+  <button ng-click='openService(service)' class="btn btn-default pick" ><span class="glyphicon icon-service" style="background-image: url(https://plus.google.com/_/favicon?domain={{service.url}})"></span>{{service.name}}</button>
+  <button ng-click='toggle(service)' class="btn btn-default icn"><span ng-class='{"glyphicon": true, "glyphicon-heart": !services.uses(service.name), "glyphicon-remove": services.uses(service.name)}'></span></button>
+</div>

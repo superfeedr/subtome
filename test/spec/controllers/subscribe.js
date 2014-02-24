@@ -45,8 +45,8 @@ describe('Controller: SubscribeController', function () {
       expect(scope.picker).toBe('default');
       expect(scope.subscriptions).toBe(_subscriptions);
       expect(scope.resource).toBe(routeParams.resource);
-      expect(scope.suggested.url).toBe(routeParams.suggestedUrl);
-      expect(scope.suggested.name).toBe(routeParams.suggestedName);
+      expect(scope.suggested[0].url).toBe(routeParams.suggestedUrl);
+      expect(scope.suggested[0].name).toBe(routeParams.suggestedName);
       expect(scope.feeds[0]).toBe('http://blog.superfeedr.com/atom.xml');
       expect(scope.feeds[1]).toBe('http://push-pub.appspot.com/feed');
       expect(scope.toggleButton).toBe('View the full list of services');

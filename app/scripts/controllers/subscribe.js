@@ -27,10 +27,10 @@ angular.module('subtome')
   // Extract the publisher suggested data
   $scope.resource = $routeParams.resource;
   if($routeParams.suggestedUrl && $routeParams.suggestedName) {
-    $scope.suggested = {
+    $scope.suggested = [{
       url: $routeParams.suggestedUrl,
       name: $routeParams.suggestedName
-    };
+    }];
   }
 
   // Keep track of the click on the button
