@@ -8,7 +8,7 @@ def ok_failed(condition)
   end
 end
 
-s3_bucket = "staging.subtome.com"
+s3_bucket = "www.subtome.com"
 
 desc "Deploy website via s3cmd"
 task :s3 do
