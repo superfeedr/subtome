@@ -55,7 +55,7 @@ as well for your existing users.
 Building SubToMe
 ================
 
-SubToMe uses [Grunt.js](http://gruntjs.com/) for its build process.
+SubToMe uses [Grunt.js](http://gruntjs.com/) for its build process and tests.
 
 
 Discussions
