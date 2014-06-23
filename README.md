@@ -35,10 +35,6 @@ Check Also
 Todo
 ====
 
-* Internationalize
-* Find ways to support non web based readers
-* Find a hack to allow of a complete redirect with default settings. At this point, it seems extremely complex, as we would need a direct user action to do such. Most browsers tested at this point will opening of new windows as popups at this point :/
-
 Check [Github Issues](https://github.com/superfeedr/subtome/issues) for more TODOs
 
 Going Further
