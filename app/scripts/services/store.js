@@ -37,6 +37,17 @@ angular.module('subtome')
     }
   },
   {
+    name: 'Wordpress Reader',
+    tags: ['wordpress', 'web', 'mobile'],
+    description: 'Wordpress Reader displays all the posts across all the blogs you follow in the order they were published.',
+    url: 'https://wordpress.com/',
+    icon: 'https://s2.wp.com/i/favicon.ico',
+    registration: {
+      name: 'Wordpress',
+      url: 'https://wordpress.com/following/edit/?follow={feed}'
+    }
+  },
+  {
     name: 'BazQux Reader',
     tags: ['web', 'comments'],
     description: 'RSS feed reader that shows comments to posts and supports reading of Facebook and Google+ pages.',

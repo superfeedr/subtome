@@ -52,6 +52,12 @@ Check the [store](https://www.subtome.com/#/store).
 Feel free to add yours if you implemented registration. Make sure you support [registration](https://www.subtome.com/#/developers)
 as well for your existing users.
 
+Building SubToMe
+================
+
+SubToMe uses [Grunt.js](http://gruntjs.com/) for its build process.
+
+
 Discussions
 ===========
 
