@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('subtome')
-.directive('serviceButton', ['$window', 'ga', 'services', 'subscriptions', 'safeUrl', function($window, ga, services, subscriptions, safeUrl) {
+.directive('serviceButton', ['$window', 'services', 'subscriptions', 'safeUrl', function($window, services, subscriptions, safeUrl) {
   return {
     restrict: 'E',
     scope: {
@@ -14,7 +14,6 @@ angular.module('subtome')
       scope.service.used = services.uses(scope.service.name);
 
       scope.open = function() {
-        ga('send', 'event', 'services', 'redirect', scope.service.name);
         var url = scope.service.url;
         if(!safeUrl(url)) {
           return $window.alert('It looks like this redirect is not safe. Please remove that service from your favorites.');

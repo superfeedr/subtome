@@ -45,17 +45,4 @@ describe('Controller: RegisterController', function () {
     });
   });
 
-  it('should have trigger a javascript event on the route params', function () {
-    inject(function ($rootScope, $controller) {
-      var scope = $rootScope.$new();
-      routeParams = {
-        name: 'My Service',
-        url: 'handler'
-      };
-      var ga = jasmine.createSpy();
-      $controller('RegisterController', {$scope: scope, $window: windowMock, ga: ga, $routeParams: routeParams});
-      scope.$apply();
-      expect(ga).toHaveBeenCalledWith('send', 'event', 'services', 'register', routeParams.name);
-    });
-  });
 });

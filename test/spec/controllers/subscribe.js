@@ -58,27 +58,14 @@ describe('Controller: SubscribeController', function () {
 
   it('should should show the modal');
 
-  it('should should send an event to Google Analytics with the resource', function() {
-    inject(function ($rootScope, $controller, $window, $routeParams, ga, $i18next, services, subscriptions, store) {
-      var scope = $rootScope.$new();
-      routeParams.resource = 'resource';
-      routeParams.feeds = 'http%3A%2F%2Fblog.superfeedr.com%2Fatom.xml';
-      var _ga = jasmine.createSpy();
-      $controller('SubscribeController', {$scope: scope, ga: _ga, subscriptions: subscriptions, $routeParams: routeParams, store: store, services: services});
-      scope.$apply();
-      expect(_ga).toHaveBeenCalledWith('send', 'event', 'resources', 'subscribe', routeParams.resource);
-      expect(_ga).toHaveBeenCalledWith('send', 'event', 'feeds', 'subscribe', decodeURIComponent(routeParams.feeds));
-    });
-  });
-
   it('should redirect the user when the modal is closed');
 
   it('should toggle the display between the prefered services and the list of all available', function() {
-    inject(function ($rootScope, $controller, $window, $routeParams, ga, $i18next, services, subscriptions, store) {
+    inject(function ($rootScope, $controller, $window, $routeParams, $i18next, services, subscriptions, store) {
       var scope = $rootScope.$new();
       routeParams.resource = 'resource';
       routeParams.feeds = 'http%3A%2F%2Fblog.superfeedr.com%2Fatom.xml';
-      $controller('SubscribeController', {$scope: scope, ga: ga, subscriptions: subscriptions, $routeParams: routeParams, store: store, services: services});
+      $controller('SubscribeController', {$scope: scope, subscriptions: subscriptions, $routeParams: routeParams, store: store, services: services});
       scope.$apply();
       expect(scope.toggleButton).toBe($i18next('View the full list of services'));
       expect(scope.picker).toBe('default');

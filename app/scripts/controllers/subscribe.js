@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('subtome')
-.controller('SubscribeController', ['$window', '$scope', '$routeParams', 'ga', '$i18next', 'services', 'subscriptions', 'store', 'safeUrl', function SubscribeController($window, $scope, $routeParams, ga, $i18next, services, subscriptions, store, safeUrl) {
+.controller('SubscribeController', ['$window', '$scope', '$routeParams', '$i18next', 'services', 'subscriptions', 'store', 'safeUrl', function SubscribeController($window, $scope, $routeParams, $i18next, services, subscriptions, store, safeUrl) {
   $scope.picker = 'default';
   $scope.subscriptions = subscriptions;
 
@@ -33,16 +33,12 @@ angular.module('subtome')
     }];
   }
 
-  // Keep track of the click on the button
-  ga('send', 'event', 'resources', 'subscribe', $scope.resource);
-
   // Extract the feeds information
   $scope.feeds = [];
   if($routeParams.feeds && $routeParams.feeds.length > 0) {
     $scope.feeds = $routeParams.feeds.split(',').map(function(url) {
       return decodeURIComponent(url);
     });
-    ga('send', 'event', 'feeds', 'subscribe', $scope.feeds[0]);
   }
 
   // UI, switch between store and default

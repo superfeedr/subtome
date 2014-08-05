@@ -1,6 +1,6 @@
 'use strict';
 
-var subtome = angular.module('subtome', ['ngResource', 'ngSanitize', 'ngRoute', 'jm.i18next', 'ga']);
+var subtome = angular.module('subtome', ['ngResource', 'ngSanitize', 'ngRoute', 'jm.i18next']);
 
 subtome.config(['$routeProvider', '$i18nextProvider', function($routeProvider, $i18nextProvider) {
 
