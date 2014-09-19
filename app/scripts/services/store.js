@@ -48,6 +48,17 @@ angular.module('subtome')
     }
   },
   {
+    name: 'FlowReader',
+    tags: ['web', 'iOS'],
+    description: 'FlowReader is a faster way to manage your online content! Combine your favorite sources & networks to get the news the matters most - all in one place.',
+    url: 'http://flowreader.com',
+    icon: 'http://flowreader.com/favicon.ico',
+    registration: {
+      name: 'FlowReader',
+      url: 'https://www.flowreader.com/subscribe?url={feed}'
+    }
+  },
+  {
     name: 'BazQux Reader',
     tags: ['web', 'comments'],
     description: 'RSS feed reader that shows comments to posts and supports reading of Facebook and Google+ pages.',
