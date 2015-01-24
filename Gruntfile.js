@@ -192,6 +192,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     svgmin: {
       dist: {
         files: [{
@@ -202,6 +203,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+    
     htmlmin: {
       dist: {
         options: {
@@ -301,7 +303,7 @@ module.exports = function (grunt) {
         basePath: 'dist/',
       },
       all: {
-        dest: 'dist/subtome.appcache',
+        dest: '<%= yeoman.dist %>/subtome.appcache',
         cache: 'dist/**/*',
         network: '*',
       }
@@ -355,11 +357,6 @@ module.exports = function (grunt) {
       'connect:livereload',
       'watch'
     ]);
-  });
-
-  grunt.registerTask('server', function () {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve']);
   });
 
   grunt.registerTask('test', [
