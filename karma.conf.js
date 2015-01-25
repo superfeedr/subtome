@@ -29,7 +29,7 @@ module.exports = function(config) {
     ],
 
     // list of files / patterns to exclude
-    exclude: [],
+    exclude: ['app/scripts/redirect.js'],
 
     // web server port
     port: 8080,
