@@ -86,7 +86,7 @@
         "resource": "<code>{resource}</code> ist die kodierte URL der Web-Ressource, die der Benutzer abonniert. Es muss kein Feed sein!",
         "feeds": "<code>{feeds}</code> ist eine Komma separierte Liste von kodierten Feed URLs. Es kann nur eine geben."
       },
-      "suggested": "It is also possible for a publisher to recommend a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='/#/developers'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
+      "suggested": "It is also possible for a publisher to recommend a specific application for their users. This allows them to promote what they think is the best tool, while still letting the user eventually pick the tool of their choice. The publisher should just include an HTML snippet similar to this one (see the <a href='http://docs.subtome.com/developers/'>developer</a> page to understand how to build the <code>suggestedUrl</code> element):"
     }
   },
   "settings": {

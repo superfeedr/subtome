@@ -86,7 +86,7 @@
         "resource": "<code>{resource}</code> est l'url encodée qui correspond au contenu suivi par le lecteur.",
         "feeds": "<code>{feeds}</code>  est une liste d'URL encodées des flux suivis, séparés par des virgules. Il peut tout à fait n'y en avoir qu'une."
       },
-      "suggested": "Il est aussi possible pour un éditeur de recommander à ses utilisateurs une application spécifique. Cela leur permet de promouvoir ce qu'ils pensent être le meilleur outil. tout en laissant la possibilité à l'utilisateur de choisir l'outil de son choix. Les éditeurs The publisher devront juste insérer un snippet HTML similaire à celui-ci (voir la page <a href='/#/developers'>developer</a> pour comprendre comment concevoir l'élément <code>suggestedUrl</code>) :"
+      "suggested": "Il est aussi possible pour un éditeur de recommander à ses utilisateurs une application spécifique. Cela leur permet de promouvoir ce qu'ils pensent être le meilleur outil. tout en laissant la possibilité à l'utilisateur de choisir l'outil de son choix. Les éditeurs The publisher devront juste insérer un snippet HTML similaire à celui-ci (voir la page <a href='http://docs.subtome.com/developers/'>developer</a> pour comprendre comment concevoir l'élément <code>suggestedUrl</code>) :"
     }
   },
   "settings": {
