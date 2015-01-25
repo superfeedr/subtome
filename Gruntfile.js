@@ -296,6 +296,14 @@ module.exports = function (grunt) {
       ]
     },
 
+    targethtml: {
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/index.html': '<%= yeoman.dist %>/index.html'
+        }
+      }
+    },
+
     // AppCache
     appcache: {
       options: {
@@ -367,23 +375,31 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    'bower-install',
-    'useminPrepare',
-    'concurrent:dist',
-    'autoprefixer',
-    'concat',
-    'ngmin',
-    'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'rev',
-    'usemin',
-    'htmlmin',
-    'appcache'
-  ]);
+  grunt.registerTask('build', function(target) {
+    if(!target) {
+      target = "dist";
+    }
+
+    grunt.task.run([
+      'clean:dist',
+      'bower-install',
+      'useminPrepare',
+      'concurrent:dist',
+      'autoprefixer',
+      'concat',
+      'ngmin',
+      'copy:dist',
+      'cdnify',
+      'cssmin',
+      'uglify',
+      'rev',
+      'usemin',
+      'htmlmin',
+      'appcache'
+      ]);
+  });
+
+  grunt.loadNpmTasks('grunt-targethtml');
 
   grunt.loadNpmTasks('grunt-appcache');
 

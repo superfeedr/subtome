@@ -24,14 +24,6 @@
 </head>
 
 <body>
-    <script>
-        if(window.location.host == 'www.subtome.com' && window.location.protocol != 'https:') {
-            window.location.protocol = 'https';
-        }
-        if(window.location.host != 'www.subtome.com') {
-            window.location.host = "www.subtome.com";
-        }
-    </script>
 
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -87,8 +79,10 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!--(if target dist)>
+    <script src="scripts/redirect.js"></script>
+    <!(endif)-->
     <script src="scripts/app.js"></script>
     <script src="scripts/services/file-reader.js"></script>
     <script src="scripts/services/opml-parser.js"></script>
