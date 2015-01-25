@@ -377,7 +377,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', function(target) {
     if(!target) {
-      target = "dist";
+      target = 'dist';
     }
 
     grunt.task.run([
@@ -396,7 +396,7 @@ module.exports = function (grunt) {
       'usemin',
       'htmlmin',
       'appcache'
-      ]);
+    ]);
   });
 
   grunt.loadNpmTasks('grunt-targethtml');
