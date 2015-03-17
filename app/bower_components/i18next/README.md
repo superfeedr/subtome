@@ -1,3 +1,13 @@
+# Searching Contributors
+
+looking for contributors interested in helping the project (long term):
+
+- getting stuff fixed faster
+- we might start work on a version 2.0.0 (supporting old API - but rewrite to optimize size, drop old browser support, better modularization, ...)
+- update docs to be generated out of wiki pages?!?
+- creating an icon for i18next organisation on github and the project
+- ...
+
 # Introduction
 
 Project goal is to provide an easy way to translate a website on clientside:
@@ -121,7 +131,7 @@ To build your own copy of i18next, check out the repository and:
     
 The grunt command will build i18next into the bin/ and release/ folders.
 
-# License
+# License (MIT)
 
 Copyright (c) 2011 Jan Mühlemann
 

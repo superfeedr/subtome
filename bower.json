@@ -8,7 +8,7 @@
     "angular-resource": "1.2.6",
     "angular-sanitize": "1.2.6",
     "angular-route": "1.2.6",
-    "i18next": "~1.7.1",
+    "i18next": "~1.8.0",
     "ng-i18next": "~0.2.9",
     "moment": "~2.5.1",
     "bootstrap-modal": "~2.1.0"

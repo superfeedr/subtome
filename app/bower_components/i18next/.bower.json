@@ -1,10 +1,11 @@
 {
   "name": "i18next",
-  "version": "1.7.1",
-  "main": "./release/i18next-1.7.1.min.js",
+  "version": "1.8.0",
+  "main": "./i18next.js",
   "dependencies": {},
   "ignore": [
     "test/",
+    "release/",
     "spec/",
     "src/",
     "sample/",
@@ -16,15 +17,14 @@
     "testacular.conf.js",
     "**/*.zip"
   ],
-  "homepage": "https://github.com/jamuhl/i18next",
-  "_release": "1.7.1",
+  "homepage": "https://github.com/i18next/i18next",
+  "_release": "1.8.0",
   "_resolution": {
     "type": "version",
-    "tag": "1.7.1",
-    "commit": "acb89490609b4e2694ded7fd2b765b17f0a864db"
+    "tag": "1.8.0",
+    "commit": "2bbf8ec6aa38b10587c721d7ebbf7308421824f7"
   },
-  "_source": "git://github.com/jamuhl/i18next.git",
-  "_target": "~1.7.1",
-  "_originalSource": "i18next",
-  "_direct": true
+  "_source": "git://github.com/i18next/i18next.git",
+  "_target": "~1.8.0",
+  "_originalSource": "i18next"
 }
