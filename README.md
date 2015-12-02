@@ -26,7 +26,7 @@ This is intended to be run as a bookmarklet or an embedded button on any web pag
 Check Also
 ==========
 
-[Ant0ine](http://blog.ant0ine.com/) very kindly contributed a [SubToMe Chrome Extension](https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc). [Source code](https://github.com/ant0ine/subtome-chrome-extension).
+[Ant0ine](http://blog.ant0ine.com/) very kindly contributed a SubToMe Chrome Extension (Google removed from the store as of December 2015). [Source code](https://github.com/ant0ine/subtome-chrome-extension).
 
 [Sören](http://www.soeren-hentzschel.at/) contributed a [SubToMe Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/subtome-subscribe-button/)!
 

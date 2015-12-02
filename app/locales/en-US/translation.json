@@ -92,7 +92,7 @@
   "settings": {
     "addons": {
       "bookmarklet": "Drag and drop this <a href='javascript:(function(){var%20z=document.createElement(\"script\");z.src=\"https://www.subtome.com/load.js\";document.body.appendChild(z);})()' onclick=''  class='btn btn-xs btn-default' title='Drag this to your Bookmarks Bar to install'>Subscribe</a> bookmarklet into your bookmark bar",
-      "chrome": "or install this <a class='install' href='https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc'>Chrome Extension</a>, ",
+      "chrome": "or install this Chrome Extension, ",
       "firefox": "or install this <a class='install' href='https://addons.mozilla.org/en-us/firefox/addon/subtome-subscribe-button/''>Firefox Add-On",
       "final": "to subscribe to pages without a subscribe button."
     },

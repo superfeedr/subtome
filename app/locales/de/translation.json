@@ -92,7 +92,7 @@
   "settings": {
     "addons": {
       "bookmarklet": "Drücke und ziehe dieses <a href='javascript:(function(){var%20z=document.createElement(\"script\");z.src=\"https://www.subtome.com/load.js\";document.body.appendChild(z);})()' onclick=''  class='btn btn-xs btn-default' title='Ziehe dies in deine Bookmarkleiste, um es zu installieren'>Abonnieren</a> Bookmarklet in deine Bookmarkleiste",
-      "chrome": "oder installiere diese <a class='install' href='https://chrome.google.com/webstore/detail/subtome/cjkhnlmkkfheepafpgppmpdahbjgkjfc'>Chrome Extension</a>, ",
+      "chrome": "oder installiere diese Chrome Extension, ",
       "firefox": "oder installiere dieses <a class='install' href='https://addons.mozilla.org/en-us/firefox/addon/subtome-subscribe-button/''>Firefox Add-On",
       "final": "um Seiten zu abonnieren, die über keinen Abonnieren-Knopf verfügen."
     },
