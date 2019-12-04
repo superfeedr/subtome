@@ -10,7 +10,7 @@ angular.module('subtome')
     icon: 'https://feedly.com/favicon.ico',
     registration: {
       name: 'Feedly',
-      url: 'https://www.feedly.com/home#subscription/feed/{feed}'
+      url: 'https://feedly.com/i/subscription/feed/{feed}'
     }
   },
   {
