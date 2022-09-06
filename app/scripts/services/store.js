@@ -6,22 +6,22 @@ angular.module('subtome')
     name: 'Feedly',
     tags: ['chrome', 'firefox', 'mobile'],
     description: 'Feedly is a news aggregator application for various Web browsers and mobile devices running iOS and Android.',
-    url: 'http://feedly.com/',
-    icon: 'http://feedly.com/favicon.ico',
+    url: 'https://feedly.com/',
+    icon: 'https://feedly.com/favicon.ico',
     registration: {
       name: 'Feedly',
-      url: 'http://www.feedly.com/home#subscription/feed/{feed}'
+      url: 'https://feedly.com/i/subscription/feed/{feed}'
     }
   },
   {
     name: 'The Old Reader',
     tags: ['web', 'popular', 'advanced'],
     description: 'The Old Reader was built to be a Google Reader replacement, and it does it well!',
-    url: 'http://theoldreader.com/',
-    icon: 'http://theoldreader.com/favicon.ico',
+    url: 'https://theoldreader.com/',
+    icon: 'https://theoldreader.com/favicon.ico',
     registration: {
       name: 'The Old Reader',
-      url: 'http://theoldreader.com/feeds/subscribe?url={feed}'
+      url: 'https://theoldreader.com/feeds/subscribe?url={feed}'
     },
     installed: false
   },
@@ -51,8 +51,8 @@ angular.module('subtome')
     name: 'FlowReader',
     tags: ['web', 'iOS'],
     description: 'FlowReader is a faster way to manage your online content! Combine your favorite sources & networks to get the news the matters most - all in one place.',
-    url: 'http://flowreader.com',
-    icon: 'http://flowreader.com/favicon.ico',
+    url: 'https://flowreader.com',
+    icon: 'https://flowreader.com/favicon.ico',
     registration: {
       name: 'FlowReader',
       url: 'https://www.flowreader.com/subscribe?url={feed}'
@@ -60,8 +60,8 @@ angular.module('subtome')
   },
   {
     name: 'BazQux Reader',
-    tags: ['web', 'comments'],
-    description: 'RSS feed reader that shows comments to posts and supports reading of Facebook and Google+ pages.',
+    tags: ['web', 'advanced', 'comments', 'twitter'],
+    description: 'Your friend for reading feeds.',
     url: 'https://bazqux.com/',
     icon: 'https://bazqux.com/favicon.ico',
     registration: {
@@ -73,67 +73,45 @@ angular.module('subtome')
     name: 'NewsBlur',
     tags: ['web', 'mobile', 'advanced', 'open source'],
     description: 'NewsBlur is a personal news reader bringing people together to talk about the world.',
-    url: 'http://www.newsblur.com/',
-    icon: 'http://newsblur.com/favicon.ico',
+    url: 'https://www.newsblur.com/',
+    icon: 'https://newsblur.com/favicon.ico',
     registration: {
       name: 'NewsBlur',
-      url: 'http://www.newsblur.com/?url={feed}'
+      url: 'https://www.newsblur.com/?url={feed}'
     },
     installed: true
-  },
-  {
-    name: 'Digg',
-    tags: ['web', 'mobile'],
-    description: 'Digg is still one of the most famous news site out there. The Digg reader lets you digg stories up.',
-    url: 'https://digg.com/reader/',
-    icon: 'https://digg.com//static/images/reader/digg_favicon_reader.png',
-    registration: {
-      name: 'Digg Reader',
-      url: 'http://digg.com/reader/search/{feed}'
-    }
   },
   {
     name: 'Rivered',
     tags: ['web'],
     description: 'An uncluttered River of News; no unread item count, no complexity. Just the content you subscribe to.',
-    url: 'http://www.rivered.io/',
-    icon: 'http://www.rivered.io/favicon.ico',
+    url: 'https://www.rivered.io/',
+    icon: 'https://www.rivered.io/favicon.ico',
     registration: {
       name: 'Rivered',
-      url: 'http://www.rivered.io/add?url={feed}'
+      url: 'https://www.rivered.io/add?url={feed}'
     }
   },
   {
     name: 'Bloglovin',
     tags: ['web', 'iOS', 'blog'],
     description: 'Bloglovin was created to make reading blogs awesome.',
-    url: 'http://www.bloglovin.com/',
-    icon: 'http://www.bloglovin.com/images/favicon.ico',
+    url: 'https://www.bloglovin.com/',
+    icon: 'https://www.bloglovin.com/images/favicon.ico',
     registration: {
       name: 'Bloglovin',
-      url: 'http://www.bloglovin.com/search/{feed}'
+      url: 'https://www.bloglovin.com/search/{feed}'
     }
   },
   {
     name: 'Blogtrottr',
     tags: ['email', 'digests'],
     description: 'Blogtrottr delivers updates from all of your favourite news, feeds, and blogs directly to your email inbox.',
-    url: 'http://blogtrottr.com/',
-    icon: 'http://blogtrottr.com/favicon.ico',
+    url: 'https://blogtrottr.com/',
+    icon: 'https://blogtrottr.com/favicon.ico',
     registration: {
       name: 'Blogtrottr',
-      url: 'http://blogtrottr.com/?subscribe={feed}'
-    }
-  },
-  {
-    name: 'Feedleap',
-    tags: ['web', 'kippt', 'bookmark', 'open source'],
-    description: 'FeedLeap lets you subscribe to your favorite RSS feeds and store new entries as Clips in any Kippt List you want.',
-    url: 'https://feedleap.herokuapp.com',
-    icon: 'https://feedleap.herokuapp.com/static/favicon.ico',
-    registration: {
-      name: 'Feedleap',
-      url: 'https://feedleap.herokuapp.com/feeds/new/?feed={feed}&source=subtome'
+      url: 'https://blogtrottr.com/?subscribe={feed}'
     }
   },
   {
@@ -148,17 +126,6 @@ angular.module('subtome')
     }
   },
   {
-    name: 'AOL Reader',
-    tags: ['web', 'mobile', 'tablets'],
-    description: 'All your favorite websites, in one place',
-    url: 'http://reader.aol.com/',
-    icon: 'http://www.aol.com/favicon.ico',
-    registration: {
-      name: 'AOL Reader',
-      url: 'http://reader.aol.com/#quickadd/{feed}'
-    }
-  },
-  {
     name: 'InoReader',
     tags: ['web', 'advanced'],
     description: 'Light and Fast RSS/Atom Reader inspired by Google Reader',
@@ -170,33 +137,22 @@ angular.module('subtome')
     }
   },
   {
-    name: 'MnmlRdr',
-    tags: ['web', 'mobile', 'minimal', 'lightweight'],
-    description: 'A fast and lightweight feed reader without \'feature clutter\' so you can focus on the content.',
-    url:'https://mnmlrdr.com/',
-    icon:'https://mnmlrdr.com/static/images/logo.png',
-    registration:{
-      name: 'MnmlRdr',
-      url: 'https://mnmlrdr.com/settings/subscriptions/add?feed={feed}'
-    }
-  },
-  {
     name: 'Netvibes',
     tags: ['web', 'dashboard', 'analytics'],
     description: 'Netvibes is the all-in-one dashboard intelligence platform.',
-    url:'http://www.netvibes.com',
-    icon:'http://cdn.netvibes.com/img/favicon-12.png',
+    url:'https://www.netvibes.com',
+    icon:'https://cdn.netvibes.com/img/favicon-12.png',
     registration:{
       name: 'Netvibes',
-      url: 'http://www.netvibes.com/subscribe.php?url={feed}'
+      url: 'https://www.netvibes.com/subscribe.php?url={feed}'
     }
   },
   {
     name: 'Squirro',
     tags: ['web', 'intelligence', 'assistant'],
     description: 'Squirro is the leader in Context Intelligence, combining structured and unstructured data to provide the \'Why\' behind the data.',
-    url:'http://squirro.com/',
-    icon:'http://squirro.com/files/2213/3673/7722/favicon.ico',
+    url:'https://squirro.com/',
+    icon:'https://squirro.com/files/2213/3673/7722/favicon.ico',
     registration:{
       name: 'Squirro',
       url: 'https://squirro.com/app/#add/query/{feed}'
@@ -206,22 +162,22 @@ angular.module('subtome')
     name: 'Player FM',
     tags: ['podcast', 'mobile', 'web'],
     description: 'Listen to talk shows on hundreds of topics, everything from Politics to Pokemon! ',
-    url:'http://player.fm/',
-    icon:'http://player.fm/favicon.ico',
+    url:'https://player.fm/',
+    icon:'https://player.fm/favicon.ico',
     registration:{
       name: 'Player FM',
-      url: 'http://player.fm/series?url={feed}&referrer={url}&related_feeds={feeds}'
+      url: 'https://player.fm/series?url={feed}&referrer={url}&related_feeds={feeds}'
     }
   },
   {
     name: 'My Yahoo',
     tags: ['yahoo', 'legacy'],
     description: 'My Yahoo is a customizable web page with news, stock quotes, weather, and many other features.',
-    url:'http://my.yahoo.com/',
-    icon:'http://my.yahoo.com/favicon.ico',
+    url:'https://my.yahoo.com/',
+    icon:'https://my.yahoo.com/favicon.ico',
     registration:{
       name: 'My Yahoo',
-      url: 'http://add.my.yahoo.com/rss?url={feed}'
+      url: 'https://add.my.yahoo.com/rss?url={feed}'
     }
   },
   {
